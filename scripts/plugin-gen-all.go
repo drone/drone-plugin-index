@@ -7,7 +7,6 @@ package main
 import (
 	"bufio"
 	"bytes"
-	"flag"
 	"io/ioutil"
 	"log"
 	"os"
@@ -15,13 +14,7 @@ import (
 	"strings"
 )
 
-var (
-	token = flag.String("token", os.Getenv("GITHUB_API_TOKEN"), "github api token")
-)
-
 func main() {
-	flag.Parse()
-
 	f, err := ioutil.ReadFile("PLUGINS")
 	if err != nil {
 		log.Fatal(err)

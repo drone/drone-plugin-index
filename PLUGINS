@@ -1,5 +1,6 @@
 # This is the list of Drone plugin repositories used
-# to generate the plugins.drone.io. website.
+# to generate the plugins.drone.io website.
 
 drone-plugins/drone-docker
 drone-plugins/drone-git
+drone-plugins/drone-gitter
