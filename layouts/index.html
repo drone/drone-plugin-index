@@ -51,7 +51,7 @@
 						</h2>
 
 						{{- if .Params.repo }}
-						<div class="logo" style="background-image: url(logos/{{ .Params.repo }}.svg)"></div>
+						<div class="logo" style="background-image: url({{ $base }}logos/{{ .Params.repo }}.svg)"></div>
 						{{ end -}}
 
 						{{- if .Params.author }}
