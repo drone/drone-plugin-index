@@ -1,4 +1,4 @@
-baseurl: http://plugins.drone.io
+baseurl: http://plugins.drone.io/
 title: Plugins | Drone
 theme: drone-hugo-theme
 
