@@ -3,10 +3,14 @@ workspace:
 
 pipeline:
   build:
+    image: golang:1.6
+    commands:
+      - go run scripts/plugin-gen-all.go
+
+  build:
     image: webhippie/hugo:latest
     commands:
       - git clone https://github.com/drone/drone-hugo-theme.git themes/drone-hugo-theme
-      - go run scripts/plugin-gen-all.go
       - hugo
 
   upload:
