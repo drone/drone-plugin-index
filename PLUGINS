@@ -1,0 +1,4 @@
+# This is the official list of Drone plugins.
+
+drone-plugins/drone-docker
+drone-plugins/drone-git

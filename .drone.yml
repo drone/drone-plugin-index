@@ -1,0 +1,21 @@
+workspace:
+  path: src
+
+pipeline:
+  build:
+    image: webhippie/hugo:latest
+    commands:
+      - git clone https://github.com/drone/drone-hugo-theme.git themes/drone-hugo-theme
+      - go run scripts/plugin-gen-all.go
+      - hugo
+
+  upload:
+    image: plugins/s3-sync:1.1
+    access: public-read
+    region: us-east-1
+    bucket: plugins.drone.io
+    source: public/
+    target: /
+    delete: false
+    content_type:
+      ".svg": image/svg+xml

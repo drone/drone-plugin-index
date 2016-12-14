@@ -1,0 +1,123 @@
+baseurl: http://plugins.drone.io
+title: Plugins | Drone
+theme: drone-hugo-theme
+
+copyright: Copyright © 2016 Drone.IO Inc.
+
+params:
+  heading: Plugins
+  tagline: >
+    Browse our registry of community plugins to customize
+    your continuous delivery pipeline.
+  search: Search Plugins
+
+menu:
+  main:
+    - name: "Documentation"
+      identifier: "documentation"
+      url: "http://readme.drone.io/"
+    - name: "Tutorials"
+      identifier: "tutorial"
+      url: "http://readme.drone.io/tutorials/"
+    - name: "Questions"
+      identifier: "question"
+      url: "http://readme.drone.io/questions/"
+    - name: "Plugins"
+      identifier: "plugin"
+      url: "/"
+
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: false
+enableMissingTranslationPlaceholders: false
+
+languages:
+  en:
+    weight: 1
+    languageName: English
+
+  fr:
+    weight: 2
+    languageName: Français
+
+  es:
+    weight: 3
+    languageName: Español
+
+  pt:
+    weight: 4
+    languageName: Português
+
+  zh-cn:
+    weight: 5
+    languageName: 中文(简体)
+    menu:
+      main:
+        - identifier: documentation
+          name: "文档"
+          url: "/"
+          weight: -900
+        - identifier: tutorial
+          name: "教程"
+          url: "/zh-cn/tutorials/"
+          weight: -800
+        - identifier: question
+          name: "问题"
+          url: "/zh-cn/questions/"
+          weight: -700
+        - identifier: plugin
+          name: "插件"
+          url: "/zh-cn/plugins/"
+          weight: -600
+        # - identifier: project
+        #   name: "项目"
+        #   url: "/zh-cn/projects/"
+        #   weight: -500
+  zh-tw:
+    weight: 6
+    languageName: 中文(台灣)
+    menu:
+      main:
+        - identifier: "documentation"
+          name: "文件"
+          url: "/zh-tw/"
+          weight: -900
+        - identifier: "tutorial"
+          name: "教學"
+          url: "/zh-tw/tutorials/"
+          weight: -800
+        - identifier: "question"
+          name: "問題"
+          url: "/zh-tw/questions/"
+          weight: -700
+        - identifier: "plugin"
+          name: "外掛"
+          url: "/zh-tw/plugins/"
+          weight: -600
+        # - identifier: "project"
+        #   name: "專案"
+        #   url: "/zh-tw/projects/"
+        #   weight: -500
+  ja:
+    weight: 7
+    languageName: 日本語
+    menu:
+      main:
+        - name: "ドキュメント"
+        - name: "チュートリアル"
+        - name: "質問"
+        - name: "プラグイン"
+        # - name: "プロジェクト"
+  ru:
+    weight: 8
+    languageName: pусский
+
+  hu:
+    weight: 9
+    languageName: magyar
+    menu:
+      main:
+        - name: "Dokumentációt"
+        - name: "Oktatóanyagok"
+        - name: "Kérdéseket"
+        - name: "Dugó"
+        # - name: "Projektek"

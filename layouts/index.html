@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+		<title>{{ .Site.Title }}</title>
+
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css">
+
+		<link href="{{ .Site.BaseURL }}dist/style.min.css" rel="stylesheet">
+		<link href="{{ .Site.BaseURL }}override.css" rel="stylesheet">
+	</head>
+	<body class="list">
+		<header>
+			<nav>
+				{{- range .Site.Menus.main -}}
+				<a href="{{ .URL }}">{{ .Name }}</a>
+				{{ end -}}
+			</nav>
+		</header>
+
+		<main>
+			<header>
+				<div>
+					<h1>{{- .Site.Params.heading -}}</h1>
+					<p>{{- trim .Site.Params.tagline "\n" -}}</p>
+					<input type="text" placeholder="{{- .Site.Params.search -}}" />
+				</div>
+			</header>
+
+			{{ if not .IsHome -}}
+				<div class="filter">
+					<div class="filter-inner">
+						<a href="{{ .Site.BaseURL }}">
+							<i class="material-icons">close</i>
+						</a>
+						<span>{{ .Title }}</span>
+					</div>
+				</div>
+			{{ end -}}
+
+			<section class="plugins" style="margin-top:40px;">
+				{{- $base := .Site.BaseURL -}}
+				{{- range .Data.Pages }}
+				<article>
+					<div>
+						<h2>
+							<a href="{{ .Permalink }}">{{ .Title }}</a>
+						</h2>
+
+						{{- if .Params.repo }}
+						<div class="logo" style="background-image: url(logos/{{ .Params.repo }}.svg)"></div>
+						{{ end -}}
+
+						{{- if .Params.author }}
+						<span class="author">by {{ .Params.author }}</span>
+						{{ end -}}
+
+						<ul class="tags">
+						{{- range .Params.tags }}
+							<li>
+								<a class="tag" href="{{ $base }}tags/{{ . }}">{{ . }}</a>
+							</li>
+						{{ end -}}
+						</ul>
+					</div>
+				</article>
+				{{ end }}
+			</section>
+		</main>
+		{{ partial "footer.html" . }}
+	</body>
+</html>
