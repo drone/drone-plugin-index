@@ -4,3 +4,4 @@
 drone-plugins/drone-docker
 drone-plugins/drone-git
 drone-plugins/drone-gitter
+drone-plugins/drone-slack
