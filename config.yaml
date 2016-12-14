@@ -13,18 +13,22 @@ params:
 
 menu:
   main:
-    - name: "Documentation"
-      identifier: "documentation"
-      url: "http://readme.drone.io/"
-    - name: "Tutorials"
-      identifier: "tutorial"
-      url: "http://readme.drone.io/tutorials/"
-    - name: "Questions"
-      identifier: "question"
-      url: "http://readme.drone.io/questions/"
-    - name: "Plugins"
-      identifier: "plugin"
-      url: "/"
+    - identifier: documentation
+      weight: 1
+      name: Documentation
+      url: http://readme.drone.io/
+    - identifier: tutorial
+      weight: 2
+      name: Tutorials
+      url: http://readme.drone.io/tutorials/
+    - identifier: question
+      weight: 3
+      name: Questions
+      url: http://readme.drone.io/questions/
+    - identifier: plugin
+      weight: 4
+      name: Plugins
+      url: /
 
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: false
@@ -38,86 +42,217 @@ languages:
   fr:
     weight: 2
     languageName: Français
+    heading: Plugins
+    tagline: >
+      Browse our registry of community plugins to customize
+      your continuous delivery pipeline.
+    search: Recherche
+    menu:
+      main:
+        - identifier: documentation
+          weight: 1
+          name: Documentation
+          url: http://readme.drone.io/fr/
+        - identifier: tutorial
+          weight: 2
+          name: Tutoriels
+          url: http://readme.drone.io/fr/tutorials/
+        - identifier: question
+          weight: 3
+          name: Questions
+          url: http://readme.drone.io/fr/questions/
+        - identifier: plugin
+          weight: 4
+          name: Plugins
+          url: /fr/
 
   es:
     weight: 3
     languageName: Español
-
-  pt:
-    weight: 4
-    languageName: Português
-
-  zh-cn:
-    weight: 5
-    languageName: 中文(简体)
+    heading: Plugins
+    tagline: >
+      Browse our registry of community plugins to customize
+      your continuous delivery pipeline.
+    search: Buscar
     menu:
       main:
         - identifier: documentation
-          name: "文档"
-          url: "/"
-          weight: -900
+          weight: 1
+          name: Documentación
+          url: http://readme.drone.io/es/
         - identifier: tutorial
-          name: "教程"
-          url: "/zh-cn/tutorials/"
-          weight: -800
+          weight: 2
+          name: Tutoriales
+          url: http://readme.drone.io/es/tutorials/
         - identifier: question
-          name: "问题"
-          url: "/zh-cn/questions/"
-          weight: -700
+          weight: 3
+          name: Preguntas
+          url: http://readme.drone.io/es/questions/
         - identifier: plugin
-          name: "插件"
-          url: "/zh-cn/plugins/"
-          weight: -600
-        # - identifier: project
-        #   name: "项目"
-        #   url: "/zh-cn/projects/"
-        #   weight: -500
-  zh-tw:
-    weight: 6
-    languageName: 中文(台灣)
+          weight: 4
+          name: Plugins
+          url: /es/
+
+  it:
+    weight: 4
+    languageName: Italiano
     menu:
       main:
-        - identifier: "documentation"
-          name: "文件"
-          url: "/zh-tw/"
-          weight: -900
-        - identifier: "tutorial"
-          name: "教學"
-          url: "/zh-tw/tutorials/"
-          weight: -800
-        - identifier: "question"
-          name: "問題"
-          url: "/zh-tw/questions/"
-          weight: -700
-        - identifier: "plugin"
-          name: "外掛"
-          url: "/zh-tw/plugins/"
-          weight: -600
-        # - identifier: "project"
-        #   name: "專案"
-        #   url: "/zh-tw/projects/"
-        #   weight: -500
-  ja:
+        - identifier: documentation
+          weight: 1
+          name: Documentazione
+          url: http://readme.drone.io/it/
+        - identifier: tutorial
+          weight: 2
+          name: Tutorial
+          url: http://readme.drone.io/it/tutorials/
+        - identifier: question
+          weight: 3
+          name: Domande
+          url: http://readme.drone.io/it/questions/
+        - identifier: plugin
+          weight: 4
+          name: Plugins
+          url: /it/
+
+  pt:
+    weight: 5
+    languageName: Português
+    menu:
+      main:
+        - identifier: documentation
+          weight: 1
+          name: Documentação
+          url: http://readme.drone.io/pt/
+        - identifier: tutorial
+          weight: 2
+          name: Tutoriais
+          url: http://readme.drone.io/pt/tutorials/
+        - identifier: question
+          weight: 3
+          name: Preguntas
+          url: http://readme.drone.io/pt/questions/
+        - identifier: plugin
+          weight: 4
+          name: Plugins
+          url: /pt/
+
+  zh-cn:
+    weight: 6
+    languageName: 中文(简体)
+    heading: 插件
+    tagline: >
+      Browse our registry of community plugins to customize
+      your continuous delivery pipeline.
+    search: 搜索
+    menu:
+      main:
+        - identifier: documentation
+          weight: 1
+          name: 文档
+          url: http://readme.drone.io/zh-cn/
+        - identifier: tutorial
+          weight: 2
+          name: 教程
+          url: http://readme.drone.io/zh-cn/tutorials/
+        - identifier: question
+          weight: 3
+          name: 问题
+          url: http://readme.drone.io/zh-cn/questions/
+        - identifier: plugin
+          weight: 4
+          name: 插件
+          url: /zh-cn/
+
+  zh-tw:
     weight: 7
+    languageName: 中文(台灣)
+    heading: 外掛
+    tagline: >
+      Browse our registry of community plugins to customize
+      your continuous delivery pipeline.
+    search: 搜索
+    menu:
+      main:
+        - identifier: documentation
+          weight: 1
+          name: 文件
+          url: http://readme.drone.io/zh-tw/
+        - identifier: tutorial
+          weight: 2
+          name: 教學
+          url: http://readme.drone.io/zh-tw/tutorials/
+        - identifier: question
+          weight: 3
+          name: 問題
+          url: http://readme.drone.io/zh-tw/questions/
+        - identifier: plugin
+          weight: 4
+          name: 外掛
+          url: /zh-tw/
+
+  ja:
+    weight: 8
     languageName: 日本語
     menu:
       main:
-        - name: "ドキュメント"
-        - name: "チュートリアル"
-        - name: "質問"
-        - name: "プラグイン"
-        # - name: "プロジェクト"
-  ru:
-    weight: 8
-    languageName: pусский
+        - identifier: documentation
+          weight: 1
+          name: ドキュメント
+          url: http://readme.drone.io/ja/
+        - identifier: tutorial
+          weight: 2
+          name: チュートリアル
+          url: http://readme.drone.io/ja/tutorials/
+        - identifier: question
+          weight: 3
+          name: 質問
+          url: http://readme.drone.io/ja/questions/
+        - identifier: plugin
+          weight: 4
+          name: プラグイン
+          url: /ja/
 
-  hu:
+  ko:
     weight: 9
-    languageName: magyar
+    languageName: 한국어
     menu:
       main:
-        - name: "Dokumentációt"
-        - name: "Oktatóanyagok"
-        - name: "Kérdéseket"
-        - name: "Dugó"
-        # - name: "Projektek"
+        - identifier: documentation
+          weight: 1
+          name: 설명서
+          url: http://readme.drone.io/en/
+        - identifier: tutorial
+          weight: 2
+          name: 자습서
+          url: http://readme.drone.io/en/tutorials/
+        - identifier: question
+          weight: 3
+          name: 질문
+          url: http://readme.drone.io/en/questions/
+        - identifier: plugin
+          weight: 4
+          name: 플러그인
+          url: /ko/
+
+  ru:
+    weight: 9
+    languageName: pусский
+    menu:
+      main:
+        - identifier: documentation
+          weight: 1
+          name: Документация
+          url: http://readme.drone.io/ru/
+        - identifier: tutorial
+          weight: 2
+          name: Учебники
+          url: http://readme.drone.io/ru/tutorials/
+        - identifier: question
+          weight: 3
+          name: Вопросы
+          url: http://readme.drone.io/ru/questions/
+        - identifier: plugin
+          weight: 4
+          name: Плагины
+          url: /ru/

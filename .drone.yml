@@ -6,6 +6,7 @@ pipeline:
     image: golang:1.6
     commands:
       - go run scripts/plugin-gen-all.go
+      - go run scripts/plugin-fallback-all.go
 
   build:
     image: webhippie/hugo:latest
