@@ -69,7 +69,7 @@ pipeline:
     source: public/**/*
     target: /target/location
 +   path_style: true
-+   endpoint: https://minio.domain.com
++   endpoint: https://play.minio.io:9000
 ```
 
 # Secrets
