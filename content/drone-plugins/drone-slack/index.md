@@ -6,7 +6,6 @@ tags: [ notifications, chat ]
 repo: drone-plugins/drone-slack
 logo: slack.svg
 image: plugins/slack
-url: drone-plugins/drone-slack
 ---
 
 The Slack plugin posts build status messages to your channel. The below pipeline configuration demonstrates simple usage:

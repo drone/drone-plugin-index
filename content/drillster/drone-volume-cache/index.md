@@ -6,7 +6,6 @@ repo: "drillster/drone-volume-cache"
 tags:
 - "cache"
 title: Volume Cache
-url: "drillster/drone-volume-cache"
 ---
 
 {{% alert error %}}

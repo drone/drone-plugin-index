@@ -6,7 +6,6 @@ tags: [ publish, docker ]
 repo: drone-plugins/drone-docker
 logo: docker.svg
 image: plugins/drone
-url: drone-plugins/drone-docker
 ---
 
 The Docker plugin can be used to build and publish images to the Docker registry. The following pipeline configuration uses the Docker plugin to build and publish Docker images:

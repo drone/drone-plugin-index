@@ -6,7 +6,6 @@ tags: [ notifications, chat ]
 repo: drone-plugins/drone-gitter
 logo: gitter.svg
 image: plugins/gitter
-url: drone-plugins/drone-gitter
 ---
 
 The Gitter plugin posts build events to your Gitter room's activity feed. The below pipeline configuration demonstrates simple usage:
