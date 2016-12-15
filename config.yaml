@@ -216,6 +216,10 @@ languages:
   ko:
     weight: 9
     languageName: 한국어
+    heading: 플러그인
+    tagline: >
+      Browse our registry of community plugins to customize
+      your continuous delivery pipeline.
     menu:
       main:
         - identifier: documentation
@@ -236,7 +240,7 @@ languages:
           url: /ko/
 
   ru:
-    weight: 9
+    weight: 10
     languageName: pусский
     menu:
       main:

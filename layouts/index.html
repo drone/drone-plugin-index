@@ -47,11 +47,11 @@
 				<article>
 					<div>
 						<h2>
-							<a href="{{ .Permalink }}">{{ .Title }}</a>
+							<a href="{{ .Permalink | relLangURL }}">{{ .Title }}</a>
 						</h2>
 
-						{{- if .Params.repo }}
-						<div class="logo" style="background-image: url({{ $base }}logos/{{ .Params.repo }}.svg)"></div>
+						{{- if .Params.logo }}
+						<div class="logo" style="background-image: url({{ $base }}logos/{{ .Params.logo }})"></div>
 						{{ end -}}
 
 						{{- if .Params.author }}
