@@ -55,8 +55,21 @@ pipeline:
     bucket: my-bucket-name
     source: public/**/*
     target: /target/location
-    exclude:
-      - **/*.xml
++   exclude:
++     - **/*.xml
+```
+
+Configure the plugin to connect to a Minio server:
+
+```diff
+pipeline:
+  s3:
+    image: plugins/s3
+    bucket: my-bucket-name
+    source: public/**/*
+    target: /target/location
++   path_style: true
++   endpoint: https://minio.domain.com
 ```
 
 # Secrets
