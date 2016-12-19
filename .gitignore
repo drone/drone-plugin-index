@@ -1,3 +1,5 @@
 public/*
 themes/*
 content/**.gen.*
+*.txt
+cmd
