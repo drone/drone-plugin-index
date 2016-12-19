@@ -8,7 +8,7 @@ logo: hipchat.svg
 image: jmccann/drone-hipchat
 ---
 
-The Hipchat plugin posts build status messages to your channel. The below pipeline configuration demonstrates simple usage:
+The Hipchat plugin sends build status messages to users and rooms. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
 pipeline:
@@ -68,8 +68,8 @@ auth_token
 room
 : ID or URL encoded name of the room
 
-from
-: A label to be shown, defaults to `drone`
+from: drone
+: A label to be shown in addition to sender's name
 
-notify
-: Whether this message should trigger a user notification (change the tab color, play a sound, notify mobile phones, etc). Each recipient's notification preferences are taken into account, defaults to `false`
+notify: false
+: Whether this message should trigger a user notification. See https://www.hipchat.com/docs/apiv2/method/private_message_user
