@@ -51,6 +51,18 @@ pipeline:
 +   image_url: https://unsplash.it/256/256/?random
 ```
 
+Example configuration for success and failure messages:
+
+```diff
+pipeline:
+  slack:
+    image: plugins/slack
+    webhook: https://hooks.slack.com/services/...
+    channel: dev
++   when:
++     status: [ success, failure ]
+```
+
 Example configuration with a custom message template:
 
 ```diff
