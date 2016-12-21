@@ -4,7 +4,7 @@ title: Amazon ECR
 author: drone-plugins
 tags: [ publish, docker, aws, amazon ]
 repo: drone-plugins/drone-ecr
-logo: docker.svg
+logo: amazon_ecr.svg
 image: plugins/ecr
 ---
 
