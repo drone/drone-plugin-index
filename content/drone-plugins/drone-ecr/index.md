@@ -72,7 +72,7 @@ The ECR plugin supports reading credentials from the Drone secret store. This is
 ```diff
 pipeline:
   ecr:
-    image: plugins/docker
+    image: plugins/ecr
 -   access_key: a50d28f4dd477bc184fbd10b376de753
 -   secret_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
     repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
