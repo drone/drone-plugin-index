@@ -43,7 +43,7 @@
 
 			<section class="plugins" style="margin-top:40px;">
 				{{- $base := .Site.BaseURL -}}
-				{{- range .Data.Pages }}
+				{{- range .Data.Pages.ByTitle }}
 				<article>
 					<div>
 						<h2>
