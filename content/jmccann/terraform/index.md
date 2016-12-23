@@ -19,7 +19,7 @@ pipeline:
 
 Example configuration passing `vars` to terraform commands:
 
-```yaml
+```diff
 pipeline:
   terraform:
     image: jmccann/drone-terraform:1
@@ -32,7 +32,7 @@ pipeline:
 Example configuration passing secrets to terraform via `vars`.  The following
 example will call `terraform apply -var my_secret=${TERRAFORM_SECRET}`:
 
-```yaml
+```diff
 pipeline:
   terraform:
     image: jmccann/drone-terraform:1
@@ -46,7 +46,7 @@ the terraform commands to display in your drone logs then set `sensitive` to `tr
 The output from the commands themselves will still display, it just won't show
 what command is actually being ran.
 
-```yaml
+```diff
 pipeline:
   terraform:
     image: jmccann/drone-terraform:1
@@ -92,7 +92,7 @@ to assume roles in other accounts. Using the current credentials, this role will
 be assumed and exported to environment variables.
 See [the discussion](https://github.com/hashicorp/terraform/issues/1275) in the Terraform issues.
 
-```yaml
+```diff
 pipeline:
   terraform:
     image: jmccann/drone-terraform:1
@@ -104,7 +104,7 @@ You may want to change directories before applying the terraform commands.
 This parameter is useful if you have multiple environments in different folders
 and you want to use different drone configurations to apply different environments.
 
-```yaml
+```diff
 pipeline:
   terraform:
     image: jmccann/drone-terraform:1
@@ -116,7 +116,7 @@ You may want to only target a specific list of resources within your terraform
 code. To achieve this you can specify the `targets` parameter. If left undefined
 all resources will be planned/applied against as the default behavior.
 
-```yaml
+```diff
 pipeline:
   terraform:
     image: jmccann/drone-terraform:1
@@ -129,7 +129,7 @@ pipeline:
 You may want to limit the number of concurrent operations as Terraform walks its graph.
 If you want to change Terraform's default parallelism (currently equal to 10) then set the `parallelism` parameter.
 
-```yaml
+```diff
 pipeline:
   terraform:
     image: jmccann/drone-terraform:1
@@ -138,15 +138,6 @@ pipeline:
 ```
 
 # Parameter Reference
-
-url
-: HipChat server URL, defaults to `https://api.hipchat.com`
-
-auth_token
-: HipChat V2 API token; use a room or user token with the `Send Notification` scope
-
-room
-: ID or URL encoded name of the room
 
 from: drone
 : A label to be shown in addition to sender's name
