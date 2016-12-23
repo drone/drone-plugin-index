@@ -50,12 +50,18 @@ The Hipchat plugin supports reading credentials from the Drone secret store. Thi
 ```diff
 pipeline:
   slack:
-    image: plugins/hipchat
+    image: jmccann/drone-hipchat
     room: my-room
 -   auth_token: my-auth-token
 ```
 
-The above `auth_token` Yaml attribute can be replaced with the `HIPCHAT_AUTH_TOKEN` secret environment variable. Please see the Drone documentation to learn more about secrets.
+The above `auth_token` Yaml attribute can be replaced with the `HIPCHAT_AUTH_TOKEN` secret environment variable.
+Please see the [Drone documentation](http://readme.drone.io/0.5/secrets-with-plugins/) to learn more about secrets.
+
+# Secret Reference
+
+HIPCHAT_AUTH_TOKEN
+: HipChat V2 API token
 
 # Parameter Reference
 
