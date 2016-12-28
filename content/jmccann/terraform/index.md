@@ -139,12 +139,6 @@ pipeline:
 
 # Parameter Reference
 
-from: drone
-: A label to be shown in addition to sender's name
-
-notify: false
-: Whether this message should trigger a user notification. See https://www.hipchat.com/docs/apiv2/method/private_message_user
-
 plan
 : if true, calculates a plan but does __NOT__ apply it.
 
