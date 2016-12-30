@@ -56,7 +56,7 @@ pipeline:
 ```
 
 The above `auth_token` Yaml attribute can be replaced with the `HIPCHAT_AUTH_TOKEN` secret environment variable.
-Please see the [Drone documentation](http://readme.drone.io/0.5/secrets-with-plugins/) to learn more about secrets.
+Please see the {{ < secret-link "Drone Documentation" > }} to learn more about secrets.
 
 # Secret Reference
 
