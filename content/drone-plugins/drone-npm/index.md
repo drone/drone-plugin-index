@@ -2,7 +2,7 @@
 date: 2016-01-01T00:00:00+00:00
 title: NPM
 author: donny-dont
-tags: [ publish, docker ]
+tags: [ publish, node ]
 repo: drone-plugins/drone-npm
 logo: npm.svg
 image: plugins/npm
@@ -59,7 +59,7 @@ pipeline:
 -   email: bob@bob.me
 ```
 
-Sensitive plugin attributes can be replaced with the below secret environment variables. Please see the Drone documentation to learn more about secrets.
+Sensitive plugin attributes can be replaced with the below secret environment variables. Please see the Drone [documentation]({{< secret-link >}}) to learn more about secrets.
 
 NPM_USERNAME
 : corresponds to `username`
