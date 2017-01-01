@@ -53,7 +53,7 @@ pipeline:
 ```
 
 The above `private_key` Yaml attribute can be replaced with the `SUPERMARKET_PRIVATE_KEY` secret environment variable.
-Please see the [Drone documentation](http://readme.drone.io/0.5/secrets-with-plugins/) to learn more about secrets.
+Please see the Drone [documentation]({{< secret-link >}}) to learn more about secrets.
 
 # Secret Reference
 
