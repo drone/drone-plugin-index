@@ -13,7 +13,7 @@ The below pipeline configuration demonstrates simple usage:
 
 ```yaml
 pipeline:
-  hipchat:
+  chef_supermarket:
     image: jmccann/drone-chef-supermarket:1
 ```
 
