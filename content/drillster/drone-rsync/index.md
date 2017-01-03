@@ -4,7 +4,7 @@ date: 2017-01-02T08:21:35+01:00
 image: "drillster/drone-rsync"
 repo: "drillster/drone-rsync"
 tags: [ publish, rsync, ssh ]
-logo: rsync.jpg
+logo: rsync.svg
 title: rsync
 ---
 
