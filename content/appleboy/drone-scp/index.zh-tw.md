@@ -119,6 +119,7 @@ pipeline:
 The `password` or `key` attributes can be replaced with the below secret environment variables. Please see the Drone documentation to learn more about secrets.
 
 SCP_PASSWORD: : password of target host user
+
 SCP_KEY : public key of target host user like `path/to/.ssh/id_rsa`
 
 # Parameter Reference
