@@ -122,7 +122,7 @@ SCP_PASSWORD
 : password of target host user
 
 SCP_KEY
-: public key of target host user like `path/to/.ssh/id_rsa`
+: plain text of user private key
 
 # Parameter Reference
 
@@ -139,7 +139,7 @@ password
 : password for target host user
 
 key
-: plain text of user public key
+: plain text of user private key
 
 target
 : folder path of target host
