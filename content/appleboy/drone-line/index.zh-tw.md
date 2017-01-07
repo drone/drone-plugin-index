@@ -28,7 +28,7 @@ pipeline:
     channel_secret: xxxxxxxxxx
     channel_token: xxxxxxxxxx
     to: line_user_id
-+   image:
++   images:
 +     - https://example.com/1.png
 +     - https://example.com/2.png
 ```
@@ -42,7 +42,7 @@ pipeline:
     channel_secret: xxxxxxxxxx
     channel_token: xxxxxxxxxx
     to: line_user_id
-+   video:
++   videos:
 +     - https://example.com/1.mp4
 +     - https://example.com/2.mp4
 ```
@@ -58,7 +58,7 @@ pipeline:
     channel_secret: xxxxxxxxxx
     channel_token: xxxxxxxxxx
     to: line_user_id
-+   video:
++   audios:
 +     - https://example.com/1.mp3::300
 +     - https://example.com/2.mp3::400
 ```
@@ -72,7 +72,7 @@ pipeline:
     channel_secret: xxxxxxxxxx
     channel_token: xxxxxxxxxx
     to: line_user_id
-+   sticker:
++   stickers:
 +     - 1::1
 +     - 1::2
 ```
@@ -88,7 +88,7 @@ pipeline:
     channel_secret: xxxxxxxxxx
     channel_token: xxxxxxxxxx
     to: line_user_id
-+   location:
++   locations:
 +     - title1::address1::latitude1::longitude1
 +     - title2::address2::latitude2::longitude2
 ```
@@ -157,19 +157,19 @@ to
 message
 : overwrite the default message template
 
-image
+images
 : a valid URL to an image message
 
-video
+videos
 : a valid URL to a video message
 
-audio
+audios
 : a valid URL to an audio message
 
-location
+locations
 : a valid latitude and longitude value to a location message
 
-sticker
+stickers
 : a vaild sticker format
 
 # Template Reference
