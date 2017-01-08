@@ -97,7 +97,7 @@ pipeline:
     fb_page_token: xxxxxxxxxx
     fb_verify_token: xxxxxxxxxx
     to: facebook_user_id
-+   template: |
++   message: |
 +     {{ #success build.status }}
 +       build {{ build.number }} succeeded. Good job.
 +     {{ else }}

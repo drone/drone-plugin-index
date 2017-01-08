@@ -115,7 +115,7 @@ pipeline:
     channel_secret: xxxxxxxxxx
     channel_token: xxxxxxxxxx
     to: line_user_id
-+   template: |
++   message: |
 +     {{ #success build.status }}
 +       build {{ build.number }} succeeded. Good job.
 +     {{ else }}
