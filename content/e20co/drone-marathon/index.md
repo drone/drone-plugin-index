@@ -63,7 +63,7 @@ pipeline:
     image: e20co/drone-marathon:0.5
     server: http://marathon.mesos:8080
 +   values:
-+     BRANCH_NAME: $$BRANCH  # Where $$BRANCH = "mybranch"
++     BRANCH_NAME: ${DRONE_BRANCH}  # Where ${DRONE_BRANCH} = "mybranch"
 ```
 
 In the `marathon.json` file (please note the `<<` and `>>` around the `BRANCH_NAME` key):
