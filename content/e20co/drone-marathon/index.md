@@ -12,9 +12,7 @@ This plugin can be used to deploy applications to a [Marathon](https://mesospher
 
 ```yaml
 pipeline:
-  build:
-    image: nginx:alpine
-  publish:
+  marathon:
     image: e20co/drone-marathon:0.5
     server: http://marathon.mesos:8080
 ```
@@ -29,13 +27,11 @@ Example configuration with custom Marathon configuration file:
 
 ```diff
 pipeline:
-  build:
-    image: nginx:alpine
-  publish_dev:
+  marathon_dev:
     image: e20co/drone-marathon:0.5
     server: http://marathon.mesos:8080
 +   marathonfile: marathon-dev.json
-  publish_prod:
+  marathon_prod:
     image: e20co/drone-marathon:0.5
     server: http://marathon.mesos:8080
 +   marathonfile: marathon-prod.json  
@@ -45,9 +41,7 @@ The `trigger_restart` will force Marathon to restart the application after insta
 
 ```diff
 pipeline:
-  build:
-    image: nginx:alpine
-  publish:
+  marathon:
     image: e20co/drone-marathon:0.5
     server: http://marathon.mesos:8080
 +   trigger_restart: true
@@ -57,9 +51,7 @@ Example configuration with `values` substitution:
 
 ```diff
 pipeline:
-  build:
-    image: nginx:alpine
-  publish:
+  marathon:
     image: e20co/drone-marathon:0.5
     server: http://marathon.mesos:8080
 +   values:
