@@ -8,7 +8,7 @@ logo: rancher.svg
 image: peloton/drone-rancher
 ---
 
-The Docker plugin can be used to build and publish images to the Docker registry. The following pipeline configuration uses the Docker plugin to build and publish Docker images:
+The Rancher plugin can be used to deploy a Docker image to a Rancher environment. The following pipeline configuration uses the Rancher plugin to deploy a Docker image to a Rancher service:
 
 ```yaml
 pipeline:
