@@ -62,25 +62,6 @@ pipeline:
 
 It will trigger the URL of Jenkins job like as `http://example.com/job/folder_name/job/job_name/`
 
-# Secrets
-
-The Jenkins plugin supports reading credentials from the Drone secret store. This is strongly recommended instead of storing credentials in the pipeline configuration in plain text.
-
-```diff
-pipeline:
-  jenkins:
-    image: appleboy/drone-jenkins
-    url: http://example.com
-    user: appleboy
--   token: xxxxxxxxxx
-    job: drone-jenkins-plugin-job
-```
-
-The `token` attribute can be replaced with the below secret environment variables. Please see the Drone documentation to learn more about secrets.
-
-PLUGIN_TOKEN
-: user token
-
 # Parameter Reference
 
 url

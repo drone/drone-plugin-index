@@ -123,26 +123,6 @@ pipeline:
 +     {{ /success }}
 ```
 
-# Secrets
-
-The Line plugin supports reading credentials from the Drone secret store. This is strongly recommended instead of storing credentials in the pipeline configuration in plain text.
-
-```diff
-pipeline:
-  line:
-    image: appleboy/drone-line
--   channel_secret: xxxxxxxxxx
--   channel_token: xxxxxxxxxx
-```
-
-The `channel_secret ` or `channel_token ` attributes can be replaced with the below secret environment variables. Please see the Drone documentation to learn more about secrets.
-
-LINE_CHANNEL_SECRET
-: line channel token
-
-LINE_CHANNEL_TOKEN
-: line channel access token
-
 # Parameter Reference
 
 channel_secret

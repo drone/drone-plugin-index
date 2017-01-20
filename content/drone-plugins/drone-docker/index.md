@@ -79,46 +79,6 @@ pipeline:
     repo: foo/bar
 ```
 
-# Secrets
-
-The Docker plugin supports reading credentials from the Drone secret store. This is strongly recommended instead of storing credentials in the pipeline configuration in plain text.
-
-```diff
-pipeline:
-  docker:
-    image: plugins/docker
--   username: kevinbacon
--   password: pa55word
-    repo: foo/bar
-```
-
-Use the command line utility to add secrets to the store:
-
-```nohighlight
-drone secret add --image=plugins/docker \
-    octocat/hello-world DOCKER_USERNAME kevinbacon
-
-drone secret add --image=plugins/docker \
-    octocat/hello-world DOCKER_PASSWORD pa55word
-```
-
-Don't forget to sign the Yaml after making changes:
-
-```nohighlight
-drone sign octocat/hello-world
-```
-
-# Secret Reference
-
-DOCKER_USERNAME
-: docker registry username
-
-DOCKER_PASSWORD
-: docker registry password
-
-DOCKER_EMAIL
-: docker registry email
-
 # Parameter Reference
 
 registry

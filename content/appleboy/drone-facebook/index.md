@@ -105,27 +105,6 @@ pipeline:
 +     {{ /success }}
 ```
 
-# Secrets
-
-The Facebook plugin supports reading credentials from the Drone secret store. This is strongly recommended instead of storing credentials in the pipeline configuration in plain text.
-
-```diff
-pipeline:
-  facebook:
-    image: appleboy/drone-facebook
--   fb_page_token: xxxxxxxxxx
--   fb_verify_token: xxxxxxxxxx
-    to: facebook_user_id
-```
-
-The `fb_page_token` or `fb_verify_token` attributes can be replaced with the below secret environment variables. Please see the Drone documentation to learn more about secrets.
-
-PLUGIN_FB_PAGE_TOKEN
-: facebook page token
-
-PLUGIN_FB_VERIFY_TOKEN
-: facebook verify token
-
 # Parameter Reference
 
 fb_page_token

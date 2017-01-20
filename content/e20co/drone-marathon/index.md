@@ -76,27 +76,6 @@ Will result in:
 }
 ```
 
-# Secrets
-
-The Marathon plugin supports reading credentials from the Drone secret store. This is highly recommended instead of storing credentials in the pipeline configuration in plain text.  This plugin will accept any secret that starts with `MARATHON_` injected into the `e20co/drone-marathon` environment, and make it available to your `marathonfile` as follows:
-
-in `marathon.json` (or custom `marathonfile`):
-```diff
-{
-...
-  "env": {
--   "DATABASE_PASSWORD": "SomeSecretPassword"
-+   "DATABASE_PASSWORD": "<<MARATHON_DATABASE_PASSWORD>>"
-  }
-}
-```
-
-```
-$ drone secret add --image=e20co/drone-marathon <repo> MARATHON_DATABASE_PASSWORD SomeSecretPassword
-```
-
-The above example will replace `<<MARATHON_DATABASE_PASSWORD>>` with the value from your Drone Secret Store at runtime.  Please see the Drone documentation to learn more about secrets.
-
 # Parameter Reference
 
 server

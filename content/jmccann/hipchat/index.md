@@ -43,26 +43,6 @@ pipeline:
 +     {{ /success }}
 ```
 
-# Secrets
-
-The Hipchat plugin supports reading credentials from the Drone secret store. This is strongly recommended instead of storing credentials in the pipeline configuration in plain text.
-
-```diff
-pipeline:
-  slack:
-    image: jmccann/drone-hipchat
-    room: my-room
--   auth_token: my-auth-token
-```
-
-The above `auth_token` Yaml attribute can be replaced with the `HIPCHAT_AUTH_TOKEN` secret environment variable.
-Please see the Drone [documentation]({{< secret-link >}}) to learn more about secrets.
-
-# Secret Reference
-
-HIPCHAT_AUTH_TOKEN
-: HipChat V2 API token
-
 # Parameter Reference
 
 url

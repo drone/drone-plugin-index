@@ -72,29 +72,6 @@ pipeline:
 +   endpoint: https://play.minio.io:9000
 ```
 
-# Secrets
-
-The S3 plugin supports reading credentials from the Drone secret store. This is strongly recommended instead of storing credentials in the pipeline configuration in plain text.
-
-```diff
-pipeline:
-  s3:
-    image: plugins/s3
-    bucket: my-bucket-name
--   access_key: a50d28f4dd477bc184fbd10b376de753
--   secret_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
-    source: public/**/*
-    target: /target/location
-```
-
-The `access_key` and `secret_key` attributes can be replaced with the below secret environment variables. Please see the Drone documentation to learn more about secrets.
-
-AWS_ACCESS_KEY_ID:
-: amazon key
-
-AWS_SECRET_ACCESS_KEY
-: amazon secret key
-
 # Parameter Reference
 
 endpoint

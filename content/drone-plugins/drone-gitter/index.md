@@ -27,16 +27,3 @@ pipeline:
 +     - https://webhooks.gitter.im/e/a91e06797227ae5dbe6ec
 +     - https://webhooks.gitter.im/e/a27a2e6ece5db91e06797
 ```
-
-# Secrets
-
-The Gitter plugin supports reading credentials from the Drone secret store. This is strongly recommended instead of storing credentials in the pipeline configuration in plain text.
-
-```diff
-pipeline:
-  gitter:
-    image: plugins/gitter
--   webhook: https://webhooks.gitter.im/e/a91e06797227ae5dbe6ec
-```
-
-The webhook Yaml attribute can be replaced with the `GITTER_WEBHOOK` secret environment variable. Please see the Drone documentation to learn more about secrets.

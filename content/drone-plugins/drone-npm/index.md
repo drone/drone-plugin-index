@@ -46,36 +46,6 @@ pipeline:
     email: bob@bob.me
 ```
 
-# Secrets
-
-The NPM plugin supports reading credentials from the Drone secret store. This is strongly recommended instead of storing credentials in the pipeline configuration in plain text.
-
-```diff
-pipeline:
-  docker:
-    image: plugins/npm
--   username: bob
--   password: password
--   email: bob@bob.me
-```
-
-Sensitive plugin attributes can be replaced with the below secret environment variables. Please see the Drone [documentation]({{< secret-link >}}) to learn more about secrets.
-
-NPM_USERNAME
-: corresponds to `username`
-
-NPM_PASSWORD
-: corresponds to `password`
-
-NPM_TOKEN
-: corresponds to `token`
-
-NPM_EMAIL
-: corresponds to `email`
-
-NPM_REGISTRY
-: corresponds to `registry`
-
 # Parameter Reference
 
 username

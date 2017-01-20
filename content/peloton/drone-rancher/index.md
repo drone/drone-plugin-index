@@ -21,7 +21,7 @@ pipeline:
     docker_image: huh/hello
 ```
 
-Example configuration with not starting the container first and confirming the upgrade with a longer timeout
+Example configuration with not starting the container first and confirming the upgrade with a longer timeout:
 
 ```diff
 pipeline:
@@ -36,45 +36,6 @@ pipeline:
 +   confirm: true
 +   timeout: 180
 ```
-
-
-# Secrets
-
-The Rancher plugin supports reading credentials from the Drone secret store. This is strongly recommended instead of storing credentials in the pipeline configuration in plain text.
-
-```diff
-pipeline:
-  rancher:
-    image: peloton/drone-rancher
--   access_key: test
--   secret_key: pa55word
-    service: huh/service1
-    docker_image: huh/hello
-```
-
-Use the command line utility to add secrets to the store:
-
-```nohighlight
-drone secret add --image=peloton/rancher \
-    octocat/hello-world RANCHER_ACCESS_KEY kevinbacon
-
-drone secret add --image=peloton/rancher \
-    octocat/hello-world RANCHER_SECRET_KEY pa55word
-```
-
-Don't forget to sign the Yaml after making changes:
-
-```nohighlight
-drone sign octocat/hello-world
-```
-
-# Secret Reference
-
-RANCHER_ACCESS_KEY
-: rancher environment access key 
-
-RANCHER_SECRET_KEY
-: rancher environment secret key
 
 # Parameter Reference
 
@@ -101,5 +62,3 @@ timeout
 
 docker_image
 : docker image to use to upgrade the environment
-
-

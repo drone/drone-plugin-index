@@ -52,28 +52,6 @@ pipeline:
 +     {{ /success }}
 ```
 
-# Secrets
-
-The GTalk plugin supports reading credentials from the Drone secret store. This is strongly recommended instead of storing credentials in the pipeline configuration in plain text.
-
-```diff
-pipeline:
-  gtalk:
-    image: appleboy/drone-gtalk
-    google_host: talk.google.com:443
--   google_username: xxxxxxxxxx
--   google_password: xxxxxxxxxx
-    to: google_user_email_account
-```
-
-The `google_username` or `google_password` attributes can be replaced with the below secret environment variables. Please see the Drone documentation to learn more about secrets.
-
-PLUGIN_GOOGLE_USERNAME
-: google user email account
-
-PLUGIN_GOOGLE_PASSWORD
-: google user email password
-
 # Parameter Reference
 
 google_host

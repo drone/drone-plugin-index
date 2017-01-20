@@ -65,27 +65,6 @@ publish:
 +     - HTTP_PROXY=http://yourproxy.com
 ```
 
-# Secrets
-
-The ECR plugin supports reading credentials from the Drone secret store. This is strongly recommended instead of storing credentials in the pipeline configuration in plain text.
-
-```diff
-pipeline:
-  ecr:
-    image: plugins/ecr
--   access_key: a50d28f4dd477bc184fbd10b376de753
--   secret_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
-    repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
-```
-
-The `access_key` and `secret_key` attributes can be replaced with the below secret environment variables. Please see the Drone documentation to learn more about secrets.
-
-ECR_ACCESS_KEY
-: corresponds to `access_key`
-
-ECR_SECRET_KEY
-: corresponds to `secret_key`
-
 # Parameter Reference
 
 access_key

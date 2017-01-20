@@ -15,10 +15,10 @@ kubectl apply -f deployment.yaml
 ```
 
 {{% alert %}}
-It is assumed the deployment is already created as it simply runs an update.  No error checking is there to see if it exists yet, so make sure it already exists.
+Please ensure the deployment is already created. This plugin will not automatically create the deployment and will error if it does not exist.
 {{% /alert %}}
 
-The advantages of this plugin is that the ```deployment.yaml``` file can be a template file.  We are able to substitute values like ```{{ build.number }}``` inside the file so you can update docker image names.
+The advantages of this plugin is that the `deployment.yaml` file can be a template file.  We are able to substitute values like `{{ build.number }}` inside the file so you can update docker image names.
 
 Basic example:
 
@@ -50,27 +50,9 @@ pipeline:
 +   server: https://10.93.234.28:6433
 ```
 
-# Secrets
-
-The kube plugin supports reading credentials from the Drone secret store.  This is strongly recommended instead of storing credentials in the pipeline configuration in plain text. The following secrets should be set:
-
-__KUBE_TOKEN__
-: this plugin has one authentication method and that is to use the token to authorize the user.
-
-__KUBE_CA__
-: This should be the base64 encoding of your certificate authority.  You can get this string by running the command:  
-
-```nohighlight
-export KUBE_CA=$(cat ca.pem | base64)
-```
-
-__KUBE_SERVER__
-: This is the server url for your kubernetes cluster.  e.g: `https://10.99.2.1:6443`
-
-
 # Template Reference
 
-You can substitute the following values between ```{{ }}``` in your deployment template
+You can substitute the following values between `{{ }}` in your deployment template
 
 repo.owner
 : repository owner

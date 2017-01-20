@@ -79,19 +79,6 @@ pipeline:
 +     {{ /success }}
 ```
 
-# Secrets
-
-The Slack plugin supports reading credentials from the Drone secret store. This is strongly recommended instead of storing credentials in the pipeline configuration in plain text.
-
-```diff
-pipeline:
-  slack:
-    image: plugins/slack
--   webhook: https://hooks.slack.com/services/...
-```
-
-The above webhook Yaml attribute can be replaced with the `SLACK_WEBHOOK` secret environment variable. Please see the Drone documentation to learn more about secrets.
-
 # Parameter Reference
 
 webhook

@@ -39,27 +39,6 @@ pipeline:
 +   user: jsmith
 ```
 
-# Secrets
-
-The Chef Supermarket plugin supports reading credentials from the Drone secret store.
-This is strongly recommended instead of storing credentials in the pipeline configuration in plain text.
-
-```diff
-pipeline:
-  chef_supermarket:
-    image: jmccann/drone-chef-supermarket:1
-    user: jsmith
--   private_key: "-----BEGIN KEY-----\nasdfasd\nsdfasd\n-----END KEY-----\n"
-```
-
-The above `private_key` Yaml attribute can be replaced with the `SUPERMARKET_PRIVATE_KEY` secret environment variable.
-Please see the Drone [documentation]({{< secret-link >}}) to learn more about secrets.
-
-# Secret Reference
-
-SUPERMARKET_PRIVATE_KEY
-: supermarket private key
-
 # Parameter Reference
 
 user
