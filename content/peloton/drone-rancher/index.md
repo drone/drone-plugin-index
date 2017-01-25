@@ -37,6 +37,21 @@ pipeline:
 +   timeout: 180
 ```
 
+
+Example configuration with a batch size of 5:
+
+```diff
+pipeline:
+  rancher:
+    image: peloton/drone-rancher
+    url: http://awesomehost:awesomeport
+    access_key: superaccesskey
+    secret_key: supersecretkey
+    service: huh/service1
+    docker_image: huh/hello
++   batch_size: 5
+```
+
 # Parameter Reference
 
 url
@@ -62,3 +77,9 @@ timeout
 
 docker_image
 : docker image to use to upgrade the environment
+
+interval_millis
+: interval in milliseconds between upgrades of the containers
+
+batch_size
+: batch size for the service upgrade
