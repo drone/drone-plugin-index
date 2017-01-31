@@ -34,7 +34,7 @@ pipeline:
     username: foo
     password: bar
     from: drone@your-domain.com
-+   recipients: the-admin@your-domain.com,octocat@your-domain.com
++   recipients: [ the-admin@your-domain.com, octocat@your-domain.com ]
     when:
       status: [ changed, failure ]
 ```
@@ -49,7 +49,7 @@ pipeline:
     username: foo
     password: bar
     from: drone@your-domain.com
-    recipients: the-admin@your-domain.com,octocat@your-domain.com
+    recipients: [ the-admin@your-domain.com, octocat@your-domain.com ]
 +   recipients_only: true
     when:
       status: [ changed, failure ]
@@ -66,7 +66,6 @@ pipeline:
     username: foo
     password: bar
     from: drone@your-domain.com
-    recipients: the-admin@your-domain.com,octocat@your-domain.com
     when:
       status: [ changed, failure ]
 ```
