@@ -38,16 +38,6 @@ This block will execute the following command:
 helm upgrade --install ${DRONE_BRANCH} ./charts/my-chart --namespace development --set secret.password=${SECRET_PASSWORD},image.tag=${TAG}
 ```
 
-The plugin expects two secrets defined to connect to the kubernetes cluster:
-
-```
-drone secret add --image=quay.io/ipedrazas/drone-helm \
-        your-user/your-repo STAGING_API_SERVER https://mykubernetesapiserver
-
-drone secret add --image=quay.io/ipedrazas/drone-helm \
-        your-user/your-repo STAGING_KUBERNETES_TOKEN eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJrdWJ...
-```
-
 There are a few parameters that will help you to manage your deployment the way you want, like enabling debug output or specifying the namespace where you want to initiaise tiller.
 
 ```diff
@@ -89,6 +79,12 @@ debug
 
 skip_tls_verify
 : if you create your own SSL certificates, youi will need this flag to be true to avoid having connectivity issues.
+
+api_server
+: kubernetes api server
+
+kubernetes_token
+: kubernetes token to connect to the api server
 
 # Secret Reference
 
