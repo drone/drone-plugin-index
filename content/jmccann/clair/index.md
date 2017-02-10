@@ -50,25 +50,13 @@ pipeline:
     url: http://clair.company.com
 -   username: johndoe
 -   password: mysecret
++   username: ${DOCKER_USERNAME}
++   password: ${DOCKER_PASSWORD}
     scan_image: python:2.7
 ```
 
-The above `username` and `password` Yaml attributes can be replaced with the `DOCKER_USERNAME` and `DOCKER_PASSWORD` secret environment variables.
+The above `username` and `password` Yaml attributes can be replaced with the `DOCKER_USERNAME` and `DOCKER_PASSWORD` secrets.
 Please see the Drone [documentation]({{< secret-link >}}) to learn more about secrets.
-
-# Secret Reference
-
-DOCKER_USERNAME
-: paired with `username` - The username to authenticate to the docker registry with
-
-DOCKER_PASSWORD
-: paired with `password` - The password to authenticate to the docker registry with
-
-CLAIR_URL
-: paired with `url` - Clair server URL
-
-CLAIR_CA_CERT
-: paired with `ca_cert` - The CA Cert to verify https with
 
 # Parameter Reference
 
