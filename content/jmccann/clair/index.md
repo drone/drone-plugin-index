@@ -41,7 +41,11 @@ pipeline:
 
 # Secrets
 
-The Clair plugin supports reading credentials from the Drone secret store. This is strongly recommended instead of storing credentials in the pipeline configuration in plain text.
+Instead of configuring sensitive information in your `.drone.yml` file in
+plain text you can use Drone secrets and substitute the values at runtime using
+string replacement.
+
+Please see the Drone [documentation]({{< secret-link >}}) to learn more about secrets.
 
 ```diff
 pipeline:
@@ -54,9 +58,6 @@ pipeline:
 +   password: ${DOCKER_PASSWORD}
     scan_image: python:2.7
 ```
-
-The above `username` and `password` Yaml attributes can be replaced with the `DOCKER_USERNAME` and `DOCKER_PASSWORD` secrets.
-Please see the Drone [documentation]({{< secret-link >}}) to learn more about secrets.
 
 # Parameter Reference
 
