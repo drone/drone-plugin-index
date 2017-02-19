@@ -12,7 +12,7 @@ The ECS plugin can be used to deploy a Docker image to an ECS environment. The f
 
 ```yaml
 pipeline:
-  rancher:
+  ecs:
     image: peloton/drone-ecs
     access_key: superaccesskey
     secret_key: supersecretkey
