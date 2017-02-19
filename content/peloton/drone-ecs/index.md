@@ -1,6 +1,6 @@
 ---
 date: 2016-01-18T00:00:00+00:00
-title: ECS
+title: Amazon ECS
 author: josmo
 tags: [ publish, aws, ecs ]
 repo: josmo/drone-ecs
