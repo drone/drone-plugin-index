@@ -38,7 +38,7 @@ pipeline:
 Example configuration using build arguments:
 
 ```diff
-publish:
+pipeline:
   docker:
     image: plugins/docker
     repo: foo/bar
@@ -49,7 +49,7 @@ publish:
 Example configuration using alternate Dockerfile:
 
 ```diff
-publish:
+pipeline:
   docker:
     image: plugins/docker
     repo: foo/bar
