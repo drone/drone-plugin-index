@@ -15,7 +15,7 @@ pipeline:
   ssh:
     image: appleboy/drone-ssh
     host: foo.com
-    user: root
+    username: root
     password: 1234
     port: 22
     script:
@@ -32,7 +32,40 @@ pipeline:
     host:
 +    - foo.com
 +    - bar.com
-    user: root
+    username: root
+    password: 1234
+    port: 22
+    script:
+      - echo hello
+      - echo world
+```
+
+Example configuration for login with user private key:
+
+```diff
+pipeline:
+  ssh:
+    image: appleboy/drone-ssh
+    host: foo.com
+    username: root
+-   password: 1234
++   key: ${DEPLOY_KEY}
+    port: 22
+    script:
+      - echo hello
+      - echo world
+```
+
+Example configuration for login with file path of user private key:
+
+```diff
+pipeline:
+  ssh:
+    image: appleboy/drone-ssh
+    host: foo.com
+    username: root
+-   password: 1234
++   key_path: ./deploy/key.pem
     port: 22
     script:
       - echo hello
@@ -46,7 +79,7 @@ pipeline:
   ssh:
     image: appleboy/drone-ssh
     host: foo.com
-    user: root
+    username: root
     password: 1234
     port: 22
     script:
@@ -63,7 +96,7 @@ pipeline:
   ssh:
     image: appleboy/drone-ssh
     host: foo.com
-    user: root
+    username: root
     password: 1234
     port: 22
     script:
@@ -82,7 +115,7 @@ host
 port
 : ssh port of target host
 
-user
+username
 : account for target host user
 
 password
@@ -90,6 +123,9 @@ password
 
 key
 : plain text of user private key
+
+key_path
+: key path of user private key
 
 script
 : execute commands on a remote server
