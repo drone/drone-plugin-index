@@ -71,7 +71,7 @@ pipeline:
     image: plugins/slack
     webhook: https://hooks.slack.com/services/...
     channel: dev
-+   template: |
++   template: >
 +     {{ #success build.status }}
 +       build {{ build.number }} succeeded. Good job.
 +     {{ else }}
