@@ -26,7 +26,7 @@ pipeline:
 
 Override the repository to deploy into:
 
-```yaml
+```diff
 pipeline:
   artifactory:
     image: athieriot/drone-artifactory
@@ -42,7 +42,7 @@ pipeline:
 
 Specify artifact properties manually instead of getting the values from the pom file:
 
-```yaml
+```diff
 pipeline:
   artifactory:
     image: athieriot/drone-artifactory
@@ -60,7 +60,7 @@ pipeline:
 
 Force upload if files already exists:
 
-```yaml
+```diff
 pipeline:
   artifactory:
     image: athieriot/drone-artifactory
@@ -106,14 +106,14 @@ files
 force_upload
 : Force upload if a file already exists (optional)
 
-## About paths
+# About paths
 
 All file paths must be relative to current project sources
 
 File paths are interpreted with [node-glob](https://github.com/isaacs/node-glob#glob-primer) and can contain things such as regex, or directory wildcards(./\*\*/\*.js)
 
-## pom.xml deployment
+# pom.xml deployment
 
 If a pom parameter is specified it will be automatically deployed. It is not necessary to specify the pom under the files parameter.
 
-In the example above, pom.xml will be deployed as ```<groupId>-<artifactId>-<version>.pom```
+In the example above, pom.xml will be deployed as `<groupId>-<artifactId>-<version>.pom`
