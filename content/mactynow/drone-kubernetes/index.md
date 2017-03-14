@@ -28,7 +28,7 @@ This pipeline will update the `my-deployment` deployment with the image tagged `
             deployment: my-deployment
             repo: myorg/myrepo
             container: my-container
-            tag: ${DRONE_COMMIT_SHA:8}
+            tag: mytag
 
 Deploying containers across several deployments, eg in a scheduler-worker setup. Make sure your container `name` in your manifest is the same for each pod.
 
@@ -38,7 +38,7 @@ Deploying containers across several deployments, eg in a scheduler-worker setup.
             deployment: [server-deploy, worker-deploy]
             repo: myorg/myrepo
             container: my-container
-            tag: ${DRONE_COMMIT_SHA:8}
+            tag: mytag
 
 Deploying multiple containers within the same deployment.
 
@@ -48,7 +48,7 @@ Deploying multiple containers within the same deployment.
             deployment: my-deployment
             repo: myorg/myrepo
             container: [container1, container2]
-            tag: ${DRONE_COMMIT_SHA:8}
+            tag: mytag
 
 **NOTE**: Combining multi container deployments across multiple deployments is not recommended
 
@@ -57,43 +57,54 @@ This more complex example demonstrates how to deploy to several environments bas
     pipeline:
         deploy-staging:
             image: quay.io/honestbee/drone-kubernetes
-            kubernetes_server: ${KUBERNETES_SERVER_STAGING}
-            kubernetes_cert: ${KUBERNETES_CERT_STAGING}
-            kubernetes_token: ${KUBERNETES_TOKEN_STAGING}
+            kubernetes_server: https://kubernetes.company.org
+            kubernetes_token: CXHVLJSDKJFS...
             deployment: my-deployment
             repo: myorg/myrepo
             container: my-container
             namespace: app
-            tag: ${DRONE_COMMIT_SHA:8}
+            tag: mytag
             when:
                 branch: [ staging ]
 
         deploy-prod:
             image: quay.io/honestbee/drone-kubernetes
-            kubernetes_server: ${KUBERNETES_SERVER_PROD}
-            kubernetes_token: ${KUBERNETES_TOKEN_PROD}
-            # notice: no tls verification will be done, warning will is printed
+            kubernetes_server: https://kubernetes.company.org
+            kubernetes_token: CXHVLJSDKJFS...
             deployment: my-deployment
             repo: myorg/myrepo
             container: my-container
             namespace: app
-            tag: ${DRONE_COMMIT_SHA:8}
+            tag: mytag
             when:
                 branch: [ master ]
 
-## Required secrets
+## Secrets
 
-    drone secret add --image=honestbee/drone-kubernetes \
-        your-user/your-repo KUBERNETES_SERVER https://mykubernetesapiserver
+Do not include sensitive information in your `.drone.yml`. Instead, define them as secret and access them as environment variables.
 
-    drone secret add --image=honestbee/drone-kubernetes \
-        your-user/your-repo KUBERNETES_CERT <base64 encoded CA.crt>
+## Parameter reference 
 
-    drone secret add --image=honestbee/drone-kubernetes \
-        your-user/your-repo KUBERNETES_TOKEN eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJrdWJ...
+`container`
+Container name (setup with the `name` option in the kubernetes manifest).
 
-When using TLS Verification, ensure Server Certificate used by kubernetes API server
-is signed for SERVER url ( could be a reason for failures if using aliases of kubernetes cluster )
+`deployment`
+Deployment name.
+
+`kubernetes_server`
+Kubernetes API server URL.
+
+`kubernetes_token`
+Kubernetes service account token.
+
+`namespace`
+Kubernetes namespace.
+
+`repo`
+Image to update full name (with registry path).
+
+`tag`
+Image tag.
 
 ### Special thanks
 
