@@ -72,6 +72,41 @@ pipeline:
       - echo world
 ```
 
+Example configuration for command timeout (unit: second), default value is 60 seconds:
+
+```diff
+pipeline:
+  ssh:
+    image: appleboy/drone-ssh
+    host: foo.com
+    username: root
+    password: 1234
+    port: 22
++   command_timeout: 10
+    script:
+      - echo hello
+      - echo world
+```
+
+Example configuration for execute commands on a remote server using ｀SSHProxyCommand｀:
+
+```diff
+pipeline:
+  ssh:
+    image: appleboy/drone-ssh
+    host: foo.com
+    username: root
+    port: 22
+    key: ${DEPLOY_KEY}
+    script:
+      - echo hello
+      - echo world
++   proxy_host: 10.130.33.145
++   proxy_user: ubuntu
++   proxy_port: 22
++   proxy_key: ${PROXY_KEY}
+```
+
 Example configuration for success build:
 
 ```diff
@@ -132,3 +167,24 @@ script
 
 timeout
 : Timeout is the maximum amount of time for the TCP connection to establish.
+
+command_timeout
+: Command timeout is the maximum amount of time for the execute commands, default is 60 secs.
+
+proxy_host
+: proxy hostname or IP
+
+proxy_port
+: ssh port of proxy host
+
+proxy_username
+: account for proxy host user
+
+proxy_password
+: password for proxy host user
+
+proxy_key
+: plain text of proxy private key
+
+proxy_key_path
+: key path of proxy private key
