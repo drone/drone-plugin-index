@@ -25,8 +25,8 @@ Example configuration with image message:
 pipeline:
   facebook:
     image: appleboy/drone-facebook
-    fb_page_token: xxxxxxxxxx
-    fb_verify_token: xxxxxxxxxx
+    page_token: ${FB_PAGE_TOKEN}
+    verify_token: ${FB_VERIFY_TOKEN}
     to: facebook_user_id
 +   images:
 +     - https://example.com/1.png
@@ -39,8 +39,8 @@ Example configuration with video message:
 pipeline:
   facebook:
     image: appleboy/drone-facebook
-    fb_page_token: xxxxxxxxxx
-    fb_verify_token: xxxxxxxxxx
+    page_token: ${FB_PAGE_TOKEN}
+    verify_token: ${FB_VERIFY_TOKEN}
     to: facebook_user_id
 +   videos:
 +     - https://example.com/1.mp4
@@ -53,8 +53,8 @@ Example configuration with audio message:
 pipeline:
   facebook:
     image: appleboy/drone-facebook
-    fb_page_token: xxxxxxxxxx
-    fb_verify_token: xxxxxxxxxx
+    page_token: ${FB_PAGE_TOKEN}
+    verify_token: ${FB_VERIFY_TOKEN}
     to: facebook_user_id
 +   audios:
 +     - https://example.com/1.mp3
@@ -67,8 +67,8 @@ Example configuration with file message:
 pipeline:
   facebook:
     image: appleboy/drone-facebook
-    fb_page_token: xxxxxxxxxx
-    fb_verify_token: xxxxxxxxxx
+    page_token: ${FB_PAGE_TOKEN}
+    verify_token: ${FB_VERIFY_TOKEN}
     to: facebook_user_id
 +   files:
 +     - https://example.com/1.pdf
@@ -81,8 +81,8 @@ Example configuration for success and failure messages:
 pipeline:
   facebook:
     image: appleboy/drone-facebook
-    fb_page_token: xxxxxxxxxx
-    fb_verify_token: xxxxxxxxxx
+    page_token: ${FB_PAGE_TOKEN}
+    verify_token: ${FB_VERIFY_TOKEN}
     to: facebook_user_id
 +   when:
 +     status: [ success, failure ]
@@ -94,8 +94,8 @@ Example configuration with a custom message template:
 pipeline:
   facebook:
     image: appleboy/drone-facebook
-    fb_page_token: xxxxxxxxxx
-    fb_verify_token: xxxxxxxxxx
+    page_token: ${FB_PAGE_TOKEN}
+    verify_token: ${FB_VERIFY_TOKEN}
     to: facebook_user_id
 +   message: |
 +     {{ #success build.status }}
@@ -107,10 +107,10 @@ pipeline:
 
 # Parameter Reference
 
-fb_page_token
+page_token
 : facebook page token from [facebook developer center](https://developers.facebook.com/)
 
-fb_verify_token
+verify_token
 : facebook verify token from [facebook developer center](https://developers.facebook.com/)
 
 to
