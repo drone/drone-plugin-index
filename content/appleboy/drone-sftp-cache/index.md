@@ -74,35 +74,6 @@ pipeline:
       - node_modules
 ```
 
-Example configuration for success build:
-
-```diff
-pipeline:
-  rebuild_cache:
-    image: applebot/drone-sftp-cache
-    path: /var/cache/drone
-    rebuild: true
-    mount:
-      - node_modules
-+   when:
-+     status: success
-```
-
-Example configuration for tag event:
-
-```diff
-pipeline:
-  rebuild_cache:
-    image: applebot/drone-sftp-cache
-    path: /var/cache/drone
-    rebuild: true
-    mount:
-      - node_modules
-+   when:
-+     status: success
-+     event: tag
-```
-
 # Parameter Reference
 
 server
