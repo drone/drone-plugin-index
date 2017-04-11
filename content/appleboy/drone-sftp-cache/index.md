@@ -14,10 +14,10 @@ Use this plugin for caching build artifacts to speed up your build times. This p
 pipeline:
   restore_cache:
     image: applebot/drone-sftp-cache
-    server: ${SFTP_CACHE_SERVER}
-    port: ${SFTP_CACHE_PORT}
-    username: ${SFTP_CACHE_USERNAME}
-    password: ${SFTP_CACHE_PASSWORD}
+    server: example.com
+    port: 22
+    username: test
+    password: test
     path: /var/cache/drone
     restore: true
     mount:
@@ -30,10 +30,10 @@ pipeline:
 
   rebuild_cache:
     image: applebot/drone-sftp-cache
-    server: ${SFTP_CACHE_SERVER}
-    port: ${SFTP_CACHE_PORT}
-    username: ${SFTP_CACHE_USERNAME}
-    password: ${SFTP_CACHE_PASSWORD}
+    server: example.com
+    port: 22
+    username: test
+    password: test
     path: /var/cache/drone
     rebuild: true
     mount:
@@ -46,11 +46,11 @@ Example configuration for login with user private key:
 pipeline:
   rebuild_cache:
     image: applebot/drone-sftp-cache
-    server: ${SFTP_CACHE_SERVER}
-    port: ${SFTP_CACHE_PORT}
-    username: ${SFTP_CACHE_USERNAME}
--   password: ${SFTP_CACHE_PASSWORD}
-+   key: ${SFTP_CACHE_PRIVATE_KEY}
+    server: example.com
+    port: 22
+    username: test
+-   password: test
++   key: plain_text_of_user_private_key
     path: /var/cache/drone
     rebuild: true
     mount:
