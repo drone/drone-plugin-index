@@ -57,7 +57,7 @@ pipeline:
       - node_modules
 ```
 
-Example configuration for ignoring creates a hash file name based on branch name:
+Example configuration for creates a hash file name only based on mount path:
 
 ```diff
 pipeline:
