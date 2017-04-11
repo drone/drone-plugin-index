@@ -63,10 +63,10 @@ Example configuration for ignoring creates a hash file name based on branch name
 pipeline:
   rebuild_cache:
     image: applebot/drone-sftp-cache
-    server: ${SFTP_CACHE_SERVER}
-    port: ${SFTP_CACHE_PORT}
-    username: ${SFTP_CACHE_USERNAME}
-    password: ${SFTP_CACHE_PASSWORD}
+    server: example.com
+    port: 22
+    username: test
+    password: test
 +   ignore_branch: true
     path: /var/cache/drone
     rebuild: true
