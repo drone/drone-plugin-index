@@ -21,7 +21,8 @@ pipeline:
     source: public/
     target: /
     delete: false
-    access_key: ${AWS_ACCESS_KEY_ID}
-    secret_key: ${AWS_SECRET_ACCESS_KEY}
     content_type:
       ".svg": image/svg+xml
+    secrets:
+      - aws_access_key_id
+      - aws_secret_access_key
