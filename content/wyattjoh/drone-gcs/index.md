@@ -18,7 +18,6 @@ pipeline:
     image: wyattjoh/drone-gcs
     acl: public
     bucket: "my-bucket-name"
-    credentials: ${GOOGLE_APPLICATION_CREDENTIALS_CONTENTS}
     source: public/**/*
     strip_prefix: public/
     target: /target/location
@@ -32,7 +31,6 @@ pipeline:
     image: wyattjoh/drone-gcs
     acl: public
     bucket: "my-bucket-name"
-    credentials: ${GOOGLE_APPLICATION_CREDENTIALS_CONTENTS}
     source: public/**/*
     strip_prefix: public/
 +   compress: true
@@ -47,7 +45,6 @@ pipeline:
     image: wyattjoh/drone-gcs
     acl: public
     bucket: "my-bucket-name"
-    credentials: ${GOOGLE_APPLICATION_CREDENTIALS_CONTENTS}
     source: public/**/*
     strip_prefix: public/
     target: /target/location
@@ -55,10 +52,12 @@ pipeline:
 +     - **/*.xml
 ```
 
-# Parameter Reference
+# Secret Reference
 
-credentials
+GOOGLE_APPLICATION_CREDENTIALS_CONTENTS
 : json contents of the google application credentials (see https://developers.google.com/identity/protocols/application-default-credentials)
+
+# Parameter Reference
 
 bucket
 : bucket name
