@@ -43,7 +43,7 @@ pipeline:
 
 This plugins supports sourcing sensitive parameters from the secret store. Example configuration sources the token from the secret store:
 
-```
+```diff
 pipeline:
   trigger:
     image: plugins/downstream
