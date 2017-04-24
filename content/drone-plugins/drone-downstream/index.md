@@ -6,6 +6,7 @@ tags: [ drone ]
 repo: drone-plugins/drone-downstream
 logo: drone.svg
 image: plugins/downstream
+version: 0.6
 ---
 
 Use this plugin to trigger builds for a list of downstream repositories. This
@@ -17,6 +18,7 @@ pipeline:
   trigger:
     image: plugins/downstream
     server: https://drone.example.com
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
     fork: true
     repositories:
       - octocat/Hello-World
@@ -30,6 +32,7 @@ pipeline:
   trigger:
     image: plugins/downstream
     server: https://drone.example.com
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
     fork: true
     repositories:
 +     - octocat/Hello-World@develop
@@ -38,8 +41,20 @@ pipeline:
 
 # Secret Reference
 
-downstream_token
-: drone server auth token
+This plugins supports sourcing sensitive parameters from the secret store. Example configuration sources the token from the secret store:
+
+```
+pipeline:
+  trigger:
+    image: plugins/downstream
+    server: https://drone.example.com
+-   token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+    fork: true
+    repositories:
+      - octocat/Hello-World
+      - octocat/Spoon-Knife
++   secrets: [ downstream_token ]
+```
 
 # Parameter Reference
 
@@ -52,5 +67,5 @@ server
 repositories
 : trigger builds for the repository list
 
-fork:
+fork
 : trigger new build numbers if true, else rebuild
