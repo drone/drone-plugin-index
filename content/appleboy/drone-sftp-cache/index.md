@@ -13,7 +13,7 @@ Use this plugin for caching build artifacts to speed up your build times. This p
 ```yaml
 pipeline:
   restore_cache:
-    image: applebot/drone-sftp-cache
+    image: appleboy/drone-sftp-cache
     server: example.com
     port: 22
     username: test
@@ -29,7 +29,7 @@ pipeline:
       - npm install
 
   rebuild_cache:
-    image: applebot/drone-sftp-cache
+    image: appleboy/drone-sftp-cache
     server: example.com
     port: 22
     username: test
@@ -45,7 +45,7 @@ Example configuration for login with user private key:
 ```diff
 pipeline:
   rebuild_cache:
-    image: applebot/drone-sftp-cache
+    image: appleboy/drone-sftp-cache
     server: example.com
     port: 22
     username: test
@@ -62,7 +62,7 @@ Example configuration for creates a hash file name only based on mount path:
 ```diff
 pipeline:
   rebuild_cache:
-    image: applebot/drone-sftp-cache
+    image: appleboy/drone-sftp-cache
     server: example.com
     port: 22
     username: test
