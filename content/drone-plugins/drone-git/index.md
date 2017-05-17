@@ -11,8 +11,8 @@ image: plugins/git
 The git plugin is used to clone a git repository. Note that Drone uses the git plugin by default for all repositories, without any configuration required.
 
 ```yaml
-pipeline:
-  clone:
+clone:
+  git:
     image: plugins/git
     depth: 50
 ```
@@ -20,8 +20,8 @@ pipeline:
 Sample configuration to recursively clone submodules:
 
 ```diff
-pipeline:
-  clone:
+clone:
+  git:
     image: plugins/git
 +   recursive: true
 ```
@@ -29,8 +29,8 @@ pipeline:
 Sample configuration to recursively clone tags:
 
 ```diff
-pipeline:
-  clone:
+clone:
+  git:
     image: plugins/git
 +   tags: true
 ```
@@ -56,8 +56,8 @@ This happens when a private submodule uses a `git+ssh` url:
 This can be mitigated by overriding the submodule url to use `git+https`:
 
 ```diff
-pipeline:
-  clone:
+clone:
+  git:
     image: plugins/git
     recursive: true
 +   submodule_override:
