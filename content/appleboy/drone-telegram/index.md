@@ -154,11 +154,11 @@ pipeline:
     token: xxxxxxxxxx
     to: telegram_user_id
 +   message: |
-+     {{ #success build.status }}
-+       build {{ build.number }} succeeded. Good job.
-+     {{ else }}
-+       build {{ build.number }} failed. Fix me please.
-+     {{ /success }}
++     {{#success build.status}}
++       build {{build.number}} succeeded. Good job.
++     {{else}}
++       build {{build.number}} failed. Fix me please.
++     {{/success}}
 ```
 
 # Parameter Reference
