@@ -120,7 +120,7 @@ mirror
 bip=false
 : use for pass bridge ip
 
-dns
+custom_dns
 : set custom dns servers for the container
 
 storage_driver
