@@ -79,6 +79,29 @@ pipeline:
     repo: foo/bar
 ```
 
+Example configuration using secrets:
+
+```diff
+pipeline:
+  docker:
+    image: plugins/docker
+-   username: kevinbacon
+-   password: pa55word
+    repo: foo/bar
++   secrets: [ docker_username, docker_password ]
+```
+
+# Secret Reference
+
+docker_username
+: authenticates with this username
+
+docker_password
+: authenticates with this password
+
+docker_email
+: authenticates with this email
+
 # Parameter Reference
 
 registry
