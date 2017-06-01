@@ -79,7 +79,7 @@ pipeline:
     repo: foo/bar
 ```
 
-Example configuration using secrets:
+Example configuration using credentials from secrets:
 
 ```diff
 pipeline:
