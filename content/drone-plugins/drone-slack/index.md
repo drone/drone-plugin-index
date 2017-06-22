@@ -71,12 +71,12 @@ pipeline:
     image: plugins/slack
     webhook: https://hooks.slack.com/services/...
     channel: dev
-+   template: |
-+     {{ #success build.status }}
-+       build {{ build.number }} succeeded. Good job.
-+     {{ else }}
-+       build {{ build.number }} failed. Fix me please.
-+     {{ /success }}
++   template: >
++     {{#success build.status}}
++       build {{build.number}} succeeded. Good job.
++     {{else}}
++       build {{build.number}} failed. Fix me please.
++     {{/success}}
 ```
 
 # Parameter Reference

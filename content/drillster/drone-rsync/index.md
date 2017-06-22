@@ -89,5 +89,8 @@ recursive
 delete
 : instruct plugin to delete the target folder before copying, can be `true` or `false`, defaults to `false`
 
+args
+: instruct plugin to use these additional rsync CLI arguments, example: `"--blocking-io"`
+
 script
 : list of commands to execute on remote machines over SSH

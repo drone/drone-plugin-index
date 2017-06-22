@@ -62,6 +62,22 @@ pipeline:
     source: release.tar.gz
 ```
 
+Example configuration with wildcard pattern of source list:
+
+```diff
+pipeline:
+  scp:
+    image: appleboy/drone-scp
+    host:
+      - example1.com
+      - example2.com
+    target: /home/deploy/web
+    source:
+-     - release/backend.tar.gz
+-     - release/images.tar.gz
++     - release/*.tar.gz
+```
+
 Remove target folder before copy files and artifacts to target:
 
 ```diff
@@ -71,6 +87,24 @@ Remove target folder before copy files and artifacts to target:
     target: /home/deploy/web
     source: release.tar.gz
 +   rm: true
+```
+
+Example configuration using ｀SSHProxyCommand｀:
+
+```diff
+pipeline:
+  scp:
+    image: appleboy/drone-scp
+    host:
+      - example1.com
+      - example2.com
+    target: /home/deploy/web
+    source:
+      - release/*.tar.gz
++   proxy_host: 10.130.33.145
++   proxy_user: ubuntu
++   proxy_port: 22
++   proxy_key: ${PROXY_KEY}
 ```
 
 Example configuration for success build:
@@ -126,6 +160,9 @@ source
 rm
 : remove target folder before copy files and artifacts
 
+timeout
+: timeout is the maximum amount of time for the TCP connection to establish.
+
 # Template Reference
 
 repo.owner
@@ -160,3 +197,21 @@ build.author
 
 build.link
 : link the the build results in drone
+
+proxy_host
+: proxy hostname or IP
+
+proxy_port
+: ssh port of proxy host
+
+proxy_username
+: account for proxy host user
+
+proxy_password
+: password for proxy host user
+
+proxy_key
+: plain text of proxy private key
+
+proxy_key_path
+: key path of proxy private key

@@ -38,7 +38,7 @@ pipeline:
 Example configuration using build arguments:
 
 ```diff
-publish:
+pipeline:
   docker:
     image: plugins/docker
     repo: foo/bar
@@ -49,7 +49,7 @@ publish:
 Example configuration using alternate Dockerfile:
 
 ```diff
-publish:
+pipeline:
   docker:
     image: plugins/docker
     repo: foo/bar
@@ -78,6 +78,29 @@ pipeline:
 +   password: pa55word
     repo: foo/bar
 ```
+
+Example configuration using credentials from secrets:
+
+```diff
+pipeline:
+  docker:
+    image: plugins/docker
+-   username: kevinbacon
+-   password: pa55word
+    repo: foo/bar
++   secrets: [ docker_username, docker_password ]
+```
+
+# Secret Reference
+
+docker_username
+: authenticates with this username
+
+docker_password
+: authenticates with this password
+
+docker_email
+: authenticates with this email
 
 # Parameter Reference
 
@@ -120,7 +143,7 @@ mirror
 bip=false
 : use for pass bridge ip
 
-dns
+custom_dns
 : set custom dns servers for the container
 
 storage_driver
