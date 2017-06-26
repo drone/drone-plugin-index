@@ -4,7 +4,7 @@ title: Gitlab-CI
 author: appleboy
 tags: [ infrastructure, trigger, gitlab, gitlab-ci ]
 repo: appleboy/drone-gitlab-ci
-logo: gitlab-ci.svg
+logo: gitlab.svg
 image: appleboy/drone-gitlab-ci
 ---
 
