@@ -49,6 +49,7 @@ pipeline:
 
 Example configuration using credentials from secrets:
 
+```diff
 pipeline:
   gitlab:
     image: appleboy/drone-gitlab-ci
@@ -56,6 +57,7 @@ pipeline:
 -   token: xxxxxxxxxx
     id: gitlab-project-id
 +   secrets: [ gitlab_token ]
+```
 
 # Secret Reference
 
