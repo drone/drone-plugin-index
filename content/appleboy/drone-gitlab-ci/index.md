@@ -1,5 +1,5 @@
 ---
-date: 2017-06-26T00:00:00+00:00
+date: 2017-07-14T00:00:00+00:00
 title: Gitlab-CI
 author: appleboy
 tags: [ infrastructure, trigger, gitlab, gitlab-ci ]
@@ -46,6 +46,21 @@ pipeline:
     id: gitlab-project-id
 +   debug: true
 ```
+
+Example configuration using credentials from secrets:
+
+pipeline:
+  gitlab:
+    image: appleboy/drone-gitlab-ci
+    host: https://gitlab.com
+-   token: xxxxxxxxxx
+    id: gitlab-project-id
++   secrets: [ gitlab_token ]
+
+# Secret Reference
+
+gitlab_token
+: gitlab-ci user token
 
 # Parameter Reference
 
