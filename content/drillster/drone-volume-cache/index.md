@@ -104,4 +104,15 @@ rebuild
 : instruct plugin to rebuild cache, can be true or false
 
 mount
-: list of folders to cache
+: list of folders or files to cache
+
+# Additional Functionality
+
+The volume cache plugin reacts to special directives in a commit message to provide additional functionality.
+Include one of the following directives somewhere in your commit message to trigger their respective actions:
+
+[CLEAR CACHE]
+: instruct the plugin to clear the entire cache. This only influences the restoring step, the plugin will still rebuild cache if instructed to do so.
+
+[NO CACHE]
+: instruct the plugin not to restore or rebuild cache for this build.
