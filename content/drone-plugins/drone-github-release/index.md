@@ -2,9 +2,9 @@
 date: 2016-01-01T00:00:00+00:00
 title: Github Release
 author: drone-plugins
-tags: [ git, publish ]
+tags: [ publish, github ]
 repo: drone-plugins/drone-github-release
-logo: git.svg
+logo: github.svg
 image: plugins/github-release
 ---
 
@@ -16,6 +16,7 @@ The following configuration uses the github-release plugin to publish binaries t
 pipeline:
   github_release:
     image: plugins/github-release
+    api_key: xxxxxxxx
     files: dist/*
     when:
       event: tag
@@ -27,6 +28,7 @@ An example for generating checksums and uploading additional files:
 pipeline:
   github_release:
     image: plugins/github-release
+    api_key: xxxxxxxx
     files:
       - dist/*
 +     - bin/binary.exe
@@ -40,6 +42,23 @@ pipeline:
     when:
       event: tag
 ```
+
+Example configuration using credentials from secrets:
+
+```diff
+pipeline:
+  github_release:
+    image: plugins/github-release
+-   api_key: xxxxxxxx
++   secrets: [ github_token ]
+    files: dist/*
+    when:
+      event: tag
+```
+# Secret Reference
+
+github_token
+: GitHub oauth token with public_repo or repo permission
 
 # Parameter Reference
 
