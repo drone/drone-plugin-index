@@ -4,7 +4,7 @@ title: Google chat
 author: josmo
 tags: [  notifications, chat  ]
 repo: josmo/drone-google-chat
-logo: gchat.png
+logo: gtalk.svg
 image: peloton/drone-google-chat
 ---
 
@@ -16,8 +16,21 @@ This plugin is currently experimental since the full apis for google chat haven'
 pipeline:
   notify:
     image: peloton/drone-google-chat
-    webook: https://dynamite.sandbox.googleapis.com/v1/rooms/roomid/webhooks?key=key
+    webook: https://dynamite.sandbox.googleapis.com/v1/rooms/roomid
+    key: mykey
     token: mytoken  
+```
+
+Example configuration with a conversation key to group notifications together in a channel
+
+```yaml
+pipeline:
+  notify:
+    image: peloton/drone-google-chat
+    webook: https://dynamite.sandbox.googleapis.com/v1/rooms/roomid
+    key: mykey
+    token: mytoken  
++   conversation_key: build_information
 ```
 
 Example configuration with token as secret
@@ -26,7 +39,8 @@ Example configuration with token as secret
 pipeline:
   notify:
     image: peloton/drone-google-chat
-    webook: https://dynamite.sandbox.googleapis.com/v1/rooms/roomid/webhooks?key=key
+    webook: https://dynamite.sandbox.googleapis.com/v1/rooms/roomid
+    key: mykey
 +   secrets: [ GOOGLE_CHAT_TOKEN ] 
 ```
 
@@ -36,7 +50,8 @@ Example configuration with a custom message template:
 pipeline:
   notify:
     image: peloton/drone-google-chat
-    webhook: https://dynamite.sandbox.googleapis.com/v1/rooms/roomid/webhooks?key=key
+    webhook: https://dynamite.sandbox.googleapis.com/v1/rooms/roomid
+    key: mykey
     token: mytoken 
 +   template: >
 +     {{#success build.status}}
@@ -51,8 +66,14 @@ pipeline:
 webhook
 : incomming webhook in the Bots section of google chat
 
+key
+: key for the webook
+
 token
 : secret token to allow messages to be posted
+
+conversation_key
+: arbitrary key to group messages together
 
 template
 : overwrite the default message template
