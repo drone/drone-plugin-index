@@ -80,7 +80,7 @@ pipeline:
 -   secret_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
     repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
-    secrets: [ ecr_access_key, ecr_secret_key ]
++   secrets: [ ecr_access_key, ecr_secret_key ]
 ```
 
 # Secret Reference
