@@ -17,6 +17,7 @@ pipeline:
     access_key: a50d28f4dd477bc184fbd10b376de753
     secret_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
     repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
+    registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
 ```
 
 Example configuration using multiple tags:
@@ -26,6 +27,7 @@ pipeline:
   ecr:
     image: plugins/ecr
     repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
+    registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
 -   tags: latest
 +   tags:
 +     - latest
@@ -40,6 +42,7 @@ publish:
   ecr:
     image: plugins/ecr
     repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
+    registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
 +   region: us-east-1
 ```
 
@@ -50,6 +53,7 @@ publish:
   ecr:
     image: plugins/ecr
     repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
+    registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
 -   dockerfile: Dockerfile
 +   dockerfile: path/to/Dockerfile
 ```
@@ -61,9 +65,34 @@ publish:
   ecr:
     image: plugins/ecr
     repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
+    registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
 +   build_args:
 +     - HTTP_PROXY=http://yourproxy.com
 ```
+
+Example configuration using credentials from secrets:
+
+```diff
+pipeline:
+  ecr:
+    image: plugins/ecr
+-   access_key: a50d28f4dd477bc184fbd10b376de753
+-   secret_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
+    repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
+    registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
+    secrets: [ ecr_access_key, ecr_secret_key ]
+```
+
+# Secret Reference
+
+ecr_region
+: amazon region, defaults to `us-east-1`
+
+ecr_access_key
+: amazon access key
+
+ecr_secret_key
+: amazon secret access key
 
 # Parameter Reference
 
