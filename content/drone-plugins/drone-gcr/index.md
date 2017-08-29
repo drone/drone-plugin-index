@@ -75,3 +75,6 @@ pipeline:
 
 plugin_json_key, gcr_json_key, google_credentials, google_application_credentials
 : authenticates with this GCP service account JSON credential, can be base64 encoded
+
+plugin_registry
+: GCP registry, defaults to `gcr.io`
