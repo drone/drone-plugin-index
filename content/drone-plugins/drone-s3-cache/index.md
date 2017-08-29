@@ -34,6 +34,8 @@ pipeline:
     rebuild: true
     mount:
       - node_modules
+    when:
+      event: push
 
   flush_cache:
     image: plugins/s3-cache:1
@@ -73,6 +75,8 @@ pipeline:
 -     - node_modules
 +     - <yourstuffhere>
 +     - <morestuffhere>
+    when:
+      event: push
 
   flush_cache:
     image: plugins/s3-cache:1
@@ -94,7 +98,7 @@ pipeline:
     url: http://minio.company.com
 -   access_key: myaccesskey
 -   secret_key: supersecretKey
-+   secrets: [ cache_s3_access_key, cache_s3_secret_key ]
++   secrets: [ aws_access_key_id, aws_secret_access_key ]
     restore: true
 
   build:
@@ -108,10 +112,12 @@ pipeline:
     url: http://minio.company.com
 -   access_key: myaccesskey
 -   secret_key: supersecretKey
-+   secrets: [ cache_s3_access_key, cache_s3_secret_key ]
++   secrets: [ aws_access_key_id, aws_secret_access_key ]
     rebuild: true
     mount:
       - node_modules
+    when:
+      event: push
 
   flush_cache:
     image: plugins/s3-cache:1
@@ -119,25 +125,25 @@ pipeline:
     url: http://minio.company.com
 -   access_key: myaccesskey
 -   secret_key: supersecretKey
-+   secrets: [ cache_s3_access_key, cache_s3_secret_key ]
++   secrets: [ aws_access_key_id, aws_secret_access_key ]
     flush: true
     flush_age: 14
 ```
 
 # Secret Reference
 
-cache_s3_server
+s3_endpoint, cache_s3_endpoint
 : custom endpoint URL (optional, to use a S3 compatible non-Amazon service)
 
-cache_s3_access_key
+aws_access_key_id, cache_s3_access_key
 : amazon access key (optional)
 
-cache_s3_secret_key
+aws_secret_access_key, cache_s3_secret_key
 : amazon secret key (optional)
 
 # Parameter Reference
 
-server
+endpoint
 : custom endpoint URL (optional, to use a S3 compatible non-Amazon service)
 
 access_key
