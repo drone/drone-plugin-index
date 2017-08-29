@@ -32,6 +32,7 @@ pipeline:
 +   registry: us.gcr.io
     repo: project/foo
     tags: latest
+    secrets: [json_key]
 ```
 
 # Secret Reference
