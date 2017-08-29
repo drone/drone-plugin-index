@@ -20,7 +20,7 @@ pipeline:
     image: plugins/gcr
     repo: project/foo
     tags: latest
-    secrets: [json_key]
+    secrets: [google_credentials]
 ```
 
 Example configuration using a different GCR registry:
@@ -32,7 +32,7 @@ pipeline:
 +   registry: us.gcr.io
     repo: project/foo
     tags: latest
-    secrets: [json_key]
+    secrets: [google_credentials]
 ```
 
 Example configuration using inline credentials:
@@ -43,7 +43,7 @@ pipeline:
     image: plugins/gcr
     repo: project/foo
     tags: latest
--   secrets: [json_key]
+-   secrets: [google_credentials]
 +   json_key: >
 +     {
 +       "type": "service_account",
@@ -67,7 +67,7 @@ pipeline:
     image: plugins/gcr
     repo: project/foo
     tags: latest
--   secrets: [json_key]
+-   secrets: [google_credentials]
 +   json_key: ewogICJ0eXBlIjogInNlcnZpY2VfYWNjb3VudCIsCiAgInByb2plY3RfaWQiOiAieHh4IiwKICAicHJpdmF0ZV9rZXlfaWQiOiAieHh4IiwKICAicHJpdmF0ZV9rZXkiOiAieHh4IiwKICAiY2xpZW50X2VtYWlsIjogInh4eCIsCiAgImNsaWVudF9pZCI6ICJ4eHgiLAogICJhdXRoX3VyaSI6ICJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvYXV0aCIsCiAgInRva2VuX3VyaSI6ICJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvdG9rZW4iLAogICJhdXRoX3Byb3ZpZGVyX3g1MDlfY2VydF91cmwiOiAiaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vb2F1dGgyL3YxL2NlcnRzIiwKICAiY2xpZW50X3g1MDlfY2VydF91cmwiOiAieHh4Igp9Cg==
 ```
 
