@@ -55,6 +55,21 @@ pipeline:
       status: [ changed, failure ]
 ```
 
+You can optionally attach a file to the sent mail(s) by setting the `attachment` parameter to the path of a file. It's possible to use a relative path (relative to the drone working directory). 
+
+```diff
+pipeline:
+  notify:
+    image: drillster/drone-email
+    host: smtp.some-server.com
+    username: foo
+    password: bar
+    from: drone@your-domain.com
++   attachment: build-result.xml
+    when:
+      status: [ changed, failure ]
+```
+
 Should you want to skip SMTP server certificate verification, use the `skip_verify` parameter:
 
 ```diff
@@ -105,6 +120,9 @@ subject
 
 body
 : The email body template ([handlebars](http://handlebarsjs.com/expressions.html) template). This can be an inline template, or a URL (`file:///` allowed).
+
+attachment
+: An optional file to attach to the sent mail(s). This can be an absolute path or a path relative to the working directory.
 
 # Template Reference
 
