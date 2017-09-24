@@ -9,7 +9,7 @@ image: plugins/gcr
 ---
 
 {{% alert info %}}
-The GCR plugin is an extension around the Docker plugin. Please see the documentation for the [Docker plugin]({{< relref "drone-plugins/drone-docker" >}}) for other configuration options.
+The GCR plugin is an extension around the Docker plugin. Please see the documentation for the [Docker plugin]({{< relref "drone-plugins/drone-docker/index.md" >}}) for other configuration options.
 {{% /alert %}}
 
 The GCR plugin can be used to build and publish images to the Google Container Registry. The following pipeline configuration uses the GCR plugin to build and publish Docker images:
