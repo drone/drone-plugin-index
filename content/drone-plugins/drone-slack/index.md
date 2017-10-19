@@ -146,6 +146,9 @@ build.created
 build.started
 : unix timestamp for build started
 
+build.pull
+: pull request number (empty string if not a pull request)
+
 # Template Function Reference
 
 uppercasefirst
