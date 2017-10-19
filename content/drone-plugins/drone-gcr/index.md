@@ -73,7 +73,7 @@ pipeline:
 
 # Secret Reference
 
-plugin_json_key, gcr_json_key, google_credentials, google_application_credentials
+plugin_json_key, gcr_json_key, google_credentials, token
 : authenticates with this GCP service account JSON credential, can be base64 encoded
 
 plugin_registry
