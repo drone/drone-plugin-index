@@ -22,7 +22,7 @@ docker run --rm \
   -v $(pwd):$(pwd) \
   -w $(pwd) \
   --privileged \
-  plugins/docker --dry-run
+  omerxx/drone-lambda-plugin
 ```
 
 #### Example:
