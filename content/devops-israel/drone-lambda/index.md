@@ -61,7 +61,7 @@ pipeline:
     image: omerxx/drone-lambda-plugin
     pull: true
     function_name: my-function
-    s3_bucket: devops.spot.im
+    s3_bucket: some-bucket
     file_name: lambda-dir/revenue-report-${DRONE_BUILD_NUMBER}.zip
 
   notify-slack-releases:
