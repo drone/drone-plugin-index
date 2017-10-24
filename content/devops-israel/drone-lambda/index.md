@@ -74,7 +74,7 @@ pipeline:
 ## Optional secrets
 
 ```
-It is highly recommended to make use of IAM roles instead of envronment variables for AWS
+It is highly recommended to make use of IAM roles instead of environment variables for AWS
 ```
 
 * AWS_ACCESS_KEY_ID
