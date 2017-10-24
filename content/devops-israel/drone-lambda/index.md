@@ -3,7 +3,7 @@ author: "devops-israel"
 date: 2017-10-22T08:00:35+01:00
 image: "omerxx/drone-lambda-plugin"
 repo: "omerxx/drone-lambda-plugin"
-tags: [ publish, aws, ecs ]
+tags: [ deploy, aws, lambda ]
 logo: amazon_lambda.svg
 title: AWS Lambda Deploy
 ---
@@ -35,8 +35,7 @@ pipeline:
     pull: true
     function_name: my-function
     s3_bucket: some-bucket
-    path_prefix: lambda
-    file_name: lambda-project-${DRONE_BUILD_NUMBER}.zip
+    file_name: lambda-dir/lambda-project-${DRONE_BUILD_NUMBER}.zip
 ```
 
 #### Example of a complete Lambda project's pipeline:
@@ -63,8 +62,7 @@ pipeline:
     pull: true
     function_name: my-function
     s3_bucket: devops.spot.im
-    path_prefix: lambda
-    file_name: revenue-report-${DRONE_BUILD_NUMBER}.zip
+    file_name: lambda-dir/revenue-report-${DRONE_BUILD_NUMBER}.zip
 
   notify-slack-releases:
     image: plugins/slack
