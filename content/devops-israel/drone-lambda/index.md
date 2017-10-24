@@ -19,9 +19,6 @@ docker run --rm \
   -e PLUGIN_FUNCTION_NAME=my-function \
   -e PLUGIN_S3_BUCKET=some-bucket \
   -e PLUGIN_FILE_NAME=lambda-project-1.zip \
-  -v $(pwd):$(pwd) \
-  -w $(pwd) \
-  --privileged \
   omerxx/drone-lambda-plugin
 ```
 
