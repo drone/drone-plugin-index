@@ -54,7 +54,7 @@ pipeline:
     acl: private
     region: us-east-1
     bucket: some-bucket
-    target: lambda
+    target: lambda-dir
     source: lambda-project-${DRONE_BUILD_NUMBER}.zip
 
   deploy-lambda:
