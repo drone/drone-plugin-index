@@ -10,10 +10,9 @@ title: AWS Lambda Deploy
 
 The plugin utilizes AWS go-sdk to update an existing function's code; build your code, zip it with dependencies and upload it to S3. Then trigger the plugin for deploy.
 
-## Usage
-
-#### Execute from the working directory; 
+Execute from the working directory; 
 This will update `my-function` with a zip file under `S3://some-bucket/lambda/lambda-project-1.zip`:
+
 ```bash
 docker run --rm \
   -e PLUGIN_FUNCTION_NAME=my-function \
@@ -22,7 +21,7 @@ docker run --rm \
   omerxx/drone-lambda-plugin
 ```
 
-#### Example:
+Example:
 
 ```yaml
 pipeline:
@@ -34,7 +33,7 @@ pipeline:
     file_name: lambda-dir/lambda-project-${DRONE_BUILD_NUMBER}.zip
 ```
 
-#### Example of a complete Lambda project's pipeline:
+Example of a complete Lambda project's pipeline:
 
 ```yaml
 pipeline:
@@ -67,14 +66,26 @@ pipeline:
     username: Drone-CI
 ```
 
-## Optional secrets
+# Secret Reference
 
-```
 It is highly recommended to make use of IAM roles instead of environment variables for AWS
-```
+(Considering you are running Drone on AWS)
 
-* AWS_ACCESS_KEY_ID
-* AWS_SECRET_ACCESS_KEY
+```
+aws_access_key_id
+```
+AWS access key
+
+```
+aws_secret_access_key
+```
+AWS secret key. Access and secret key variables override credentials stored in credential and config files
+
+```
+aws_default_region
+```
+AWS region. This variable overrides the default region of the in-use profile, if set
+
 
 If these are not set, the plugin will use the instance IAM role [ Recommended MO ]
 
@@ -89,11 +100,3 @@ s3_bucket
 file_name:
 : Name of the file in S3. Can be prefixed like `my-directory/my-zip-package.zip`
 
-aws_access_key_id
-: AWS access key
-
-aws_secret_access_key
-: AWS secret key
-
-aws_default_region
-: AWS region
