@@ -10,17 +10,6 @@ title: AWS Lambda Deploy
 
 The plugin utilizes AWS go-sdk to update an existing function's code; build your code, zip it with dependencies and upload it to S3. Then trigger the plugin for deploy.
 
-Execute from the working directory; 
-This will update `my-function` with a zip file under `S3://some-bucket/lambda/lambda-project-1.zip`:
-
-```bash
-docker run --rm \
-  -e PLUGIN_FUNCTION_NAME=my-function \
-  -e PLUGIN_S3_BUCKET=some-bucket \
-  -e PLUGIN_FILE_NAME=lambda-project-1.zip \
-  omerxx/drone-lambda-plugin
-```
-
 Example:
 
 ```yaml
