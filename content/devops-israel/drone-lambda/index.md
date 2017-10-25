@@ -71,19 +71,13 @@ pipeline:
 It is highly recommended to make use of IAM roles instead of environment variables for AWS
 (Considering you are running Drone on AWS)
 
-```
-aws_access_key_id
-```
+`aws_access_key_id`
 AWS access key
 
-```
-aws_secret_access_key
-```
+`aws_secret_access_key`
 AWS secret key. Access and secret key variables override credentials stored in credential and config files
 
-```
-aws_default_region
-```
+`aws_default_region`
 AWS region. This variable overrides the default region of the in-use profile, if set
 
 
