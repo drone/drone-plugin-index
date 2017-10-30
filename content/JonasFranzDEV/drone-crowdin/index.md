@@ -24,11 +24,18 @@ pipeline:
       example: options/example.ini
       example2: options/example2.ini
 ```
+# Secret Reference
+
+crowdin_identifier
+: Identifier provided by Crowdin
+
+crowdin_key
+: API key provided by Crowdin
 
 # Parameter Reference
 
 project_identifier
-: Identifier provided by Crowdin (Secret: `CROWDIN_IDENTIFIER`)
+: Identifier provided by Crowdin
 
 project_key
 : API key provided by Crowdin (Secret: `CROWDIN_KEY`)
