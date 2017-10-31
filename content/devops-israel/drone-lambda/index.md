@@ -61,13 +61,13 @@ It is highly recommended to make use of IAM roles instead of environment variabl
 (Considering you are running Drone on AWS)
 
 `aws_access_key_id`  
-AWS access key
+:AWS access key
 
 `aws_secret_access_key`  
-AWS secret key. Access and secret key variables override credentials stored in credential and config files
+:AWS secret key. Access and secret key variables override credentials stored in credential and config files
 
 `aws_default_region`  
-AWS region. This variable overrides the default region of the in-use profile, if set
+:AWS region. This variable overrides the default region of the in-use profile, if set
 
 
 If these are not set, the plugin will use the instance IAM role [ Recommended method ]
@@ -80,6 +80,6 @@ function_name
 s3_bucket
 : Name of the S3 bucket in which the zip package for deployment is stored
 
-file_name:
+file_name
 : Name of the file in S3. Can be prefixed like `my-directory/my-zip-package.zip`
 
