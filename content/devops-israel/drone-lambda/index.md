@@ -70,7 +70,7 @@ AWS secret key. Access and secret key variables override credentials stored in c
 AWS region. This variable overrides the default region of the in-use profile, if set
 
 
-If these are not set, the plugin will use the instance IAM role [ Recommended MO ]
+If these are not set, the plugin will use the instance IAM role [ Recommended method ]
 
 # Parameter Reference
 
