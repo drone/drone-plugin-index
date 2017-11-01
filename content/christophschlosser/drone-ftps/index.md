@@ -101,7 +101,7 @@ pipeline:
 # Secret Reference
 
 FTP_PASSWORD
-: Password used to login to the FTP server with the specified user
+: password used to login to the FTP server with the specified user
 
 # Parameter Reference
 
@@ -112,13 +112,13 @@ hostname
 : FTP host including the port
 
 secure
-: If set to true FTPS is enforced, otherwise plain FTP is used (default true)
+: if set to true FTPS is enforced, otherwise plain FTP is used (default true)
 
 dest_dir
-: Where to put the files on the remote server (default /)
+: where to put the files on the remote server (default /)
 
 src_dir
-: Which local directory should be used for the upload (default ./)
+: which local directory should be used for the upload (default ./)
 
 exclude
 : egrep like pattern matching to exclude files from uploading (default none)
