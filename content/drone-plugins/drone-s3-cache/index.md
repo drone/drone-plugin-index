@@ -15,7 +15,7 @@ pipeline:
   restore-cache:
     image: plugins/s3-cache:1
     pull: true
-    url: http://minio.company.com
+    endpoint: http://minio.company.com
     access_key: myaccesskey
     secret_key: supersecretKey
     restore: true
@@ -28,7 +28,7 @@ pipeline:
   rebuild-cache:
     image: plugins/s3-cache:1
     pull: true
-    url: http://minio.company.com
+    endpoint: http://minio.company.com
     access_key: myaccesskey
     secret_key: supersecretKey
     rebuild: true
@@ -40,7 +40,7 @@ pipeline:
   flush_cache:
     image: plugins/s3-cache:1
     pull: true
-    url: http://minio.company.com
+    endpoint: http://minio.company.com
     access_key: myaccesskey
     secret_key: supersecretKey
     flush: true
@@ -54,7 +54,7 @@ pipeline:
   restore-cache:
     image: plugins/s3-cache:1
     pull: true
-    url: http://minio.company.com
+    endpoint: http://minio.company.com
     access_key: myaccesskey
     secret_key: supersecretKey
     restore: true
@@ -67,7 +67,7 @@ pipeline:
   rebuild-cache:
     image: plugins/s3-cache:1
     pull: true
-    url: http://minio.company.com
+    endpoint: http://minio.company.com
     access_key: myaccesskey
     secret_key: supersecretKey
     rebuild: true
@@ -81,7 +81,7 @@ pipeline:
   flush_cache:
     image: plugins/s3-cache:1
     pull: true
-    url: http://minio.company.com
+    endpoint: http://minio.company.com
     access_key: myaccesskey
     secret_key: supersecretKey
     flush: true
@@ -95,7 +95,7 @@ pipeline:
   restore-cache:
     image: plugins/s3-cache:1
     pull: true
-    url: http://minio.company.com
+    endpoint: http://minio.company.com
 -   access_key: myaccesskey
 -   secret_key: supersecretKey
 +   secrets: [ aws_access_key_id, aws_secret_access_key ]
@@ -109,7 +109,7 @@ pipeline:
   rebuild-cache:
     image: plugins/s3-cache:1
     pull: true
-    url: http://minio.company.com
+    endpoint: http://minio.company.com
 -   access_key: myaccesskey
 -   secret_key: supersecretKey
 +   secrets: [ aws_access_key_id, aws_secret_access_key ]
@@ -122,7 +122,7 @@ pipeline:
   flush_cache:
     image: plugins/s3-cache:1
     pull: true
-    url: http://minio.company.com
+    endpoint: http://minio.company.com
 -   access_key: myaccesskey
 -   secret_key: supersecretKey
 +   secrets: [ aws_access_key_id, aws_secret_access_key ]
