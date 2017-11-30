@@ -16,7 +16,6 @@ pipeline:
     image: plugins/docker
     username: kevinbacon
     password: pa55word
-    email: kevin.bacon@mail.com
     repo: foo/bar
     tags: latest
 ```
@@ -99,9 +98,6 @@ docker_username
 docker_password
 : authenticates with this password
 
-docker_email
-: authenticates with this email
-
 # Parameter Reference
 
 registry
@@ -112,9 +108,6 @@ username
 
 password
 : authenticates with this password
-
-email
-: authenticates with this email
 
 repo
 : repository name for the image
