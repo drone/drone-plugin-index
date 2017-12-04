@@ -28,6 +28,8 @@ pipeline:
   s3:
     image: techknowlogick/drone-b2
     bucket: my-bucket-name
+-   account: a50d28f4dd477bc184fbd10b376de753
+-   key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
 +    secrets: [ b2_account_id, b2_application_key ]
     source: public/**/*
     target: /target/location
