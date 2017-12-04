@@ -15,8 +15,8 @@ pipeline:
   b2:
     image: techknowlogick/drone-b2
     bucket: my-bucket-name
-    b2_account_id: a50d28f4dd477bc184fbd10b376de753
-    b2_application_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
+    account: a50d28f4dd477bc184fbd10b376de753
+    key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
     source: public/**/*
     target: /target/location
 ```
@@ -28,7 +28,7 @@ pipeline:
   s3:
     image: techknowlogick/drone-b2
     bucket: my-bucket-name
-    secrets: [ b2_account_id, b2_application_key ]
++    secrets: [ b2_account_id, b2_application_key ]
     source: public/**/*
     target: /target/location
 ```
@@ -60,12 +60,20 @@ pipeline:
 +     - **/*.xml
 ```
 
-# Parameter Reference
+# Secret Reference
 
-b2_account_id
+b2_account_id (optional)
 : backblaze account ID
 
-b2_application_key
+b2_application_key (optional)
+: backblaze secret key
+
+# Parameter Reference
+
+account (optional)
+: backblaze account ID
+
+key (optional)
 : backblaze secret key
 
 bucket
