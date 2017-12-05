@@ -22,6 +22,20 @@ pipeline:
       - matrix_password
 ```
 
+# Secret Reference
+
+matrix_username
+: Username on homeserver
+
+matrix_password
+: Password on homeserver (use with username)
+
+matrix_userid
+: Matrix userID (@user:homeserver.tld)
+
+matrix_accesstoken
+: Matrix access token (use with userid)
+
 # Parameter Reference
 
 homeserver
