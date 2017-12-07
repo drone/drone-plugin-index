@@ -3,6 +3,7 @@ author: 'Paul Tötterman'
 date: 2017-12-01
 image: 'ptman/drone-plugin-matrix'
 repo: 'ptman/drone-plugin-matrix'
+logo: matrix.svg
 tags: [ notifications, chat, matrix ]
 title: Matrix
 ---
