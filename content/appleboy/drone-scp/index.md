@@ -115,8 +115,25 @@ pipeline:
 +   proxy_host: 10.130.33.145
 +   proxy_user: ubuntu
 +   proxy_port: 22
--   proxy_password: 1234
-+   secrets: [ proxy_ssh_password ]
++   proxy_password: 1234
+```
+
+Example configuration using password from secrets:
+
+```diff
+pipeline:
+  scp:
+    image: appleboy/drone-scp
+    host:
+      - example1.com
+      - example2.com
+    user: ubuntu
+    port: 22
+-   password: 1234
++   secrets: [ ssh_password ]
+    target: /home/deploy/web
+    source:
+      - release/*.tar.gz
 ```
 
 # Secret Reference
