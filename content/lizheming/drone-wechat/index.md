@@ -34,6 +34,11 @@ title
 message
 : Notification body message, support markdown
 
+# Secret Reference
+
+server\_chan\_key
+: SCKEY get from [ServerChan](http://sc.ftqq.com)
+
 # Template Reference
 
 repo.owner
