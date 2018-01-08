@@ -10,12 +10,12 @@ image: lizheming/drone-wechat
 
 The Wechat plugin posts build status messages to your account. The below pipeline configuration demonstrates simple usage:
 
-```yaml
+```diff
 pipline:
   wechat:
     image: lizheming/drone-wechat
-    sckey: xxxxxx
-    title: "plugin notification"
++   sckey: xxxxxx
+    title: ${DRONE_REPO_NAME}
     message: >
       {%if success %}
         build {{build.number}} succeeded. Good job.
@@ -24,19 +24,90 @@ pipline:
       {% endif %}
 ```
 
-# Praameter Reference
+If you want push notification with your own wechat corp id, you can config like this:
+
+```diff
+pipeline:
+  wechat:
+    image: lizheming/drone-wechat
++   corpid: corpid
++   corp_secret: secret
++   agent_id: 1234567
++   to_user: 111
++   to_party: 112
++   to_tag: ${DRONE_REPO_NAME}
++   msg_url: ${DRONE_BUILD_LINK}
++   safe: 1
++   btn_txt: more
+    title: ${DRONE_REPO_NAME}
+    message: >
+      {%if success %}
+        build {{build.number}} succeeded. Good job.
+      {% else %}
+        build {{build.number}} failed. Fix me please.
+      {% endif %}
+```
+
+# Parameter Reference
+
+corpid
+: The corpid for authorization
+
+corp_secret
+: The corp secret for authorization
+
+agent_id:
+: The agent id to send the message
+
+to_party
+: The party ids to send message
+
+to_user
+: The user ids to send the message to
+
+to_tag
+: The tag ids to send the message to
+
+safe
+: encrypt message, default is false
+
+msg_url
+: The link for the text card click
+
+btn_text
+: The text for the button on the card
 
 sckey
 : SCKEY get from [ServerChan](http://sc.ftqq.com)
 
 title
 : Notification title
+
 message
 : Notification body message, support markdown
 
 # Secret Reference
 
-server\_chan\_key
+wechat\_corpid
+: The corpid for authorization
+
+wechat\_corp_secret
+: The corp secret for authorization
+
+wechat\_agent\_id
+: The agent id to send the message
+
+wechat\_to\_party
+: The party ids to send message
+
+
+wechat\_to\_user
+: The user ids to send the message to
+
+wechat\_to\_tag
+: The tag ids to send the message to
+
+wechat\_sckey
 : SCKEY get from [ServerChan](http://sc.ftqq.com)
 
 # Template Reference
