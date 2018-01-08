@@ -56,7 +56,7 @@ corpid
 corp_secret
 : The corp secret for authorization
 
-agent_id:
+agent_id
 : The agent id to send the message
 
 to_party
