@@ -88,10 +88,10 @@ message
 
 # Secret Reference
 
-wechat\_corpid
+wechat_corpid
 : The corpid for authorization
 
-wechat\_corp_secret
+wechat\_corp\_secret
 : The corp secret for authorization
 
 wechat\_agent\_id
@@ -100,14 +100,13 @@ wechat\_agent\_id
 wechat\_to\_party
 : The party ids to send message
 
-
 wechat\_to\_user
 : The user ids to send the message to
 
 wechat\_to\_tag
 : The tag ids to send the message to
 
-wechat\_sckey
+wechat_sckey
 : SCKEY get from [ServerChan](http://sc.ftqq.com)
 
 # Template Reference
