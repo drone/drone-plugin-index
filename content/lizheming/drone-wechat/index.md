@@ -91,19 +91,19 @@ message
 wechat_corpid
 : The corpid for authorization
 
-wechat\_corp\_secret
+wechat_corp_secret
 : The corp secret for authorization
 
-wechat\_agent\_id
+wechat_agent_id
 : The agent id to send the message
 
-wechat\_to\_party
+wechat_to_party
 : The party ids to send message
 
-wechat\_to\_user
+wechat_to_user
 : The user ids to send the message to
 
-wechat\_to\_tag
+wechat_to_tag
 : The tag ids to send the message to
 
 wechat_sckey
