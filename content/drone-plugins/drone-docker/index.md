@@ -90,6 +90,40 @@ pipeline:
 +   secrets: [ docker_username, docker_password ]
 ```
 
+# Autotag
+
+The Docker plugin can be configured to automatically tag your images. When this feature is enabled and the event type is tag, the plugin will automatically tag the image using the standard major, minor, release convention. For example:
+
+* `1.0.0` produces docker tags `1`, `1.0`, `1.0.0`
+* `1.0.0-rc.1` produces docker tags `1.0.0-rc.1`
+
+When the event type is push and the target branch is your default branch (e.g. master) the plugin will automatically tag the image as `latest`. All other event types and branches are ignored.
+
+Example configuration:
+
+```diff
+pipeline:
+  docker:
+    image: plugins/docker
+    repo: foo/bar
++   auto_tag: true
+    secrets: [ docker_username, docker_password ]
+```
+
+Example configuration with tag suffix:
+
+```diff
+pipeline:
+  docker:
+    image: plugins/docker
+    repo: foo/bar
++   auto_tag: true
++   auto_tag_suffix: linux-amd64
+    secrets: [ docker_username, docker_password ]
+```
+
+Please note that auto-tagging is intentionally simple and opinionated. We are not accepting pull requests at this time to further customize the logic.
+
 # Secret Reference
 
 docker_username
@@ -144,3 +178,9 @@ storage_driver
 
 build_args
 : custom arguments passed to docker build
+
+auto_tag=false
+: generate tag names automatically based on git branch and git tag
+
+auto_tag_suffix
+: generate tag names with this suffix
