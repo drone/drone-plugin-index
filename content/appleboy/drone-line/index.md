@@ -17,6 +17,23 @@ pipeline:
     channel_secret: xxxxxxxxxx
     channel_token: xxxxxxxxxx
     to: line_user_id
+    to_room: line_room_id
+    to_group: line_group_id
+```
+
+<!-- https://github.com/appleboy/drone-line/issues/72#issuecomment-323929502 -->
+Example to multiple line ids:
+
+```diff
+pipeline:
+  line:
+    image: appleboy/drone-line
+    channel_secret: xxxxxxxxxx
+    channel_token: xxxxxxxxxx
+-   to: line_user_id
++   to:
++     - user id 1
++     - user id 2
 ```
 
 Example configuration with image message:
@@ -115,7 +132,7 @@ pipeline:
     channel_secret: xxxxxxxxxx
     channel_token: xxxxxxxxxx
     to: line_user_id
-+   message: |
++   template: |
 +     {{ #success build.status }}
 +       build {{ build.number }} succeeded. Good job.
 +     {{ else }}
