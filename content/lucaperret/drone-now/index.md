@@ -29,17 +29,6 @@ pipeline:
 +   alias: my-deployment-alias
 ```
 
-Example deploying [Git repositories](https://zeit.co/docs/features/repositories):
-
-```diff
-pipeline:
-  now:
-    image: lucap/drone-now
-    token: xxxxx
--   alias: my-deployment-alias
-+   git_repository: username/repository
-```
-
 Example configuration with custom [Path Aliases](https://zeit.co/docs/features/path-aliases):
 
 ```diff
@@ -47,7 +36,7 @@ pipeline:
   now:
     image: lucap/drone-now
     token: xxxxx
--   git_repository: username/repository
+-   alias: my-deployment-alias
 +   rules_domain: example.com
 +   rules_file: rules.json
 ```
@@ -100,9 +89,6 @@ name
 
 alias
 : Target Now.sh subdomain or domain
-
-git_repository
-: Git repository of your choice
 
 rules_domain
 : Your domain
