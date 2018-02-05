@@ -184,3 +184,6 @@ auto_tag=false
 
 auto_tag_suffix
 : generate tag names with this suffix
+
+debug, launch_debug
+: launch the daemon in verbose debug mode; warning: this will print credentials and parameters passed to the daemon
