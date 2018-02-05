@@ -1,4 +1,4 @@
----
+f---
 date: 2016-01-01T00:00:00+00:00
 title: Docker
 author: drone-plugins
@@ -186,4 +186,4 @@ auto_tag_suffix
 : generate tag names with this suffix
 
 debug, launch_debug
-: launch the daemon in verbose debug mode; warning: this will print credentials and parameters passed to the daemon
+: launch the docker daemon in verbose debug mode
