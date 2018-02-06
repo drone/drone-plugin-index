@@ -14,9 +14,8 @@ The FTPS plugin can be used to publish artifiacts over FTP(S). The below pipelin
 pipeline:
   deploy:
     image: cschlosser/drone-ftps
-    username: drone
     hostname: example.com:21
-    secrets: [ ftp_password ]
+    secrets: [ ftp_username, ftp_password ]
 ```
 
 Example configuration using secure flag:
@@ -25,9 +24,8 @@ Example configuration using secure flag:
 pipeline:
   deploy:
     image: cschlosser/drone-ftps
-    username: drone
     hostname: example.com:21
-    secrets: [ ftp_password ]
+    secrets: [ ftp_username, ftp_password ]
 +   secure: true
 ```
 
@@ -37,9 +35,8 @@ Example configuration using dest_dir to specify where to put the files on the re
 pipeline:
   deploy:
     image: cschlosser/drone-ftps
-    username: drone
     hostname: example.com:21
-    secrets: [ ftp_password ]
+    secrets: [ ftp_username, ftp_password ]
     secure: true
 +   dest_dir: /var/www/mysite
 ```
@@ -50,9 +47,8 @@ Example configuration using src_dir to upload only the static site generated:
 pipeline:
   deploy:
     image: cschlosser/drone-ftps
-    username: drone
     hostname: example.com:21
-    secrets: [ ftp_password ]
+    secrets: [ ftp_username, ftp_password ]
     secure: true
     dest_dir: /var/www/mysite
 +   src_dir: /mysite/static
@@ -64,9 +60,8 @@ Example configuration using exclude to prevent dotfiles from getting uploaded:
 pipeline:
   deploy:
     image: cschlosser/drone-ftps
-    username: drone
     hostname: example.com:21
-    secrets: [ ftp_password ]
+    secrets: [ ftp_username, ftp_password ]
     secure: true
     dest_dir: /var/www/mysite
     src_dir: /mysite/static
@@ -82,9 +77,8 @@ Example configuration using include to only upload HTML, CSS and JS files:
 pipeline:
   deploy:
     image: cschlosser/drone-ftps
-    username: drone
     hostname: example.com:21
-    secrets: [ ftp_password ]
+    secrets: [ ftp_username, ftp_password ]
     secure: true
     dest_dir: /var/www/mysite
     src_dir: /mysite/stati
@@ -103,10 +97,10 @@ pipeline:
 FTP_PASSWORD
 : password used to login to the FTP server with the specified user
 
-# Parameter Reference
+FTP_USERNAME
+: Username used to login to the FTP server
 
-username
-: FTP username
+# Parameter Reference
 
 hostname
 : FTP host including the port
