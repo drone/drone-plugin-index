@@ -9,7 +9,7 @@ image: quay.io/honestbee/rds-snapper
 
 The rds-snapper plugin clean up specific RDS instance's snapshots, keep specified number of copies and create new snapshot. The below pipeline configuration demonstrates simple usage:
 
-Simple form which does it all (Clear old snapshots & create new one):
+Simple form which does it all (Clear old snapshots, keep only specific numbers & create new one):
 
 ```yaml
 pipeline:
@@ -17,10 +17,10 @@ pipeline:
     image: quay.io/honestbee/rds-snapper
     pull: true
     secrets: [ aws_access_key_id, aws_secret_access_key ]
-    action: "maintain"
+    action: "create"
     dbname: "<db-name>"
     suffix: "<snapshot-name-suffix>"
-    limit: <number-to-keep>
+    keep: <numbers-to-keep>
 ```
 
 Only clear old snapshots:
@@ -30,35 +30,21 @@ pipeline:
   rds-snapper:
     image: quay.io/honestbee/rds-snapper
     pull: true
-    secrets: [ aws_access_key_id, aws_secret_access_key ]
+    secrets: [ aws_access_key_id, aws_secret_access_key, aws_region ]
 +    action: "clear"
     dbname: "<db-name>"
 -    suffix: "<snapshot-name-suffix>"
-    limit: <number-to-keep>
+    keep: <numbers-to-keep>
 ```
 
-Only create new snapshot:
+Export snapshots list to stdout (print all of dbname is not specified:
 
 ```diff
 pipeline:
   rds-snapper:
     image: quay.io/honestbee/rds-snapper
     pull: true
-    secrets: [ aws_access_key_id, aws_secret_access_key ]
-+    action: "create"
-    dbname: "<db-name>"
-    suffix: "<snapshot-name-suffix>"
--    limit: <number-to-keep>
-```
-
-Export snapshots list to stdout
-
-```diff
-pipeline:
-  rds-snapper:
-    image: quay.io/honestbee/rds-snapper
-    pull: true
-    secrets: [ aws_access_key_id, aws_secret_access_key ]
+    secrets: [ aws_access_key_id, aws_secret_access_key, aws_region ]
 +    action: "export"
 +/-    dbname: "<db-name>"
 ```
@@ -66,7 +52,7 @@ pipeline:
 # Parameter Reference
 
 action
-: choose which features to execute `(clear|maintain|create|export)` (required)
+: choose which features to execute `(clear|create|export)` (required)
 
 aws_access_key
 : amazon key (optional)
@@ -77,7 +63,7 @@ aws_secret_key
 aws_region
 : bucket region (`us-east-1`, `eu-west-1`, etc)
 
-limit
+keep
 : number of snapshot to keep (optional, `5` by default)
 
 dbname
@@ -89,7 +75,7 @@ suffix
 # Secret Reference
 
 action
-: choose which features to execute `(clear|maintain|create|export)` (required)
+: choose which features to execute `(clear|create|export)` (required)
 
 aws_access_key_id
 : amazon key (optional)
@@ -100,7 +86,7 @@ aws_secret_access_key
 aws_region
 : bucket region (`us-east-1`, `eu-west-1`, etc)
 
-limit
+keep
 : number of snapshot to keep (optional, `5` by default)
 
 dbname
