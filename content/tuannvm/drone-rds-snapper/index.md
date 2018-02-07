@@ -3,7 +3,7 @@ date: 2018-01-06T00:00:00+00:00
 title:
 author: tuannvm
 tags: [ amazon, aws, rds, snapshot ]
-repo: honestbee/devops-tools/rds-snapper
+repo: https://github.com/honestbee/devops-tools/tree/master/rds-snapper
 image: quay.io/honestbee/rds-snapper
 ---
 
