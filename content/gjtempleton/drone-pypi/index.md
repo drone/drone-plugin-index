@@ -23,7 +23,7 @@ pipeline:
 This block will execute the following command where repo corresponds to the specified credentials:
 
 ```
-python3 testdata/setup.py sdist upload -r repo
+python3 setup.py sdist upload -r repo
 ```
 
 You can also specify the distribution types you want to upload, as well as the repository URL and relative path of the setup python file.
