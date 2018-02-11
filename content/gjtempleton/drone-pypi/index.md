@@ -20,7 +20,7 @@ pipeline:
         password: secret
 ```
 
-This block will execute the following command where repo corresponds to the specified credentials:
+This block will first generate the relevant .pypirc file with the provided details generating a _repo_ block, then execute the following command:
 
 ```
 python3 setup.py sdist upload -r repo
