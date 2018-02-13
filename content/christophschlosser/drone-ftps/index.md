@@ -18,7 +18,9 @@ pipeline:
     secrets: [ ftp_username, ftp_password ]
 ```
 
-Example configuration using secure flag:
+The default configuration is SSL encryption and strong SSL validation (FTPS).
+Some FTP server have SSL encryption, but may be misconfigured and the transfer will fails due the certificat validation.. 
+In this case the validation may be suppressed:
 
 ```diff
 pipeline:
@@ -26,7 +28,18 @@ pipeline:
     image: cschlosser/drone-ftps
     hostname: example.com:21
     secrets: [ ftp_username, ftp_password ]
-+   secure: true
++   verify: false
+```
+
+The SSL encryption mey be disableb, if the FTP server not supports SSL.
+
+```diff
+pipeline:
+  deploy:
+    image: cschlosser/drone-ftps
+    hostname: example.com:21
+    secrets: [ ftp_username, ftp_password ]
++   secure: false
 ```
 
 Example configuration using dest_dir to specify where to put the files on the remote server:
