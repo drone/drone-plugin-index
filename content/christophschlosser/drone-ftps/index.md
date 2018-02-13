@@ -31,7 +31,7 @@ pipeline:
 +   verify: false
 ```
 
-The SSL encryption mey be disableb, if the FTP server not supports SSL.
+The SSL encryption mey be disabled, if the FTP server not supports SSL.
 
 ```diff
 pipeline:
@@ -117,6 +117,9 @@ FTP_USERNAME
 
 hostname
 : FTP host including the port
+
+verify
+: if set to true the SSL certificate validation is enforced, otherwise no validation (default true)
 
 secure
 : if set to true FTPS is enforced, otherwise plain FTP is used (default true)
