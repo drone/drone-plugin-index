@@ -19,8 +19,9 @@ pipeline:
 ```
 
 The default configuration is SSL encryption and strong SSL validation (FTPS).
-Some FTP server have SSL encryption, but may be misconfigured and the transfer will fails due the certificat validation.. 
-In this case the validation may be suppressed:
+Some FTP server have SSL encryption, but may be misconfigured and transfer will fail due to the certificate validation.
+In this case the validation may be skipped:
+
 
 ```diff
 pipeline:
@@ -31,7 +32,7 @@ pipeline:
 +   verify: false
 ```
 
-The SSL encryption mey be disabled, if the FTP server not supports SSL.
+The SSL encryption may be disabled, if the FTP server does not support SSL:
 
 ```diff
 pipeline:
