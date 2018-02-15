@@ -69,3 +69,9 @@ repositories
 
 fork
 : trigger new build numbers if true, else rebuild
+
+wait
+: wait for any currently running builds to finish
+
+timeout
+: how long to wait on any currently running builds
