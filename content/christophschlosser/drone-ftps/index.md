@@ -18,6 +18,19 @@ pipeline:
     secrets: [ ftp_username, ftp_password ]
 ```
 
+The default ```chmod``` operation on every file transferred may be invalid if ftp user is not permitted.
+To skip ```chmod``` after file transferred:
+
+
+```diff
+pipeline:
+  deploy:
+    image: cschlosser/drone-ftps
+    hostname: example.com:21
+    secrets: [ ftp_username, ftp_password ]
++   chmod: false
+```
+
 The default configuration is SSL encryption and strong SSL validation (FTPS).
 Some FTP server have SSL encryption, but may be misconfigured and transfer will fail due to the certificate validation.
 In this case the validation may be skipped:
@@ -118,6 +131,9 @@ FTP_USERNAME
 
 hostname
 : FTP host including the port
+
+chmod
+: if set to true ```chmod``` would be executed after file transferred, otherwise no ```chmod``` (default true)
 
 verify
 : if set to true the SSL certificate validation is enforced, otherwise no validation (default true)
