@@ -17,6 +17,16 @@ pipeline:
     hostname: example.com:21
     secrets: [ ftp_username, ftp_password ]
 ```
+To clean destination directory before file transfer:
+
+```diff
+pipeline:
+  deploy:
+    image: cschlosser/drone-ftps
+    hostname: example.com:21
+    secrets: [ ftp_username, ftp_password ]
++   clean_dir: true
+```
 
 The default ```chmod``` operation on every file transferred may be invalid if ftp user is not permitted.
 To skip ```chmod``` after file transferred:
@@ -131,6 +141,9 @@ FTP_USERNAME
 
 hostname
 : FTP host including the port
+
+clean_dir
+: if set to true destination directory would be cleaned before file transfer.
 
 chmod
 : if set to true ```chmod``` would be executed after file transferred, otherwise no ```chmod``` (default true)
