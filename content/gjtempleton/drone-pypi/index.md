@@ -29,15 +29,15 @@ python3 setup.py sdist upload -r repo
 You can also specify the distribution types you want to upload, as well as the repository URL and relative path of the setup python file.
 ```diff
 pipeline:
-    pypi_publish:
-        image: gjtempleton/drone-pypi
-        username: guido
-        password: secret
-+       repository: https://your-private-pypi.com/pypi
-+       distributions:
-+       - sdist
-+       - bdist_wheel
-+       setupfile: testdata/setup.py
+  pypi_publish:
+    image: gjtempleton/drone-pypi
+    username: guido
+    password: secret
++   repository: https://your-private-pypi.com/pypi
++   distributions:
++   - sdist
++   - bdist_wheel
++   setupfile: testdata/setup.py
 ```
 
 # Parameter Reference
