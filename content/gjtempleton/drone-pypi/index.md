@@ -14,10 +14,10 @@ Basic example:
 
 ```yaml
 pipeline:
-    pypi_publish:
-        image: gjtempleton/drone-pypi
-        username: guido
-        password: secret
+  pypi_publish:
+    image: gjtempleton/drone-pypi
+    username: guido
+    password: secret
 ```
 
 This block will first generate the relevant .pypirc file with the provided details generating a _repo_ block, then execute the following command:
