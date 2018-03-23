@@ -1,15 +1,15 @@
 ---
 date: 2018-01-06T00:00:00+00:00
-title:
+title: Amazon RDS Snapper
 author: tuannvm
 tags: [ amazon, aws, rds, snapshot ]
 repo: https://github.com/honestbee/devops-tools/tree/master/rds-snapper
 image: quay.io/honestbee/rds-snapper
 ---
 
-The rds-snapper plugin clean up specific RDS instance's snapshots, keep specified number of copies and create new snapshot. The below pipeline configuration demonstrates simple usage:
+The rds-snapper plugin cleans up specific RDS instance's snapshots, keeps specified number of copies and creates new snapshots. The below pipeline configuration demonstrates simple usage:
 
-Simple form which does it all (Clear old snapshots, keep only specific numbers & create new one):
+Simple form which does it all (Clear old snapshots, keep only specific numbers & create a new one):
 
 ```yaml
 pipeline:
