@@ -14,21 +14,56 @@ The FTPS plugin can be used to publish artifiacts over FTP(S). The below pipelin
 pipeline:
   deploy:
     image: cschlosser/drone-ftps
-    username: drone
     hostname: example.com:21
-    secrets: [ ftp_password ]
+    secrets: [ ftp_username, ftp_password ]
 ```
-
-Example configuration using secure flag:
+To clean destination directory before file transfer:
 
 ```diff
 pipeline:
   deploy:
     image: cschlosser/drone-ftps
-    username: drone
     hostname: example.com:21
-    secrets: [ ftp_password ]
-+   secure: true
+    secrets: [ ftp_username, ftp_password ]
++   clean_dir: true
+```
+
+The default ```chmod``` operation on every file transferred may be invalid if ftp user is not permitted.
+To skip ```chmod``` after file transferred:
+
+
+```diff
+pipeline:
+  deploy:
+    image: cschlosser/drone-ftps
+    hostname: example.com:21
+    secrets: [ ftp_username, ftp_password ]
++   chmod: false
+```
+
+The default configuration is SSL encryption and strong SSL validation (FTPS).
+Some FTP server have SSL encryption, but may be misconfigured and transfer will fail due to the certificate validation.
+In this case the validation may be skipped:
+
+
+```diff
+pipeline:
+  deploy:
+    image: cschlosser/drone-ftps
+    hostname: example.com:21
+    secrets: [ ftp_username, ftp_password ]
++   verify: false
+```
+
+The SSL encryption may be disabled, if the FTP server does not support SSL:
+
+```diff
+pipeline:
+  deploy:
+    image: cschlosser/drone-ftps
+    hostname: example.com:21
+    secrets: [ ftp_username, ftp_password ]
++   secure: false
 ```
 
 Example configuration using dest_dir to specify where to put the files on the remote server:
@@ -37,9 +72,8 @@ Example configuration using dest_dir to specify where to put the files on the re
 pipeline:
   deploy:
     image: cschlosser/drone-ftps
-    username: drone
     hostname: example.com:21
-    secrets: [ ftp_password ]
+    secrets: [ ftp_username, ftp_password ]
     secure: true
 +   dest_dir: /var/www/mysite
 ```
@@ -50,9 +84,8 @@ Example configuration using src_dir to upload only the static site generated:
 pipeline:
   deploy:
     image: cschlosser/drone-ftps
-    username: drone
     hostname: example.com:21
-    secrets: [ ftp_password ]
+    secrets: [ ftp_username, ftp_password ]
     secure: true
     dest_dir: /var/www/mysite
 +   src_dir: /mysite/static
@@ -64,9 +97,8 @@ Example configuration using exclude to prevent dotfiles from getting uploaded:
 pipeline:
   deploy:
     image: cschlosser/drone-ftps
-    username: drone
     hostname: example.com:21
-    secrets: [ ftp_password ]
+    secrets: [ ftp_username, ftp_password ]
     secure: true
     dest_dir: /var/www/mysite
     src_dir: /mysite/static
@@ -82,9 +114,8 @@ Example configuration using include to only upload HTML, CSS and JS files:
 pipeline:
   deploy:
     image: cschlosser/drone-ftps
-    username: drone
     hostname: example.com:21
-    secrets: [ ftp_password ]
+    secrets: [ ftp_username, ftp_password ]
     secure: true
     dest_dir: /var/www/mysite
     src_dir: /mysite/stati
@@ -103,13 +134,22 @@ pipeline:
 FTP_PASSWORD
 : password used to login to the FTP server with the specified user
 
-# Parameter Reference
+FTP_USERNAME
+: Username used to login to the FTP server
 
-username
-: FTP username
+# Parameter Reference
 
 hostname
 : FTP host including the port
+
+clean_dir
+: if set to true destination directory would be cleaned before file transfer.
+
+chmod
+: if set to true ```chmod``` would be executed after file transferred, otherwise no ```chmod``` (default true)
+
+verify
+: if set to true the SSL certificate validation is enforced, otherwise no validation (default true)
 
 secure
 : if set to true FTPS is enforced, otherwise plain FTP is used (default true)
