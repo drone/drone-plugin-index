@@ -1,0 +1,3 @@
+- id: page_meta
+  translation: |
+    ¿Hay algún error en esta página? Por favor, [háganoslo saber](https://github.com/drone/drone-plugin-index) o edite [esta página](https://github.com/drone/drone-plugin-index/blob/master/content/{{.Path}}).
