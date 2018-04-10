@@ -1,3 +1,4 @@
 - id: page_meta
   translation: |
+    Is there a mistake on this page?
     Please [let us know](https://github.com/drone/drone-plugin-index) or edit [this page](https://github.com/drone/drone-plugin-index/blob/master/content/{{.Path}}).
