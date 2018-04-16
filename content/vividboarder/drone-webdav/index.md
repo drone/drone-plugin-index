@@ -18,21 +18,35 @@ pipeline:
     image: vividboarder/drone-webdav
     file: com.vividboarder.otbeta/build/outputs/apk/com.vividboarder.otbeta-debug.apk
     destination: https://my.nextcloud.com/remote.php/dav/files/vividboarder/Android/Apks/
-    user: myusername
+    username: myusername
     password: mypassword
 ```
 
 You probably don't want to check your credentials into your repo, so you may use secrets for this:
 
-```yaml
+```diff
 pipeline:
   upload_debug:
     image: vividboarder/drone-webdav
     file: com.vividboarder.otbeta/build/outputs/apk/com.vividboarder.otbeta-debug.apk
     destination: https://my.nextcloud.com/remote.php/dav/files/vividboarder/Android/Apks/
-    secrets:
-      - source: WEBDAV_USER
-        target: PLUGIN_USERNAME
-      - source: WEBDAV_PASSWORD
-        target: PLUGIN_PASSWORD
+-   username: myusername
+-   password: mypassword
++   secrets: [webdav_username, webdav_password]
 ```
+
+# Secret Reference
+
+webdav_username, username
+: webdav server username
+
+webdav_password, password
+: webdav server password
+
+# Parameter Reference
+
+file
+: location of the file to upload
+
+destination
+: directory to copy the file to
