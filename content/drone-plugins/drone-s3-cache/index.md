@@ -153,28 +153,34 @@ secret_key
 : amazon secret key (optional)
 
 restore
-: restore the build environment from cache
+: mode to restore the build environment from cache
 
 rebuild
-: rebuild the cache from the build environemnt and specified mounts
+: mode to rebuild the cache from the build environment and specified `mount`s
 
 flush
-: flush the cache of old cache items (please be sure to set this so we don't waste storage)
+: mode to flush the cache of old cache items (please be sure to set this so we don't waste storage)
+
+flush_age
+: flush cache files older then # days, defaults to 30 (optional)
 
 mount
-: file/directory locations to build your cache from
+: list of files/directories to cache
 
 debug
-: enabling more logging for debugging
+: enabling more logging for debugging, defaults to `false` (optional)
 
 filename
 : filename for the cache (optional)
 
+root
+: root path prefix for all cache files, defaults to `/` (optional)
+
 path
-: path to store the cache file (optional)
+: path to store the cache file, defaults to `/<owner>/<repo>/<branch>/` (optional)
 
 fallback_path
-: fallback path for the cache file (optional)
+: fallback path for the cache file, defaults to `/<owner>/<repo>/master/` (optional)
 
-flush_age
-: flush cache files older then # days (optional)
+flush_path
+: path to search for flushable cache files, defaults to `/<owner>/<repo>/` (optional)
