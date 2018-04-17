@@ -36,6 +36,18 @@ pipeline:
 +     - user id 2
 ```
 
+Example to use drone secret
+
+```diff
+pipeline:
+  line:
+    image: appleboy/drone-line
+-   channel_secret: xxxxxxxxxx
+-   channel_token: xxxxxxxxxx
++   secrets: [ line_channel_secret, line_channel_token ]
+    to: line_user_id
+```
+
 Example configuration with image message:
 
 ```diff
@@ -110,19 +122,6 @@ pipeline:
 +     - title2::address2::latitude2::longitude2
 ```
 
-Example configuration for success and failure messages:
-
-```diff
-pipeline:
-  line:
-    image: appleboy/drone-line
-    channel_secret: xxxxxxxxxx
-    channel_token: xxxxxxxxxx
-    to: line_user_id
-+   when:
-+     status: [ success, failure ]
-```
-
 Example configuration with a custom message template:
 
 ```diff
@@ -132,21 +131,23 @@ pipeline:
     channel_secret: xxxxxxxxxx
     channel_token: xxxxxxxxxx
     to: line_user_id
-+   message: |
-+     {{ #success build.status }}
-+       build {{ build.number }} succeeded. Good job.
-+     {{ else }}
-+       build {{ build.number }} failed. Fix me please.
-+     {{ /success }}
++   message: >
++     {{#success build.status}}
++       build {{build.number}} succeeded. Good job.
++     {{else}}
++       build {{build.number}} failed. Fix me please.
++     {{/success}}
 ```
 
-# Parameter Reference
+# Secret Reference
 
 channel_secret
 : line channel secret from [line developer center](https://developers.line.me)
 
 channel_token
 : line channel token from [line developer center](https://developers.line.me)
+
+# Parameter Reference
 
 to
 : line user id
@@ -168,73 +169,3 @@ locations
 
 stickers
 : a vaild sticker format
-
-# Template Reference
-
-repo.owner
-: repository owner
-
-repo.name
-: repository name
-
-build.status
-: build status type enumeration, either `success` or `failure`
-
-build.event
-: build event type enumeration, one of `push`, `pull_request`, `tag`, `deployment`
-
-build.number
-: build number
-
-build.commit
-: git sha for current commit
-
-build.branch
-: git branch for current commit
-
-build.tag
-: git tag for current commit
-
-build.ref
-: git ref for current commit
-
-build.author
-: git author for current commit
-
-build.link
-: link the the build results in drone
-
-build.started
-: unix timestamp for build started
-
-build.finished
-: unix timestamp for build finished
-
-# Template Function Reference
-
-uppercasefirst
-: converts the first letter of a string to uppercase
-
-uppercase
-: converts a string to uppercase
-
-lowercase
-: converts a string to lowercase. Example `{{lowercase build.author}}`
-
-datetime
-: converts a unix timestamp to a date time string. Example `{{datetime build.started}}`
-
-success
-: returns true if the build is successful
-
-failure
-: returns true if the build is failed
-
-truncate
-: returns a truncated string to n characters. Example `{{truncate build.sha 8}}`
-
-urlencode
-: returns a url encoded string
-
-since
-: returns a duration string between now and the given timestamp. Example `{{since build.started}}`
