@@ -174,13 +174,13 @@ filename
 : filename for the cache (optional)
 
 root
-: root path prefix for all cache files, defaults to `/` (optional)
+: root path prefix for all cache default paths (`path`, `fallback_path`, and `flush_path`), defaults to `/` (optional)
 
 path
-: path to store the cache file, defaults to `/<owner>/<repo>/<branch>/` (optional)
+: path to store the cache file, defaults to `[root]/<owner>/<repo>/<branch>/` (optional)
 
 fallback_path
-: fallback path for the cache file, defaults to `/<owner>/<repo>/master/` (optional)
+: fallback path for the cache file, defaults to `[root]/<owner>/<repo>/<branch>/` (optional)
 
 flush_path
-: path to search for flushable cache files, defaults to `/<owner>/<repo>/` (optional)
+: path to search for flushable cache files, defaults to `[root]/<owner>/<repo>/` (optional)
