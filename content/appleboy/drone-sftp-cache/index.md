@@ -2,7 +2,7 @@
 date: 2017-04-11T00:00:00+00:00
 title: SFTP Cache
 author: appleboy
-tags: [ publish, ssh, sftp, cache ]
+tags: [ cache, sftp, ssh ]
 repo: appleboy/drone-sftp-cache
 logo: term.svg
 image: appleboy/drone-sftp-cache
