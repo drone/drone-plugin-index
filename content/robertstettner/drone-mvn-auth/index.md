@@ -2,7 +2,7 @@
 date: 2017-07-21T00:00:00+00:00
 title: Maven Auth
 author: robertstettner
-tags: [ maven, mvn, authentication ]
+tags: [ infrastructure, maven, mvn, authentication ]
 repo: robertstettner/drone-mvn-auth
 logo: maven.svg
 image: robertstettner/drone-mvn-auth
