@@ -2,7 +2,7 @@
 date: 2017-07-27T00:00:00+00:00
 title: NPM Auth
 author: robertstettner
-tags: [ npm, authenticate, node ]
+tags: [ authentication, npm, node ]
 repo: robertstettner/drone-npm-auth
 logo: npm2.svg
 image: robertstettner/drone-npm-auth
