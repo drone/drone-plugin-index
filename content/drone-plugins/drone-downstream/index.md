@@ -3,8 +3,8 @@ date: 2016-01-01T00:00:00+00:00
 title: Downstream Build
 author: drone-plugins
 tags: [ infrastructure, trigger, drone ]
-repo: drone-plugins/drone-downstream
 logo: drone.svg
+repo: drone-plugins/drone-downstream
 image: plugins/downstream
 ---
 

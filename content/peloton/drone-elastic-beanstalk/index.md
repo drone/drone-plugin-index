@@ -3,8 +3,8 @@ date: 2016-01-13T00:00:00+00:00
 title: AWS Elastic Beanstalk
 author: josmo
 tags: [ deploy, amazon, aws, elastic beanstalk ]
-repo: josmo/drone-elastic-beanstalk
 logo: amazon_beanstalk.svg
+repo: josmo/drone-elastic-beanstalk
 image: peloton/drone-elastic-beanstalk
 ---
 

@@ -3,8 +3,8 @@ date: 2016-01-18T00:00:00+00:00
 title: AWS ECS
 author: josmo
 tags: [ deploy, amazon, aws, ecs, docker ]
-repo: josmo/drone-ecs
 logo: amazon_ecs.svg
+repo: josmo/drone-ecs
 image: peloton/drone-ecs
 ---
 

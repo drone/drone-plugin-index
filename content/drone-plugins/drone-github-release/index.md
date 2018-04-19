@@ -3,8 +3,8 @@ date: 2016-01-01T00:00:00+00:00
 title: Github Release
 author: drone-plugins
 tags: [ publish, github ]
-repo: drone-plugins/drone-github-release
 logo: github.svg
+repo: drone-plugins/drone-github-release
 image: plugins/github-release
 ---
 

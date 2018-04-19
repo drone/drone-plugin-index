@@ -3,8 +3,8 @@ date: 2017-10-22T08:00:35+01:00
 title: AWS Lambda
 author: devops-israel
 tags: [ deploy, amazon, aws, lambda ]
-repo: omerxx/drone-lambda-plugin
 logo: amazon_lambda.svg
+repo: omerxx/drone-lambda-plugin
 image: omerxx/drone-lambda-plugin
 ---
 

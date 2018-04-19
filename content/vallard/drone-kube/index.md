@@ -3,8 +3,8 @@ date: 2016-01-01T00:00:00+00:00
 title: Drone Kube
 author: vallard
 tags: [ deploy, kubernetes, docker ]
-repo: vallard/drone-kube
 logo: kubernetes.svg
+repo: vallard/drone-kube
 image: vallard/drone-kube
 ---
 

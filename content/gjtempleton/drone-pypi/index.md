@@ -3,8 +3,8 @@ date: 2018-02-11T00:00:00+00:00
 title: PyPI
 author: gjtempleton
 tags: [ publish, python, pypi ]
-repo: gjtempleton/drone-pypi
 logo: pypi.svg
+repo: gjtempleton/drone-pypi
 image: gjtempleton/drone-pypi
 ---
 

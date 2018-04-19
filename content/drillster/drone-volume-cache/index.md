@@ -3,8 +3,8 @@ date: 2016-12-15T15:57:35-05:00
 title: Volume Cache
 author: drillster
 tags: [ cache ]
-repo: drillster/drone-volume-cache
 logo: volume_cache.svg
+repo: drillster/drone-volume-cache
 image: drillster/drone-volume-cache
 ---
 

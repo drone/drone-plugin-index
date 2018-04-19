@@ -3,8 +3,8 @@ date: 2016-01-01T00:00:00+00:00
 title: Terraform
 author: jmccann
 tags: [ infrastructure, build tool, terraform ]
-repo: jmccann/drone-terraform
 logo: terraform.svg
+repo: jmccann/drone-terraform
 image: jmccann/drone-terraform
 ---
 

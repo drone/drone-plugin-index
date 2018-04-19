@@ -3,8 +3,8 @@ date: 2016-01-01T00:00:00+00:00
 title: AWS ECR
 author: drone-plugins
 tags: [ publish, amazon, aws, ecr, docker ]
-repo: drone-plugins/drone-ecr
 logo: amazon_ecr.svg
+repo: drone-plugins/drone-ecr
 image: plugins/ecr
 ---
 

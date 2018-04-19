@@ -3,8 +3,8 @@ date: 2018-04-19T00:00:00+00:00
 title: Slack Blame
 author: drone-plugins
 tags: [ notifications, chat ]
-repo: drone-plugins/drone-slack-blame
 logo: slack.svg
+repo: drone-plugins/drone-slack-blame
 image: plugins/slack-blame
 ---
 

@@ -3,8 +3,8 @@ date: 2018-02-15T00:00:00+00:00
 title: Netlify
 author: lucaperret
 tags: [ deploy, netlify ]
-repo: lucaperret/drone-netlify
 logo: netlify.svg
+repo: lucaperret/drone-netlify
 image: lucap/drone-netlify
 ---
 

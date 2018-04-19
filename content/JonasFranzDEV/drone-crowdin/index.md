@@ -3,8 +3,8 @@ date: 2017-09-23T00:00:00+00:00
 title: Crowdin
 author: JonasFranzDEV
 tags: [ publish, translation ]
-repo: JonasFranzDEV/drone-crowdin
 logo: crowdin.svg
+repo: JonasFranzDEV/drone-crowdin
 image: jonasfranz/crowdin
 ---
 

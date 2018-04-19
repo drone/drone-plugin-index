@@ -3,8 +3,8 @@ date: 2018-04-19T00:00:00+00:00
 title: Matrix
 author: drone-plugins
 tags: [ notifications, chat, matrix ]
-repo: drone-plugins/drone-matrix
 logo: matrix.svg
+repo: drone-plugins/drone-matrix
 image: plugins/matrix
 ---
 

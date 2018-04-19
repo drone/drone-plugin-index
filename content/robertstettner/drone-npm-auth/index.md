@@ -3,8 +3,8 @@ date: 2017-07-27T00:00:00+00:00
 title: NPM Auth
 author: robertstettner
 tags: [ authentication, npm, node ]
-repo: robertstettner/drone-npm-auth
 logo: npm2.svg
+repo: robertstettner/drone-npm-auth
 image: robertstettner/drone-npm-auth
 ---
 This plugin is used to generate an `.npmrc` file locally to authenticate against any public/private NPM repository. The below pipeline configuration demonstrates simple usage:

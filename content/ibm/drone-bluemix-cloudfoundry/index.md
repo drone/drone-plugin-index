@@ -3,8 +3,8 @@ date: 2017-03-15T11:27:13-04:00
 title: Bluemix Cloud Foundry
 author: jcantosz
 tags: [ deploy, publish, bluemix, cloud foundry ]
-repo: ibmclouddevops/drone-bluemix-cloudfoundry
 logo: bluemix.svg
+repo: ibmclouddevops/drone-bluemix-cloudfoundry
 image: ibmclouddevops/drone-bluemix-cloudfoundry
 ---
 

@@ -3,8 +3,8 @@ date: 2016-01-01T00:00:00+00:00
 title: Gitter
 author: drone-plugins
 tags: [ notifications, chat ]
-repo: drone-plugins/drone-gitter
 logo: gitter.svg
+repo: drone-plugins/drone-gitter
 image: plugins/gitter
 ---
 

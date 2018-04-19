@@ -3,8 +3,8 @@ date: 2016-01-01T00:00:00+00:00
 title: Google Container Registry
 author: drone-plugins
 tags: [ publish, google, gcp, gcr, docker ]
-repo: drone-plugins/drone-gcr
 logo: google_gcr.svg
+repo: drone-plugins/drone-gcr
 image: plugins/gcr
 ---
 

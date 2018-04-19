@@ -3,8 +3,8 @@ date: 2017-01-09T14:54:23-07:00
 title: Cloud Foundry
 author: cheslip
 tags: [ deploy, publish, cloud foundry ]
-repo: Comcast/drone-cloudfoundry
 logo: cloudfoundry.svg
+repo: Comcast/drone-cloudfoundry
 image: cheslip/drone-cloudfoundry
 ---
 

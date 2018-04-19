@@ -3,8 +3,8 @@ date: 2016-01-01T00:00:00+00:00
 title: Docker
 author: drone-plugins
 tags: [ publish, docker ]
-repo: drone-plugins/drone-docker
 logo: docker.svg
+repo: drone-plugins/drone-docker
 image: plugins/drone
 ---
 

@@ -3,8 +3,8 @@ date: 2017-01-29T00:00:00+00:00
 title: SSH
 author: appleboy
 tags: [ deploy, publish, ssh ]
-repo: appleboy/drone-ssh
 logo: term.svg
+repo: appleboy/drone-ssh
 image: appleboy/drone-ssh
 ---
 

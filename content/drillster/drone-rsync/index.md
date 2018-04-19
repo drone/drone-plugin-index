@@ -3,8 +3,8 @@ date: 2017-01-02T08:21:35+01:00
 title: rsync
 author: drillster
 tags: [ publish, ssh, rsync ]
-repo: drillster/drone-rsync
 logo: rsync.svg
+repo: drillster/drone-rsync
 image: drillster/drone-rsync
 ---
 

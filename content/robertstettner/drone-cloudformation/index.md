@@ -3,8 +3,8 @@ date: 2017-07-18T00:00:00+00:00
 title: AWS CloudFormation
 author: robertstettner
 tags: [ deploy, amazon, aws, cloudformation ]
-repo: robertstettner/drone-cloudformation
 logo: amazon_cloudformation.svg
+repo: robertstettner/drone-cloudformation
 image: robertstettner/drone-cloudformation
 ---
 The CloudFormation plugin can be used to create/update or delete stacks, and to validate templates. The below pipeline configuration demonstrates simple deployment usage:

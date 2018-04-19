@@ -3,8 +3,8 @@ date: 2017-01-07T00:00:00+00:00
 title: Facebook
 author: appleboy
 tags: [ notifications, chat ]
-repo: appleboy/drone-facebook
 logo: facebook.svg
+repo: appleboy/drone-facebook
 image: appleboy/drone-facebook
 ---
 

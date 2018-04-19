@@ -3,8 +3,8 @@ date: 2017-01-06T18:00:00-06:00
 title: Marathon
 author: dellintosh
 tags: [ deploy, marathon ]
-repo: expansioncap/drone-marathon
 logo: marathon.svg
+repo: expansioncap/drone-marathon
 image: e20co/drone-marathon
 ---
 

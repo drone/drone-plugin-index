@@ -3,8 +3,8 @@ date: 2017-09-02T08:00:35+01:00
 title: AWS ECS Deploy
 author: devops-israel
 tags: [ deploy, amazon, aws, ecs, docker ]
-repo: joshdvir/drone-ecs-deploy
 logo: amazon_ecs.svg
+repo: joshdvir/drone-ecs-deploy
 image: joshdvir/drone-ecs-deploy
 ---
 
