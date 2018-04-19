@@ -1,8 +1,8 @@
 ---
 date: 2017-08-29T00:00:00+00:00
-title: Amazon S3 Sync
+title: AWS S3 Sync
 author: drone-plugins
-tags: [ amazon, aws, s3, storage, sync ]
+tags: [ publish, amazon, aws, s3, storage, sync ]
 repo: drone-plugins/drone-s3-sync
 logo: amazon_s3.svg
 image: plugins/s3-sync

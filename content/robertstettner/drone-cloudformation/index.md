@@ -1,8 +1,8 @@
 ---
 date: 2017-07-18T00:00:00+00:00
-title: Amazon CloudFormation
+title: AWS CloudFormation
 author: robertstettner
-tags: [ cloudformation, aws, amazon ]
+tags: [ deploy, amazon, aws, cloudformation ]
 repo: robertstettner/drone-cloudformation
 logo: amazon_cloudformation.svg
 image: robertstettner/drone-cloudformation

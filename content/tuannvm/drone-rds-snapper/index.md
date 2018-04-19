@@ -1,10 +1,10 @@
 ---
 date: 2018-01-06T00:00:00+00:00
-title: Amazon RDS Snapper
+title: AWS RDS Snapper
 author: tuannvm
 tags: [ amazon, aws, rds, snapshot ]
-logo: amazon_rds.svg
 repo: https://github.com/honestbee/devops-tools/tree/master/rds-snapper
+logo: amazon_rds.svg
 image: quay.io/honestbee/rds-snapper
 ---
 
