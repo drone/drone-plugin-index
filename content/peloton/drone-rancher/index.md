@@ -2,7 +2,7 @@
 date: 2016-01-13T00:00:00+00:00
 title: Rancher
 author: josmo
-tags: [ publish, rancher ]
+tags: [ deploy, rancher, docker ]
 repo: josmo/drone-rancher
 logo: rancher.svg
 image: peloton/drone-rancher

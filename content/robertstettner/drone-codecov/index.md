@@ -2,7 +2,7 @@
 date: 2017-07-19T00:00:00+00:00
 title: Codecov
 author: robertstettner
-tags: [ codecov, test, coverage, reporting ]
+tags: [ publish, codecov, test, coverage, reporting ]
 repo: robertstettner/drone-codecov
 logo: codecov.svg
 image: robertstettner/drone-codecov

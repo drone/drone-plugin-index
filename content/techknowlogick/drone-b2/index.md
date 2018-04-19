@@ -2,7 +2,7 @@
 date: 2017-12-04T00:00:00+00:00
 title: Backblaze B2
 author: techknowlogick
-tags: [ backblaze, b2, storage ]
+tags: [ publish, backblaze, b2, storage ]
 repo: techknowlogick/drone-b2
 logo: backblaze-b2-logo.svg
 image: techknowlogick/drone-b2
