@@ -2,7 +2,7 @@
 date: 2017-10-26T00:00:00+00:00
 title: FTP(S)
 author: christophschlosser
-tags: [ publish, ftp, ftps ]
+tags: [ publish, ftp, ftps, ssh ]
 repo: christophschlosser/drone-ftps
 logo: ftps.svg
 image: cschlosser/drone-ftps
