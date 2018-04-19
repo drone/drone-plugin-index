@@ -1,10 +1,10 @@
 ---
-author: wyattjoh
 date: 2017-04-14T00:00:00Z
-logo: google_gcs.svg
-repo: wyattjoh/drone-gcs
-tags: [ google cloud, gcp, gcs, storage ]
 title: Google Cloud Storage
+author: wyattjoh
+tags: [ publish, google, gcp, gcs, storage ]
+repo: wyattjoh/drone-gcs
+logo: google_gcs.svg
 image: wyattjoh/drone-gcs
 ---
 
