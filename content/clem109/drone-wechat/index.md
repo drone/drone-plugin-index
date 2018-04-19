@@ -2,7 +2,7 @@
 date: 2018-02-19T00:00:00+00:00
 title: Wechat for Work
 author: clem109
-tags: [ notifications, chat ]
+tags: [ notifications, chat, wechat ]
 repo: clem109/drone-wechat
 logo: wechat.svg
 image: clem109/drone-wechat

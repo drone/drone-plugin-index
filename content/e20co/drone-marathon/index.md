@@ -1,11 +1,11 @@
 ---
-author: "dellintosh"
 date: 2017-01-06T18:00:00-06:00
-image: "e20co/drone-marathon"
-repo: "e20co/drone-marathon"
+title: Marathon
+author: dellintosh
 tags: [ publish, marathon ]
+repo: expansioncap/drone-marathon
 logo: marathon.svg
-title: marathon
+image: e20co/drone-marathon
 ---
 
 This plugin can be used to deploy applications to a [Marathon](https://mesosphere.github.io/marathon/) server. The below pipeline configuration demonstrates simple usage:

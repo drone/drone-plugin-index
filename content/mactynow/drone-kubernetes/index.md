@@ -1,8 +1,8 @@
 ---
 date: 2017-01-31T00:00:00+00:00
-title: Drone-Kubernetes
+title: Kubernetes Deployments
 author: mactynow
-tags: [ kubernetes, docker ]
+tags: [ deploy, kubernetes, docker ]
 repo: honestbee/drone-kubernetes
 logo: kubernetes.svg
 image: quay.io/honestbee/drone-kubernetes

@@ -1,6 +1,6 @@
 ---
 date: 2016-01-13T00:00:00+00:00
-title: Google chat
+title: Google Chat
 author: josmo
 tags: [  notifications, chat  ]
 repo: josmo/drone-google-chat
