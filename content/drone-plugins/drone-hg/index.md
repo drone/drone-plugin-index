@@ -2,7 +2,7 @@
 date: 2017-08-15T00:00:00+00:00
 title: Mercurial
 author: drone-plugins
-tags: [ hg, clone ]
+tags: [ clone, hg ]
 repo: drone-plugins/drone-hg
 logo: mercurial.svg
 image: plugins/hg

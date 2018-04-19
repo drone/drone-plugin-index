@@ -2,7 +2,7 @@
 date: 2016-01-01T00:00:00+00:00
 title: Git
 author: drone-plugins
-tags: [ git, clone ]
+tags: [ clone, git ]
 repo: drone-plugins/drone-git
 logo: git.svg
 image: plugins/git
