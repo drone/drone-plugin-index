@@ -1,11 +1,11 @@
 ---
-author: "devops-israel"
 date: 2017-09-02T08:00:35+01:00
-image: "joshdvir/drone-ecs-deploy"
-repo: "joshdvir/drone-ecs-deploy"
-tags: [ publish, aws, ecs ]
+title: AWS ECS Deploy
+author: devops-israel
+tags: [ deploy, amazon, aws, ecs, docker ]
 logo: amazon_ecs.svg
-title: Amazon ECS Deploy
+repo: joshdvir/drone-ecs-deploy
+image: joshdvir/drone-ecs-deploy
 ---
 
 This plugin allows updating an ECS service.

@@ -3,8 +3,8 @@ date: 2017-02-09T00:00:00+00:00
 title: Clair
 author: jmccann
 tags: [ docker, security ]
-repo: jmccann/drone-clair
 logo: clair.svg
+repo: jmccann/drone-clair
 image: jmccann/drone-clair
 ---
 

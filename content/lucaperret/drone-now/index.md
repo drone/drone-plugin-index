@@ -3,8 +3,8 @@ date: 2018-01-24T00:00:00+00:00
 title: Now
 author: lucaperret
 tags: [ deploy, now ]
-repo: lucaperret/drone-now
 logo: now.svg
+repo: lucaperret/drone-now
 image: lucap/drone-now
 ---
 

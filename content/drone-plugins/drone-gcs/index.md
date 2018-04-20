@@ -2,9 +2,9 @@
 date: 2018-04-15T00:00:00+00:00
 title: Google Cloud Storage
 author: drone-plugins
-tags: [ publish, google, storage ]
-repo: drone-plugins/drone-gcs
+tags: [ publish, google, gcp, gcs, storage ]
 logo: google_gcs.svg
+repo: drone-plugins/drone-gcs
 image: plugins/gcs
 ---
 

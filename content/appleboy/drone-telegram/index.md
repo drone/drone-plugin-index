@@ -3,8 +3,8 @@ date: 2017-01-08T00:00:00+00:00
 title: Telegram
 author: appleboy
 tags: [ notifications, chat ]
-repo: appleboy/drone-telegram
 logo: telegram.svg
+repo: appleboy/drone-telegram
 image: appleboy/drone-telegram
 ---
 

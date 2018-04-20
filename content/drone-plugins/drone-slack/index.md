@@ -3,8 +3,8 @@ date: 2016-01-01T00:00:00+00:00
 title: Slack
 author: drone-plugins
 tags: [ notifications, chat ]
-repo: drone-plugins/drone-slack
 logo: slack.svg
+repo: drone-plugins/drone-slack
 image: plugins/slack
 ---
 

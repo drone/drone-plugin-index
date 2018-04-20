@@ -2,9 +2,9 @@
 date: 2018-03-02T00:00:00+00:00
 title: Hugo
 author: cbrgm
-tags: [ hugo, generation, static ]
-repo: cbrgm/drone-hugo
+tags: [ tool, hugo, generation, static ]
 logo: gohugo.svg
+repo: cbrgm/drone-hugo
 image: cbrgm/drone-hugo
 ---
 

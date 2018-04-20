@@ -2,9 +2,9 @@
 date: 2018-04-19T00:00:00+00:00
 title: Webhook
 author: drone-plugins
-tags: [ notifications, webhook, trigger ]
-repo: drone-plugins/drone-webhook
+tags: [ notifications, trigger, webhook ]
 logo: webhook.svg
+repo: drone-plugins/drone-webhook
 image: plugins/webhook
 ---
 

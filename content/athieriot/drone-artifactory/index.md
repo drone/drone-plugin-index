@@ -3,8 +3,8 @@ date: 2017-02-28T00:00:00+00:00
 title: Artifactory
 author: athieriot
 tags: [ publish, artifactory ]
-repo: athieriot/drone-artifactory
 logo: artifactory.svg
+repo: athieriot/drone-artifactory
 image: athieriot/drone-artifactory
 ---
 

@@ -3,8 +3,8 @@ date: 2017-01-06T00:00:00+00:00
 title: Line
 author: appleboy
 tags: [ notifications, chat ]
-repo: appleboy/drone-line
 logo: line.svg
+repo: appleboy/drone-line
 image: appleboy/drone-line
 ---
 

@@ -2,9 +2,9 @@
 date: 2016-01-01T00:00:00+00:00
 title: NPM
 author: donny-dont
-tags: [ publish, node ]
-repo: drone-plugins/drone-npm
+tags: [ publish, npm, node ]
 logo: npm.svg
+repo: drone-plugins/drone-npm
 image: plugins/npm
 ---
 

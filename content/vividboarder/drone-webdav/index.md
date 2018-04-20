@@ -3,8 +3,8 @@ date: 2018-04-11T00:00:00+00:00
 title: WebDAV
 author: vividboarder
 tags: [ deploy, publish ]
-repo: vividboarder/drone-webdav
 logo: term.svg
+repo: vividboarder/drone-webdav
 image: vividboarder/drone-webdav
 ---
 

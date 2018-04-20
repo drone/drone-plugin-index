@@ -3,8 +3,8 @@ date: 2018-01-07T00:00:00+00:00
 title: Wechat
 author: lizheming
 tags: [ notifications, chat, wechat ]
-repo: lizheming/drone-wechat
 logo: wechat.svg
+repo: lizheming/drone-wechat
 image: lizheming/drone-wechat
 ---
 

@@ -2,11 +2,10 @@
 date: 2016-01-01T00:00:00+00:00
 title: Downstream Build
 author: drone-plugins
-tags: [ drone ]
-repo: drone-plugins/drone-downstream
+tags: [ infrastructure, trigger, drone ]
 logo: drone.svg
+repo: drone-plugins/drone-downstream
 image: plugins/downstream
-version: 0.6
 ---
 
 Use this plugin to trigger builds for a list of downstream repositories. This

@@ -1,11 +1,11 @@
 ---
 date: 2017-10-26T00:00:00+00:00
-title: "Publish to FTP(S)"
-author: "christophschlosser"
-tags: [ "publish", "ftp", "ftps" ]
-repo: "christophschlosser/drone-ftps"
-logo: "ftps.svg"
-image: "cschlosser/drone-ftps"
+title: FTP(S)
+author: christophschlosser
+tags: [ publish, ftp, ftps, ssh ]
+logo: ftps.svg
+repo: christophschlosser/drone-ftps
+image: cschlosser/drone-ftps
 ---
 
 The FTPS plugin can be used to publish artifiacts over FTP(S). The below pipeline configuration demonstrates simple usage:

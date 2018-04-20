@@ -3,8 +3,8 @@ date: 2017-01-11T00:00:00+00:00
 title: GTalk
 author: appleboy
 tags: [ notifications, chat ]
-repo: appleboy/drone-gtalk
 logo: gtalk.svg
+repo: appleboy/drone-gtalk
 image: appleboy/drone-gtalk
 ---
 

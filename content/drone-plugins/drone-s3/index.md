@@ -1,10 +1,10 @@
 ---
 date: 2016-01-01T00:00:00+00:00
-title: Amazon S3
+title: AWS S3
 author: drone-plugins
-tags: [ amazon, aws, s3, storage ]
-repo: drone-plugins/drone-s3
+tags: [ publish, amazon, aws, s3, storage ]
 logo: amazon_s3.svg
+repo: drone-plugins/drone-s3
 image: plugins/s3
 ---
 

@@ -1,10 +1,10 @@
 ---
 date: 2017-08-29T00:00:00+00:00
-title: Amazon S3 Cache
+title: AWS S3 Cache
 author: drone-plugins
-tags: [ amazon, aws, s3, cache ]
-repo: drone-plugins/drone-s3-cache
+tags: [ cache, amazon, aws, s3 ]
 logo: amazon_s3.svg
+repo: drone-plugins/drone-s3-cache
 image: plugins/s3-cache
 ---
 
