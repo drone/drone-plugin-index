@@ -51,9 +51,7 @@ pipeline:
     fork: true
 ```
 
-# Secret Reference
-
-This plugins supports sourcing sensitive parameters from the secret store. Example configuration sources the token from the secret store:
+This plugins also supports sourcing sensitive parameters from the secret store. Example configuration sources the token from the secret store:
 
 ```diff
 pipeline:
@@ -67,7 +65,7 @@ pipeline:
 +   secrets: [ drone_token, github_token ]
 ```
 
-# Parameter Reference
+# Secret Reference
 
 drone_token
 : drone server auth token
@@ -75,11 +73,16 @@ drone_token
 drone_server
 : drone server url
 
-github_query
-: Github repo search query
-
 github_token
 : Github authentication token
+
+# Parameter Reference
+
+drone_token
+: drone server auth token
+
+drone_server
+: drone server url
 
 fork
 : trigger new build numbers if true, else rebuild
