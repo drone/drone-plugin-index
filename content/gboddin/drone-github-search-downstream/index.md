@@ -22,7 +22,6 @@ pipeline:
     github_query: "org:drone-plugins topic:drone-plugin"
     drone_server: https://drone.example.com
     drone_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-    fork: true
 ```
 
 Example target specific branches:
@@ -34,7 +33,6 @@ pipeline:
     github_query: "org:drone-plugins topic:drone-plugin"
     drone_server: https://drone.example.com
     drone_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-    fork: true
 +   branch: develop
 ```
 
@@ -48,7 +46,6 @@ pipeline:
 +   github_token: d8e8fca2dc0f896fd7cb4cb0031ba249
     drone_server: https://drone.example.com
     drone_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-    fork: true
 ```
 
 This plugins also supports sourcing sensitive parameters from the secret store. Example configuration sources the token from the secret store:
@@ -61,7 +58,6 @@ pipeline:
 -   github_token: d8e8fca2dc0f896fd7cb4cb0031ba249
     drone_server: https://drone.example.com
 -   drone_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-    fork: true
 +   secrets: [ drone_token, github_token ]
 ```
 
@@ -83,9 +79,6 @@ drone_token
 
 drone_server
 : drone server url
-
-fork
-: trigger new build numbers if true, else rebuild
 
 ignore_missing
 : continue triggering if build is not found
