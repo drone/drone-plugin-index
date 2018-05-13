@@ -16,8 +16,8 @@ pipeline:
     image: plugins/ecr
     access_key: a50d28f4dd477bc184fbd10b376de753
     secret_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
-    repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
-    registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
+    repo: foo/bar
+    registry: <ecr_registry_id>
 ```
 
 Example configuration using multiple tags:
@@ -26,8 +26,8 @@ Example configuration using multiple tags:
 pipeline:
   ecr:
     image: plugins/ecr
-    repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
-    registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
+    repo: foo/bar
+    registry: <ecr_registry_id>
 -   tags: latest
 +   tags:
 +     - latest
@@ -41,8 +41,8 @@ Override the default region:
 publish:
   ecr:
     image: plugins/ecr
-    repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
-    registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
+    repo: foo/bar
+    registry: <ecr_registry_id>
 +   region: us-east-1
 ```
 
@@ -52,8 +52,8 @@ Override the default Dockerfile path:
 publish:
   ecr:
     image: plugins/ecr
-    repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
-    registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
+    repo: foo/bar
+    registry: <ecr_registry_id>
 -   dockerfile: Dockerfile
 +   dockerfile: path/to/Dockerfile
 ```
@@ -64,8 +64,8 @@ Example configuration using build arguments:
 publish:
   ecr:
     image: plugins/ecr
-    repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
-    registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
+    repo: foo/bar
+    registry: <ecr_registry_id>
 +   build_args:
 +     - HTTP_PROXY=http://yourproxy.com
 ```
@@ -78,8 +78,8 @@ pipeline:
     image: plugins/ecr
 -   access_key: a50d28f4dd477bc184fbd10b376de753
 -   secret_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
-    repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
-    registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
+    repo: foo/bar
+    registry: <ecr_registry_id>
 +   secrets: [ ecr_access_key, ecr_secret_key ]
 ```
 
@@ -107,6 +107,9 @@ region
 
 repo
 : repository name for the image
+
+registry
+: The registry id `ecr_registry_id`.dkr.ecr.us-east-1.amazonaws.com
 
 tags
 : repository tag for the image, defaults to `latest`
