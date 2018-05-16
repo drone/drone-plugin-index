@@ -19,6 +19,8 @@ pipeline:
     github_token: d8e8fca2dc0f896fd7cb4cb0031ba249
     action: comment
     message: "Commenting a PR !"
+    when:
+      event: pull_request
 ```
 
 # Close a pull request
@@ -30,6 +32,8 @@ pipeline:
     github_token: d8e8fca2dc0f896fd7cb4cb0031ba249
     action: close
     message: "Closing a PR !"
+    when:
+      event: pull_request
 ```
 
 # Merge a pull request
@@ -43,6 +47,8 @@ pipeline:
     github_token: d8e8fca2dc0f896fd7cb4cb0031ba249
     action: merge
     message: "Merging a PR !"
+    when:
+      event: pull_request
 ```
 
 
