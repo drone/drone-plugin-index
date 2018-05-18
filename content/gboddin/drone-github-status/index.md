@@ -63,7 +63,7 @@ From child build :
     image: gboo/github-status
     secrets: [ github_token ]
     state: success
-    context: drone/subtest/{{ .FullName }}
+    context: drone/subtest/${DRONE_REPO}
     repo_owner: ${DRONE_PARENT_REPO_OWNER}
     repo_name: ${DRONE_PARENT_REPO_NAME}
     commit_id: ${DRONE_PARENT_COMMIT_HASH}
