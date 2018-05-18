@@ -34,6 +34,21 @@ pipeline:
 +     - 1.0
 ```
 
+Example configuration using a `.tags` file (a comma separated list of tags):
+
+```diff
+pipeline:
+  build:
+    image: golang:1.10.0-alpine
+    commands:
+      - [...]
++     - echo -n "5.2.6,5.2.4" > .tags
+  docker:
+    image: plugins/docker
+    repo: foo/bar
+-   tags: latest
+```
+
 Example configuration using build arguments:
 
 ```diff
