@@ -139,6 +139,47 @@ pipeline:
 
 Please note that auto-tagging is intentionally simple and opinionated. We are not accepting pull requests at this time to further customize the logic.
 
+# Multi-stage builds
+
+The Docker plugin allow to stop build at a specific stage defined in `Dockerfile` as described in the [official docs](https://docs.docker.com/develop/develop-images/multistage-build/#name-your-build-stages).
+If the `target` attribute is not defined, the Docker plugin will not stop at any stage and build the full docker image.
+
+Using a `Dockerfile` like:
+
+```
+FROM golang as builder
+WORKSPACE /go/src/github.com/foo/bar
+RUN CGO_ENABLED=0 GOOS=linux go build -o demo main.go
+
+FROM scratch as production
+COPY --from=builder /go/src/github.com/foo/bar/demo .
+CMD ["./demo"]
+
+FROM alpine as debug
+COPY --from=builder /go/src/github.com/foo/bar/demo .
+CMD ["./demo"]
+```
+
+Example configuration that allow build a docker image for production:
+
+```diff
+pipeline:
+  docker:
+    image: plugins/docker
+    repo: foo/bar
++   target: production
+    secrets: [ docker_username, docker_password ]
+```
+and this one will build debug docker image
+```diff
+pipeline:
+  docker:
+    image: plugins/docker
+    repo: foo/bar
++   target: debug
+    secrets: [ docker_username, docker_password ]
+```
+
 # Secret Reference
 
 docker_username
@@ -172,6 +213,9 @@ auth
 
 context
 : the context path to use, defaults to root of the git repo
+
+target
+: the build target to use, must be defined in the docker file
 
 force_tag=false
 : replace existing matched image tags
