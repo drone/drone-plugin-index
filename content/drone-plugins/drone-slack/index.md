@@ -149,6 +149,9 @@ build.started
 build.pull
 : pull request number (empty string if not a pull request)
 
+build.deployTo
+: env that the build was deployed to.
+
 # Template Function Reference
 
 uppercasefirst
