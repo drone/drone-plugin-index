@@ -40,6 +40,21 @@ pipeline:
     urls: https://your.webhook/...
 ```
 
+Example configuration using secrets:
+(Note: tokens can be passed as passwords like this)
+
+```diff
+pipeline:
+  webhook:
+    image: plugins/webhook
++   secrets:
++     - source: my_token
++       target: webhook_password
+    username: myusername
+-   password: mypassword
+    urls: https://your.webhook/...
+```
+
 Example configuration with custom body:
 
 ```diff
