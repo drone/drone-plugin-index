@@ -128,6 +128,9 @@ gcs_cache_json_key
 
 # Parameter Reference
 
+json_key
+: service account json key
+
 restore
 : mode to restore the build environment from cache
 
