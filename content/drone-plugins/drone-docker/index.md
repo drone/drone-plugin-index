@@ -235,6 +235,9 @@ custom_dns
 storage_driver
 : supports `aufs`, `overlay` or `vfs` drivers
 
+storage_path
+: the path where persisted data such as images, volumes, and cluster state are stored (default: `/var/lib/docker`)
+
 build_args
 : custom arguments passed to docker build
 
