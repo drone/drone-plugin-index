@@ -1,6 +1,6 @@
 ---
 date: 2018-07-02T00:00:00+00:00
-title: rancher-stack-v1
+title: Rancher Stack v1
 author: wayneconnolly
 tags: [ deploy, rancher, stack, v1, docker ]
 logo: rancher.svg
@@ -38,9 +38,6 @@ pipeline:
 ```
 
 # Parameter Reference
-
-image
-: dubc/drone-rancher-stack-v1  
 
 url
 : The url where your rancher resides. E.g rancher.domain.com
