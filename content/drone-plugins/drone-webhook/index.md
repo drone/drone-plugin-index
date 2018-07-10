@@ -58,6 +58,48 @@ pipeline:
 +     }
 ```
 
+A list of the mustache-like parameters that the temaplate can accpet is in the source code, which is a little different from [the official given parameters to the plugins](https://github.com/drone/drone-plugin-starter/blob/master/main.go#L25).
+```go
+func run(c *cli.Context) error {
+	plugin := Plugin{
+		Repo: Repo{
+			Owner: c.String("repo.owner"),
+			Name:  c.String("repo.name"),
+		},
+		Build: Build{
+			Tag:     c.String("build.tag"),
+			Number:  c.Int("build.number"),
+			Event:   c.String("build.event"),
+			Status:  c.String("build.status"),
+			Commit:  c.String("commit.sha"),     // write commit.* fields into build
+			Ref:     c.String("commit.ref"),     // so if you want to print sha hash of the commit
+			Branch:  c.String("commit.branch"),  // use {{ build.sha }}
+			Author:  c.String("commit.author"),
+			Message: c.String("commit.message"),
+			Link:    c.String("build.link"),
+			Started: c.Int64("build.started"),
+			Created: c.Int64("build.created"),
+		},
+		Job: Job{
+			Started: c.Int64("job.started"),
+		},
+		Config: Config{
+			Method:      c.String("method"),
+			Username:    c.String("username"),
+			Password:    c.String("password"),
+			ContentType: c.String("content-type"),
+			Template:    c.String("template"),
+			Headers:     c.StringSlice("headers"),
+			URLs:        c.StringSlice("urls"),
+			Debug:       c.Bool("debug"),
+			SkipVerify:  c.Bool("skip-verify"),
+		},
+	}
+
+	return plugin.Exec()
+}
+```
+
 Example configuration to debug response:
 
 ```diff
