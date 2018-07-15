@@ -1,14 +1,14 @@
 ---
 date: 2018-02-19T00:00:00+00:00
-title: Wechat for Work
+title:  企业微信 Enterprise WeChat
 author: clem109
-tags: [ notifications, chat, wechat ]
+tags: [ notifications, chat, enterprise wechat ]
 logo: wechat.svg
 repo: clem109/drone-wechat
 image: clem109/drone-wechat
 ---
 
-Drone plugin for WeChat for Work to show build notifications.
+Drone plugin for Enterprise WeChat to show build notifications.
 
 The following is a sample configuration in your .drone.yml file:
 
