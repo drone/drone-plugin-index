@@ -15,7 +15,7 @@ pipeline:
   notify:
     image: plugins/matrix
     homeserver: https://matrix.org
-    roomid: abcdefghijklmnopqrstuvwxyz:matrix.org
+    roomid: '!abcdefghijklmnopqrstuvwxyz:matrix.org'
     username: octocat
     password: p455w0rd
 ```
@@ -27,7 +27,7 @@ pipeline:
   notify:
     image: plugins/matrix
     homeserver: https://matrix.org
-    roomid: abcdefghijklmnopqrstuvwxyz:matrix.org
+    roomid: '!abcdefghijklmnopqrstuvwxyz:matrix.org'
 -   username: octocat
 -   password: p455w0rd
 +   secrets: [ matrix_username, matrix_password ]
@@ -51,7 +51,7 @@ matrix_homeserver
 : Matrix home server, defaults to https://matrix.org
 
 matrix_roomid
-: Room ID to send messages
+: Room ID to send messages (not alias, but ID)
 
 matrix_template
 : Template for the message
@@ -74,7 +74,7 @@ homeserver
 : Matrix homeserver URL, defaults to https://matrix.org
 
 roomid
-: Room ID to send messages (not alias, but ID, and you can skip the `!`)
+: Room ID to send messages (not alias, but ID). If using this parameter directly in yaml, it must be a string.
 
 template
 : Template for the message
