@@ -114,3 +114,9 @@ debug
 
 parallel
 : Disable parallelization (on by default), defaults to `false`
+
+force
+: Force a build to continue if artifacts exist, deletes existing artifacts, defaults to `false`
+
+readable
+: Machine-readable output, defaults to `false`
