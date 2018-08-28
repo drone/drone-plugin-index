@@ -47,11 +47,9 @@ Example configuration using secrets:
 pipeline:
   webhook:
     image: plugins/webhook
-+   secrets:
-+     - source: my_token
-+       target: webhook_password
     username: myusername
 -   password: mypassword
++   secrets: [webhook_password]
     urls: https://your.webhook/...
 ```
 
