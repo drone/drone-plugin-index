@@ -4,3 +4,4 @@ content/**.gen.*
 *.txt
 cmd
 server.go
+.history
