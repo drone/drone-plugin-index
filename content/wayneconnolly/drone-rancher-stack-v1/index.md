@@ -1,5 +1,5 @@
 ---
-date: 2018-07-02T00:00:00+00:00
+date: 2018-09-13T00:00:00+00:00
 title: Rancher Stack v1
 author: wayneconnolly
 tags: [ deploy, rancher, stack, v1, docker ]
@@ -8,7 +8,7 @@ repo: wayneconnolly/drone-rancher-stack-v1
 image: dubc/drone-rancher-stack-v1
 ---
 
-A drone.io Rancher Stack plugin to deploy/update an entire Rancher stack (not just a single service) to [Rancher v1.6](https://rancher.com/docs/rancher/v1.6/en/). See [Docker Hub](https://hub.docker.com/r/dubc/drone-rancher-stack-v1/) for more information.
+A drone.io Rancher Stack plugin to deploy/update an entire Rancher stack (not just a single service) to [Rancher v1.6](https://rancher.com/docs/rancher/v1.6/en/) via [Rancher CLI(https://github.com/rancher/cli/releases/v0.6.11/). See [Docker Hub](https://hub.docker.com/r/dubc/drone-rancher-stack-v1/) for more information.
 
 ```diff
 pipeline:
