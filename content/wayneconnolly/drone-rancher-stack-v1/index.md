@@ -10,7 +10,7 @@ image: dubc/drone-rancher-stack-v1
 
 A drone.io Rancher Stack plugin to deploy/update an entire Rancher stack (not just a single service) to [Rancher v1.6](https://rancher.com/docs/rancher/v1.6/en/). See [Docker Hub](https://hub.docker.com/r/dubc/drone-rancher-stack-v1/) for more information.
 
-```yaml
+```diff
 pipeline:
   compile-javascript:
     image: node:8.9.4
@@ -32,10 +32,20 @@ pipeline:
     image: dubc/drone-rancher-stack-v1
     url: rancher.domain.com
     stack: app-staging        
-    accesskey: RANCHER_ACCESS_KEY
-    secretkey: RANCHER_SECRET_KEY
+-   accesskey: RANCHER_ACCESS_KEY
+-   secretkey: RANCHER_SECRET_KEY
++   secrets: [ rancher_accesskey, rancher_secretkey ]
     pull: true
 ```
+
+# Secret Reference
+Optional secrets
+
+rancher_accesskey
+: Your Rancher environment Access_Key
+
+rancher_secretkey
+: Your Rancher environment Secret_Key
 
 # Parameter Reference
 
