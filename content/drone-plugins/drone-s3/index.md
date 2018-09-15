@@ -21,6 +21,20 @@ pipeline:
     target: /target/location
 ```
 
+Example configuration using credentials from secrets:
+
+```diff
+pipeline:
+  s3:
+    image: plugins/s3
+    bucket: my-bucket-name
+-   access_key: a50d28f4dd477bc184fbd10b376de753
+-   secret_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
+    source: public/**/*
+    target: /target/location
++   secrets: [ aws_access_key_id, aws_secret_access_key ]
+```
+
 Override the default acl and region:
 
 ```diff
@@ -71,6 +85,14 @@ pipeline:
 +   path_style: true
 +   endpoint: https://play.minio.io:9000
 ```
+
+# Secret Reference
+
+aws_access_key_id
+: authenticates with this key 
+
+aws_secret_access_key
+: authenticates with this password
 
 # Parameter Reference
 
