@@ -88,10 +88,10 @@ pipeline:
 
 # Secret Reference
 
-aws_access_key_id
+aws_access_key_id, plugin_access_key
 : authenticates with this key 
 
-aws_secret_access_key
+aws_secret_access_key, plugin_secret_key
 : authenticates with this password
 
 # Parameter Reference
