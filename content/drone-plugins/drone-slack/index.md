@@ -79,6 +79,23 @@ pipeline:
 +     {{/success}}
 ```
 
+Example configuration with a custom message template linking usernames and channels:
+
+```diff
+pipeline:
+  slack:
+    image: plugins/slack
+    webhook: https://hooks.slack.com/services/...
+    channel: dev
++   link_names: true
++   template: >
++     {{#success build.status}}
++       build {{build.number}} succeeded. Good job. <@john.doe>
++     {{else}}
++       build {{build.number}} failed. Fix me please. <@channelname> <@someone>
++     {{/success}}
+```
+
 # Parameter Reference
 
 webhook
@@ -104,6 +121,9 @@ icon_url
 
 icon_emoji
 : displays a emoji to the left of the username
+
+link_names
+: links usernames and channels in the message
 
 # Template Reference
 
