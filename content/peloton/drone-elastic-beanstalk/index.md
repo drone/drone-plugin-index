@@ -13,15 +13,48 @@ The Elastic Beanstalk plugin can be used to deploy an app to a Beanstalk environ
 ```yaml
 pipeline:
   beanstalk:
-    image: peloton/drone-elasctic-beanstalk
+    image: peloton/drone-elastic-beanstalk
     access_key: 970d28f4dd477bc184fbd10b376de753
     secret_key: 9c5785d3ece6a9cdefa42eb99b58986f9095ff1c
     region: us-east-1
     version_label: v1
     description: Deployed with DroneCI
     auto_create: true
-    bucket_name: my-bucket-name
-    bucket_key: 970d28f4dd477bc184fbd10b376de753
+    bucket: my-bucket-name
+    bucket_key: my-bucket-folder/app.zip
+```
+
+Example of a Elastic Beanstalk pipeline for NodeJS app:
+
+```yaml
+pipeline:
+  build:
+    image: node:alpine
+    commands:
+      - apk update && apk add zip
+      - npm install --production
+      - zip -r -9 app-${DRONE_BUILD_NUMBER}.zip *
+  
+  s3:
+    image: plugins/s3
+    acl: private
+    access_key: 970d28f4dd477bc184fbd10b376de753
+    secret_key: 9c5785d3ece6a9cdefa42eb99b58986f9095ff1c
+    region: us-east-1
+    bucket: my-bucket-name
+    target: my-bucket-folder
+    source: app-${DRONE_BUILD_NUMBER}.zip
+
+  beanstalk:
+    image: peloton/drone-elastic-beanstalk
+    access_key: 970d28f4dd477bc184fbd10b376de753
+    secret_key: 9c5785d3ece6a9cdefa42eb99b58986f9095ff1c
+    region: us-east-1
+    version_label: v1
+    description: Deployed with DroneCI
+    auto_create: true
+    bucket: my-bucket-name
+    bucket_key: my-bucket-folder/app-${DRONE_BUILD_NUMBER}.zip
 ```
 
 # Parameter Reference
@@ -50,7 +83,7 @@ auto_create
 process
 : Preprocess and validate the manifest, defaults to false
 
-bucket_name
+bucket
 : Bucket for S3 source bundle
 
 bucket_key
