@@ -161,6 +161,15 @@ pipeline:
 +     {{/success}}
 ```
 
+Example configuration with secrets:
+
+```diff
+pipeline:
+  telegram:
+    image: appleboy/drone-telegram
++   secrets: [telegram_to, telegram_token]
+```
+
 # Parameter Reference
 
 token
