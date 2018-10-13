@@ -8,7 +8,7 @@ repo: christophschlosser/drone-ftps
 image: cschlosser/drone-ftps
 ---
 
-The FTPS plugin can be used to publish artifiacts over FTP(S). The below pipeline configuration demonstrates simple usage:
+The FTPS plugin can be used to publish artifacts over FTP(S). The below pipeline configuration demonstrates simple usage:
 
 ```yaml
 pipeline:
