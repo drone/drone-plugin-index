@@ -8,7 +8,7 @@ pipeline:
       - go run scripts/gen-language-content.go
 
   build:
-    image: drone-plugins/drone-hugo:latest
+    image: plugins/drone-hugo:latest
     validate: true
 
   publish:
