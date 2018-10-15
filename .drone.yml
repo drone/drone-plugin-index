@@ -1,6 +1,3 @@
-workspace:
-  path: src
-
 pipeline:
   generate:
     image: golang:1.11
