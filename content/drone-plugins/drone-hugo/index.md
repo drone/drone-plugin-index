@@ -5,7 +5,7 @@ author: drone-plugins
 tags: [ tool, hugo, generation, static ]
 logo: gohugo.svg
 repo: drone-plugins/drone-hugo
-image: drone-plugins/drone-hugo
+image: plugins/drone-hugo
 ---
 
 The Hugo plugin automatically generates static web page files, which can be published afterwards!
@@ -15,7 +15,7 @@ The example below demonstrates how you can use the plugin to automatically creat
 ```yml
 pipeline:
   hugo:
-    image: drone-plugins/drone-hugo:latest
+    image: plugins/drone-hugo:latest
     validate: true
 ```
 
@@ -28,7 +28,7 @@ You can customize the paths for e. g. the theme, layout, content directory and o
 ```yml
 pipeline:
   hugo:
-    image: drone-plugins/drone-hugo:latest
+    image: plugins/drone-hugo:latest
 +   config: path/to/config
 +   content: path/to/content/
 +   layout: path/to/layout
@@ -45,7 +45,7 @@ You can also define a base URL directly in the pipeline, which is used when gene
 ```yml
 pipeline:
   hugo:
-    image: drone-plugins/drone-hugo:latest
+    image: plugins/drone-hugo:latest
     config: path/to/config
     content: path/to/content/
     output: path/to/public
@@ -66,7 +66,7 @@ You can set the `buildDrafts`, `buildExpired`, `buildFuture` settings to configu
 ```yml
 pipeline:
   hugo:
-    image: drone-plugins/drone-hugo:latest
+    image: plugins/drone-hugo:latest
 +   buildDrafts: true
 +   buildExpired: tru
 +   buildFuture: true
@@ -86,7 +86,7 @@ Here is a short example of how to define a pipeline that automatically generates
 ```yml
 pipeline:
   build:
-    image: drone-plugins/drone-hugo:latest
+    image: plugins/drone-hugo:latest
     output: public/drone-generated # Output path
     validate: true
     when:
