@@ -3,15 +3,13 @@ workspace:
 
 pipeline:
   generate:
-    image: golang:1.6
+    image: golang:1.11
     commands:
       - go run scripts/gen-language-content.go
 
   build:
-    image: webhippie/hugo:latest
-    commands:
-      - git clone https://github.com/drone/drone-hugo-theme.git themes/drone-hugo-theme
-      - hugo
+    image: drone-plugins/drone-hugo:latest
+    validate: true
 
   publish:
     image: plugins/s3-sync:1.1

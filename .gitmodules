@@ -1,0 +1,3 @@
+[submodule "themes/drone-hugo-theme"]
+	path = themes/drone-hugo-theme
+	url = https://github.com/drone/drone-hugo-theme.git
