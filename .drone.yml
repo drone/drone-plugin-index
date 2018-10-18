@@ -3,6 +3,8 @@ pipeline:
     image: golang:1.11
     commands:
       - go run scripts/gen-language-content.go
+      - git clone https://github.com/drone/drone-hugo-theme.git themes/drone-hugo-theme
+     
 
   build:
     image: plugins/hugo:latest
