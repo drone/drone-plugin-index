@@ -6,6 +6,7 @@ pipeline:
 
   build:
     image: plugins/hugo:latest
+    hugo_version: 0.39
     validate: true
 
   publish:
