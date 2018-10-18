@@ -11,19 +11,6 @@ image: plugins/gcr
 {{% alert info %}}
 The GCR plugin is an extension around the Docker plugin. Please see the documentation for the [Docker plugin]({{< relref "drone-plugins/drone-docker/index.md" >}}) for other configuration options.
 
-
-{{ if eq .Site.Language.Lang "en" }}
-
-<a href="{{ relref path="/drone-plugins/drone-docker/index.md" }}"> Docker plugin2 </a>
-
-{{ else if (printf "/drone-plugins/drone-docker/index.%s.md" $.Site.Language.Lang | fileExists) }}
-
-<a href="{{ printf "/drone-plugins/drone-docker/index%s.md" $.Site.Language.Lang | relref }}">Docker plugin2</a>
-
-{{ else }}
-{{ printf "/drone-plugins/drone-docker/index.gen.%s.md $.Site.Language.Lang | relref }}
-
-{{- end }}) for other configuration options.
 {{% /alert %}}
 
 The GCR plugin can be used to build and publish images to the Google Container Registry. The following pipeline configuration uses the GCR plugin to build and publish Docker images:
