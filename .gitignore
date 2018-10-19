@@ -1,6 +1,6 @@
 public/*
-content/*/*.gen*.md
 themes/*
+content/**.gen.*
 *.txt
 cmd
 server.go

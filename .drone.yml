@@ -1,15 +1,17 @@
+workspace:
+  path: src
+
 pipeline:
   generate:
-    image: golang:1.11
+    image: golang:1.6
     commands:
       - go run scripts/gen-language-content.go
-      - git clone https://github.com/drone/drone-hugo-theme.git themes/drone-hugo-theme
-     
 
   build:
-    image: plugins/hugo:latest
-    hugo_version: 0.39
-    validate: true
+    image: webhippie/hugo:latest
+    commands:
+      - git clone https://github.com/drone/drone-hugo-theme.git themes/drone-hugo-theme
+      - hugo
 
   publish:
     image: plugins/s3-sync:1.1
@@ -27,3 +29,4 @@ pipeline:
     when:
       event: push
       branch: master
+
