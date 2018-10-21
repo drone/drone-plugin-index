@@ -1,5 +1,5 @@
 ---
-date: 2018-15-02T00:00:00+00:00
+date: 2018-03-02T00:00:00+00:00
 title: Hugo
 author: drone-plugins
 tags: [ tool, hugo, generation, static ]
