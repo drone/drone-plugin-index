@@ -1,8 +1,8 @@
 ---
 date: 2018-10-24T00:00:00+00:00
-title: Apex-up
+title: Apex Up
 author: appleboy
-tags: [ up, apex ]
+tags: [ aws, deployment, up, lambda ]
 logo: apex-up.svg
 repo: appleboy/drone-apex-up
 image: appleboy/drone-apex-up
