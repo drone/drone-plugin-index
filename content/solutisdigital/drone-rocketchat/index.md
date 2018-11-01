@@ -13,7 +13,7 @@ The Rocket.Chat plugin posts build status messages to your channel. The below pi
 ```yaml
 pipeline:
   rocketchat:
-    image: plugins/rocketchat
+    image: alexgamas/drone-rocketchat
     url: https://my.rocketchat.com/
     channel: ci
 ```
@@ -23,7 +23,7 @@ Example configuration with custom username:
 ```diff
 pipeline:
   rocketchat:
-    image: plugins/rocketchat
+    image: alexgamas/drone-rocketchat
     url: https://my.rocketchat.com/
     channel: ci
 +   username: drone
@@ -34,7 +34,7 @@ Example configuration with custom avatar:
 ```diff
 pipeline:
   rocketchat:
-    image: plugins/rocketchat
+    image: alexgamas/drone-rocketchat
     url: https://my.rocketchat.com/
     channel: ci
 +   icon_url: https://unsplash.it/256/256/?random
@@ -45,7 +45,7 @@ Example configuration with image attachment:
 ```diff
 pipeline:
   rocketchat:
-    image: plugins/rocketchat
+    image: alexgamas/drone-rocketchat
     url: https://my.rocketchat.com/
     channel: ci
 +   image_url: https://unsplash.it/256/256/?random
@@ -56,7 +56,7 @@ Example configuration for success and failure messages:
 ```diff
 pipeline:
   rocketchat:
-    image: plugins/rocketchat
+    image: alexgamas/drone-rocketchat
     url: https://my.rocketchat.com/
     channel: ci
 +   when:
@@ -68,7 +68,7 @@ Example configuration with a custom message template:
 ```diff
 pipeline:
   rocketchat:
-    image: plugins/rocketchat
+    image: alexgamas/drone-rocketchat
     url: https://my.rocketchat.com/
     channel: ci
 +   template: >
@@ -84,7 +84,7 @@ Example configuration with a custom message template linking usernames and chann
 ```diff
 pipeline:
   rocketchat:
-    image: plugins/rocketchat
+    image: alexgamas/drone-rocketchat
     url: https://my.rocketchat.com/
     channel: ci
 +   template: >
