@@ -89,6 +89,36 @@ pipeline:
 Keep in mind that you should use secrets for sensitive parts of the configuration!
 {{% /alert %}}
 
+```diff
+pipeline:
+  notify:
+    image: drillster/drone-email
+    from: noreply@github.com
+    host: smtp.mailgun.org
+-   username: octocat
+-   password: 12345
+    recipients:
+      - octocat@github.com
++   secrets: [ email_username, email_password ]
+```
+
+# Secret Reference
+
+email_host
+: uses this SMTP host
+
+email_port
+: uses this port to contact the SMTP server
+
+email_username
+: uses this username to authenticate
+
+email_password
+: uses this password to authenticate
+
+email_recipients
+: uses this list of email recipients (besides the commit author)
+
 # Parameter Reference
 
 from
