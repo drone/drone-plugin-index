@@ -76,8 +76,8 @@ steps:
   settings:
     webhook: https://hooks.slack.com/services/...
     channel: dev
-    when:
-      status: [ success, failure ]
+  when:
+    status: [ success, failure ]
 ```
 
 Example configuration with a custom message template:
