@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-01-02T08:21:35+01:00
 title: rsync
 author: drillster
@@ -94,3 +95,4 @@ args
 
 script
 : list of commands to execute on remote machines over SSH
+

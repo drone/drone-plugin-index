@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2018-06-22T00:00:00+00:00
 title: Google Cloud Storage Cache
 author: hvalle
@@ -163,3 +164,4 @@ fallback_path
 
 flush_path
 : path to search for flushable cache files, defaults to `[bucket]/<owner>/<repo>/` (optional)
+

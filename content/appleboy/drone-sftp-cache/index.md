@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-04-11T00:00:00+00:00
 title: SFTP Cache
 author: appleboy
@@ -99,3 +100,4 @@ restore
 
 ignore_branch
 : boolean flag to ignore commit branch name on hash value
+

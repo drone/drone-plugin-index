@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2018-02-15T00:00:00+00:00
 title: Netlify
 author: lucaperret
@@ -102,3 +103,4 @@ environment
 
 path
 : Path to a folder or zip file to deploy
+

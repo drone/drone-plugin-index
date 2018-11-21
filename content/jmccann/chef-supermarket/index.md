@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2016-01-01T00:00:00+00:00
 title: Chef Supermarket
 author: jmccann
@@ -52,3 +53,4 @@ server
 
 ssl_verify
 : (default: `true`) Enable/Disable SSL verify
+

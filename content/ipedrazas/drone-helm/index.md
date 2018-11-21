@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-02-08T00:00:00+00:00
 title: Helm
 author: ipedrazas
@@ -93,3 +94,4 @@ There are a few secrets that the plugin expects to be able to connect to a kuber
 : API_SERVER url to connect to the Kubernetes api server
 
 : KUBERNETES_TOKEN Kubernetes token used to connect to the api server.
+

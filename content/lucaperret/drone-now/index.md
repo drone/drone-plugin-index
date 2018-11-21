@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2018-01-24T00:00:00+00:00
 title: Now
 author: lucaperret
@@ -159,3 +160,4 @@ rules_file
 
 scale
 : Min and Max scaling values
+

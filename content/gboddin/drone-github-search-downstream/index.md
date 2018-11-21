@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2018-05-10T00:00:00+00:00
 title: Github Search Downstream
 author: gboddin
@@ -88,3 +89,4 @@ wait
 
 timeout
 : how long to wait on any currently running builds defaults to 60 seconds
+

@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2018-07-02T00:00:00+00:00
 title: Rancher Stack v1
 author: wayneconnolly
@@ -53,3 +54,4 @@ secretkey
 
 pull
 : true. Makes sure you get the latest plugin version
+

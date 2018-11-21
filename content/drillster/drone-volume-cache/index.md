@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2016-12-15T15:57:35-05:00
 title: Volume Cache
 author: drillster
@@ -115,3 +116,4 @@ Include one of the following directives somewhere in your commit message to trig
 
 [NO CACHE]
 : instruct the plugin not to restore or rebuild cache for this build.
+

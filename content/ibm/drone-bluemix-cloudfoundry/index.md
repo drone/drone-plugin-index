@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-03-15T11:27:13-04:00
 title: Bluemix Cloud Foundry
 author: jcantosz
@@ -160,3 +161,4 @@ random_route
 
 skip_ssl
 : Skip verification of the API endpoint. Not recommended! (e.g. `false`)
+

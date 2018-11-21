@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-07-19T00:00:00+00:00
 title: Codecov
 author: robertstettner
@@ -68,3 +69,4 @@ flags
 
 debug
 : debug mode, defaults to `false`.
+

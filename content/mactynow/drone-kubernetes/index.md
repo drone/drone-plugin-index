@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-01-31T00:00:00+00:00
 title: Kubernetes Deployments
 author: mactynow
@@ -81,3 +82,4 @@ repo
 
 tag
 : Image tag.
+

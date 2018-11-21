@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-07-21T00:00:00+00:00
 title: Maven Auth
 author: robertstettner
@@ -91,3 +92,4 @@ active_profiles[]
 
 debug
 : debug mode (optional: set to `true` for verbose messages)
+

@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-10-22T08:00:35+01:00
 title: AWS Lambda
 author: devops-israel
@@ -82,4 +83,5 @@ s3_bucket
 
 file_name
 : Name of the file in S3. Can be prefixed like `my-directory/my-zip-package.zip`
+
 

@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2018-07-28T00:00:00+00:00
 title: Packer
 author: appleboy
@@ -120,3 +121,4 @@ force
 
 readable
 : Machine-readable output, defaults to `false`
+

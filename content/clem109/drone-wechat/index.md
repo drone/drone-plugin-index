@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2018-02-19T00:00:00+00:00
 title: Wechat for Work
 author: clem109
@@ -91,3 +92,4 @@ plugin_to_user
 
 plugin_to_tag
 : The tag ids to send the message to
+

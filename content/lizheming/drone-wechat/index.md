@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2018-01-07T00:00:00+00:00
 title: Wechat
 author: lizheming
@@ -137,3 +138,4 @@ datetime
 : converts a unix timestamp to a date time string. Example {{build.started | datetime}}, you can see more info in [nunjucks-date-filter](https://www.npmjs.com/package/nunjucks-date-filter)
 
 More filter can see [builtin-filters](https://mozilla.github.io/nunjucks/templating.html#builtin-filters)
+

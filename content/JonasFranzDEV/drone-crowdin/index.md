@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-09-23T00:00:00+00:00
 title: Crowdin
 author: JonasFranzDEV
@@ -122,3 +123,4 @@ export_dir
 
 languages
 : Languages which should be downloaded/exported from Crowdin. (Default: `all`)
+

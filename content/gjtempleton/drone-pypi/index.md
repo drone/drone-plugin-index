@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2018-02-11T00:00:00+00:00
 title: PyPI
 author: gjtempleton
@@ -56,3 +57,4 @@ distributions
 
 setupfile
 : The relative path from the workspace root to the setup.py file to be used. (Optional, will default to setup.py)
+

@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2018-06-27T00:00:00+00:00
 title: airbrake-deployment
 author: dhoeric
@@ -34,4 +35,5 @@ airbrake_project_id
 
 airbrake_project_key
 : project API key of airbrake project
+
 

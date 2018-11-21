@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2018-08-17T00:00:00+00:00
 title: Captains Log
 author: Target
@@ -120,3 +121,4 @@ enterprise_host
 # Example Output
 
 [Found in README at `target/captains-log`](https://github.com/target/captains-log#example-output).
+

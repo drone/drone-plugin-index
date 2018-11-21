@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-01-06T18:00:00-06:00
 title: Marathon
 author: dellintosh
@@ -107,3 +108,4 @@ trigger_restart
 
 values
 : Map of values to replace in the `marathonfile`, above.  Optional.
+

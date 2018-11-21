@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-01-29T00:00:00+00:00
 title: SSH
 author: appleboy
@@ -191,3 +192,4 @@ proxy_key
 
 proxy_key_path
 : key path of proxy private key
+

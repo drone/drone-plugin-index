@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2016-01-18T00:00:00+00:00
 title: AWS ECS
 author: josmo
@@ -59,5 +60,6 @@ port_mappings
 
 memory
 : memory to assign to the service
+
 
 

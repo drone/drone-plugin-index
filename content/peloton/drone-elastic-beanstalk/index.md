@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2016-01-13T00:00:00+00:00
 title: AWS Elastic Beanstalk
 author: josmo
@@ -61,3 +62,4 @@ environment_update
 
 environment_name
 : Environment Name (optional), if update_environment true
+

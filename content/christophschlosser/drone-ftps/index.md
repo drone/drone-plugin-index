@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-10-26T00:00:00+00:00
 title: FTP(S)
 author: christophschlosser
@@ -165,3 +166,4 @@ exclude
 
 include
 : egrep like pattern matching to include files to upload (default none)
+

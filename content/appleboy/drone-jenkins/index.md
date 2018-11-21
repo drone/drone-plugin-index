@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-01-16T00:00:00+00:00
 title: Jenkins
 author: appleboy
@@ -75,3 +76,4 @@ token
 
 job
 : jenkins job name
+

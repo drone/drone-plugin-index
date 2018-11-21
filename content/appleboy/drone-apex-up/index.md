@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2018-10-24T00:00:00+00:00
 title: Apex Up
 author: appleboy
@@ -100,3 +101,4 @@ stage
 
 verbose
 : Enable verbose log output, default as `true`
+

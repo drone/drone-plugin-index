@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-09-02T08:00:35+01:00
 title: AWS ECS Deploy
 author: devops-israel
@@ -77,3 +78,4 @@ max:
 
 min:
 : minumumHealthyPercent: The lower limit on the number of running tasks during a deployment. (default: 100)
+

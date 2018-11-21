@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-07-27T00:00:00+00:00
 title: NPM Auth
 author: robertstettner
@@ -60,3 +61,4 @@ scope
 
 path
 : Output path of the generated `.npmrc` file. Defaults to `./`.
+

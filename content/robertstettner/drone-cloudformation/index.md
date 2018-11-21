@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-07-18T00:00:00+00:00
 title: AWS CloudFormation
 author: robertstettner
@@ -109,3 +110,4 @@ delete
 
 validate
 : validates a template.
+

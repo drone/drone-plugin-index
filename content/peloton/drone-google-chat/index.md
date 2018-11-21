@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2016-01-13T00:00:00+00:00
 title: Google Chat
 author: josmo
@@ -147,3 +148,4 @@ urlencode
 
 since
 : returns a duration string between now and the given timestamp. Example `{{since build.started}}`
+

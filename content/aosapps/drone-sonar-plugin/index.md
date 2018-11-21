@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2018-08-29T00:00:00+00:00
 title: SonarQube
 author: aosapps
@@ -68,3 +69,4 @@ showProfiling
 # Notes
 
 The projectKey and projectName of SonarQube project are filled using the full repository name. You could also add a file named `sonar-project.properties` at the root of your project to specify parameters.  
+

@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-12-04T00:00:00+00:00
 title: Backblaze B2
 author: techknowlogick
@@ -98,3 +99,4 @@ exclude
 
 path_style
 : whether path style URLs should be used (true for minio)
+

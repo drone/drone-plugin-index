@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2016-01-13T00:00:00+00:00
 title: Rancher
 author: josmo
@@ -83,3 +84,4 @@ interval_millis
 
 batch_size
 : batch size for the service upgrade
+

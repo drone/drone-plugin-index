@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-02-09T00:00:00+00:00
 title: Clair
 author: jmccann
@@ -75,3 +76,4 @@ scan_image
 
 ca_cert
 : The CA Cert to verify https with
+

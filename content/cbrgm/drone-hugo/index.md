@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2018-03-02T00:00:00+00:00
 title: Hugo
 author: cbrgm
@@ -146,3 +147,4 @@ You have suggestions for improvements or features you miss? You are welcome to e
 If you are a developer yourself, you can also contribute code! Further information will follow shortly.
 
 Github: https://github.com/cbrgm/drone-hugo
+

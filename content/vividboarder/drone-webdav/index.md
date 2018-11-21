@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2018-04-11T00:00:00+00:00
 title: WebDAV
 author: vividboarder
@@ -50,3 +51,4 @@ file
 
 destination
 : directory to copy the file to
+

@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2018-01-06T00:00:00+00:00
 title: AWS RDS Snapper
 author: tuannvm
@@ -95,3 +96,4 @@ dbname
 
 suffix
 : snapshot's name suffix (optional, randomly generated if not specified)
+

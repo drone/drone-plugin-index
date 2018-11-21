@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2016-01-01T00:00:00+00:00
 title: Terraform
 author: jmccann
@@ -174,3 +175,4 @@ root_dir
 
 parallelism
 : The number of concurrent operations as Terraform walks its graph.
+

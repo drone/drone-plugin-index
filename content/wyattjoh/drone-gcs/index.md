@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-04-14T00:00:00Z
 title: Google Cloud Storage
 author: wyattjoh
@@ -79,3 +80,4 @@ exclude
 
 compress
 : gzip files before they are uploaded and add a Content-Encoding: gzip
+
