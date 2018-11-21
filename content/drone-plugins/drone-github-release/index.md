@@ -13,9 +13,13 @@ The github-release plugin is used to publish files and artifacts to GitHub Relea
 The following configuration uses the github-release plugin to publish binaries to Github Release:
 
 ```yaml
-pipeline:
-  github_release:
-    image: plugins/github-release
+kind: pipeline
+name: default
+
+steps:
+- name: publish  
+  image: plugins/github-release
+  settings:
     api_key: xxxxxxxx
     files: dist/*
     when:
@@ -24,41 +28,42 @@ pipeline:
 
 An example for generating checksums and uploading additional files:
 
-```diff
-pipeline:
-  github_release:
-    image: plugins/github-release
+```yaml
+steps:
+- name: publish  
+  image: plugins/github-release
+  settings:
     api_key: xxxxxxxx
     files:
       - dist/*
-+     - bin/binary.exe
-+  checksum:
-+     - md5
-+     - sha1
-+     - sha256
-+     - sha512
-+     - adler32
-+     - crc32
+      - bin/binary.exe
+   checksum:
+      - md5
+      - sha1
+      - sha256
+      - sha512
+      - adler32
+      - crc32
     when:
       event: tag
 ```
 
-Example configuration using credentials from secrets:
+Example configuration using credentials from named secrets:
 
-```diff
-pipeline:
-  github_release:
-    image: plugins/github-release
--   api_key: xxxxxxxx
-+   secrets: [ github_token ]
+```yaml
+kind: pipeline
+name: default
+
+steps:
+- name: publish  
+  image: plugins/github-release
+  settings:
+    api_key: xxxxxxxx
+      from_secret: github_token
     files: dist/*
     when:
       event: tag
 ```
-# Secret Reference
-
-github_token
-: GitHub oauth token with public_repo or repo permission
 
 # Parameter Reference
 

@@ -11,9 +11,13 @@ image: plugins/manifest
 This plugin can push manifests for multi-arch Docker images. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  manifest:
-    image: plugins/manifest
+kind: pipeline
+name: default
+
+steps:
+- name: manifest
+  image: plugins/manifest
+  settings:
     username: kevinbacon
     password: pa55word
     target: foo/bar:v1.0.0
@@ -26,27 +30,23 @@ pipeline:
 
 Manifests from template:
 
-```diff
-pipeline:
-  manifest:
-    image: plugins/manifest
+```yaml
+steps:
+- name: manifest
+  image: plugins/manifest
+  settings:
     username: kevinbacon
     password: pa55word
--   target: foo/bar:v1.0.0
--   template: foo/bar:v1.0.0-OS-ARCH
--   platforms:
--     - linux/amd64
--     - linux/arm
--     - linux/arm64
-+   spec: manifest.tmpl
+    spec: manifest.tmpl
 ```
 
 Ignore missing images:
 
-```diff
-pipeline:
-  manifest:
-    image: plugins/manifest
+```yaml
+steps:
+- name: manifest
+  image: plugins/manifest
+  settings:
     username: kevinbacon
     password: pa55word
     target: foo/bar:v1.0.0
@@ -55,18 +55,20 @@ pipeline:
       - linux/amd64
       - linux/arm
       - linux/arm64
-+   ignore_missing: true
+    ignore_missing: true
 ```
 
-Example configuration using secrets:
+Example configuration using named secrets:
 
-```diff
-pipeline:
-  manifest:
-    image: plugins/manifest
--   username: kevinbacon
--   password: pa55word
-+   secrets: [ manifest_username, manifest_password ]
+```yaml
+steps:
+- name: manifest
+  image: plugins/manifest
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
     target: foo/bar:v1.0.0
     template: foo/bar:v1.0.0-OS-ARCH
     platforms:
@@ -74,14 +76,6 @@ pipeline:
       - linux/arm
       - linux/arm64
 ```
-
-# Secret Reference
-
-manifest_username, docker_username
-: Username for DockerHub authentication
-
-manifest_password, docker_password
-: Password for DockerHub authentication
 
 # Parameter Reference
 

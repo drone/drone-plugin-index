@@ -11,9 +11,13 @@ image: plugins/slack-blame
 Use the Slack Blame plugin to send a message to a Slack channel or through direct message when a build completes. You will need to supply Drone with an access token to the Slack API. You can create a new access token at [https://api.slack.com/web](https://api.slack.com/web). The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  slack_blame:
-    image: plugins/slack-blame
+kind: pipeline
+name: default
+
+steps:
+- name: notify
+  image: plugins/slack-blame
+  settings:
     token: your-secret-token
     channel: dev
     success_template: |
@@ -28,32 +32,34 @@ pipeline:
 
 Example configuration with custom username:
 
-```diff
-pipeline:
-  slack_blame:
-    image: plugins/slack-blame
+```yaml
+steps:
+- name: notify
+  image: plugins/slack-blame
+  settings:
     token: your-secret-token
     channel: dev
     success_template: |
       The build is fixed! Thanks @{{slack.name}}
     success_image_attachments:
       - "http://i.imgur.com/TP4PIxc.jpg"
-+   success_username: successbot
+    success_username: successbot
     failure_template: |
       The build is broken! Blame {{slack.name}}
     failure_image_attachments:
       - "http://cdn.meme.am/instances/51000361.jpg"
-+   failure_username: failurebot
+    failure_username: failurebot
 ```
 
 Example configuration using a secret:
 
-```diff
-pipeline:
-  slack_blame:
-    image: plugins/slack-blame
--   token: your-secret-token
-+   secrets: [ slack_token ]
+```yaml
+steps:
+- name: notify
+  image: plugins/slack-blame
+  settings:
+    token:
+      from_secret: your-secret-token
     channel: dev
     success_template: |
       The build is fixed! Thanks @{{slack.name}}
@@ -64,11 +70,6 @@ pipeline:
     failure_image_attachments:
       - "http://cdn.meme.am/instances/51000361.jpg"
 ```
-
-# Secret Reference
-
-slack_token
-: Slack access token
 
 # Parameter Reference
 

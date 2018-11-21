@@ -11,22 +11,27 @@ image: plugins/s3-cache
 The S3 cache plugin can be used to preserve files and directories between builds. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  restore-cache:
-    image: plugins/s3-cache:1
+kind: pipeline
+name: default
+
+steps:
+- name: restore
+  image: plugins/s3-cache
+  settings:
     pull: true
     endpoint: http://minio.company.com
     access_key: myaccesskey
     secret_key: supersecretKey
     restore: true
 
-  build:
-    image: node
-    commands:
-      - npm install
+- name: build
+  image: node
+  commands:
+    - npm install
 
-  rebuild-cache:
-    image: plugins/s3-cache:1
+- name: rebuild
+  image: plugins/s3-cache
+  settings:
     pull: true
     endpoint: http://minio.company.com
     access_key: myaccesskey
@@ -37,49 +42,9 @@ pipeline:
     when:
       event: push
 
-  flush_cache:
-    image: plugins/s3-cache:1
-    pull: true
-    endpoint: http://minio.company.com
-    access_key: myaccesskey
-    secret_key: supersecretKey
-    flush: true
-    flush_age: 14
-```
-
-Use additional custom cache directories:
-
-```diff
-pipeline:
-  restore-cache:
-    image: plugins/s3-cache:1
-    pull: true
-    endpoint: http://minio.company.com
-    access_key: myaccesskey
-    secret_key: supersecretKey
-    restore: true
-
-  build:
-    image: node
-    commands:
-      - npm install
-
-  rebuild-cache:
-    image: plugins/s3-cache:1
-    pull: true
-    endpoint: http://minio.company.com
-    access_key: myaccesskey
-    secret_key: supersecretKey
-    rebuild: true
-    mount:
--     - node_modules
-+     - <yourstuffhere>
-+     - <morestuffhere>
-    when:
-      event: push
-
-  flush_cache:
-    image: plugins/s3-cache:1
+- name: flush
+  image: plugins/s3-cache:1
+  settings:
     pull: true
     endpoint: http://minio.company.com
     access_key: myaccesskey
@@ -90,56 +55,22 @@ pipeline:
 
 Example configuration using credentials from secrets:
 
-```diff
-pipeline:
-  restore-cache:
-    image: plugins/s3-cache:1
+```yaml
+kind: pipeline
+name: default
+
+steps:
+- name: restore
+  image: plugins/s3-cache
+  settings:
     pull: true
     endpoint: http://minio.company.com
--   access_key: myaccesskey
--   secret_key: supersecretKey
-+   secrets: [ aws_access_key_id, aws_secret_access_key ]
+    access_key:
+      from_secret: aws_access_key_id
+    secret_key:
+      from_secret: aws_secret_access_key
     restore: true
-
-  build:
-    image: node
-    commands:
-      - npm install
-
-  rebuild-cache:
-    image: plugins/s3-cache:1
-    pull: true
-    endpoint: http://minio.company.com
--   access_key: myaccesskey
--   secret_key: supersecretKey
-+   secrets: [ aws_access_key_id, aws_secret_access_key ]
-    rebuild: true
-    mount:
-      - node_modules
-    when:
-      event: push
-
-  flush_cache:
-    image: plugins/s3-cache:1
-    pull: true
-    endpoint: http://minio.company.com
--   access_key: myaccesskey
--   secret_key: supersecretKey
-+   secrets: [ aws_access_key_id, aws_secret_access_key ]
-    flush: true
-    flush_age: 14
 ```
-
-# Secret Reference
-
-s3_endpoint, cache_s3_endpoint
-: custom endpoint URL (optional, to use a S3 compatible non-Amazon service)
-
-aws_access_key_id, cache_s3_access_key
-: amazon access key (optional)
-
-aws_secret_access_key, cache_s3_secret_key
-: amazon secret key (optional)
 
 # Parameter Reference
 

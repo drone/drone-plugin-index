@@ -11,37 +11,38 @@ image: plugins/codacy
 This plugin can upload coverage reports to [Codacy](https://www.codacy.com/), currently it's limited to Golang coverage reports. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  codacy:
-    image: plugins/codacy
+kind: pipeline
+name: default
+
+steps:
+- name: codacy
+  image: plugins/codacy
+  settings:
     token: your-codacy-token
 
 ```
 
 Override the default pattern:
 
-```diff
-pipeline:
-  codacy:
-    image: plugins/codacy
-    token: your-codacy-token
-+   pattern: pkg/foo/bar/*.out
+```yaml
+steps:
+- name: codacy
+  image: plugins/codacy
+  settings:
+    token: my-codacy-token
+    pattern: pkg/foo/bar/*.out
 ```
 
 Example configuration using secrets:
 
-```diff
-pipeline:
-  codacy:
-    image: plugins/codacy
--   token: your-codacy-token
-+   secrets: [ codacy_token ]
+```yaml
+steps:
+- name: codacy
+  image: plugins/codacy
+  settings:
+    token:
+      from_secret: my_codacy_token
 ```
-
-# Secret Reference
-
-codacy_token
-: Token for Codacy authentication
 
 # Parameter Reference
 

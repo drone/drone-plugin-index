@@ -6,6 +6,7 @@ tags: [ clone, git ]
 logo: git.svg
 repo: drone-plugins/drone-git
 image: plugins/git
+draft: true
 ---
 
 The git plugin is used to clone a git repository. Note that Drone uses the git plugin by default for all repositories, without any configuration required.

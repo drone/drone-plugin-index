@@ -11,9 +11,13 @@ image: plugins/gcs
 The GCS plugin can be used to publish files and artifacts to Google Cloud Storage. The following pipeline configuration uses the GCS plugin to upload files:
 
 ```yaml
-pipeline:
-  gcs:
-    image: plugins/gcs
+kind: pipeline
+name: default
+
+steps:
+- name: upload  
+  image: plugins/gcs
+  settings:
     source: dist
     target: bucket/dir/
     ignore: bin/*
@@ -26,10 +30,14 @@ pipeline:
 
 Example configuration using secrets:
 
-```diff
-pipeline:
-  gcs:
-    image: plugins/gcs
+```yaml
+kind: pipeline
+name: default
+
+steps:
+- name: upload  
+  image: plugins/gcs
+  settings:
     source: dist
     target: bucket/dir/
     ignore: bin/*
@@ -37,14 +45,9 @@ pipeline:
     gzip: js,css,html
     cache_control: public,max-age=3600
     metadata: {"x-goog-meta-foo":"bar"}
--   token: your-google-token
-+   secrets: [google_credentials]
+    token:
+      from_secret: your-google-token
 ```
-
-# Secret Reference
-
-google_credentials, token
-: credentials to access Google Cloud Storage
 
 # Parameter Reference
 

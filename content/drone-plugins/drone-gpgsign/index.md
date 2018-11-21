@@ -11,9 +11,13 @@ image: plugins/gpgsign
 This plugin can sign your artifacts and build results with [GnuPG](https://www.gnupg.org/). The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  gpgsign:
-    image: plugins/gpgsign
+kind: pipeline
+name: default
+
+steps:
+- name: sign  
+  image: plugins/gpgsign
+  settings:
     key: your-base64-encoded-private-key
     passphrase: p455w0rd
     files:
@@ -22,64 +26,73 @@ pipeline:
 
 Exclude specific patterns:
 
-```diff
-pipeline:
-  gpgsign:
-    image: plugins/gpgsign
+```yaml
+kind: pipeline
+name: default
+
+steps:
+- name: sign  
+  image: plugins/gpgsign
+  settings:
     key: your-base64-encoded-private-key
     passphrase: p455w0rd
     files:
       - dist/*
-+   excludes:
-+     - dist/*.sha256
+    excludes:
+      - dist/*.sha256
 ```
 
 Generate detach-sign signature:
 
-```diff
-pipeline:
-  gpgsign:
-    image: plugins/gpgsign
+```yaml
+kind: pipeline
+name: default
+
+steps:
+- name: sign  
+  image: plugins/gpgsign
+  settings:
     key: your-base64-encoded-private-key
     passphrase: p455w0rd
     files:
       - dist/*
-+   detach_sign: true
+    detach_sign: true
 ```
 
 Generate clear-sign signature:
 
-```diff
-pipeline:
-  gpgsign:
-    image: plugins/gpgsign
+```yaml
+kind: pipeline
+name: default
+
+steps:
+- name: sign  
+  image: plugins/gpgsign
+  settings:
     key: your-base64-encoded-private-key
     passphrase: p455w0rd
     files:
       - dist/*
-+   clear_sign: true
+    clear_sign: true
 ```
 
 Example configuration using secrets:
 
-```diff
-pipeline:
-  gpgsign:
-    image: plugins/gpgsign
--   key: your-base64-encoded-private-key
--   passphrase: p455w0rd
-+   secrets: [ gpgsign_key, gpgsign_passphrase ]
+```yaml
+kind: pipeline
+name: default
+
+steps:
+- name: sign  
+  image: plugins/gpgsign
+  settings:
+    key:
+      from_secret: your-base64-encoded-private-key
+    passphrase:
+      from_secret: your-passphrase
     files:
       - dist/*
 ```
-
-# Secret Reference
-
-gpgsign_key, gpg_key
-: Private GnuPG key, optionally base64 encoded
-
-gpgsign_passphrase, gpg_passphrase
-: Passphrase to unlock private key
 
 # Parameter Reference
 

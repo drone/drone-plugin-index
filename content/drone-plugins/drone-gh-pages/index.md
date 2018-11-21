@@ -11,60 +11,63 @@ image: plugins/gh-pages
 The GitHub Pages plugin is used to publish static websites to GitHub. The following configuration uses the gh-pages plugin to publish a website, if you are working on a private repository you don't need to provide credentials:
 
 ```yaml
-pipeline:
-  publish:
-    image: plugins/gh-pages
+kind: pipeline
+name: default
+
+steps:
+- name: publish  
+  image: plugins/gh-pages
+  settings:
     username: octocat
     password: p455w0rd
     pages_directory: public/
 ```
 
-Example configuration using credentials from secrets:
+Example configuration using credentials from named secrets:
 
-```diff
-pipeline:
-  publish:
-    image: plugins/gh-pages
--   username: octocat
--   password: p455w0rd
-+   secrets: [ github_username, github_password ]
+```yaml
+steps:
+- name: publish  
+  image: plugins/gh-pages
+  settings:
+    username:
+      from_secret: github_username
+    password:
+      from_secret: github_password
     pages_directory: public/
 ```
 
 Example configuration using a custom build directory:
 
-```diff
-pipeline:
-  publish:
-    image: plugins/gh-pages
+```yaml
+kind: pipeline
+name: default
+
+steps:
+- name: publish  
+  image: plugins/gh-pages
+  settings:
     username: octocat
     password: p455w0rd
     pages_directory: public/
-+   temporary_base: tmp/
+    temporary_base: tmp/
 ```
 
 Example configuration using a custom git remote target:
 
-```diff
-pipeline:
-  publish:
-    image: plugins/gh-pages
+```yaml
+kind: pipeline
+name: default
+
+steps:
+- name: publish  
+  image: plugins/gh-pages
+  settings:
     username: octocat
     password: p455w0rd
     pages_directory: public/
-+   upstream_name: upstream
+    upstream_name: upstream
 ```
-
-# Secret Reference
-
-gh_pages_username, github_username
-: GitHub username for pushing changes
-
-gh_pages_password, github_password
-: GitHub password/token for pushing changes
-
-git_push_ssh_key, ssh_key
-: SSH key for pushing changes
 
 # Parameter Reference
 

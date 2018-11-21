@@ -8,10 +8,16 @@ repo: drone-plugins/drone-hg
 image: plugins/hg
 ---
 
-The mercurial plugin is used to clone a mercurial repository.
+The mercurial plugin is used to clone a mercurial repository. In the below example we disable the default git clone and clone the repository using the mercurial plugin.
 
 ```yaml
+kind: pipeline
+name: default
+
 clone:
-  hg:
-    image: plugins/hg
+  disable: true
+
+steps:
+- name: checkout
+  image: plugins/hg
 ```

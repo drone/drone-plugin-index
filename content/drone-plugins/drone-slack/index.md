@@ -19,6 +19,18 @@ steps:
     channel: dev
 ```
 
+Example configuration with webhook sourced from a secret:
+
+```yaml
+steps:
+- name: slack
+  image: plugins/slack
+  settings:
+    webhook:
+      from_secret: slack_webhook
+    channel: dev
+```
+
 Example configuration with custom username:
 
 ```

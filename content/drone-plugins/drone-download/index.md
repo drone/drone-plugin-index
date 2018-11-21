@@ -11,72 +11,77 @@ image: plugins/download
 Use the Download plugin to download archives required for your builds, it also integrates a secure way to inject basic authentication credentials and checking by md5 or sha256 checksums. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  download:
-    image: plugins/download
+kind: pipeline
+name: default
+
+steps:
+- name: download  
+  image: plugins/download
+  settings:
     source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
 ```
 
 Example configuration with custom destination:
 
-```diff
-pipeline:
-  download:
-    image: plugins/download
+```yaml
+kind: pipeline
+name: default
+
+steps:
+- name: download  
+  image: plugins/download
+  settings:
     source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
-+   destination: drone_linux.tar.gz
+    destination: drone_linux.tar.gz
 ```
 
 Example configuration basic auth:
 
-```diff
-pipeline:
-  download:
-    image: plugins/download
-+   username: octocat
-+   password: password
+```yaml
+steps:
+- name: download  
+  image: plugins/download
+  settings:
+    username: octocat
+    password: password
     source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
 ```
 
 Example configuration using a secret:
 
-```diff
-pipeline:
-  download:
-    image: plugins/download
--   username: octocat
--   password: password
-+   secrets: [ download_username, download_password ]
+```yaml
+steps:
+- name: download  
+  image: plugins/download
+  settings:
+    username:
+     from_secret: username
+    password:
+      from_secret: password
     source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
 ```
 
 Example configuration using MD5 checksum:
 
-```diff
-pipeline:
-  download:
-    image: plugins/download
+```yaml
+steps:
+- name: download  
+  image: plugins/download
+  settings:
     source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
-+   md5: a0524c59d5c45bf2e924465115836d37
+    md5: a0524c59d5c45bf2e924465115836d37
 ```
 
 Example configuration using SHA256 checksum:
 
-```diff
-pipeline:
-  download:
-    image: plugins/download
+```yaml
+steps:
+- name: download  
+  image: plugins/download
+  settings:
     source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
-+   sha256: a16f709bc5402727366ca91ba85bba07c0f084a33ce9ab7fe03b8093c4027314
+    sha256: a16f709bc5402727366ca91ba85bba07c0f084a33ce9ab7fe03b8093c4027314
 ```
-
-# Secret Reference
-
-download_username
-: Username for basic auth
-
-download_password
-: Password for basic auth
 
 # Parameter Reference
 

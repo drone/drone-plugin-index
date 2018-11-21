@@ -11,30 +11,32 @@ image: plugins/webhook
 Use the Webhook plugin to notify services via Webhook when a build completes. You will need to supply Drone with outgoing Webhook URLs. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  webhook:
-    image: plugins/webhook
+steps:
+- name: send
+  image: plugins/webhook
+  settings:
     urls: https://your.webhook/...
 ```
 
 Example configuration with multiple URLs:
 
-```diff
-pipeline:
-  webhook:
-    image: plugins/webhook
--   urls: https://your.webhook/...
-+   urls:
-+     - https://your.webhook/...
-+     - https://your.other.webhook/...
+```yaml
+steps:
+- name: send
+  image: plugins/webhook
+  settings:
+    urls:
+      - https://your.webhook/...
+      - https://your.other.webhook/...
 ```
 
 Example configuration with Basic Authentication:
 
-```diff
-pipeline:
-  webhook:
-    image: plugins/webhook
+```yaml
+steps:
+- name: send
+  image: plugins/webhook
+  settings:
     username: myusername
     password: mypassword
     urls: https://your.webhook/...
@@ -43,56 +45,49 @@ pipeline:
 Example configuration using secrets:
 (Note: tokens can be passed as passwords like this)
 
-```diff
-pipeline:
-  webhook:
-    image: plugins/webhook
-    username: myusername
--   password: mypassword
-+   secrets: [webhook_password]
+```yaml
+steps:
+- name: send
+  image: plugins/webhook
+  settings:
+    username:
+      from_secret: myusername
+    password:
+      from_secret: mypassword
     urls: https://your.webhook/...
 ```
 
 Example configuration with custom body:
 
-```diff
-pipeline:
-  webhook:
-    image: plugins/webhook
+```yaml
+steps:
+- name: send
+  image: plugins/webhook
+  settings:
     username: myusername
     password: mypassword
     urls: https://your.webhook/...
-+   content_type: application/json
-+   template: |
-+     {
-+       "owner": "{{ repo.owner }}",
-+       "repo": "{{ repo.name }}",
-+       "status": "{{ build.status }}",
-+     }
+    content_type: application/json
+    template: |
+      {
+        "owner": "{{ repo.owner }}",
+        "repo": "{{ repo.name }}",
+        "status": "{{ build.status }}",
+      }
 ```
 
 Example configuration to debug response:
 
-```diff
-pipeline:
-  webhook:
-    image: plugins/webhook
+```yaml
+steps:
+- name: send
+  image: plugins/webhook
+  settings:
     username: myusername
     password: mypassword
     urls: https://your.webhook/...
-+   debug: true
+    debug: true
 ```
-
-# Secret Reference
-
-webhook_urls
-: Payload gets sent to this list of URLs
-
-webhook_username
-: Username for basic auth
-
-webhook_password
-: Password for basic auth
 
 # Parameter Reference
 

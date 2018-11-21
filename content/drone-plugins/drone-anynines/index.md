@@ -11,9 +11,10 @@ image: plugins/anynines
 This plugin deploys your application on the [Anynines](https://www.anynines.com/) platform. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  anynines:
-    image: plugins/anynines
+steps:
+- name: anynines
+  image: plugins/anynines
+  settings:
     username: octocat@github.com
     password: password
     organization: octocat_github_com
@@ -21,41 +22,30 @@ pipeline:
 
 Override the default space:
 
-```diff
-pipeline:
-  anynines:
-    image: plugins/anynines
+```yaml
+steps:
+- name: anynines
+  image: plugins/anynines
+  settings:
     username: octocat@github.com
     password: password
     organization: octocat_github_com
-+   space: development
+    space: development
 ```
 
 Example configuration using secrets:
 
-```diff
-pipeline:
-  anynines:
-    image: plugins/anynines
--   username: octocat@github.com
--   password: password
--   organization: octocat_github_com
-+   secrets: [ anynines_username, anynines_password, anynines_organization ]
+```yaml
+steps:
+- name: anynines
+  image: plugins/anynines
+  settings:
+    username:
+      from_secret: anynines_username
+    password:
+      from_secret: anynines_password
+    organization: octocat_github_com
 ```
-
-# Secret Reference
-
-anynines_username
-: Username for Anynines auth
-
-anynines_password
-: Password for Anynines auth
-
-anynines_organization
-: Organization on Anynines
-
-anynines_space
-: Space within Anynines organization
 
 # Parameter Reference
 

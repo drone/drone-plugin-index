@@ -11,8 +11,11 @@ image: plugins/s3
 The S3 plugin uploads files and build artifacts to your S3 bucket, or S3-compatible bucket such as Minio. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
+kind: pipeline
+name: default
+
 steps:
-- name: slack
+- name: upload
   image: plugins/s3
   settings:
     bucket: my-bucket-name
@@ -26,7 +29,7 @@ Source the aws credentials from secrets:
 
 ```yaml
 steps:
-- name: slack
+- name: upload
   image: plugins/s3
   settings:
     bucket: my-bucket-name
@@ -42,7 +45,7 @@ Override the default acl and region:
 
 ```yaml
 steps:
-- name: slack
+- name: upload
   image: plugins/s3
   settings:
     bucket: my-bucket-name
@@ -56,7 +59,7 @@ Configure the plugin to strip path prefixes when uploading:
 
 ```yaml
 steps:
-- name: slack
+- name: upload
   image: plugins/s3
   settings:
     bucket: my-bucket-name
@@ -69,7 +72,7 @@ Configure the plugin to exclude files from upload:
 
 ```yaml
 steps:
-- name: slack
+- name: upload
   image: plugins/s3
   settings:
     bucket: my-bucket-name
@@ -83,7 +86,7 @@ Configure the plugin to connect to a Minio server:
 
 ```yaml
 steps:
-- name: slack
+- name: upload
   image: plugins/s3
   settings:
     bucket: my-bucket-name

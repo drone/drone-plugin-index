@@ -11,9 +11,13 @@ image: plugins/codecov
 This plugin can upload coverage reports to [Codecov](https://codecov.io/). The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  codecov:
-    image: plugins/codecov
+kind: pipeline
+name: default
+
+steps:
+- name: coverage
+  image: plugins/codecov
+  settings:
     token: your-codecov-token
     files:
      - *.xml
@@ -21,41 +25,39 @@ pipeline:
 
 Custom base path to coverage reports:
 
-```diff
-pipeline:
-  codecov:
-    image: plugins/codecov
+```yaml
+steps:
+- name: coverage
+  image: plugins/codecov
+  settings:
     token: your-codecov-token
     files:
      - *.xml
-+   paths:
-+     - tests/output/coverage
+    paths:
+      - tests/output/coverage
 ```
 
 Error on failed coverage upload:
 
-```diff
-pipeline:
-  codecov:
-    image: plugins/codecov
-    token: your-codecov-token
-+   required: true
+```yaml
+steps:
+- name: coverage
+  image: plugins/codecov
+  settings:
+    token: my-codecov-token
+    required: true
 ```
 
 Example configuration using secrets:
 
-```diff
-pipeline:
-  codecov:
-    image: plugins/codecov
--   token: your-codecov-token
-+   secrets: [ codecov_token ]
+```yaml
+steps:
+- name: coverage
+  image: plugins/codecov
+  settings:
+    token:
+      from_secret: my-codecov-token
 ```
-
-# Secret Reference
-
-codecov_token
-: Token for Codecov authentication
 
 # Parameter Reference
 
