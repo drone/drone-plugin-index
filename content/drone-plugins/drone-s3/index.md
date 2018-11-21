@@ -11,9 +11,10 @@ image: plugins/s3
 The S3 plugin uploads files and build artifacts to your S3 bucket, or S3-compatible bucket such as Minio. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  s3:
-    image: plugins/s3
+steps:
+- name: slack
+  image: plugins/s3
+  settings:
     bucket: my-bucket-name
     access_key: a50d28f4dd477bc184fbd10b376de753
     secret_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
@@ -21,55 +22,75 @@ pipeline:
     target: /target/location
 ```
 
+Source the aws credentials from secrets:
+
+```yaml
+steps:
+- name: slack
+  image: plugins/s3
+  settings:
+    bucket: my-bucket-name
+    access_key:
+      from_secret: aws_access_key_id
+    secret_key:
+      from_secret: aws_secret_access_key
+    source: public/**/*
+    target: /target/location
+```
+
 Override the default acl and region:
 
-```diff
-pipeline:
-  s3:
-    image: plugins/s3
+```yaml
+steps:
+- name: slack
+  image: plugins/s3
+  settings:
     bucket: my-bucket-name
-+   acl: public-read
-+   region: us-east-1
+    acl: public-read
+    region: us-east-1
     source: public/**/*
     target: /target/location
 ```
 
 Configure the plugin to strip path prefixes when uploading:
 
-```diff
-pipeline:
-  s3:
-    image: plugins/s3
+```yaml
+steps:
+- name: slack
+  image: plugins/s3
+  settings:
     bucket: my-bucket-name
     source: public/**/*
     target: /target/location
-+   strip_prefix: public/
+    strip_prefix: public/
 ```
 
 Configure the plugin to exclude files from upload:
 
-```diff
-pipeline:
-  s3:
-    image: plugins/s3
+```yaml
+steps:
+- name: slack
+  image: plugins/s3
+  settings:
     bucket: my-bucket-name
     source: public/**/*
     target: /target/location
-+   exclude:
-+     - **/*.xml
+    exclude:
+      - **/*.xml
 ```
 
 Configure the plugin to connect to a Minio server:
 
-```diff
-pipeline:
-  s3:
-    image: plugins/s3
+```yaml
+steps:
+- name: slack
+  image: plugins/s3
+  settings:
     bucket: my-bucket-name
     source: public/**/*
     target: /target/location
-+   path_style: true
-+   endpoint: https://play.minio.io:9000
+    path_style: true
+    endpoint: https://play.minio.io:9000
 ```
 
 # Parameter Reference

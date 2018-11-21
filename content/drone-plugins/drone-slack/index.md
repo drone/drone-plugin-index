@@ -11,89 +11,96 @@ image: plugins/slack
 The Slack plugin posts build status messages to your channel. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  slack:
-    image: plugins/slack
+steps:
+- name: slack
+  image: plugins/slack
+  settings:
     webhook: https://hooks.slack.com/services/...
     channel: dev
 ```
 
 Example configuration with custom username:
 
-```diff
-pipeline:
-  slack:
-    image: plugins/slack
+```
+steps:
+- name: slack
+  image: plugins/slack
+  settings:
     webhook: https://hooks.slack.com/services/...
     channel: dev
-+   username: drone
+    username: drone
 ```
 
 Example configuration with custom avatar:
 
-```diff
-pipeline:
-  slack:
-    image: plugins/slack
+```
+steps:
+- name: slack
+  image: plugins/slack
+  settings:
     webhook: https://hooks.slack.com/services/...
     channel: dev
-+   icon_url: https://unsplash.it/256/256/?random
+    icon_url: https://unsplash.it/256/256/?random
 ```
 
 Example configuration with image attachment:
 
-```diff
-pipeline:
-  slack:
-    image: plugins/slack
+```
+steps:
+- name: slack
+  image: plugins/slack
+  settings:
     webhook: https://hooks.slack.com/services/...
     channel: dev
-+   image_url: https://unsplash.it/256/256/?random
+    image_url: https://unsplash.it/256/256/?random
 ```
 
 Example configuration for success and failure messages:
 
-```diff
-pipeline:
-  slack:
-    image: plugins/slack
+```
+steps:
+- name: slack
+  image: plugins/slack
+  settings:
     webhook: https://hooks.slack.com/services/...
     channel: dev
-+   when:
-+     status: [ success, failure ]
+    when:
+      status: [ success, failure ]
 ```
 
 Example configuration with a custom message template:
 
-```diff
-pipeline:
-  slack:
-    image: plugins/slack
+```
+steps:
+- name: slack
+  image: plugins/slack
+  settings:
     webhook: https://hooks.slack.com/services/...
     channel: dev
-+   template: >
-+     {{#success build.status}}
-+       build {{build.number}} succeeded. Good job.
-+     {{else}}
-+       build {{build.number}} failed. Fix me please.
-+     {{/success}}
+    template: >
+      {{#success build.status}}
+        build {{build.number}} succeeded. Good job.
+      {{else}}
+        build {{build.number}} failed. Fix me please.
+      {{/success}}
 ```
 
 Example configuration with a custom message template linking usernames and channels:
 
 ```diff
-pipeline:
-  slack:
-    image: plugins/slack
+steps:
+- name: slack
+  image: plugins/slack
+  settings:
     webhook: https://hooks.slack.com/services/...
     channel: dev
-+   link_names: true
-+   template: >
-+     {{#success build.status}}
-+       build {{build.number}} succeeded. Good job. <@john.doe>
-+     {{else}}
-+       build {{build.number}} failed. Fix me please. <@channelname> <@someone>
-+     {{/success}}
+    link_names: true
+    template: >
+      {{#success build.status}}
+        build {{build.number}} succeeded. Good job. <@john.doe>
+      {{else}}
+        build {{build.number}} failed. Fix me please. <@channelname> <@someone>
+      {{/success}}
 ```
 
 # Parameter Reference
