@@ -26,7 +26,7 @@ Use secrets instead of hardcoding credentials:
 
 ```diff
 pipeline:
-  s3:
+  b2:
     image: techknowlogick/drone-b2
     bucket: my-bucket-name
 -   account: a50d28f4dd477bc184fbd10b376de753
@@ -40,7 +40,7 @@ Configure the plugin to strip path prefixes when uploading:
 
 ```diff
 pipeline:
-  s3:
+  b2:
     image: techknowlogick/drone-b2
     bucket: my-bucket-name
     secrets: [ b2_account_id, b2_application_key ]
@@ -53,7 +53,7 @@ Configure the plugin to exclude files from upload:
 
 ```diff
 pipeline:
-  s3:
+  b2:
     image: techknowlogick/drone-b2
     bucket: my-bucket-name
     secrets: [ b2_account_id, b2_application_key ]
@@ -88,9 +88,6 @@ source
 target
 : target location of files in the bucket
 
-encryption
-: if provided, use server-side encryption
-
 strip_prefix
 : strip the prefix from source path
 
@@ -99,4 +96,3 @@ exclude
 
 path_style
 : whether path style URLs should be used (true for minio)
-
