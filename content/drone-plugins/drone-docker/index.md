@@ -3,17 +3,21 @@ date: 2016-01-01T00:00:00+00:00
 title: Docker
 author: drone-plugins
 tags: [ publish, docker ]
-repo: drone-plugins/drone-docker
 logo: docker.svg
+repo: drone-plugins/drone-docker
 image: plugins/drone
 ---
 
 The Docker plugin can be used to build and publish images to the Docker registry. The following pipeline configuration uses the Docker plugin to build and publish Docker images:
 
 ```yaml
-pipeline:
-  docker:
-    image: plugins/docker
+kind: pipeline
+name: default
+
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
     username: kevinbacon
     password: pa55word
     repo: foo/bar
@@ -22,72 +26,103 @@ pipeline:
 
 Example configuration using multiple tags:
 
-```diff
-pipeline:
-  docker:
-    image: plugins/docker
+```yaml
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
+    username: kevinbacon
+    password: pa55word
     repo: foo/bar
--   tags: latest
-+   tags:
-+     - latest
-+     - 1.0.1
-+     - 1.0
+    tags:
+      - latest
+      - '1.0.1'
+      - '1.0'
+```
+
+Example configuration using a `.tags` file (a comma separated list of tags):
+
+```yaml
+steps:
+- name: build
+  image: golang
+  commands:
+    - go build
+    - go test
+    - echo -n "5.2.6,5.2.4" > .tags
+
+- name: docker  
+  image: plugins/docker
+  settings:
+    username: kevinbacon
+    password: pa55word
+    repo: foo/bar
 ```
 
 Example configuration using build arguments:
 
-```diff
-pipeline:
-  docker:
-    image: plugins/docker
+```yaml
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
+    username: kevinbacon
+    password: pa55word
     repo: foo/bar
-+   build_args:
-+     - HTTP_PROXY=http://yourproxy.com
+    build_args:
+      - HTTP_PROXY=http://yourproxy.com
 ```
 
 Example configuration using alternate Dockerfile:
 
-```diff
-pipeline:
-  docker:
-    image: plugins/docker
+```yaml
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
+    username: kevinbacon
+    password: pa55word
     repo: foo/bar
--   dockerfile: Dockerfile
-+   dockerfile: path/to/Dockerfile
+    dockerfile: path/to/Dockerfile
 ```
 
 Example configuration using a custom registry:
 
-```diff
-pipeline:
-  docker:
-    image: plugins/docker
--   repo: foo/bar
-+   repo: index.company.com/foo/bar
-+   registry: index.company.com
+```yaml
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
+    username: kevinbacon
+    password: pa55word
+    repo: index.company.com/foo/bar
+    registry: index.company.com
 ```
 
 Example configuration using inline credentials:
 
-```diff
-pipeline:
-  docker:
-    image: plugins/docker
-+   username: kevinbacon
-+   password: pa55word
+```yaml
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
+    username: kevinbacon
+    password: pa55word
     repo: foo/bar
 ```
 
 Example configuration using credentials from secrets:
 
-```diff
-pipeline:
-  docker:
-    image: plugins/docker
--   username: kevinbacon
--   password: pa55word
+```yaml
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
     repo: foo/bar
-+   secrets: [ docker_username, docker_password ]
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
 ```
 
 # Autotag
@@ -101,36 +136,79 @@ When the event type is push and the target branch is your default branch (e.g. m
 
 Example configuration:
 
-```diff
-pipeline:
-  docker:
-    image: plugins/docker
+```yaml
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
     repo: foo/bar
-+   auto_tag: true
-    secrets: [ docker_username, docker_password ]
+    auto_tag: true
+    username: kevinbacon
+    password: pa55word
 ```
 
 Example configuration with tag suffix:
 
-```diff
-pipeline:
-  docker:
-    image: plugins/docker
+```yaml
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
     repo: foo/bar
-+   auto_tag: true
-+   auto_tag_suffix: linux-amd64
-    secrets: [ docker_username, docker_password ]
+    auto_tag: true
+    auto_tag_suffix: linux-amd64
+    username: kevinbacon
+    password: pa55word
 ```
 
 Please note that auto-tagging is intentionally simple and opinionated. We are not accepting pull requests at this time to further customize the logic.
 
-# Secret Reference
+# Multi-stage builds
 
-docker_username
-: authenticates with this username
+The Docker plugin allow to stop build at a specific stage defined in `Dockerfile` as described in the [official docs](https://docs.docker.com/develop/develop-images/multistage-build/#name-your-build-stages).
+If the `target` attribute is not defined, the Docker plugin will not stop at any stage and build the full docker image.
 
-docker_password
-: authenticates with this password
+Using a `Dockerfile` like:
+
+```
+FROM golang as builder
+WORKSPACE /go/src/github.com/foo/bar
+RUN CGO_ENABLED=0 GOOS=linux go build -o demo main.go
+
+FROM scratch as production
+COPY --from=builder /go/src/github.com/foo/bar/demo .
+CMD ["./demo"]
+
+FROM alpine as debug
+COPY --from=builder /go/src/github.com/foo/bar/demo .
+CMD ["./demo"]
+```
+
+Example configuration that allow build a docker image for production:
+
+```yaml
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
+    repo: foo/bar
+    target: production
+    username: kevinbacon
+    password: pa55word
+```
+
+and this one will build debug docker image
+
+```yaml
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
+    repo: foo/bar
+    target: debug
+    username: kevinbacon
+    password: pa55word
+```
 
 # Parameter Reference
 
@@ -157,6 +235,9 @@ auth
 
 context
 : the context path to use, defaults to root of the git repo
+
+target
+: the build target to use, must be defined in the docker file
 
 force_tag=false
 : replace existing matched image tags
@@ -187,3 +268,4 @@ auto_tag_suffix
 
 debug, launch_debug
 : launch the docker daemon in verbose debug mode
+

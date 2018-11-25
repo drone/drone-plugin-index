@@ -1,10 +1,11 @@
 ---
+version: '0.8'
 date: 2017-01-29T00:00:00+00:00
 title: SSH
 author: appleboy
-tags: [ publish, ssh ]
-repo: appleboy/drone-ssh
+tags: [ deploy, publish, ssh ]
 logo: term.svg
+repo: appleboy/drone-ssh
 image: appleboy/drone-ssh
 ---
 
@@ -191,3 +192,4 @@ proxy_key
 
 proxy_key_path
 : key path of proxy private key
+

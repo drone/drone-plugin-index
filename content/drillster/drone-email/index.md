@@ -1,9 +1,10 @@
 ---
+version: '0.8'
 author: "drillster"
 date: 2017-01-31T08:00:35+01:00
 image: "drillster/drone-email"
-repo: "drillster/drone-email"
 tags: [ notifications, email ]
+repo: "drillster/drone-email"
 logo: email.svg
 title: Email
 ---
@@ -262,3 +263,4 @@ truncate
 
 urlencode
 : returns a url encoded string
+

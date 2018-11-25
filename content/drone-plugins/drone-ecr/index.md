@@ -1,19 +1,23 @@
 ---
 date: 2016-01-01T00:00:00+00:00
-title: Amazon ECR
+title: AWS ECR
 author: drone-plugins
-tags: [ publish, docker, aws, amazon ]
-repo: drone-plugins/drone-ecr
+tags: [ publish, amazon, aws, ecr, docker ]
 logo: amazon_ecr.svg
+repo: drone-plugins/drone-ecr
 image: plugins/ecr
 ---
 
 The ECR plugin can be used to build and publish images to the Amazon ECR registry. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  ecr:
-    image: plugins/ecr
+kind: pipeline
+name: default
+
+steps:
+- name: publish  
+  image: plugins/ecr
+  settings:
     access_key: a50d28f4dd477bc184fbd10b376de753
     secret_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
     repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
@@ -22,77 +26,70 @@ pipeline:
 
 Example configuration using multiple tags:
 
-```diff
-pipeline:
-  ecr:
-    image: plugins/ecr
+```yaml
+steps:
+- name: publish  
+  image: plugins/ecr
+  settings:
     repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
--   tags: latest
-+   tags:
-+     - latest
-+     - 1.0.1
-+     - 1.0
+    tags:
+      - latest
+      - 1.0.1
+      - 1.0
 ```
 
 Override the default region:
 
-```diff
-publish:
-  ecr:
-    image: plugins/ecr
+```yaml
+steps:
+- name: publish  
+  image: plugins/ecr
+  settings:
     repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
-+   region: us-east-1
+    region: us-east-1
 ```
 
 Override the default Dockerfile path:
 
-```diff
-publish:
-  ecr:
-    image: plugins/ecr
+```yaml
+steps:
+- name: publish  
+  image: plugins/ecr
+  settings:
     repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
--   dockerfile: Dockerfile
-+   dockerfile: path/to/Dockerfile
+    dockerfile: path/to/Dockerfile
 ```
 
 Example configuration using build arguments:
 
-```diff
-publish:
-  ecr:
-    image: plugins/ecr
+```yaml
+steps:
+- name: publish  
+  image: plugins/ecr
+  settings:
     repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
-+   build_args:
-+     - HTTP_PROXY=http://yourproxy.com
+    build_args:
+      - HTTP_PROXY=http://yourproxy.com
 ```
 
 Example configuration using credentials from secrets:
 
-```diff
-pipeline:
-  ecr:
-    image: plugins/ecr
--   access_key: a50d28f4dd477bc184fbd10b376de753
--   secret_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
+```yaml
+steps:
+- name: publish  
+  image: plugins/ecr
+  settings:
+    access_key:
+      from_secret: aws_access_key_id
+    secret_key:
+      from_secret: aws_secret_access_key
     repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
-+   secrets: [ ecr_access_key, ecr_secret_key ]
 ```
-
-# Secret Reference
-
-ecr_region
-: amazon region, defaults to `us-east-1`
-
-ecr_access_key
-: amazon access key
-
-ecr_secret_key
-: amazon secret access key
 
 # Parameter Reference
 

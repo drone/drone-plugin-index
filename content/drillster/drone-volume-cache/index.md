@@ -1,12 +1,12 @@
 ---
-author: "drillster"
+version: '0.8'
 date: 2016-12-15T15:57:35-05:00
-image: "drillster/drone-volume-cache"
-repo: "drillster/drone-volume-cache"
-logo: volume_cache.svg
-tags:
-- "cache"
 title: Volume Cache
+author: drillster
+tags: [ cache ]
+logo: volume_cache.svg
+repo: drillster/drone-volume-cache
+image: drillster/drone-volume-cache
 ---
 
 {{% alert error %}}
@@ -116,3 +116,4 @@ Include one of the following directives somewhere in your commit message to trig
 
 [NO CACHE]
 : instruct the plugin not to restore or rebuild cache for this build.
+

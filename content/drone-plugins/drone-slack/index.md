@@ -3,80 +3,116 @@ date: 2016-01-01T00:00:00+00:00
 title: Slack
 author: drone-plugins
 tags: [ notifications, chat ]
-repo: drone-plugins/drone-slack
 logo: slack.svg
+repo: drone-plugins/drone-slack
 image: plugins/slack
 ---
 
 The Slack plugin posts build status messages to your channel. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  slack:
-    image: plugins/slack
+steps:
+- name: slack
+  image: plugins/slack
+  settings:
     webhook: https://hooks.slack.com/services/...
+    channel: dev
+```
+
+Example configuration with webhook sourced from a secret:
+
+```yaml
+steps:
+- name: slack
+  image: plugins/slack
+  settings:
+    webhook:
+      from_secret: slack_webhook
     channel: dev
 ```
 
 Example configuration with custom username:
 
-```diff
-pipeline:
-  slack:
-    image: plugins/slack
+```
+steps:
+- name: slack
+  image: plugins/slack
+  settings:
     webhook: https://hooks.slack.com/services/...
     channel: dev
-+   username: drone
+    username: drone
 ```
 
 Example configuration with custom avatar:
 
-```diff
-pipeline:
-  slack:
-    image: plugins/slack
+```
+steps:
+- name: slack
+  image: plugins/slack
+  settings:
     webhook: https://hooks.slack.com/services/...
     channel: dev
-+   icon_url: https://unsplash.it/256/256/?random
+    icon_url: https://unsplash.it/256/256/?random
 ```
 
 Example configuration with image attachment:
 
-```diff
-pipeline:
-  slack:
-    image: plugins/slack
+```
+steps:
+- name: slack
+  image: plugins/slack
+  settings:
     webhook: https://hooks.slack.com/services/...
     channel: dev
-+   image_url: https://unsplash.it/256/256/?random
+    image_url: https://unsplash.it/256/256/?random
 ```
 
 Example configuration for success and failure messages:
 
-```diff
-pipeline:
-  slack:
-    image: plugins/slack
+```
+steps:
+- name: slack
+  image: plugins/slack
+  settings:
     webhook: https://hooks.slack.com/services/...
     channel: dev
-+   when:
-+     status: [ success, failure ]
+  when:
+    status: [ success, failure ]
 ```
 
 Example configuration with a custom message template:
 
-```diff
-pipeline:
-  slack:
-    image: plugins/slack
+```
+steps:
+- name: slack
+  image: plugins/slack
+  settings:
     webhook: https://hooks.slack.com/services/...
     channel: dev
-+   template: >
-+     {{#success build.status}}
-+       build {{build.number}} succeeded. Good job.
-+     {{else}}
-+       build {{build.number}} failed. Fix me please.
-+     {{/success}}
+    template: >
+      {{#success build.status}}
+        build {{build.number}} succeeded. Good job.
+      {{else}}
+        build {{build.number}} failed. Fix me please.
+      {{/success}}
+```
+
+Example configuration with a custom message template linking usernames and channels:
+
+```diff
+steps:
+- name: slack
+  image: plugins/slack
+  settings:
+    webhook: https://hooks.slack.com/services/...
+    channel: dev
+    link_names: true
+    template: >
+      {{#success build.status}}
+        build {{build.number}} succeeded. Good job. <@john.doe>
+      {{else}}
+        build {{build.number}} failed. Fix me please. <@channelname> <@someone>
+      {{/success}}
 ```
 
 # Parameter Reference
@@ -104,6 +140,9 @@ icon_url
 
 icon_emoji
 : displays a emoji to the left of the username
+
+link_names
+: links usernames and channels in the message
 
 # Template Reference
 
@@ -148,6 +187,9 @@ build.started
 
 build.pull
 : pull request number (empty string if not a pull request)
+
+build.deployTo
+: env that the build was deployed to.
 
 # Template Function Reference
 

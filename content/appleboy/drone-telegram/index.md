@@ -1,4 +1,5 @@
 ---
+version: '0.8'
 date: 2017-01-08T00:00:00+00:00
 title: Telegram
 author: appleboy
@@ -167,7 +168,7 @@ token
 : telegram token from [telegram developer center](https://core.telegram.org/bots/api)
 
 to
-: telegram user id
+: telegram user id (can be requested from the @userinfobot inside Telegram)
 
 message
 : overwrite the default message template
@@ -207,6 +208,24 @@ repo.owner
 repo.name
 : repository name
 
+commit.sha
+: git sha for current commit
+
+commit.branch
+: git branch for current commit
+
+commit.link
+: git commit link in remote
+
+commit.author
+: git author for current commit
+
+commit.email
+: git author email for current commit
+
+commit.message
+: git current commit message
+
 build.status
 : build status type enumeration, either `success` or `failure`
 
@@ -216,20 +235,8 @@ build.event
 build.number
 : build number
 
-build.commit
-: git sha for current commit
-
-build.branch
-: git branch for current commit
-
 build.tag
 : git tag for current commit
-
-build.ref
-: git ref for current commit
-
-build.author
-: git author for current commit
 
 build.link
 : link the the build results in drone
@@ -268,3 +275,4 @@ urlencode
 
 since
 : returns a duration string between now and the given timestamp. Example `{{since build.started}}`
+

@@ -14,19 +14,15 @@ params:
 menu:
   main:
     - identifier: documentation
-      weight: 1
-      name: Documentation
-      url: http://readme.drone.io/
-    - identifier: tutorial
       weight: 2
-      name: Tutorials
-      url: http://readme.drone.io/tutorials/
+      name: Documentation
+      url: https://docs.drone.io/
     - identifier: question
       weight: 3
-      name: Questions
-      url: http://readme.drone.io/questions/
+      name: Support
+      url: https://discourse.drone.io
     - identifier: plugin
-      weight: 4
+      weight: 1
       name: Plugins
       url: /
 

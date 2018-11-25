@@ -1,10 +1,11 @@
 ---
+version: '0.8'
 date: 2016-01-01T00:00:00+00:00
 title: Chef Supermarket
 author: jmccann
 tags: [ publish, chef ]
-repo: jmccann/drone-chef-supermarket
 logo: chef_supermarket.svg
+repo: jmccann/drone-chef-supermarket
 image: jmccann/drone-chef-supermarket
 ---
 
@@ -52,3 +53,4 @@ server
 
 ssl_verify
 : (default: `true`) Enable/Disable SSL verify
+

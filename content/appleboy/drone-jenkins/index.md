@@ -1,10 +1,11 @@
 ---
+version: '0.8'
 date: 2017-01-16T00:00:00+00:00
 title: Jenkins
 author: appleboy
 tags: [ infrastructure, trigger, jenkins ]
-repo: appleboy/drone-jenkins
 logo: jenkins.svg
+repo: appleboy/drone-jenkins
 image: appleboy/drone-jenkins
 ---
 
@@ -75,3 +76,4 @@ token
 
 job
 : jenkins job name
+

@@ -1,10 +1,11 @@
 ---
+version: '0.8'
 date: 2017-08-14T00:00:00+00:00
 title: Discord
 author: appleboy
 tags: [ notifications, chat ]
-repo: appleboy/drone-discord
 logo: discord.svg
+repo: appleboy/drone-discord
 image: appleboy/drone-discord
 ---
 
@@ -181,3 +182,4 @@ urlencode
 
 since
 : returns a duration string between now and the given timestamp. Example `{{since build.started}}`
+

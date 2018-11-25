@@ -1,10 +1,11 @@
 ---
+version: '0.8'
 date: 2017-04-11T00:00:00+00:00
 title: SFTP Cache
 author: appleboy
-tags: [ publish, ssh, sftp, cache ]
-repo: appleboy/drone-sftp-cache
+tags: [ cache, sftp, ssh ]
 logo: term.svg
+repo: appleboy/drone-sftp-cache
 image: appleboy/drone-sftp-cache
 ---
 
@@ -99,3 +100,4 @@ restore
 
 ignore_branch
 : boolean flag to ignore commit branch name on hash value
+

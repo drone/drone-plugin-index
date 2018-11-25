@@ -1,10 +1,11 @@
 ---
+version: '0.8'
 date: 2016-01-01T00:00:00+00:00
 title: Hipchat
 author: jmccann
 tags: [ notifications, chat ]
-repo: jmccann/drone-hipchat
 logo: hipchat.svg
+repo: jmccann/drone-hipchat
 image: jmccann/drone-hipchat
 ---
 
@@ -59,3 +60,4 @@ from: drone
 
 notify: false
 : Whether this message should trigger a user notification. See https://www.hipchat.com/docs/apiv2/method/private_message_user
+

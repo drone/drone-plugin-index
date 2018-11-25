@@ -1,10 +1,11 @@
 ---
+version: '0.8'
 date: 2017-02-28T00:00:00+00:00
 title: Artifactory
 author: athieriot
 tags: [ publish, artifactory ]
-repo: athieriot/drone-artifactory
 logo: artifactory.svg
+repo: athieriot/drone-artifactory
 image: athieriot/drone-artifactory
 ---
 
@@ -117,3 +118,4 @@ File paths are interpreted with [node-glob](https://github.com/isaacs/node-glob#
 If a pom parameter is specified it will be automatically deployed. It is not necessary to specify the pom under the files parameter.
 
 In the example above, pom.xml will be deployed as `<groupId>-<artifactId>-<version>.pom`
+

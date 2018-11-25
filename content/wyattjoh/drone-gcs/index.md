@@ -1,10 +1,11 @@
 ---
-author: wyattjoh
+version: '0.8'
 date: 2017-04-14T00:00:00Z
+title: Google Cloud Storage
+author: wyattjoh
+tags: [ publish, google, gcp, gcs, storage ]
 logo: google_gcs.svg
 repo: wyattjoh/drone-gcs
-tags: [ google cloud, gcp, gcs, storage ]
-title: Google Cloud Storage
 image: wyattjoh/drone-gcs
 ---
 
@@ -79,3 +80,4 @@ exclude
 
 compress
 : gzip files before they are uploaded and add a Content-Encoding: gzip
+

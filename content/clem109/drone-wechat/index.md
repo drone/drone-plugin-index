@@ -1,10 +1,11 @@
 ---
+version: '0.8'
 date: 2018-02-19T00:00:00+00:00
 title: Wechat for Work
 author: clem109
-tags: [ notifications, chat ]
-repo: clem109/drone-wechat
+tags: [ notifications, chat, wechat ]
 logo: wechat.svg
+repo: clem109/drone-wechat
 image: clem109/drone-wechat
 ---
 
@@ -91,3 +92,4 @@ plugin_to_user
 
 plugin_to_tag
 : The tag ids to send the message to
+

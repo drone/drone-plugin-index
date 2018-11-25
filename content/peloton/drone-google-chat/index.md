@@ -1,10 +1,11 @@
 ---
+version: '0.8'
 date: 2016-01-13T00:00:00+00:00
-title: Google chat
+title: Google Chat
 author: josmo
 tags: [  notifications, chat  ]
-repo: josmo/drone-google-chat
 logo: gtalk.svg
+repo: josmo/drone-google-chat
 image: peloton/drone-google-chat
 ---
 
@@ -147,3 +148,4 @@ urlencode
 
 since
 : returns a duration string between now and the given timestamp. Example `{{since build.started}}`
+

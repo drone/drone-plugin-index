@@ -1,10 +1,11 @@
 ---
+version: '0.8'
 date: 2016-01-01T00:00:00+00:00
-title: Drone-Kube
+title: Drone Kube
 author: vallard
-tags: [ kubernetes, docker ]
-repo: vallard/drone-kube
+tags: [ deploy, kubernetes, docker ]
 logo: kubernetes.svg
+repo: vallard/drone-kube
 image: vallard/drone-kube
 ---
 
@@ -121,3 +122,4 @@ urlencode
 
 since
 : returns a duration string between now and the given timestamp. Example `{{since build.started}}`
+

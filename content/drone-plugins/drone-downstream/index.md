@@ -2,11 +2,10 @@
 date: 2016-01-01T00:00:00+00:00
 title: Downstream Build
 author: drone-plugins
-tags: [ drone ]
-repo: drone-plugins/drone-downstream
+tags: [ infrastructure, trigger, drone ]
 logo: drone.svg
+repo: drone-plugins/drone-downstream
 image: plugins/downstream
-version: 0.6
 ---
 
 Use this plugin to trigger builds for a list of downstream repositories. This
@@ -14,9 +13,13 @@ is useful when updates to a repository have downstream impacts that should also
 be tested.
 
 ```yaml
-pipeline:
-  trigger:
-    image: plugins/downstream
+kind: pipeline
+name: default
+
+steps:
+- name: trigger  
+  image: plugins/downstream
+  settings:
     server: https://drone.example.com
     token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
     fork: true
@@ -27,33 +30,41 @@ pipeline:
 
 Example target specific branches:
 
-```diff
-pipeline:
-  trigger:
-    image: plugins/downstream
+```yaml
+kind: pipeline
+name: default
+
+steps:
+- name: trigger  
+  image: plugins/downstream
+  settings:
     server: https://drone.example.com
     token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
     fork: true
     repositories:
-+     - octocat/Hello-World@develop
-+     - octocat/Spoon-Knife@master
+      - octocat/Hello-World@develop
+      - octocat/Spoon-Knife@master
 ```
 
 # Secret Reference
 
 This plugins supports sourcing sensitive parameters from the secret store. Example configuration sources the token from the secret store:
 
-```diff
-pipeline:
-  trigger:
-    image: plugins/downstream
+```yaml
+kind: pipeline
+name: default
+
+steps:
+- name: trigger  
+  image: plugins/downstream
+  settings:
     server: https://drone.example.com
--   token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+    token:
+      from_secret: docker_token
     fork: true
     repositories:
       - octocat/Hello-World
       - octocat/Spoon-Knife
-+   secrets: [ downstream_token ]
 ```
 
 # Parameter Reference

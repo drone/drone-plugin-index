@@ -1,10 +1,11 @@
 ---
+version: '0.8'
 date: 2017-07-21T00:00:00+00:00
 title: Maven Auth
 author: robertstettner
-tags: [ maven, mvn, authentication ]
-repo: robertstettner/drone-mvn-auth
+tags: [ authentication, maven, mvn ]
 logo: maven.svg
+repo: robertstettner/drone-mvn-auth
 image: robertstettner/drone-mvn-auth
 ---
 The Maven Auth plugin can be used for generating the `settings.xml` with server authentication for a Maven repository. Please note that dependencies are saved in the `.m2` directory. The below pipeline configuration demonstrates usage: 
@@ -91,3 +92,4 @@ active_profiles[]
 
 debug
 : debug mode (optional: set to `true` for verbose messages)
+

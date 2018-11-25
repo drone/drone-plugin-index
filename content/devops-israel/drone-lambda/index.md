@@ -1,11 +1,12 @@
 ---
-author: "devops-israel"
+version: '0.8'
 date: 2017-10-22T08:00:35+01:00
-image: "omerxx/drone-lambda-plugin"
-repo: "omerxx/drone-lambda-plugin"
-tags: [ deploy, aws, lambda ]
+title: AWS Lambda
+author: devops-israel
+tags: [ deploy, amazon, aws, lambda ]
 logo: amazon_lambda.svg
-title: AWS Lambda Deploy
+repo: omerxx/drone-lambda-plugin
+image: omerxx/drone-lambda-plugin
 ---
 
 The plugin utilizes AWS go-sdk to update an existing function's code; build your code, zip it with dependencies and upload it to S3. Then trigger the plugin for deploy.
@@ -82,4 +83,5 @@ s3_bucket
 
 file_name
 : Name of the file in S3. Can be prefixed like `my-directory/my-zip-package.zip`
+
 

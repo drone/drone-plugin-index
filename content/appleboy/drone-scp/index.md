@@ -1,10 +1,11 @@
 ---
+version: '0.8'
 date: 2017-01-06T00:00:00+00:00
 title: SCP
 author: appleboy
 tags: [ publish, ssh, scp ]
-repo: appleboy/drone-scp
 logo: term.svg
+repo: appleboy/drone-scp
 image: appleboy/drone-scp
 ---
 
@@ -240,3 +241,4 @@ build.author
 
 build.link
 : link the the build results in drone
+

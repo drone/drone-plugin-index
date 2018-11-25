@@ -1,10 +1,11 @@
 ---
+version: '0.8'
 date: 2017-07-14T00:00:00+00:00
 title: Gitlab-CI
 author: appleboy
 tags: [ infrastructure, trigger, gitlab, gitlab-ci ]
-repo: appleboy/drone-gitlab-ci
 logo: gitlab.svg
+repo: appleboy/drone-gitlab-ci
 image: appleboy/drone-gitlab-ci
 ---
 
@@ -80,3 +81,4 @@ id
 
 debug
 : enable debug mode
+
