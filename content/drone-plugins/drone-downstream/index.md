@@ -60,7 +60,7 @@ steps:
   settings:
     server: https://drone.example.com
     token:
-      from_secret: docker_token
+      from_secret: drone_token
     fork: true
     repositories:
       - octocat/Hello-World
