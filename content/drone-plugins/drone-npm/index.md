@@ -17,10 +17,10 @@ name: default
 steps:
 - name: npm
   image: plugins/npm
-  settings:
-    username: bob
-    password: password
-    email: bob@bob.me
+  # settings:
+  username: bob
+  password: password
+  email: bob@bob.me
 ```
 
 Example configuration sourcing the token from a named secret:
@@ -29,11 +29,11 @@ Example configuration sourcing the token from a named secret:
 steps:
 - name: npm
   image: plugins/npm
-  settings:
-    username: bob
-    password:
-      from_secret: npm_password
-    email: bob@bob.me
+  # settings:
+  username: bob
+  password:
+    from_secret: npm_password
+  email: bob@bob.me
 ```
 
 Example configuration using a custom registry:
@@ -42,11 +42,11 @@ Example configuration using a custom registry:
 steps:
 - name: npm
   image: plugins/npm
-  settings:
-    username: bob
-    password: password
-    email: bob@bob.me
-    registry: "http://myregistry:4873"
+  # settings:
+  username: bob
+  password: password
+  email: bob@bob.me
+  registry: "http://myregistry:4873"
 ```
 
 # NPM Enterprise Authentication
@@ -58,11 +58,11 @@ NPM enterprise users can optionally authenticate using
 steps:
 - name: npm
   image: plugins/npm
-  settings:
-    username: bob
-    password: password
-    token: f0e4c2f76c58916ec25
-    email: bob@bob.me
+  # settings:
+  username: bob
+  password: password
+  token: f0e4c2f76c58916ec25
+  email: bob@bob.me
 ```
 
 # Parameter Reference
