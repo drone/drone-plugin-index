@@ -233,6 +233,9 @@ dockerfile
 auth
 : auth token for the registry
 
+dry-run
+: boolean if the docker image should be pushed at the end
+
 context
 : the context path to use, defaults to root of the git repo
 
