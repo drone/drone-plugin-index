@@ -20,10 +20,9 @@ steps:
 
 - name: coveralls
   image: lizheming/drone-coveralls
-  environment:
-    COVERALLS_REPO_TOKEN:
-      from_secret: coveralls_token
   settings:
+    token:
+      from_secret: coveralls_token
     files:
     - ./lcov.info
 ```
@@ -32,7 +31,6 @@ steps:
 
 files
 : list of target files to upload. Required.
-corpid
 
 token
 : if you have not set environment `COVERALLS_REPO_TOKEN`, you should set the private repository token.
