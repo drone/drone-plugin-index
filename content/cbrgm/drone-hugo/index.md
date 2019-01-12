@@ -69,7 +69,7 @@ pipeline:
   hugo:
     image: cbrgm/drone-hugo:latest
 +   buildDrafts: true
-+   buildExpired: tru
++   buildExpired: true
 +   buildFuture: true
     config: path/to/config
     content: path/to/content/
