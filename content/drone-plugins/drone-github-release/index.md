@@ -17,20 +17,20 @@ kind: pipeline
 name: default
 
 steps:
-- name: publish  
+- name: publish
   image: plugins/github-release
   settings:
     api_key: xxxxxxxx
     files: dist/*
-    when:
-      event: tag
+  when:
+    event: tag
 ```
 
 An example for generating checksums and uploading additional files:
 
 ```yaml
 steps:
-- name: publish  
+- name: publish
   image: plugins/github-release
   settings:
     api_key: xxxxxxxx
@@ -44,8 +44,8 @@ steps:
       - sha512
       - adler32
       - crc32
-    when:
-      event: tag
+  when:
+    event: tag
 ```
 
 Example configuration using credentials from named secrets:
@@ -55,14 +55,14 @@ kind: pipeline
 name: default
 
 steps:
-- name: publish  
+- name: publish
   image: plugins/github-release
   settings:
     api_key: xxxxxxxx
       from_secret: github_token
     files: dist/*
-    when:
-      event: tag
+  when:
+    event: tag
 ```
 
 # Parameter Reference
