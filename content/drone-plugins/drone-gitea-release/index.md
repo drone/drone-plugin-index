@@ -23,8 +23,8 @@ steps:
     api_key: xxxxxxxx
     base_url: https://your.gitea.tld
     files: dist/*
-    when:
-      event: tag
+  when:
+    event: tag
 ```
 
 An example for generating checksums and uploading additional files:
@@ -46,8 +46,8 @@ steps:
       - sha512
       - adler32
       - crc32
-    when:
-      event: tag
+  when:
+    event: tag
 ```
 
 Example with title and notes:
@@ -63,10 +63,9 @@ steps:
       - dist/*
     title: 0.0.1
     note: CHANGELOG.md
-    when:
-      event: tag
+  when:
+    event: tag
 ```
-
 
 Example configuration using credentials from secrets:
 
@@ -79,8 +78,8 @@ steps:
     api_key:
       from_secret: gitea_token
     files: dist/*
-    when:
-      event: tag
+  when:
+    event: tag
 ```
 
 # Parameter Reference
