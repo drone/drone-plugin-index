@@ -48,6 +48,22 @@ steps:
     event: tag
 ```
 
+Example with title and notes:
+
+```yaml
+steps:
+- name: publish
+  image: plugins/github-release
+  settings:
+    api_key: xxxxxxxx
+    files:
+      - dist/*
+    title: 0.0.1
+    note: CHANGELOG.md
+  when:
+    event: tag
+```
+
 Example configuration using credentials from named secrets:
 
 ```yaml
@@ -85,6 +101,12 @@ draft
 
 prerelease
 : set the release as prerelease if set to true
+
+note:
+: file or string with notes for the release
+
+title
+: file or string for the title shown in the gitea release
 
 base_url
 : GitHub base URL, only required for GHE
