@@ -1,12 +1,12 @@
 ---
-version: '0.8'
-date: 2018-03-02T00:00:00+00:00
+version: '1.0'
+date: 2019-01-21T00:00:00+00:00
 title: Hugo
 author: cbrgm
 tags: [ tool, hugo, generation, static ]
 logo: gohugo.svg
-repo: cbrgm/drone-hugo
-image: cbrgm/drone-hugo
+repo: drone-plugins/drone-hugo
+image: plugins/hugo
 ---
 
 The Hugo plugin automatically generates static web page files, which can be published afterwards!
@@ -14,9 +14,14 @@ The Hugo plugin automatically generates static web page files, which can be publ
 The example below demonstrates how you can use the plugin to automatically create static web page files using Hugo plugin:
 
 ```yml
-pipeline:
-  hugo:
-    image: cbrgm/drone-hugo:latest
+kind: pipeline
+name: default
+
+steps:
+- name: build
+  image: plugins/hugo
+  settings:
+    hugo_version: 0.55
     validate: true
 ```
 
@@ -27,9 +32,15 @@ pipeline:
 You can customize the paths for e. g. the theme, layout, content directory and output directory and much more!
 
 ```yml
-pipeline:
-  hugo:
-    image: cbrgm/drone-hugo:latest
+kind: pipeline
+name: default
+
+steps:
+- name: build
+  image: plugins/hugo
+  settings:
+    hugo_version: 0.55
+    url: https://foo.com
 +   config: path/to/config
 +   content: path/to/content/
 +   layout: path/to/layout
@@ -44,15 +55,22 @@ pipeline:
 You can also define a base URL directly in the pipeline, which is used when generating the files.
 
 ```yml
-pipeline:
-  hugo:
-    image: cbrgm/drone-hugo:latest
+kind: pipeline
+name: default
+
+steps:
+- name: build
+  image: plugins/hugo
+  settings:
+    hugo_version: 0.55
+    url: https://foo.com
     config: path/to/config
     content: path/to/content/
+    layout: path/to/layout
     output: path/to/public
     source: path/to/source
     theme: path/themes/THEMENAME/
-+   url: https://cbrgm.de
++   url: https://foo.com
     validate: true
 ```
 
@@ -65,18 +83,25 @@ You can set the `buildDrafts`, `buildExpired`, `buildFuture` settings to configu
 - `buildFuture` - include content with publishdate in the future
 
 ```yml
-pipeline:
-  hugo:
-    image: cbrgm/drone-hugo:latest
-+   buildDrafts: true
-+   buildExpired: true
-+   buildFuture: true
+kind: pipeline
+name: default
+
+steps:
+- name: build
+  image: plugins/hugo
+  settings:
+    hugo_version: 0.55
+    url: https://foo.com
     config: path/to/config
     content: path/to/content/
+    layout: path/to/layout
     output: path/to/public
     source: path/to/source
     theme: path/themes/THEMENAME/
-    url: https://cbrgm.de
+    url: https://foo.com
++   buildDrafts: true
++   buildExpired: true
++   buildFuture: true
     validate: true
 ```
 
@@ -85,24 +110,36 @@ pipeline:
 Here is a short example of how to define a pipeline that automatically generates the static web page files with Hugo and then copies them to a remote server via scp. This makes publishing websites a breeze!
 
 ```yml
-pipeline:
-  build:
-    image: cbrgm/drone-hugo:latest
-    output: public/drone-generated # Output path
-    validate: true
-    when:
-      branch: [ master ]
-  publish:
-    image: appleboy/drone-scp
-    # secrets: [ Use secrets to hide credentials! ]
-    host: cbrgm.de
-    username: webuser
-    password: xxxxxxx
-    port: 54321
-    rm: true
-    target: /var/www/blog
-    source: public/drone-generated/* # All files from output path
+kind: pipeline
+name: default
 
+steps:
+- name: build
+  image: plugins/hugo
+  settings:
+    hugo_version: 0.55
+    pull: always
+    url: https://foo.com
+    validate: true
+
+- name: deploy
+  image: appleboy/drone-scp
+  settings:
+    host: 192.168.162.1
+    target: /var/www/site
+    source: public/*
+    username:
+      from_secret: ssh_username
+    password:
+      from_secret: ssh_password
+    port:
+      from_secret: ssh_port
+  when:
+    branch:
+    - master
+    event:
+      exclude:
+      - pull_request
 ```
 
 # Parameter Reference
@@ -144,7 +181,4 @@ validate
 
 You have suggestions for improvements or features you miss? You are welcome to express all your wishes here. Just create a new Issue on Github and it will be taken care of quickly!
 
-If you are a developer yourself, you can also contribute code! Further information will follow shortly.
-
-Github: https://github.com/cbrgm/drone-hugo
-
+Github: https://github.com/drone-plugins/drone-hugo
