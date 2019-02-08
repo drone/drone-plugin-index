@@ -236,6 +236,9 @@ auth
 dry_run
 : boolean if the docker image should be pushed at the end
 
+purge
+: boolean if cleanup of the docker image should be done at the end
+
 context
 : the context path to use, defaults to root of the git repo
 
