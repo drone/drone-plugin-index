@@ -67,7 +67,7 @@ password
 : Password for the pypi publish.
 
 repository
-: The URL of the repository to be published to. (Optional, will default to https://pypi.python.org/pypi)
+: The URL of the repository to be published to. (Optional, will default to https://upload.pypi.org/legacy/)
 
 distributions
 : List of distribution types to publish. (Optional, will default to only sdist)
