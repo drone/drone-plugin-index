@@ -85,7 +85,7 @@ steps:
 
 api_key
 : GitHub oauth token with public_repo or repo permission. If you create your token,
-ensure you select the correct scope. For private repositories to must select `repo`
+ensure you select the correct scope. For private repositories you have to select `repo`
 while public repositories only requires `public_repo`. You can read more about creating a
 personal access token [here](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
