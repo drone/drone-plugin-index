@@ -61,40 +61,104 @@ data:
 
 # Parameter Reference
 
-requirements: path to python requirements
-galaxy: path to galaxy requirements
-inventory: specify (multiple) inventory host path(s): 'path1,[path2]'
-playbook: list of playbooks to apply: 'playbook1,[playbook2]'
-limit: further limit selected hosts to an additional pattern
-skip_tags: only run plays and tasks whose tags do not match
-start_at_task: start the playbook at the task matching this name
-tags: only run plays and tasks tagged with these values
-extra_vars: set additional variables as key=value: 'key1=value1,[key2=value2]'
-module_path: prepend paths to module library: 'path1,[path2]'
-check: run a check, do not apply any changes: true/false
-diff: show the differences, may print secrets: true/false
-flush_cache: clear the fact cache for every host in inventory: true/false
-force_handlers: run handlers even if a task fails: true/false
-list_hosts: outputs a list of matching hosts: true/false
-list_tags: list all available tags: true/false
-list_tasks: list all tasks that would be executed: true/false
-syntax_check: perform a syntax check on the playbook: true/false
-forks: specify number of parallel processes to use: number, default: 5
-vault_id: the vault identity to use
-vault_password: the vault password to use
-verbose: level of verbosity, 0 up to 4: number, default: 0
-private_key: use this key to authenticate the ssh connection
-user: connect as this user
-connection: connection type to use
-timeout: override the connection timeout in seconds: number, default: 0
-ssh_common_args: specify common arguments to pass to sftp/scp/ssh
-sftp_extra_args: specify extra arguments to pass to sftp only
-scp_extra_args: specify extra arguments to pass to scp only
-ssh_extra_args: specify extra arguments to pass to ssh only
-become: run operations with become: true/false
-become_method: privilege escalation method to use
-become_user: run operations as this user
+become
+: run operations with become: true/false
 
+become_method
+: privilege escalation method to use
+
+become_user
+: run operations as this user
+
+check
+: run a check, do not apply any changes: true/false
+
+connection
+: connection type to use
+
+diff
+: show the differences, may print secrets: true/false
+
+extra_vars
+: set additional variables as key=value: 'key1=value1,[key2=value2]'
+
+flush_cache
+: clear the fact cache for every host in inventory: true/false
+
+force_handlers
+: run handlers even if a task fails: true/false
+
+forks
+: specify number of parallel processes to use: number, default: 5
+
+galaxy
+: path to galaxy requirements
+
+inventory
+: specify (multiple) inventory host path(s): 'path1,[path2]'
+
+limit
+: further limit selected hosts to an additional pattern
+
+list_hosts
+: outputs a list of matching hosts: true/false
+
+list_tags
+: list all available tags: true/false
+
+list_tasks
+: list all tasks that would be executed: true/false
+
+module_path
+: prepend paths to module library: 'path1,[path2]'
+
+playbook
+: list of playbooks to apply: 'playbook1,[playbook2]'
+
+private_key
+: use this key to authenticate the ssh connection
+
+requirements
+: path to python requirements
+
+scp_extra_args
+: specify extra arguments to pass to scp only
+
+sftp_extra_args
+: specify extra arguments to pass to sftp only
+
+ssh_common_args
+: specify common arguments to pass to sftp/scp/ssh
+
+ssh_extra_args
+: specify extra arguments to pass to ssh only
+
+skip_tags
+: only run plays and tasks whose tags do not match
+
+start_at_task
+: start the playbook at the task matching this name
+
+syntax_check
+: perform a syntax check on the playbook: true/false
+
+tags
+: only run plays and tasks tagged with these values
+
+timeout
+: override the connection timeout in seconds: number, default: 0
+
+user
+: connect as this user
+
+vault_id
+: the vault identity to use
+
+vault_password
+: the vault password to use
+
+verbose
+: level of verbosity, 0 up to 4: number, default: 0
 
 # Hints
 
