@@ -1,0 +1,111 @@
+---
+version: '1.0'
+date: 2019-02-15T00:00:00+00:00
+title: Ansible
+author: tboerger
+tags: [ infrastructure, ops, ansbile, deploy  ]
+logo: ansible.svg
+repo: drone-plugins/drone-ansible
+image: plugins/ansible
+---
+
+The Ansible plugin can be used to run ansible plays. The below sample pipeline configuration demonstrates simple usage:
+
+```yaml
+kind: pipeline
+name: default
+
+steps:
+- name: check ansible syntax
+  image: plugins/ansible:1
+  environment:
+    additional_var:
+      from_secret: additional_var
+    another_var: foo
+  settings:
+    playbook: ansible/playbook.yml
+    galaxy: ansible/requirements.yml
+    inventory: ansible/inventory
+    syntax_check: true
+  when:
+    event:
+    - pull_request
+
+- name: apply ansible playbook
+  image: plugins/ansible:1
+  environment:
+    additional_var:
+      from_secret: additional_var
+    another_var: foo
+  settings:
+    playbook: ansible/playbook.yml
+    galaxy: ansible/requirements.yml
+    inventory: ansible/inventory
+    private_key:
+      from_secret: ansible_private_key
+    vault_password:
+      from_secret: ansible_vault_password
+  when:
+    event:
+    - push
+    - tag
+
+---
+kind: secret
+
+data:
+  ansible_private_key: ANSIBLE_PRIVATE_KEY
+  ansible_vault_password: ANSIBLE_VAULT_PASSWORD
+```
+
+
+# Parameter Reference
+
+requirements: path to python requirements
+galaxy: path to galaxy requirements
+inventory: specify (multiple) inventory host path(s): 'path1,[path2]'
+playbook: list of playbooks to apply: 'playbook1,[playbook2]'
+limit: further limit selected hosts to an additional pattern
+skip_tags: only run plays and tasks whose tags do not match
+start_at_task: start the playbook at the task matching this name
+tags: only run plays and tasks tagged with these values
+extra_vars: set additional variables as key=value: 'key1=value1,[key2=value2]'
+module_path: prepend paths to module library: 'path1,[path2]'
+check: run a check, do not apply any changes: true/false
+diff: show the differences, may print secrets: true/false
+flush_cache: clear the fact cache for every host in inventory: true/false
+force_handlers: run handlers even if a task fails: true/false
+list_hosts: outputs a list of matching hosts: true/false
+list_tags: list all available tags: true/false
+list_tasks: list all tasks that would be executed: true/false
+syntax_check: perform a syntax check on the playbook: true/false
+forks: specify number of parallel processes to use: number, default: 5
+vault_id: the vault identity to use
+vault_password: the vault password to use
+verbose: level of verbosity, 0 up to 4: number, default: 0
+private_key: use this key to authenticate the ssh connection
+user: connect as this user
+connection: connection type to use
+timeout: override the connection timeout in seconds: number, default: 0
+ssh_common_args: specify common arguments to pass to sftp/scp/ssh
+sftp_extra_args: specify extra arguments to pass to sftp only
+scp_extra_args: specify extra arguments to pass to scp only
+ssh_extra_args: specify extra arguments to pass to ssh only
+become: run operations with become: true/false
+become_method: privilege escalation method to use
+become_user: run operations as this user
+
+
+# Hints
+
+Please use the the secret stores provided by drone, or any external. Do not commit secrets into any public repositories.
+
+Format of private key, particular when adding to Drone's secret stores:
+
+    -----BEGIN RSA PRIVATE KEY-----
+    keydata_on_one_line
+    -----END RSA PRIVATE KEY-----
+
+Tip: Preferably put your playbooks into a dot-folder, as to reduce interaction with the rest of your repository data, i.e:
+
+    .ansible/
