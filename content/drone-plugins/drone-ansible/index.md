@@ -2,7 +2,7 @@
 version: '1.0'
 date: 2019-02-15T00:00:00+00:00
 title: Ansible
-author: tboerger
+author: drone-plugins
 tags: [ infrastructure, ops, ansbile, deploy  ]
 logo: ansible.svg
 repo: drone-plugins/drone-ansible
