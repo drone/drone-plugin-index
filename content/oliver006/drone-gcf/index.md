@@ -1,11 +1,11 @@
 ---
-date: 2016-01-01T00:00:00+00:00
+date: 2019-02-22T00:00:00+00:00
 title: Google Cloud Functions
 author: oliver006
 tags: [ publish, google, gcp, gcf ]
 logo: google_gcf.svg
 repo: oliver06/drone-gcf
-image: plugins/gcf
+image: oliver06/drone-gcf
 ---
 
 
