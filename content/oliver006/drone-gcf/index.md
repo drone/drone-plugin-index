@@ -4,8 +4,8 @@ title: Google Cloud Functions
 author: oliver006
 tags: [ publish, google, gcp, gcf ]
 logo: google_gcf.svg
-repo: oliver06/drone-gcf
-image: oliver06/drone-gcf
+repo: oliver006/drone-gcf
+image: oliver006/drone-gcf
 ---
 
 
