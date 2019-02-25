@@ -75,7 +75,7 @@ project
 : name of the GCP project. if not present, the project of the service account will be used 
 
 runtime
-: runtime of the functions to be deployed, defaults to `go111` if not present
+: runtime of the functions to be deployed. Can be specified once or one a per-fucntion basis.
 
 functions
 : list of functions to be deployed, each needs to at least provider a trigger but can also set `memory`, `runtime`, and `source`.
