@@ -80,3 +80,9 @@ runtime
 functions
 : list of functions to be deployed, each needs to at least provider a trigger but can also set `memory`, `runtime`, and `source`.
 
+
+# Command Line Parameter Reference
+
+-v
+: show plugin version and exit
+
