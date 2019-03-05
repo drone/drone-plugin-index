@@ -217,3 +217,15 @@ cloudfront_distribution
 
 dry_run
 : disable real uploads, just simulate it
+
+# AWS Permissions
+
+This drone plugin requires the following permissions:
+
+| Permission | Description |
+| ---------- | ----------- |
+| s3:PutObject | PuObject called when the file is missing in s3 or a change in the file contents is found, CopyObject is called when a change in the metadata is found |
+| s3:GetObject | HeadObject call to retrieve the metadata of a file |
+| s3:GetObjectAcl | Called when there are no contents or metadata changes to compare the ACL |
+| s3:ListBucket | ListObjects is called on startup, the result is only used when the delete parameter is provided |
+| s3:DeleteObject | (optional) only used when the delete parameter is provided |
