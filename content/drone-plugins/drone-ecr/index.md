@@ -105,6 +105,12 @@ region
 repo
 : repository name for the image
 
+lifecycle_policy
+: filename of ecr lifecycle json policy
+
+repository_policy
+: filename of ecr repository json policy
+
 tags
 : repository tag for the image, defaults to `latest`
 
