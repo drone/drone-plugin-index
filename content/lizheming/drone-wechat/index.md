@@ -1,5 +1,4 @@
 ---
-version: '0.8'
 date: 2018-01-07T00:00:00+00:00
 title: Wechat
 author: lizheming
@@ -11,19 +10,23 @@ image: lizheming/drone-wechat
 
 The Wechat plugin posts build status messages to your account. The below pipeline configuration demonstrates simple usage:
 
-```diff
-pipeline:
-  wechat:
-    image: lizheming/drone-wechat
-+   corpid: corpid
-+   corp_secret: secret
-+   agent_id: 1234567
-+   to_user: 111
-+   to_party: 112
-+   to_tag: ${DRONE_REPO_NAME}
-+   msg_url: ${DRONE_BUILD_LINK}
-+   safe: 1
-+   btn_txt: more
+```yaml
+steps:
+- name: wechat
+  image: lizheming/drone-wechat
+  settings:
+    corpid: 
+      from_secret: wechat_corpid
+    corp_secret:
+      from_secret: wechat_corp_secret
+    agent_id: 
+      from_secret: agent_id
+    to_user: 111
+    to_party: 112
+    to_tag: ${DRONE_REPO_NAME}
+    msg_url: ${DRONE_BUILD_LINK}
+    safe: 1
+    btn_txt: more
     title: ${DRONE_REPO_NAME}
     message: >
       {%if success %}
@@ -67,26 +70,6 @@ title
 
 message
 : Notification body message, support markdown
-
-# Secret Reference
-
-wechat_corpid
-: The corpid for authorization
-
-wechat_corp_secret
-: The corp secret for authorization
-
-wechat_agent_id
-: The agent id to send the message
-
-wechat_to_party
-: The party ids to send message
-
-wechat_to_user
-: The user ids to send the message to
-
-wechat_to_tag
-: The tag ids to send the message to
 
 # Template Reference
 
