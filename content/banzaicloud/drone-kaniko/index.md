@@ -2,7 +2,7 @@
 date: 2019-01-08T07:27:08-05:00
 title: Kaniko
 author: banzaicloud
-logo: term.svg
+logo: kaniko.svg
 tags: [ publish, docker ]
 repo: banzaicloud/drone-kaniko
 image: banzaicloud/drone-kaniko
