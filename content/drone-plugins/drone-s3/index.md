@@ -41,6 +41,18 @@ steps:
     target: /target/location
 ```
 
+Use the build number in the S3 target prefix:
+
+```yaml
+steps:
+- name: upload
+  image: plugins/s3
+  settings:
+    bucket: my-bucket-name
+    source: public/**/*
+    target: /target/location/${DRONE_BUILD_NUMBER}
+```
+
 Override the default acl and region:
 
 ```yaml
@@ -117,7 +129,7 @@ acl
 : access to files that are uploaded (`private`, `public-read`, etc)
 
 source
-: source location of the files, using a glob matching pattern
+: source location of the files, using a glob matching pattern. Location must be within the drone workspace.
 
 target
 : target location of files in the bucket
