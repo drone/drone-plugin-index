@@ -104,7 +104,7 @@ method
 : HTTP submission method, defaults to POST
 
 content_type
-: Sontent type, defaults to application/json
+: Content type, defaults to application/json
 
 template
 : Custom template for webhook
