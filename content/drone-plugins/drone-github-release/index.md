@@ -105,7 +105,7 @@ draft
 prerelease
 : set the release as prerelease if set to true
 
-note:
+note
 : file or string with notes for the release
 
 title
@@ -116,3 +116,6 @@ base_url
 
 upload_url
 : GitHub upload URL, only required for GHE
+
+overwrite
+: force overwrite existing release informations (only title and note)
