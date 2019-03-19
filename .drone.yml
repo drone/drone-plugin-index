@@ -9,7 +9,6 @@ pipeline:
 
   build:
     image: webhippie/hugo:latest
-    pull: true
     commands:
       - git clone https://github.com/drone/drone-hugo-theme.git themes/drone-hugo-theme
       - hugo
