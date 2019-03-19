@@ -1,5 +1,5 @@
 ---
-date: 2019-03-25T00:00:00+00:00
+date: 2019-03-19T00:00:00+00:00
 title: Drone Cache
 author: meltwater
 tags: [ cache, amazon, aws, s3, volume ]
@@ -8,11 +8,19 @@ repo: meltwater/drone-cache
 image: meltwater/drone-cache
 ---
 
+{{% alert error %}}
+The example Yaml configurations in this file are using the legacy 0.8 syntax. If you are using Drone 1.0 or Drone Cloud please ensure you use the appropriate 1.0 syntax. [Learn more here](https://docs.drone.io/config/pipeline/migrating/#plugins)
+{{% /alert %}}
+
+{{% alert error %}}
+This plugin requires Volume configuration if you enable certain backend with configuration. This means your repository Trusted flag must be enabled. This should not be enabled in untrusted environments.
+{{% /alert %}}
+
 A Drone plugin for caching current workspace files between builds to reduce your build times. `drone-cache` is a small CLI program, written in Go without any external OS dependencies (such as tar, etc).
 
 With `drone-cache`, you can provide your **own cache key templates**, specify **archive format** (tar, tar.gz, etc) and you can use **an S3 bucket or a mounted volume** as storage for your cached files, even better you can implement **your own storage backend** to cover your use case.
 
-## How does it work
+**How does it work**
 
 `drone-cache` stores mounted directories and files under a key at the specified backend (by default S3).
 
@@ -35,13 +43,12 @@ Also following helper functions provided for your use:
 
 For further information about this syntax please see [official docs](https://golang.org/pkg/text/template/) from Go standard library.
 
-## Template Examples
+**Template Examples**
 
 `"{{ .Repo.Name }}-{{ .Commit.Branch }}-{{ checksum "go.mod" }}-yadayadayada"`
 
 `"{{ .Repo.Name }}_{{ checksum "go.mod" }}_{{ checksum "go.sum" }}_{{ arch }}_{{ os }}"`
-
-## Metadata
+*Metadata*
 
 Following metadata object is available and pre-populated with current build information for you to use in cache key templates.
 
@@ -88,7 +95,7 @@ Following metadata object is available and pre-populated with current build info
 
 The following is a sample configuration in your .drone.yml file:
 
-### Simple
+**Simple**
 
 ```yaml
 pipeline:
@@ -125,7 +132,7 @@ rebuild-deps-cache:
       - 'deps'
 ```
 
-### Simple (Filesystem/Volume)
+**Simple (Filesystem/Volume)**
 
 ```yaml
 pipeline:
@@ -166,9 +173,9 @@ rebuild-deps-cache:
         - '/drone/tmp/cache:/tmp/cache'
 ```
 
-### With custom cache key prefix template
+**With custom cache key prefix template**
 
-See [cache key templates](#cache-key-templates) section for further information and to learn about syntax.
+See [cache key templates](/meltwater/drone-cache#using-cache-key-templates) section for further information and to learn about syntax.
 
 ```yaml
 pipeline:
@@ -205,7 +212,7 @@ rebuild-deps-cache:
       - 'deps'
 ```
 
-### With gzip compression
+*With gzip compression*
 
 ```yaml
 pipeline:
@@ -244,7 +251,7 @@ rebuild-deps-cache:
       - 'deps'
 ```
 
-### Debug
+**Debug**
 
 ```yaml
 pipeline:
@@ -295,28 +302,28 @@ rebuild
 restore
 : restore the cache directories
 
-cache-key value
+cache-key
 : cache key to use for the cache directories
 
 archive-format
 : archive format to use to store the cache directories (`tar`, `gzip`) (default: `tar`)
 
-debug value
+debug
 : enable debug
 
 filesystem-cache-root
 : local filesystem root directory for the filesystem cache (default: `/tmp/cache`)
 
-endpoint value
+endpoint
 : endpoint for the s3 connection
 
-access-key value
+access-key
 : AWS access key
 
-secret-key value
+secret-key
 : AWS secret key
 
-bucket value
+bucket
 : AWS bucket name
 
 region
