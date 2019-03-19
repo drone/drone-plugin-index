@@ -44,7 +44,8 @@ For further information about this syntax please see [official docs](https://gol
 `"{{ .Repo.Name }}-{{ .Commit.Branch }}-{{ checksum "go.mod" }}-yadayadayada"`
 
 `"{{ .Repo.Name }}_{{ checksum "go.mod" }}_{{ checksum "go.sum" }}_{{ arch }}_{{ os }}"`
-*Metadata*
+
+**Metadata**
 
 Following metadata object is available and pre-populated with current build information for you to use in cache key templates.
 
