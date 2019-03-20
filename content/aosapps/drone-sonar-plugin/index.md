@@ -26,19 +26,19 @@ steps:
 Customized parameters could be specified:
 
 ```diff
-  steps:
-  - name: code-analysis
-    image: aosapps/drone-sonar-plugin
-    settings:
-      sonar_host:
-        from_secret: sonar_host
-      sonar_token:
-        from_secret: sonar_token
-+     ver: 1.0
-+     timeout: 20
-+     sources: .
-+     level: DEBUG
-+     showProfiling: true
+steps:
+- name: code-analysis
+  image: aosapps/drone-sonar-plugin
+  settings:
+    sonar_host:
+      from_secret: sonar_host
+    sonar_token:
+      from_secret: sonar_token
++   ver: 1.0
++   timeout: 20
++   sources: .
++   level: DEBUG
++   showProfiling: true
 ```
 
 # Secret Reference
