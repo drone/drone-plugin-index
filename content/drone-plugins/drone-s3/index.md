@@ -31,12 +31,9 @@ Source the aws credentials from secrets:
 steps:
 - name: upload
   image: plugins/s3
+  secrets: [aws_access_key_id, aws_secret_access_key]
   settings:
     bucket: my-bucket-name
-    access_key:
-      from_secret: aws_access_key_id
-    secret_key:
-      from_secret: aws_secret_access_key
     source: public/**/*
     target: /target/location
 ```
