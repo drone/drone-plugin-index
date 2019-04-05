@@ -1,5 +1,5 @@
 ---
-version: '0.8'
+version: '1.0'
 date: 2016-12-15T15:57:35-05:00
 title: Volume Cache
 author: drillster
@@ -16,27 +16,34 @@ This plugin requires Volume configuration. This means your repository Trusted fl
 The volume cache plugin can be used to preserve files and directories between builds. The below pipeline configuration demonstrates simple usage.
 
 ```yaml
-pipeline:
-  restore-cache:
-    image: drillster/drone-volume-cache
+kind: pipeline
+name: default
+
+steps:
+- name: restore-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
     restore: true
     mount:
       - ./node_modules
-    volumes:
-      - /tmp/cache:/cache
 
-  build:
-    image: node
-    commands:
-      - npm install
-
-  rebuild-cache:
-    image: drillster/drone-volume-cache
+- name: rebuild-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
     rebuild: true
     mount:
       - ./node_modules
-    volumes:
-      - /tmp/cache:/cache
+
+volumes:
+  - name: cache
+    host: 
+      path: /tmp/cache
 ```
 
 The mount attribute defines a list of files or directories that should be cached and restored.
@@ -46,53 +53,57 @@ The cached files or directories must be located in your build workspace. It is n
 {{% /alert %}}
 
 ```diff
-pipeline:
-  restore-cache:
+  - name: restore-cache
     image: drillster/drone-volume-cache
-    restore: true
-+   mount:
-+     - node_modules
     volumes:
-      - /tmp/cache:/cache
+    - name: cache
+      path: /cache
+    settings:
+      restore: true
++     mount:
++      - ./node_modules
 ```
 
 The `rebuild` flag instructs the plugin to copy files from the build environment to the host machine. This should be declared at the end of your pipeline.
 
 ```diff
-pipeline:
-  rebuild-cache:
+  - name: rebuild-cache
     image: drillster/drone-volume-cache
-+   rebuild: true
-    mount:
-      - node_modules
     volumes:
-      - /tmp/cache:/cache
+    - name: cache
+      path: /cache
+    settings:
++     rebuild: true
+      mount:
+        - ./node_modules
 ```
 
 The `restore` flag instructs the plugin to copy files from the host machine to your build environment. This should be declared at the beginning of your pipeline, before your build steps.
 
 ```diff
-pipeline:
-  restore-cache:
+  - name: restore-cache
     image: drillster/drone-volume-cache
-+   restore: true
-    mount:
-      - node_modules
     volumes:
-      - /tmp/cache:/cache
+    - name: cache
+      path: /cache
+    settings:
++     restore: true
+      mount:
+        - ./node_modules
 ```
 
 The volume attribute defines the path on the host machine where the cache is stored. The host machine volume must be mounted into container path `/cache`.
 
 ```diff
-pipeline:
-  restore-cache:
+  - name: restore-cache
     image: drillster/drone-volume-cache
-    restore: true
-    mount:
-      - node_modules
 +   volumes:
-+     - /tmp/cache:/cache
++   - name: cache
+      path: /cache
+    settings:
+      restore: true
+      mount:
+        - ./node_modules
 ```
 
 # Parameter Reference
