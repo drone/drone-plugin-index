@@ -1,5 +1,4 @@
 ---
-version: '1.0'
 date: 2016-12-15T15:57:35-05:00
 title: Volume Cache
 author: drillster
