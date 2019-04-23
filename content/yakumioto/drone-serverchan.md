@@ -1,5 +1,4 @@
 ---
-version: '1.0.0'
 date: 2019-04-22T00:00:00+08:00
 title: ServerChan(Server酱)
 author: yakumioto
@@ -20,10 +19,9 @@ steps:
   - name: send-wechat
     image: yakumioto/serverchan
     settings:
-      key:
-        from_secret: { your key }
-      text: { message title }
-      desp: { message description(support MarkDown) }
+      key: SCU48558T164ff96a3316d8a22cacea21d66b5caed80baa044
+      text: hello world
+      desp: Send by ServerChan
 ```
 
 # Parameter Reference
