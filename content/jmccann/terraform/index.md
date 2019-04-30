@@ -14,8 +14,9 @@ The Terraform plugin applies the infrastructure configuration contained within t
 ```yaml
 pipeline:
   terraform:
-    image: jmccann/drone-terraform:1
-    plan: false
+    image: jmccann/drone-terraform:latest
+    settings:
+      plan: false
 ```
 
 Example configuration passing `vars` to terraform commands:
@@ -23,7 +24,8 @@ Example configuration passing `vars` to terraform commands:
 ```diff
 pipeline:
   terraform:
-    image: jmccann/drone-terraform:1
+    image: jmccann/drone-terraform:latest
+  settings:
     plan: false
 +   vars:
 +     app_name: my-project
@@ -37,6 +39,7 @@ example will call `terraform apply -var my_secret=${TERRAFORM_SECRET}`:
 pipeline:
   terraform:
     image: jmccann/drone-terraform:1
+  settings:
     plan: false
 +   secrets:
 +     my_secret: TERRAFORM_SECRET
@@ -51,6 +54,7 @@ what command is actually being ran.
 pipeline:
   terraform:
     image: jmccann/drone-terraform:1
+  settings:
     plan: false
 +   sensitive: true
 ```
@@ -61,6 +65,7 @@ Example configuration with state tracked via remote:
 pipeline:
   terraform:
     image: jmccann/drone-terraform:1
+  settings:
     plan: false
 +   remote:
 +     backend: S3
@@ -79,6 +84,7 @@ CA Certificate.  You can inject your CA Certificate into the plugin by using
 pipeline:
   terraform:
     image: jmccann/drone-terraform:1
+  settings:
     plan: false
 +   ca_cert: |
 +     -----BEGIN CERTIFICATE-----
@@ -97,6 +103,7 @@ See [the discussion](https://github.com/hashicorp/terraform/issues/1275) in the 
 pipeline:
   terraform:
     image: jmccann/drone-terraform:1
+  settings:
     plan: false
 +   role_arn_to_assume: arn:aws:iam::account-of-role-to-assume:role/name-of-role
 ```
@@ -109,6 +116,7 @@ and you want to use different drone configurations to apply different environmen
 pipeline:
   terraform:
     image: jmccann/drone-terraform:1
+  settings:
     plan: false
 +   root_dir: some/path/here
 ```
@@ -121,6 +129,7 @@ all resources will be planned/applied against as the default behavior.
 pipeline:
   terraform:
     image: jmccann/drone-terraform:1
+  settings:
     plan: false
 +   targets:
 +     - aws_security_group.generic_sg
@@ -134,11 +143,12 @@ If you want to change Terraform's default parallelism (currently equal to 10) th
 pipeline:
   terraform:
     image: jmccann/drone-terraform:1
+  settings:
     plan: false
 +   parallelism: 2
 ```
 
-# Parameter Reference
+# Settings Reference
 
 plan
 : if true, calculates a plan but does __NOT__ apply it.
