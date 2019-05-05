@@ -10,7 +10,7 @@ image: banzaicloud/drone-kaniko
 
 This plugin can be used to build and publish images to the Docker registry,
 using the [Kaniko](https://github.com/GoogleContainerTools/kaniko) image
-builder.  Unlike the [Docker plugin]({{< ref "/drone-plugins/drone-docker" >}}) you
+builder. Unlike the [Docker plugin]({{< relLangURL "/drone-plugins/drone-docker" >}}) you
 are not required you to run your agent in privileged mode.
 
 The following pipeline configuration uses the Kaniko plugin to build and

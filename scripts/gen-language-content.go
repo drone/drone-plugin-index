@@ -48,7 +48,7 @@ func main() {
 				continue
 			}
 
-			f = strings.Replace(match, ".md", ".gen."+lang+".md", -1)
+			f = strings.Replace(match, ".md", "_gen."+lang+".md", -1)
 			ioutil.WriteFile(f, b, 0700)
 		}
 	}
