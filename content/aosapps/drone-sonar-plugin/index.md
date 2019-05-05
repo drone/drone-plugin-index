@@ -14,17 +14,27 @@ This plugin can scan your code quality and post the analysis report to your Sona
 The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-  code-analysis:
-    image: aosapps/drone-sonar-plugin
-    secrets: [sonar_host, sonar_token]
+steps:
+- name: code-analysis
+  image: aosapps/drone-sonar-plugin
+  settings:
+    sonar_host:
+      from_secret: sonar_host
+    sonar_token:
+      from_secret: sonar_token
 ```
 
 Customized parameters could be specified:
 
 ```diff
-  code-analysis:
-    image: aosapps/drone-sonar-plugin
-    secrets: [sonar_host, sonar_token]
+steps:
+- name: code-analysis
+  image: aosapps/drone-sonar-plugin
+  settings:
+    sonar_host:
+      from_secret: sonar_host
+    sonar_token:
+      from_secret: sonar_token
 +   ver: 1.0
 +   timeout: 20
 +   sources: .
