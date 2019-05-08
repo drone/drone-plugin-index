@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128px" height="116px" viewBox="0 0 128 116" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>google_gcf</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="google_gcf" fill-rule="nonzero">
+            <path d="M126.47,52.12 L100.17,6.38 C98.1575606,2.81119396 94.4064352,0.574214465 90.31,0.5 L37.7,0.5 C33.6029889,0.572194784 29.8509362,2.80972722 27.84,6.38 L1.53,52 C-0.505344201,55.5417451 -0.505344201,59.8982549 1.53,63.44 L27.83,109.44 C29.8203239,113.059541 33.5623947,115.37082 37.69,115.53 L90.3,115.53 C94.4273864,115.388325 98.1761765,113.086636 100.17,109.47 L126.47,63.73 C128.519489,60.1313439 128.519489,55.7186561 126.47,52.12 Z" id="Path" fill="#4285F4"></path>
+            <path d="M94.06,43.28 L90.31,47 L91.13,70.59 L87.68,75.59 L85.68,73.59 L87.52,73.59 L87.52,65.41 L78.69,56.58 L72.34,59.75 L72.52,60.46 L50,38 L39.22,43.44 L37.9,54.5 L41.64,74.74 L47.06,80.05 L44.74,83.81 L76.43,115.5 L90.3,115.5 C94.4273864,115.358325 98.1761765,113.056636 100.17,109.44 L122.09,71.31 L94.06,43.28 Z" id="Path" fill="#000000" opacity="0.0700000003"></path>
+            <polygon id="Path" fill="#FFFFFF" points="44.59 83.56 49.88 78.27 41.95 70.34 41.95 45.66 49.88 37.73 44.59 32.44 34 43.03 34 72.97"></polygon>
+            <circle id="Oval" fill="#FFFFFF" cx="52.78" cy="58" r="3.75"></circle>
+            <circle id="Oval" fill="#FFFFFF" cx="64" cy="58" r="3.75"></circle>
+            <circle id="Oval" fill="#FFFFFF" cx="75.22" cy="58" r="3.75"></circle>
+            <polygon id="Path" fill="#FFFFFF" points="83.36 32.44 78.07 37.73 86 45.66 86 70.34 78.07 78.27 83.36 83.56 93.95 72.97 93.95 43.03"></polygon>
+        </g>
+    </g>
+</svg>

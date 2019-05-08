@@ -1,0 +1,24 @@
+@mixin lg-down {
+  @media only screen and (max-width: $screen-lg-down) {
+    @content
+  }
+}
+
+@mixin md-down {
+  @media only screen and (max-width: $screen-md-down) {
+    @content
+  }
+}
+
+@mixin sm-down {
+  @media only screen and (max-width: $screen-sm-down) {
+    @content
+  }
+}
+
+@mixin xs-down {
+  @media only screen and (max-width: $screen-xs-down) {
+    @content
+  }
+}
+  

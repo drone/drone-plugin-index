@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="126px" height="78px" viewBox="0 0 126 78" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>gitea</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="gitea" transform="translate(1.000000, 0.000000)">
+            <g id="layer1" transform="translate(0.000000, 0.466660)" fill="#609926" fill-rule="nonzero" stroke="#428F29">
+                <path d="M21.709937,0.15095 C12.163364,0.12375 -0.6293362,6.949 0.0781818,24.05492 C1.1837158,50.78381 25.534777,53.26331 35.269832,53.47793 C36.337855,58.4915 47.79163,75.78356 56.27165,76.6946 L93.42442,76.6946 C115.70205,75.02675 132.38512,0.93789 120.01763,0.65635 C73.236047,3.13326 70.022484,2.79473 31.417872,0.65635 C28.922819,0.62975 25.445551,0.16161 21.709937,0.15095 L21.709937,0.15095 Z M24.201256,9.60981 C25.552634,23.30248 27.757105,31.3134 32.219472,43.55326 C20.8366,42.04853 11.14965,38.32883 9.367957,24.44342 C8.416995,17.03222 11.758385,9.27573 24.201256,9.60981 Z" id="path3722"></path>
+            </g>
+            <g id="layer2" transform="translate(49.000000, 2.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                <rect id="rect4599" transform="translate(23.752465, 42.925798) rotate(25.914715) translate(-23.752465, -42.925798) " x="6.37143848" y="25.5447711" width="34.762054" height="34.762054"></rect>
+                <polygon id="path4525" points="24.804947 22.359056 28.046093 23.96901 28.046093 0.255731 24.783395 0.255731"></polygon>
+            </g>
+            <g id="layer3" transform="translate(58.000000, 25.000000)">
+                <g id="g4539">
+                    <circle id="path4606" fill="#609926" fill-rule="nonzero" transform="translate(12.672206, 10.137528) rotate(-19.796137) translate(-12.672206, -10.137528) " cx="12.6722062" cy="10.1375285" r="3.4745038"></circle>
+                    <circle id="path4606-3" fill="#609926" fill-rule="nonzero" transform="translate(5.215386, 25.604117) rotate(-19.796137) translate(-5.215386, -25.604117) " cx="5.21538585" cy="25.6041169" r="3.4745038"></circle>
+                    <circle id="path4606-1" fill="#609926" fill-rule="nonzero" transform="translate(17.478870, 31.110580) rotate(-19.796137) translate(-17.478870, -31.110580) " cx="17.47887" cy="31.1105798" r="3.4745038"></circle>
+                    <rect id="rect4629-8" fill="#609926" fill-rule="nonzero" transform="translate(10.760528, 13.770501) rotate(26.024158) translate(-10.760528, -13.770501) " x="9.42418008" y="0.139755318" width="2.6726954" height="27.261492"></rect>
+                    <path d="M12.558096,10.116343 C25.533986,16.511721 25.571085,14.218205 17.448954,31.023587" id="path4514" stroke="#609926" stroke-width="2.68000007"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

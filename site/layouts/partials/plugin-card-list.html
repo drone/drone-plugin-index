@@ -1,0 +1,23 @@
+<section class="plugin-card-list">
+  <div class="container plugin-card-list__inner plugin-card-list__inner_hidden">
+    {{- range where (where .Data.Pages "Params.featured" "==" true) ".Params.position" "<=" 2 }}
+      {{ partial "plugin-card/plugin-card_large" . }}
+    {{ end -}}
+
+    {{- range where (where .Data.Pages "Params.featured" "==" true) ".Params.position" ">" 2 }}
+      {{ partial "plugin-card/plugin-card_medium" . }}
+    {{ end -}}
+
+    {{- range where .Data.Pages.ByTitle "Params.featured" "!=" true }}
+      {{ partial "plugin-card/plugin-card_small" . }}
+    {{ end -}}
+  </div>
+
+  <div class="container plugin-card-list__inner plugin-card-list__inner_search-results" style="position: absolute; visibility: hidden;">
+    {{- range .Data.Pages.ByTitle  }}
+      {{ partial "plugin-card/plugin-card_small" . }}
+    {{ end -}}
+  </div>
+
+  <p class="plugin-card-list__empty-results-message">A search result is empty…</p>
+</section>

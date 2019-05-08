@@ -1,0 +1,26 @@
+.title {
+  font-family: 'Kanit', sans-serif;
+  font-size: 50px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: $color-primary;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  @include lg-down {
+    font-size: 40px;
+  }
+
+  &_medium {
+    font-size: 36px;
+    line-height: 1.39;
+
+    @include lg-down {
+      font-size: 32px;
+    }
+
+    @include xs-down {
+      font-size: 30px;
+    }
+  }
+}

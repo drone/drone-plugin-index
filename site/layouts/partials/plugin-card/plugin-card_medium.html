@@ -1,0 +1,111 @@
+{{- $base := .Site.BaseURL -}}
+{{ $backgroundColor := .Params.backgroundColor }}
+
+<article
+    class="plugin-card plugin-card_medium"
+    data-title="{{ .Title }}"
+    data-author="{{ .Params.author }}"
+    data-tags="{{ .Params.tags }}"
+    style="order: {{ .Params.position }}; background-image: linear-gradient(to bottom, {{ $backgroundColor }}, #ffffff);"
+>
+  <div class="plugin-card__background">
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+    <div class="plugin-card__background-line"></div>
+  </div>
+
+  <a class="plugin-card__inner plugin-card__inner_md-hidden" href="{{ .Permalink }}">
+    <div class="plugin-card__logo-wrapper">
+      {{- if .Params.logo }}
+        <img class="plugin-card__logo" src="{{ $base }}images/plugin-logos/{{ .Params.logo }}" alt="{{ .Title }}"/>
+      {{ else }}
+        <img class="plugin-card__logo" src="{{ $base }}images/plugin-logos/default.svg" alt="{{ .Title }}"/>
+      {{ end -}}
+    </div>
+
+    <h2 class="title plugin-card__name" title="{{ .Title }}">{{ .Title }}</h2>
+
+    {{- if .Params.author }}
+      <span class="plugin-card__author" title="{{ .Params.author }}">by {{ .Params.author }}</span>
+    {{ end -}}
+
+    {{- if .Params.tags }}
+      <ul class="plugin-card__tag-list">
+        {{- range .Params.tags }}
+          <li class="plugin-card__tag">#{{ . }}</li>
+        {{ end -}}
+        <li class="plugin-card__hidden-tags-amount plugin-card__hidden-tags-amount_hidden"></li>
+      </ul>
+    {{ end -}}
+  </a>
+
+  <a class="plugin-card__inner plugin-card__inner_md-visible plugin-card__inner_xs-hidden" href="{{ .Permalink }}">
+    <div class="plugin-card__side plugin-card__side_details">
+      <h2 class="title plugin-card__name" title="{{ .Title }}">{{ .Title }}</h2>
+
+      {{- if .Params.author }}
+        <span class="plugin-card__author" title="{{ .Params.author }}">by {{ .Params.author }}</span>
+      {{ end -}}
+
+      {{- if .Params.tags }}
+        <ul class="plugin-card__tag-list">
+          {{- range .Params.tags }}
+          <li class="plugin-card__tag">#{{ . }}</li>
+          {{ end -}}
+        <li class="plugin-card__hidden-tags-amount plugin-card__hidden-tags-amount_hidden"></li>
+        </ul>
+      {{ end -}}
+    </div>
+
+    <div class="plugin-card__side">
+      <div class="plugin-card__logo-wrapper">
+        {{- if .Params.logo }}
+          <img class="plugin-card__logo" src="{{ $base }}images/plugin-logos/{{ .Params.logo }}" alt="{{ .Title }}"/>
+        {{ else }}
+          <img class="plugin-card__logo" src="{{ $base }}images/plugin-logos/default.svg" alt="{{ .Title }}"/>
+        {{ end -}}
+      </div>
+    </div>
+  </a>
+
+  <a class="plugin-card__inner plugin-card__inner_xs-visible" href="{{ .Permalink }}">
+    <div class="plugin-card__logo-wrapper">
+      {{- if .Params.logo }}
+        <img class="plugin-card__logo" src="{{ $base }}images/plugin-logos/{{ .Params.logo }}" alt="{{ .Title }}"/>
+      {{ else }}
+        <img class="plugin-card__logo" src="{{ $base }}images/plugin-logos/default.svg" alt="{{ .Title }}"/>
+      {{ end -}}
+    </div>
+
+    <h2 class="title plugin-card__name" title="{{ .Title }}">{{ .Title }}</h2>
+
+    {{- if .Params.author }}
+      <span class="plugin-card__author" title="{{ .Params.author }}">by {{ .Params.author }}</span>
+    {{ end -}}
+
+    {{- if .Params.tags }}
+      <ul class="plugin-card__tag-list">
+        {{- range .Params.tags }}
+          <li class="plugin-card__tag">#{{ . }}</li>
+        {{ end -}}
+        <li class="plugin-card__hidden-tags-amount plugin-card__hidden-tags-amount_hidden"></li>
+      </ul>
+    {{ end -}}
+  </a>
+</article>

@@ -1,0 +1,95 @@
+{{- $base := .Site.BaseURL -}}
+
+<article
+    class="plugin-card plugin-card_small"
+    data-title="{{ .Title }}"
+    data-author="{{ .Params.author }}"
+    data-tags="{{ .Params.tags }}"
+>
+  <a class="plugin-card__inner plugin-card__inner_md-hidden" href="{{ .Permalink }}">
+    <div class="plugin-card__section">
+      <div class="plugin-card__side plugin-card__side_logo">
+        <div class="plugin-card__logo-wrapper">
+          {{- if .Params.logo }}
+            <img class="plugin-card__logo" src="{{ $base }}images/plugin-logos/{{ .Params.logo }}" alt="{{ .Title }}"/>
+          {{ else }}
+            <img class="plugin-card__logo" src="{{ $base }}images/plugin-logos/default.svg" alt="{{ .Title }}"/>
+          {{ end -}}
+        </div>
+      </div>
+
+      <div class="plugin-card__side plugin-card__side_details">
+        <h2 class="title plugin-card__name" title="{{ .Title }}">{{ .Title }}</h2>
+
+        {{- if .Params.author }}
+          <span class="plugin-card__author" title="{{ .Params.author }}">by {{ .Params.author }}</span>
+        {{ end -}}
+      </div>
+    </div>
+
+    {{- if .Params.tags }}
+      <div class="plugin-card__section">
+        <ul class="plugin-card__tag-list">
+          {{- range .Params.tags }}
+            <li class="plugin-card__tag">#{{ . }}</li>
+          {{ end -}}
+          <li class="plugin-card__hidden-tags-amount plugin-card__hidden-tags-amount_hidden"></li>
+        </ul>
+      </div>
+    {{ end -}}
+  </a>
+
+  <a class="plugin-card__inner plugin-card__inner_md-visible plugin-card__inner_xs-hidden" href="{{ .Permalink }}">
+    <div class="plugin-card__side plugin-card__side_details">
+      <h2 class="title plugin-card__name" title="{{ .Title }}">{{ .Title }}</h2>
+
+      {{- if .Params.author }}
+        <span class="plugin-card__author" title="{{ .Params.author }}">by {{ .Params.author }}</span>
+      {{ end -}}
+
+      {{- if .Params.tags }}
+      <ul class="plugin-card__tag-list">
+        {{- range .Params.tags }}
+          <li class="plugin-card__tag">#{{ . }}</li>
+        {{ end -}}
+        <li class="plugin-card__hidden-tags-amount plugin-card__hidden-tags-amount_hidden"></li>
+      </ul>
+      {{ end -}}
+    </div>
+
+    <div class="plugin-card__side">
+      <div class="plugin-card__logo-wrapper">
+        {{- if .Params.logo }}
+          <img class="plugin-card__logo" src="{{ $base }}images/plugin-logos/{{ .Params.logo }}" alt="{{ .Title }}"/>
+        {{ else }}
+          <img class="plugin-card__logo" src="{{ $base }}images/plugin-logos/default.svg" alt="{{ .Title }}"/>
+        {{ end -}}
+      </div>
+    </div>
+  </a>
+
+  <a class="plugin-card__inner plugin-card__inner_xs-visible" href="{{ .Permalink }}">
+    <div class="plugin-card__logo-wrapper">
+      {{- if .Params.logo }}
+        <img class="plugin-card__logo" src="{{ $base }}images/plugin-logos/{{ .Params.logo }}" alt="{{ .Title }}"/>
+      {{ else }}
+        <img class="plugin-card__logo" src="{{ $base }}images/plugin-logos/default.svg" alt="{{ .Title }}"/>
+      {{ end -}}
+    </div>
+
+    <h2 class="title plugin-card__name" title="{{ .Title }}">{{ .Title }}</h2>
+
+    {{- if .Params.author }}
+      <span class="plugin-card__author" title="{{ .Params.author }}">by {{ .Params.author }}</span>
+    {{ end -}}
+
+    {{- if .Params.tags }}
+      <ul class="plugin-card__tag-list">
+        {{- range .Params.tags }}
+          <li class="plugin-card__tag">#{{ . }}</li>
+        {{ end -}}
+      <li class="plugin-card__hidden-tags-amount plugin-card__hidden-tags-amount_hidden"></li>
+      </ul>
+    {{ end -}}
+  </a>
+</article>

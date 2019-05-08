@@ -1,0 +1,29 @@
+{{- $base := .Site.BaseURL -}}
+
+<header class="header">
+  <div class="header__inner container">
+    <div class="header__side">
+      <a class="header__logo" href="https://drone.io/">
+        <img src="{{ $base }}images/logo.svg" alt="Drone">
+        <span>Drone</span>
+      </a>
+    </div>
+
+    <div class="header__side">
+      <nav class="header__main-nav">
+        <ul>
+          <li><a class="header__main-nav-link" href="https://cloud.drone.io">Cloud</a></li>
+          <li><a class="header__main-nav-link" href="/enterprise">Enterprise</a></li>
+          <li><a class="header__main-nav-link header__main-nav-link_active" href="/">Marketplace</a></li>
+          <li><a class="header__main-nav-link" href="https://docs.drone.io">Documentation</a></li>
+          <li><a class="header__main-nav-link" href="https://blog.drone.io">Blog</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="header__side">
+      <a class="button button_white header__button" href="https://cloud.drone.io/login">Login</a>
+      <button class="header__burger"></button>
+    </div>
+  </div>
+</header>

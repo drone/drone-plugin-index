@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../fonts/kanit/kanit-v4-latin-italic.eot');
+  src: local('Kanit Italic'), local('Kanit-Italic'),
+  url('../fonts/kanit/kanit-v4-latin-italic.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/kanit/kanit-v4-latin-italic.woff2') format('woff2'),
+  url('../fonts/kanit/kanit-v4-latin-italic.woff') format('woff'),
+  url('../fonts/kanit/kanit-v4-latin-italic.ttf') format('truetype'),
+  url('../fonts/kanit/kanit-v4-latin-italic.svg#Kanit') format('svg');
+}
+
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/kanit/kanit-v4-latin-500.eot');
+  src: local('Kanit Medium'), local('Kanit-Medium'),
+  url('../fonts/kanit/kanit-v4-latin-500.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/kanit/kanit-v4-latin-500.woff2') format('woff2'),
+  url('../fonts/kanit/kanit-v4-latin-500.woff') format('woff'),
+  url('../fonts/kanit/kanit-v4-latin-500.ttf') format('truetype'),
+  url('../fonts/kanit/kanit-v4-latin-500.svg#Kanit') format('svg');
+}
+
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/kanit/kanit-v4-latin-700.eot');
+  src: local('Kanit Bold'), local('Kanit-Bold'),
+  url('../fonts/kanit/kanit-v4-latin-700.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/kanit/kanit-v4-latin-700.woff2') format('woff2'),
+  url('../fonts/kanit/kanit-v4-latin-700.woff') format('woff'),
+  url('../fonts/kanit/kanit-v4-latin-700.ttf') format('truetype'),
+  url('../fonts/kanit/kanit-v4-latin-700.svg#Kanit') format('svg');
+}
+
+@font-face {
+  font-family: 'Monaco';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/monaco/hinted-Monaco.eot');
+  src: local('Monaco'),
+  url('../fonts/monaco/hinted-Monaco.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/monaco/hinted-Monaco.woff2') format('woff2'),
+  url('../fonts/monaco/hinted-Monaco.woff') format('woff'),
+  url('../fonts/monaco/hinted-Monaco.ttf') format('truetype'),
+  url('../fonts/monaco/hinted-Monaco.svg#Monaco') format('svg');
+}

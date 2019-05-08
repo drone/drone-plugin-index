@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="443px" height="500px" viewBox="0 0 443 500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>amazon_rds</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="amazon_rds" fill-rule="nonzero">
+            <polyline id="Path" fill="#1A476F" points="0 388.909008 51.8656094 449.691723 56.5292227 444.152492 56.5292227 55.375 51.8656094 49.5000586 0 110.260277 0 388.909008"></polyline>
+            <polyline id="Path" fill="#1F5B98" points="51.8725313 449.691723 150.976477 499.240234 155.098453 492.607348 155.165941 5.19140625 151.045695 0 51.8725313 49.3893086 51.8725313 449.691723"></polyline>
+            <polyline id="Path" fill="#2D72B8" points="443 110.260277 391.120547 49.5000586 385.318285 51.3378164 386.470777 444.730469 391.120547 449.691723 443 388.91593 443 110.260277"></polyline>
+            <polyline id="Path" fill="#5294CF" points="292.016602 499.240234 391.120547 449.691723 391.120547 49.3893086 291.947383 0 287.257812 6.34562891 287.325301 492.029371 292.016602 499.240234"></polyline>
+            <polygon id="Path" fill="#2D72B8" points="151.045695 0 291.947383 0 291.947383 499.247156 151.045695 499.247156"></polygon>
+        </g>
+    </g>
+</svg>

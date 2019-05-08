@@ -1,0 +1,170 @@
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: rgba(255, 255, 255, 0.97);
+  padding-top: 30px;
+  padding-bottom: 30px;
+  transition: 0.3s;
+  opacity: 1;
+  visibility: visible;
+  overflow-y: auto;
+
+  @include md-down {
+    display: block;
+  }
+
+  @include xs-down {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  &__inner {
+    position: relative;
+    height: 100%;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    padding-top: 37px;
+    padding-bottom: 70px;
+
+    @include xs-down {
+      padding-bottom: 66px;
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    @include xs-down {
+      left: 15px;
+    }
+
+    img {
+      margin-right: 15px;
+    }
+
+    span {
+      font-family: 'Kanit', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $color-primary;
+    }
+  }
+
+  &__menu {
+    width: 100%;
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    li {
+      margin-bottom: 30px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__menu-link {
+    display: block;
+    font-family: 'Kanit', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $color-primary;
+    transition: 0.3s;
+
+    @include xs-down {
+      font-size: 18px;
+    }
+
+    &:hover {
+      color: $color-accent;
+    }
+
+    &_active {
+      color: $color-accent;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+
+    @include xs-down {
+      right: 15px;
+      left: 15px;
+      width: auto;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 2.5px;
+    right: 0;
+    width: 30px;
+    height: 24px;
+    background: none;
+    border: none;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+
+    @include xs-down {
+      right: 15px;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 3px;
+      border-radius: 50px;
+      background-color: #000000;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 3px;
+      border-radius: 50px;
+      background-color: #000000;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+
+  &_hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

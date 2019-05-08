@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256px" height="310px" viewBox="0 0 256 310" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>amazon_ecr</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="amazon_ecr" fill-rule="nonzero">
+            <polyline id="Path" fill="#4B612C" points="36.08 262.013 0 244.832 0 64 36.08 45.96 36.211 46.147 36.451 261.648 36.08 262.013"></polyline>
+            <polyline id="Path" fill="#759C3E" points="168.376 226.362 36.08 262.013 36.08 45.96 168.376 82.04 168.376 226.362"></polyline>
+            <polyline id="Path" fill="#4B612C" points="59.705 124.134 128 115.544 129.667 117 129.667 190.333 128 192.859 59.705 184.698 59.705 124.134"></polyline>
+            <polyline id="Path" fill="#3C4929" points="256 109.53 193.718 115.973 59.705 94.497 127.167 72.5 256 109.53"></polyline>
+            <polyline id="Path" fill="#B7CA9D" points="256 199.731 193.718 193.289 59.705 214.765 132.167 233.167 256 199.731"></polyline>
+            <polyline id="Path" fill="#4B612C" points="59.705 274.899 128 309.262 130.887 232.694 59.705 214.765 59.705 274.899"></polyline>
+            <polyline id="Path" fill="#759C3E" points="256 245.262 128 309.262 128 231.946 256 199.731 256 245.262"></polyline>
+            <polyline id="Path" fill="#4B612C" points="59.705 33.933 128 0 128.495 0.698 128.285 76.844 128 77.315 59.705 94.497 59.705 33.933"></polyline>
+            <polyline id="Path" fill="#759C3E" points="256 176.966 128 192.859 128 115.544 256 131.866 256 176.966"></polyline>
+            <polyline id="Path" fill="#759C3E" points="256 109.53 128 77.315 128 0 256 64 256 109.53"></polyline>
+        </g>
+    </g>
+</svg>

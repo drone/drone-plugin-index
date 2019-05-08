@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="462px" viewBox="0 0 512 462" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>google_gcr</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="2.19428074e-05%" x2="50%" y2="99.8449302%" id="linearGradient-1">
+            <stop stop-color="#4387FD" offset="0%"></stop>
+            <stop stop-color="#4683EA" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="google_gcr" fill-rule="nonzero">
+            <g id="BASE" fill="url(#linearGradient-1)">
+                <path d="M111.1643,432.867 L6.1623,250.998 C-2.0541,236.7668 -2.0541,219.2332 6.1623,205.0019 L111.1643,23.133 C119.3807,8.9017 134.5653,0.1349 150.9981,0.1349 L361.0019,0.1349 C377.4347,0.1349 392.6193,8.9017 400.8357,23.133 L505.8377,205.0019 C514.0541,219.2331 514.0541,236.7668 505.8377,250.998 L400.8357,432.867 C392.6193,447.0982 377.4347,455.8651 361.0019,455.8651 L150.9981,455.8651 C134.5652,455.8651 119.3807,447.0982 111.1643,432.867 Z" id="Path"></path>
+            </g>
+            <g id="shadow" transform="translate(127.000000, 121.000000)" fill="#000000" opacity="0.07">
+                <polygon id="Path" points="374.6249 150.3751 257.1875 32.9375 208 21 200.4167 28.7917 238.3125 66.6875 238.375 118.625 160.2083 40.4583 98 40 58 0 15 36 0.6225 180.8725 159.875 340.125 263 340"></polygon>
+            </g>
+            <g id="art" transform="translate(127.000000, 120.000000)" fill="#FFFFFF">
+                <g id="Group">
+                    <polygon id="Path" points="200.1688 0.9377 200.1688 29.2748 233 48.231 233 167.7695 200.1688 186.7252 200.1688 215.0623 258 181.6732 258 34.3268"></polygon>
+                    <g transform="translate(55.000000, 23.000000)" id="Path">
+                        <polygon points="42 55.5 74 74 106 55.5 106 18.5 74 0 42 18.5"></polygon>
+                        <polygon points="84 127.5 116 146 148 127.5 148 90.5 116 72 84 90.5"></polygon>
+                        <polygon points="0 127.5 32 146 64 127.5 64 90.5 32 72 0 90.5"></polygon>
+                    </g>
+                    <polygon id="Path" points="57.8312 0.9377 57.8312 29.2748 25 48.2305 25 167.7727 57.8312 186.7252 57.8312 215.0623 0 181.6732 0 34.3268"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

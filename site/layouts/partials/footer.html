@@ -1,0 +1,60 @@
+{{- $base := .Site.BaseURL -}}
+
+<footer class="footer">
+  <div class="footer__inner container">
+    <nav class="footer__nav">
+      <div class="footer__nav-column">
+        <h3 class="title footer__nav-column-title">Developers</h3>
+        <ul>
+          <li><a href="https://docs.drone.io" target="_blank">Documentation</a></li>
+          <li><a href="http://plugins.drone.io" target="_blank">Plugins</a></li>
+          <li><a href="https://discourse.drone.io" target="_blank">Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__nav-column">
+        <h3 class="title footer__nav-column-title">Community</h3>
+        <ul>
+          <li><a href="https://github.com/drone" target="_blank">GitHub</a></li>
+          <li><a href="https://twitter.com/droneio" target="_blank">Twitter</a></li>
+          <li><a href="https://discourse.drone.io" target="_blank">Discourse</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__nav-column">
+        <h3 class="title footer__nav-column-title">Company</h3>
+        <ul>
+          <li><a href="mailto:hello@drone.io">Contact</a></li>
+          <li><a href="https://github.com/drone/brand" target="_blank">Branding</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__nav-column">
+        <h3 class="title footer__nav-column-title">Legal</h3>
+        <ul>
+          <li><a href="/terms/">Terms</a></li>
+          <li><a href="/enterprise/license/">License</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="footer__additional-info">
+      <a href="https://drone.io/">
+        <img class="footer__logo" src="{{ $base }}images/logo.svg" alt="Drone">
+      </a>
+
+      <div>
+        <span class="footer__copyright">© 2019 Drone</span>
+        <p class="footer__design-by">
+          <span>Design by </span><a href="http://pixelpoint.io" target="_blank">Pixel Point</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__background"></div>
+
+  <div class="footer__fade-wrapper">
+    <div class="footer__fade"></div>
+  </div>
+</footer>

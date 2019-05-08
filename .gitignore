@@ -1,6 +1,4 @@
-public/*
-themes/*
-content/**.gen.*
-*.txt
-cmd
-server.go
+.idea
+node_modules/
+dist/
+site/data/webpack.json

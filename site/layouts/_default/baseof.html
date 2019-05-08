@@ -1,0 +1,56 @@
+{{- $base := .Site.BaseURL -}}
+
+<!doctype html>
+<html lang="{{ $.Site.Language.Lang }}">
+  <head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no"/>
+
+    <meta property="description" content="Drone is a self-service Continuous Delivery platform for busy development teams"/>
+    <meta property="keywords" content="drone, ci, cd, automate testing, continuous delivery, continuous integration, open source"/>
+    <meta property="og:title" content="{{ $.Site.Title }}"/>
+    <meta property="og:description" content="Drone is a self-service Continuous Delivery platform for busy development teams"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="{{ $base }}images/og-image.jpg"/>
+
+    <base href="{{ if getenv "CONTEXT" }}{{ cond (eq "production" (getenv "CONTEXT")) (getenv "URL") (getenv "DEPLOY_PRIME_URL") }}{{ else }}{{ $.Site.BaseURL }}{{ end }}">
+
+    <title>{{ $.Site.Title }}</title>
+
+    {{ $stylesheet := .Site.Data.webpack.main }}
+    {{ with $stylesheet.css }}
+      <link href="{{ relURL . }}" rel="stylesheet">
+    {{ end }}
+
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ $base }}images/favicon/apple-icon-57x57.png"/>
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ $base }}images/favicon/apple-icon-60x60.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ $base }}images/favicon/apple-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ $base }}images/favicon/apple-icon-76x76.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ $base }}images/favicon/apple-icon-114x114.png"/>
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ $base }}images/favicon/apple-icon-120x120.png"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ $base }}images/favicon/apple-icon-144x144.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ $base }}images/favicon/apple-icon-152x152.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ $base }}images/favicon/apple-icon-180x180.png"/>
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ $base }}images/favicon/android-icon-192x192.png"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ $base }}images/favicon/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ $base }}images/favicon/favicon-96x96.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ $base }}images/favicon/favicon-16x16.png"/>
+  </head>
+
+  <body>
+    {{ block "header" . }}  {{ partial "header" . }}  {{ end }}
+
+    {{ block "main" . }}  {{ end }}
+
+    {{ block "footer" . }}  {{ partial "footer" }}  {{ end }}
+
+    {{ block "mobile-nav" . }}  {{ partial "mobile-nav" }}  {{ end }}
+
+    {{ $script := .Site.Data.webpack.main }}
+    {{ with $script.js }}
+      <script src="{{ relURL . }}"></script>
+    {{ end }}
+  </body>
+</html>

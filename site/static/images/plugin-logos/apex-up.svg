@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>apex-up</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="apex-up" fill="#000000" fill-rule="nonzero">
+            <g id="Group" transform="translate(100.000000, 100.000000) scale(-1, 1) rotate(-180.000000) translate(-100.000000, -100.000000) ">
+                <path d="M0,100 L0,0 L100,0 L200,0 L200,100 L200,200 L100,200 L0,200 L0,100 Z M102.6,122.3 C104,119.1 106.9,112.7 109,108 C117.4,89.2 125,72 125,71.5 C125,71.2 115.8,71 104.5,71 C86.9,71 84,71.2 84,72.5 C84,73.8 86.7,74 102,74 C111.9,74 120,74.3 120,74.6 C120,75.5 100.9,118.4 100,119.3 C99.4,120 93,106.3 80.4,77.3 C78.5,72.8 77.2,71 75.9,71 C73.7,71 73.1,69.2 81.7,88.5 C84.4,94.6 89.5,105.9 92.9,113.8 C96.4,121.6 99.4,128 99.7,128 C99.9,128 101.2,125.4 102.6,122.3 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

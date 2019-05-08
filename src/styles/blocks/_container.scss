@@ -1,0 +1,23 @@
+.container {
+  max-width: 1160px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include lg-down {
+    max-width: 960px;
+  }
+
+  @include md-down {
+    max-width: 720px;
+  }
+
+  @include sm-down {
+    max-width: 540px;
+  }
+
+  @include xs-down {
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}

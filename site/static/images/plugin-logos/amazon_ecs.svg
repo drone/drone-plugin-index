@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256px" height="310px" viewBox="0 0 256 310" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>amazon_ecs</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="amazon_ecs" fill-rule="nonzero">
+            <polyline id="Path" fill="#F68536" points="42.754 244.495 12.836 251.321 12.836 57.565 42.754 64.404 42.754 244.495"></polyline>
+            <polyline id="Path" fill="#F68536" points="80.082 255.931 42.754 266.539 42.754 42.612 80.082 53.207 80.082 255.931"></polyline>
+            <polyline id="Path" fill="#F68536" points="127.966 267.681 80.082 285.205 80.082 23.946 127.966 41.462 127.966 267.681"></polyline>
+            <polyline id="Path" fill="#F68536" points="256 245.079 127.966 309.096 127.966 0 256 64.017 256 245.079"></polyline>
+            <polyline id="Path" fill="#9D5025" points="102.444 12.763 127.966 0 127.966 309.096 102.444 296.337 102.444 12.763"></polyline>
+            <polyline id="Path" fill="#9D5025" points="60.325 33.82 80.082 23.942 80.082 285.154 60.325 275.276 60.325 33.82"></polyline>
+            <polyline id="Path" fill="#9D5025" points="27.016 50.477 42.754 42.608 42.754 266.488 27.016 258.614 27.016 50.477"></polyline>
+            <polyline id="Path" fill="#9D5025" points="12.836 57.565 0 63.983 0 245.117 12.836 251.531 12.836 57.565"></polyline>
+        </g>
+    </g>
+</svg>

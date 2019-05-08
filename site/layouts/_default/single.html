@@ -1,0 +1,63 @@
+{{ define "main" }}
+
+{{ $section := .Site.GetPage "section" .Section }}
+{{- $base := .Site.BaseURL -}}
+
+<article class="plugin-docs">
+  <div class="container plugin-docs__inner">
+    <aside class="plugin-docs__sidebar">
+      <div class="plugin-docs__sidebar-inner">
+        <div class="plugin-docs__sidebar-section">
+          <div class="plugin-docs__logo-wrapper">
+            {{- if .Params.logo }}
+              <img class="plugin-docs__logo" src="{{ $base }}images/plugin-logos/{{ .Params.logo }}" alt="{{ .Title }}"/>
+            {{ else }}
+              <img class="plugin-card__logo" src="{{ $base }}images/plugin-logos/default.svg" alt="{{ .Title }}"/>
+            {{ end -}}
+          </div>
+        </div>
+
+        {{- if .Params.author }}
+          <div class="plugin-docs__sidebar-section">
+
+            <h3 class="plugin-docs__sidebar-subtitle">Developer</h3>
+            <a class="plugin-docs__author" href="https://github.com/{{ .Params.author }}" target="_blank">
+              <span class="plugin-docs__author-name" title="{{ .Params.author }}">{{ .Params.author }}</span>
+            </a>
+          </div>
+        {{ end -}}
+
+        {{- if .Params.tags }}
+          <div class="plugin-docs__sidebar-section">
+
+            <h3 class="plugin-docs__sidebar-subtitle">Tags</h3>
+            <ul class="plugin-docs__tag-list">
+              {{- range .Params.tags }}
+                <li class="plugin-docs__tag">#{{ . }}</li>
+              {{ end -}}
+            </ul>
+          </div>
+        {{ end -}}
+      </div>
+    </aside>
+
+    <main class="plugin-docs__content">
+      <h1>{{ .Title }}</h1>
+
+      {{- if .Params.description }}
+        <p class="description">{{ .Params.description | markdownify }}</p>
+      {{ end -}}
+
+      {{- if .Params.version }}
+        <p class="alert">
+          The example Yaml configurations in this file are using the legacy 0.8 syntax. If you are using Drone 1.0 or Drone Cloud please ensure you use the appropriate 1.0 syntax.
+          <a href="https://docs.drone.io/config/pipeline/migrating/#plugins">Learn more here.</a>
+        </p>
+      {{ end -}}
+
+      {{ .Content }}
+    </main>
+  </div>
+</article>
+
+{{ end }}

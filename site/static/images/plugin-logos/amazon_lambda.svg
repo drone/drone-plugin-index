@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256px" height="310px" viewBox="0 0 256 310" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>amazon_lambda</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="amazon_lambda" fill-rule="nonzero">
+            <polyline id="Path" fill="#9D5025" points="0 245.262 16.322 253.423 19 248.668 19 59.333 16.322 55.839 0 64 0 245.262"></polyline>
+            <polyline id="Path" fill="#F68536" points="47.678 63.57 16.322 55.839 16.322 253.423 47.678 246.121 47.678 63.57"></polyline>
+            <polyline id="Path" fill="#6B3A19" points="143.893 78.604 166.228 67.007 240.537 95.785 220.779 98.362 143.893 78.604"></polyline>
+            <polyline id="Path" fill="#FBBF93" points="144.752 230.658 166.658 242.255 240.966 213.477 221.208 210.899 144.752 230.658"></polyline>
+            <polyline id="Path" fill="#9D5025" points="150.336 198.872 189.423 204.027 191.667 200 191.667 110 189.423 105.235 150.336 110.389 150.336 198.872"></polyline>
+            <polyline id="Path" fill="#9D5025" points="35.651 45.96 59.705 33.933 62.333 39 62.333 270 59.705 275.329 35.651 263.302 35.651 45.96"></polyline>
+            <polyline id="Path" fill="#F68536" points="108.671 259.007 59.705 274.899 59.705 33.933 108.671 49.826 108.671 259.007"></polyline>
+            <polyline id="Path" fill="#9D5025" points="89.772 289.933 128 309.262 132 304.667 132 5.667 128 0 89.772 19.329 89.772 289.933"></polyline>
+            <polyline id="Path" fill="#9D5025" points="219.919 98.362 239.678 95.785 241.375 98.25 241.375 211 239.678 213.906 219.919 211.329 219.919 98.362"></polyline>
+            <polyline id="Path" fill="#F68536" points="189.423 105.235 189.423 204.456 230.228 154.631 189.423 105.235"></polyline>
+            <path d="M239.678,55.839 L128,0 L128,309.262 L256,245.262 L256,64 L239.678,55.839 L239.678,55.839 Z M239.678,214.056 L166.228,235.992 L166.228,73.27 L239.678,95.206 L239.678,214.056 L239.678,214.056 Z" id="Shape" fill="#F68536"></path>
+        </g>
+    </g>
+</svg>

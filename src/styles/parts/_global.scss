@@ -1,0 +1,35 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  min-height: 1000px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  font-size: 20px;
+  color: rgba($color-primary, 0.7);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    height: 945px;
+    background-image: linear-gradient(to bottom, #deeeff, #ffffff);
+  }
+}
