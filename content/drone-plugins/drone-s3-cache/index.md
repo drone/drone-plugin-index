@@ -115,3 +115,6 @@ fallback_path
 
 flush_path
 : path to search for flushable cache files, defaults to `[root]/<owner>/<repo>/` (optional)
+
+workdir
+: path where to restore the cache files to (optional)
