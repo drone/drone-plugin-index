@@ -1,5 +1,4 @@
 ---
-version: '1.0.1'
 date: 2019-06-03T10:40:00+08:00
 title: Grafana Annotation
 author: fdeschenes
@@ -26,11 +25,6 @@ pipeline:
       event: deployment
       status: success
 ```
-
-# Secret Reference
-
-grafana_api_key
-: api key
 
 # Parameter Reference
 
