@@ -55,7 +55,7 @@ steps:
 +    username:
 +      from_secret: pypi_username
 +    password:
-+      from_password: pypi_password
++      from_secret: pypi_password
 ```
 
 # Parameter Reference
