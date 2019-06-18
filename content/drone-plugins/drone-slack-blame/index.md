@@ -21,11 +21,11 @@ steps:
     token: your-secret-token
     channel: dev
     success_template: |
-      The build is fixed! Thanks @{{slack.name}}
+      The build is fixed! Thanks @{{user.name}}
     success_image_attachments:
       - "http://i.imgur.com/TP4PIxc.jpg"
     failure_template: |
-      The build is broken! Blame {{slack.name}}
+      The build is broken! Blame {{user.name}}
     failure_image_attachments:
       - "http://cdn.meme.am/instances/51000361.jpg"
 ```
@@ -40,12 +40,12 @@ steps:
     token: your-secret-token
     channel: dev
     success_template: |
-      The build is fixed! Thanks @{{slack.name}}
+      The build is fixed! Thanks @{{user.name}}
     success_image_attachments:
       - "http://i.imgur.com/TP4PIxc.jpg"
     success_username: successbot
     failure_template: |
-      The build is broken! Blame {{slack.name}}
+      The build is broken! Blame {{user.name}}
     failure_image_attachments:
       - "http://cdn.meme.am/instances/51000361.jpg"
     failure_username: failurebot
@@ -62,11 +62,11 @@ steps:
       from_secret: your-secret-token
     channel: dev
     success_template: |
-      The build is fixed! Thanks @{{slack.name}}
+      The build is fixed! Thanks @{{user.name}}
     success_image_attachments:
       - "http://i.imgur.com/TP4PIxc.jpg"
     failure_template: |
-      The build is broken! Blame {{slack.name}}
+      The build is broken! Blame {{user.name}}
     failure_image_attachments:
       - "http://cdn.meme.am/instances/51000361.jpg"
 ```
