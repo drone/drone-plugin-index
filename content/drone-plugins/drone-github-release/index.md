@@ -74,7 +74,7 @@ steps:
 - name: publish
   image: plugins/github-release
   settings:
-    api_key: xxxxxxxx
+    api_key:
       from_secret: github_token
     files: dist/*
   when:
