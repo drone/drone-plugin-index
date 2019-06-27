@@ -52,7 +52,7 @@ steps:
   settings:
     webhook: https://hooks.slack.com/services/...
     channel: dev
-    icon_url: https://unsplash.it/256/256/?random
+    icon.url: https://unsplash.it/256/256/?random
 ```
 
 Example configuration with image attachment:
@@ -64,7 +64,7 @@ steps:
   settings:
     webhook: https://hooks.slack.com/services/...
     channel: dev
-    image_url: https://unsplash.it/256/256/?random
+    image: https://unsplash.it/256/256/?random
 ```
 
 Example configuration for success and failure messages:
@@ -106,7 +106,7 @@ steps:
   settings:
     webhook: https://hooks.slack.com/services/...
     channel: dev
-    link_names: true
+    link-names: true
     template: >
       {{#success build.status}}
         build {{build.number}} succeeded. Good job. <@john.doe>
@@ -132,16 +132,16 @@ username
 template
 : overwrite the default message template
 
-image_url
+image
 : a valid URL to an image file that will be displayed inside a message attachment
 
-icon_url
+icon.url
 : a valid URL that displays a image to the left of the username
 
-icon_emoji
+icon.emoji
 : displays a emoji to the left of the username
 
-link_names
+link-names
 : links usernames and channels in the message
 
 # Template Reference
