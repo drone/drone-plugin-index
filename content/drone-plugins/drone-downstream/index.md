@@ -51,16 +51,21 @@ steps:
 This plugin supports passing env vars to downstream builds. This is useful to trigger specific integration tests on downstream builds.
 
 ```yaml
-validate:
+kind: pipeline
+name: default
+
+steps:
+- name: trigger  
   image: plugins/downstream
-  server: https://drone.example.com
-  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-  params:
-    - SOURCE_HASH=${DRONE_COMMIT_HASH}
-    - FOO=bar
-    - /path/to/godotenv/file
-  repositories:
-    - octocat/Hello-World
+  settings:
+    server: https://drone.example.com
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+    params:
+      - SOURCE_HASH=${DRONE_COMMIT_HASH}
+      - FOO=bar
+      - /path/to/godotenv/file
+    repositories:
+      - octocat/Hello-World
 ```
 
 # Secret Reference
