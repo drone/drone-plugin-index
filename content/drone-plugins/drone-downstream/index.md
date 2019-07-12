@@ -46,6 +46,23 @@ steps:
       - octocat/Spoon-Knife@master
 ```
 
+# Passing Env Vars
+
+This plugin supports passing env vars to downstream builds. This is useful to trigger specific integration tests on downstream builds.
+
+```yaml
+validate:
+  image: plugins/downstream
+  server: https://drone.example.com
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+  params:
+    - SOURCE_HASH=${DRONE_COMMIT_HASH}
+    - FOO=bar
+    - /path/to/godotenv/file
+  repositories:
+    - octocat/Hello-World
+```
+
 # Secret Reference
 
 This plugins supports sourcing sensitive parameters from the secret store. Example configuration sources the token from the secret store:
@@ -86,3 +103,6 @@ wait
 
 timeout
 : how long to wait on any currently running builds defaults to 60 seconds
+
+params
+: supports params in KEY=value format as well as loading of params from godotenv files.
