@@ -68,6 +68,27 @@ steps:
       - octocat/Hello-World
 ```
 
+# Trigger deployment
+
+This plugin supports [promoting](https://docs.drone.io/user-guide/pipeline/promotion/) downstream builds:
+
+```yaml
+kind: pipeline
+name: default
+
+steps:
+- name: trigger  
+  image: plugins/downstream
+  settings:
+    server: https://drone.example.com
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+    deploy: production
+    last_successful: true
+    repositories:
+      - octocat/Hello-World@master
+```
+
+
 # Secret Reference
 
 This plugins supports sourcing sensitive parameters from the secret store. Example configuration sources the token from the secret store:
@@ -98,7 +119,7 @@ server
 : drone server url
 
 repositories
-: trigger builds for the repository list
+: trigger builds for the repository list, you can mention branch using @<branch>
 
 fork
 : trigger new build numbers if true, else rebuild
@@ -111,3 +132,9 @@ timeout
 
 params
 : supports params in KEY=value format as well as loading of params from godotenv files.
+
+deploy
+: Trigger a deployment (promote build), value is the environment/target for the new build
+
+last_successful
+: Trigger the last successful build for the branch specified in repositories
