@@ -13,7 +13,7 @@ This plugin can be used to deploy applications to a Metronome server, it will cr
 The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
+kind: pipeline
 name: default
 
 steps:
@@ -34,7 +34,7 @@ In addition to the `.drone.yml` file you will need to create a `metronome.json` 
 
 Example configuration with values substitution:
 ```yaml
-pipeline:
+kind: pipeline
 name: default
 
 steps:
