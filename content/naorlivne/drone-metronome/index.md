@@ -27,7 +27,7 @@ steps:
 # Metronome Configuration File
 
 {{% alert info %}}
-In addition to the `.drone.yml` file you will need to create a `metronome.json` file that contains the Metronome configuration. Please see [here](test/test_files/metronome.json) for an example. 
+In addition to the `.drone.yml` file you will need to create a `metronome.json` file that contains the Metronome configuration. Please see [here](https://github.com/naorlivne/drone-metronome/blob/master/test/test_files/metronome.json) for an example. 
 {{% /alert %}}
 
 # Value substitution
