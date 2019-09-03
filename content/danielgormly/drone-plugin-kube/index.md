@@ -57,5 +57,5 @@ template
 configmap_file
 : path to file containing data to inject in configmap (They configmap key that contains the data will be the filename)
 
-*
+`*`
 : Other parameters will be made available for interpolation within yaml templates (upper-case will be converted to lower-case)
