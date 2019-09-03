@@ -46,7 +46,7 @@ ca
 : Base-64 encoded string of the K8s CA cert
 
 server
-: https://10.0.0.20:6443
+: Full url of Kubernetes API endpoint including protocol & port
 
 kubernetes_token
 : Kubernetes service account token (Not base64 encoded)
