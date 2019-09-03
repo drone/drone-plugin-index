@@ -1,5 +1,4 @@
 ---
-version: '1.0'
 date: 2019-08-27T00:00:00+00:00
 title: Metronome
 author: naorlivne
