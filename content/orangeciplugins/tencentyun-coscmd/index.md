@@ -1,6 +1,6 @@
 ---
 date: 2019-08-29T00:00:00+00:00
-title: tencentyun-coscmd
+title: tencent cloud coscmd
 author: orange-ci
 tags: [ cos, upload]
 logo: tencentyun-coscmd.svg
