@@ -164,6 +164,9 @@ verbose
 
 Please use the the secret stores provided by drone, or any external. Do not commit secrets into any public repositories.
 
+To create a key-pair matching the required format, you can use this oneliner:
+ssh-keygen -m PEM -t rsa -b 4096
+
 Format of private key, particular when adding to Drone's secret stores:
 
     -----BEGIN RSA PRIVATE KEY-----
