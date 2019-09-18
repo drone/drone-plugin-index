@@ -73,6 +73,23 @@ steps:
       - HTTP_PROXY=http://yourproxy.com
 ```
 
+Example configuration passing secrets as build arguments:
+
+```yaml
+steps:
+  - name: build-image
+    image: plugins/docker
+    environment:
+      TOKEN:
+        from_secret: one_of_the_tokens
+    settings:
+      username: kevinbacon
+      password: pa55word
+      repo: foo/bar
+      build_args_from_env:
+        - TOKEN
+```
+
 Example configuration using alternate Dockerfile:
 
 ```yaml
@@ -264,7 +281,10 @@ storage_driver
 : supports `aufs`, `overlay` or `vfs` drivers
 
 build_args
-: custom arguments passed to docker build
+: pass custom arguments to docker build
+
+build_args_from_env
+: pass the envvars as custom arguments to docker build
 
 auto_tag=false
 : generate tag names automatically based on git branch and git tag
