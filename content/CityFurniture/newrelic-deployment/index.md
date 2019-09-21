@@ -4,8 +4,8 @@ title: Newrelic Deployment
 author: CityFurniture
 tags: [ newrelic ]
 logo: newrelic.svg
-repo: CityFurniture/newrelic-deployment
-image: CityFurniture/newrelic-deployment
+repo: cityfurniture/newrelic-deployment
+image: cityfurniture/drone-newrelic-deployment
 ---
 
 The Newrelic deployment plugin reports/logs your deployment to your dashboard to make it easy to track changes.
