@@ -20,7 +20,7 @@ steps:
   settings:
     access_key: a50d28f4dd477bc184fbd10b376de753
     secret_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
-    repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
+    repo: bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
 ```
 
@@ -31,7 +31,7 @@ steps:
 - name: publish  
   image: plugins/ecr
   settings:
-    repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
+    repo: bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
     tags:
       - latest
@@ -46,7 +46,7 @@ steps:
 - name: publish  
   image: plugins/ecr
   settings:
-    repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
+    repo: bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
     region: us-east-1
 ```
@@ -58,7 +58,7 @@ steps:
 - name: publish  
   image: plugins/ecr
   settings:
-    repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
+    repo: bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
     dockerfile: path/to/Dockerfile
 ```
@@ -70,7 +70,7 @@ steps:
 - name: publish  
   image: plugins/ecr
   settings:
-    repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
+    repo: bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
     build_args:
       - HTTP_PROXY=http://yourproxy.com
@@ -87,7 +87,7 @@ steps:
       from_secret: aws_access_key_id
     secret_key:
       from_secret: aws_secret_access_key
-    repo: <account_id>.dkr.ecr.us-east-1.amazonaws.com/bar
+    repo: bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
 ```
 
