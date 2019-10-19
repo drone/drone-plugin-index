@@ -1,9 +1,9 @@
 ---
-version: '0.8'
-date: 2017-08-14T00:00:00+00:00
+date: 2017-06-10T00:00:00+00:00
 title: Discord
 author: appleboy
 tags: [ notifications, chat ]
+repo: appleboy/drone-discord
 logo: discord.svg
 repo: appleboy/drone-discord
 image: appleboy/drone-discord
@@ -14,78 +14,78 @@ Webhooks are a low-effort way to post messages to channels in Discord. They do n
 The discord plugin posts build status messages to discord channel. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  discord:
-    image: appleboy/drone-discord
+- name: discord notification
+  image: appleboy/drone-discored
+  settings:
     webhook_id: xxxxxxxxxx
     webhook_token: xxxxxxxxxx
 ```
 
-Example configuration with TTS message:
+Example configuration with TTS (text-to-speech) message:
 
 ```diff
-pipeline:
-  discord:
-    image: appleboy/drone-discord
-    webhook_id: xxxxxxxxxx
-    webhook_token: xxxxxxxxxx
-+   tts: true
-    message: "Testing from drone image"
+  - name: discord notification
+    image: appleboy/drone-discored
+    settings:
+      webhook_id: xxxxxxxxxx
+      webhook_token: xxxxxxxxxx
++     tts: true
+      message: "Testing from drone image"
 ```
 
 Example configuration with override the default username of the webhook:
 
 ```diff
-pipeline:
-  discord:
-    image: appleboy/drone-discord
-    webhook_id: xxxxxxxxxx
-    webhook_token: xxxxxxxxxx
-+   username: appleboy
-    message: "Testing from drone image"
+  - name: discord notification
+    image: appleboy/drone-discored
+    settings:
+      webhook_id: xxxxxxxxxx
+      webhook_token: xxxxxxxxxx
++     username: appleboy
+      message: "Testing from drone image"
 ```
 
 Example configuration with override the default avatar of the webhook:
 
 ```diff
-pipeline:
-  discord:
-    image: appleboy/drone-discord
-    webhook_id: xxxxxxxxxx
-    webhook_token: xxxxxxxxxx
-+   avatar_url: http://exampple.com/appleboy.png
-    message: "Testing from drone image"
+  - name: discord notification
+    image: appleboy/drone-discored
+    settings:
+      webhook_id: xxxxxxxxxx
+      webhook_token: xxxxxxxxxx
++     avatar_url: http://exampple.com/appleboy.png
+      message: "Testing from drone image"
 ```
 
 Example configuration with a custom message template:
 
 ```diff
-pipeline:
-  facebook:
-    image: appleboy/drone-discord
-    webhook_id: xxxxxxxxxx
-    webhook_token: xxxxxxxxxx
-+   message: |
-+     {{ #success build.status }}
-+       build {{ build.number }} succeeded. Good job.
-+     {{ else }}
-+       build {{ build.number }} failed. Fix me please.
-+     {{ /success }}
+  - name: discord notification
+    image: appleboy/drone-discored
+    settings:
+      webhook_id: xxxxxxxxxx
+      webhook_token: xxxxxxxxxx
++     message: >
++       {{#success build.status}}
++         build {{build.number}} succeeded. Good job.
++       {{else}}
++         build {{build.number}} failed. Fix me please.
++       {{/success}}
 ```
 
 Example configuration using credentials from secrets:
 
 ```diff
-pipeline:
-  discord:
-    image: appleboy/drone-discord
--   webhook_id: xxxxxxxxxx
--   webhook_token: xxxxxxxxxx
-+   secrets: [ discord_webhook_id, discord_webhook_token ]
-    message: "Testing from drone image"
+  - name: discord notification
+    image: appleboy/drone-discored
+    settings:
+-     webhook_id: xxxxxxxxxx
+-     webhook_token: xxxxxxxxxx
++     secrets: [ discord_webhook_id, discord_webhook_token ]
+      message: "Testing from drone image"
 ```
 
-# Secret Reference
+## Secret Reference
 
 discord_webhook_id
 : discord webhook id
@@ -93,7 +93,7 @@ discord_webhook_id
 discord_webhook_token
 : discord webhook token
 
-# Parameter Reference
+## Parameter Reference
 
 webhook_id
 : webhook id
@@ -113,7 +113,7 @@ tts
 message
 : the message contents (up to 2000 characters)
 
-# Template Reference
+## Template Reference
 
 repo.owner
 : repository owner
@@ -132,6 +132,9 @@ build.number
 
 build.commit
 : git sha for current commit
+
+build.message
+: git commit messsage for current commit
 
 build.branch
 : git branch for current commit
@@ -154,7 +157,7 @@ build.started
 build.finished
 : unix timestamp for build finished
 
-# Template Function Reference
+## Template Function Reference
 
 uppercasefirst
 : converts the first letter of a string to uppercase
@@ -182,4 +185,3 @@ urlencode
 
 since
 : returns a duration string between now and the given timestamp. Example `{{since build.started}}`
-
