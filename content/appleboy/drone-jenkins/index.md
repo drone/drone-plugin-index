@@ -1,69 +1,54 @@
 ---
-version: '0.8'
-date: 2017-01-16T00:00:00+00:00
+date: 2019-10-19T00:00:00+00:00
 title: Jenkins
 author: appleboy
 tags: [ infrastructure, trigger, jenkins ]
-logo: jenkins.svg
 repo: appleboy/drone-jenkins
+logo: jenkins.svg
 image: appleboy/drone-jenkins
 ---
 
 The Jenkins plugin allows you to trigger Jenkins job automatically. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  jenkins:
-    image: appleboy/drone-jenkins
+- name: trigger jenkins job
+  image: appleboy/drone-jenkins
+  settings:
     url: http://example.com
     user: appleboy
     token: xxxxxxxxxx
     job: drone-jenkins-plugin-job
-```
-
-Example configuration for success builds:
-
-```diff
-pipeline:
-  jenkins:
-    image: appleboy/drone-jenkins
-    url: http://example.com
-    user: appleboy
-    token: xxxxxxxxxx
-    job: drone-jenkins-plugin-job
-+   when:
-+     status: [ success ]
 ```
 
 Example configuration with multiple jobs:
 
-```yaml
-pipeline:
-  jenkins:
+```diff
+  - name: trigger jenkins job
     image: appleboy/drone-jenkins
-    url: http://example.com
-    user: appleboy
-    token: xxxxxxxxxx
-    job:
-+     - drone-jenkins-plugin-job-1
-+     - drone-jenkins-plugin-job-2
+    settings:
+      url: http://example.com
+      user: appleboy
+      token: xxxxxxxxxx
+      job:
++       - drone-jenkins-plugin-job-1
++       - drone-jenkins-plugin-job-2
 ```
 
 Example configuration with jobs in the folder:
 
-```yaml
-pipeline:
-  jenkins:
+```diff
+  - name: trigger jenkins job
     image: appleboy/drone-jenkins
-    url: http://example.com
-    user: appleboy
-    token: xxxxxxxxxx
-+   job: folder_name/job_name
+    settings:
+      url: http://example.com
+      user: appleboy
+      token: xxxxxxxxxx
++     job: folder_name/job_name
 ```
 
 It will trigger the URL of Jenkins job like as `http://example.com/job/folder_name/job/job_name/`
 
-# Parameter Reference
+## Parameter Reference
 
 url
 : jenkins server base url.
@@ -76,4 +61,3 @@ token
 
 job
 : jenkins job name
-
