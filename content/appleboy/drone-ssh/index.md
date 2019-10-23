@@ -1,8 +1,8 @@
 ---
-date: 2017-01-29T00:00:00+00:00
+date: 2019-08-04T00:00:00+00:00
 title: SSH
 author: appleboy
-tags: [ publish, ssh ]
+tags: [ deploy, publish, ssh ]
 repo: appleboy/drone-ssh
 logo: term.svg
 image: appleboy/drone-ssh
@@ -11,24 +11,22 @@ image: appleboy/drone-ssh
 Use the SSH plugin to execute commands on a remote server. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  ssh:
-    image: appleboy/drone-ssh
-    settings:
-      host: foo.com
-      username: root
-      password: 1234
-      port: 22
-      script:
-        - echo hello
-        - echo world
+- name: ssh commands
+  image: appleboy/drone-ssh
+  settings:
+    host: foo.com
+    username: root
+    password: 1234
+    port: 22
+    script:
+      - echo hello
+      - echo world
 ```
 
 Example configuration in your `.drone.yml` file for multiple hosts:
 
 ```diff
-pipeline:
-  ssh:
+  - name: ssh commands
     image: appleboy/drone-ssh
     settings:
       host:
@@ -38,22 +36,21 @@ pipeline:
       password: 1234
       port: 22
       script:
-        - echo hello
-        - echo world
+      - echo hello
+      - echo world
 ```
 
 Example configuration for command timeout, default value is 60 seconds:
 
 ```diff
-pipeline:
-  ssh:
+  - name: ssh commands
     image: appleboy/drone-ssh
     settings:
       host: foo.com
       username: root
       password: 1234
       port: 22
-+     command_timeout: 2m
++       command_timeout: 2m
       script:
         - echo hello
         - echo world
@@ -62,8 +59,7 @@ pipeline:
 Example configuration for execute commands on a remote server using ｀SSHProxyCommand｀:
 
 ```diff
-pipeline:
-  ssh:
+  - name: ssh commands
     image: appleboy/drone-ssh
     settings:
       host: foo.com
@@ -82,8 +78,7 @@ pipeline:
 Example configuration using password from secrets:
 
 ```diff
-pipeline:
-  ssh:
+  - name: ssh commands
     image: appleboy/drone-ssh
     settings:
       host: foo.com
@@ -99,8 +94,7 @@ pipeline:
 Example configuration using ssh key from secrets:
 
 ```diff
-pipeline:
-  ssh:
+  - name: ssh commands
     image: appleboy/drone-ssh
     settings:
       host: foo.com
@@ -116,8 +110,7 @@ pipeline:
 Example configuration for exporting custom secrets:
 
 ```diff
-pipeline:
-  ssh:
+  - name: ssh commands
     image: appleboy/drone-ssh
     settings:
       host: foo.com
@@ -128,6 +121,22 @@ pipeline:
         - aws_access_key_id
       script:
         - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+```
+
+Example configuration for stoping script after first failure:
+
+```diff
+  - name: ssh commands
+    image: appleboy/drone-ssh
+    settings:
+      host: foo.com
+      username: root
+      password: 1234
+      port: 22
++     script_stop: true
+      script:
+        - mkdir abc/def/efg
+        - echo "you can't see the steps."
 ```
 
 ## Secret Reference
@@ -175,6 +184,9 @@ envs
 
 script
 : execute commands on a remote server
+
+script_stop
+: stop script after first failure
 
 timeout
 : Timeout is the maximum amount of time for the TCP connection to establish.
