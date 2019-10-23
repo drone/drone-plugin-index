@@ -5,7 +5,7 @@ author: loq9
 tags: [ nomad, orchestration ]
 logo: nomad.svg
 repo: loq9/drone-nomad
-image: plugins/nomad
+image: loq9/drone-nomad
 ---
 
 Use the Nomad plugin to deploy services from a template. You will need to supply Drone with the nomad template file. The below pipeline configuration demonstrates simple usage:
