@@ -11,20 +11,18 @@ image: appleboy/drone-scp
 The SCP plugin copy files and artifacts to target host machine via SSH. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  scp:
-    image: appleboy/drone-scp
-    settings:
-      host: example.com
-      target: /home/deploy/web
-      source: release.tar.gz
+- name: scp files
+  image: appleboy/drone-scp
+  settings:
+    host: example.com
+    target: /home/deploy/web
+    source: release.tar.gz
 ```
 
 Example configuration with custom username, password and port:
 
 ```diff
-pipeline:
-  scp:
+  - name: scp files
     image: appleboy/drone-scp
     settings:
       host: example.com
@@ -38,8 +36,7 @@ pipeline:
 Example configuration with multiple source and target folder:
 
 ```diff
-pipeline:
-  scp:
+  - name: scp files
     image: appleboy/drone-scp
     settings:
       host: example.com
@@ -54,8 +51,7 @@ pipeline:
 Example configuration with multiple host:
 
 ```diff
-pipeline:
-  scp:
+  - name: scp files
     image: appleboy/drone-scp
     settings:
 -     host: example.com
@@ -69,8 +65,7 @@ pipeline:
 Example configuration with wildcard pattern of source list:
 
 ```diff
-pipeline:
-  scp:
+  - name: scp files
     image: appleboy/drone-scp
     settings:
       host:
@@ -86,9 +81,8 @@ pipeline:
 Remove target folder before copy files and artifacts to target:
 
 ```diff
-  scp:
+  - name: scp files
     image: appleboy/drone-scp
-    host: example.com
     settings:
       target: /home/deploy/web
       source: release.tar.gz
@@ -98,7 +92,7 @@ Remove target folder before copy files and artifacts to target:
 Example for remove the specified number of leading path elements:
 
 ```diff
-  scp:
+  - name: scp files
     image: appleboy/drone-scp
     settings:
       host: example.com
@@ -110,8 +104,7 @@ Example for remove the specified number of leading path elements:
 Example configuration using ｀SSHProxyCommand｀:
 
 ```diff
-pipeline:
-  scp:
+  - name: scp files
     image: appleboy/drone-scp
     settings:
       host:
@@ -129,8 +122,7 @@ pipeline:
 Example configuration using password from secrets:
 
 ```diff
-pipeline:
-  scp:
+  - name: scp files
     image: appleboy/drone-scp
     settings:
       host:
@@ -149,29 +141,27 @@ pipeline:
 Example configuration using command timeout:
 
 ```diff
-pipeline:
-  scp:
+  - name: scp files
     image: appleboy/drone-scp
     settings:
       host:
-        - example1.com
-        - example2.com
+      - example1.com
+      - example2.com
       user: ubuntu
       password:
-        from_secret: ssh_password
+      from_secret: ssh_password
       port: 22
 -     command_timeout: 120
 +     command_timeout: 2m
       target: /home/deploy/web
       source:
-        - release/*.tar.gz
+      - release/*.tar.gz
 ```
 
 Example configuration for ignore list:
 
 ```diff
-pipeline:
-  scp:
+  - name: scp files
     image: appleboy/drone-scp
     settings:
       host:
@@ -188,7 +178,7 @@ pipeline:
         - release/*
 ```
 
-# Parameter Reference
+## Parameter Reference
 
 host
 : target hostname or IP
@@ -223,6 +213,15 @@ command_timeout
 strip_components
 : remove the specified number of leading path elements
 
+tar_tmp_path
+: temporary path for tar file on the dest host
+
+tar_exec
+: alternative `tar` executable to on the dest host
+
+overwrite
+: use `--overwrite` flag with tar
+
 proxy_host
 : proxy hostname or IP
 
@@ -241,7 +240,7 @@ proxy_key
 proxy_key_path
 : key path of proxy private key
 
-# Template Reference
+## Template Reference
 
 repo.owner
 : repository owner
