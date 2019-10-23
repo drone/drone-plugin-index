@@ -1,6 +1,5 @@
 ---
-version: '0.8'
-date: 2017-01-08T00:00:00+00:00
+date: 2019-10-19T00:00:00+00:00
 title: Telegram
 author: appleboy
 tags: [ notifications, chat ]
@@ -12,9 +11,9 @@ image: appleboy/drone-telegram
 The Telegram plugin posts build status messages to your account. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  telegram:
-    image: appleboy/drone-telegram
+- name: send telegram notification
+  image: appleboy/drone-telegram
+  settings:
     token: xxxxxxxxxx
     to: telegram_user_id
 ```
@@ -22,147 +21,135 @@ pipeline:
 Example configuration with photo message:
 
 ```diff
-pipeline:
-  telegram:
+  - name: send telegram notification
     image: appleboy/drone-telegram
-    token: xxxxxxxxxx
-    to: telegram_user_id
-+   photo:
-+     - tests/1.png
-+     - tests/2.png
+    settings:
+      token: xxxxxxxxxx
+      to: telegram_user_id
++     photo:
++       - tests/1.png
++       - tests/2.png
 ```
 
 Example configuration with document message:
 
 ```diff
-pipeline:
-  telegram:
+  - name: send telegram notification
     image: appleboy/drone-telegram
-    token: xxxxxxxxxx
-    to: telegram_user_id
-+   document:
-+     - tests/1.pdf
-+     - tests/2.pdf
+    settings:
+      token: xxxxxxxxxx
+      to: telegram_user_id
++     document:
++       - tests/1.pdf
++       - tests/2.pdf
 ```
 
 Example configuration with sticker message:
 
 ```diff
-pipeline:
-  telegram:
+  - name: send telegram notification
     image: appleboy/drone-telegram
-    token: xxxxxxxxxx
-    to: telegram_user_id
-+   sticker:
-+     - tests/3.png
-+     - tests/4.png
+    settings:
+      token: xxxxxxxxxx
+      to: telegram_user_id
++     sticker:
++       - tests/3.png
++       - tests/4.png
 ```
 
 Example configuration with audio message:
 
 ```diff
-pipeline:
-  telegram:
+  - name: send telegram notification
     image: appleboy/drone-telegram
-    token: xxxxxxxxxx
-    to: telegram_user_id
-+   audio:
-+     - tests/audio1.mp3
-+     - tests/audio2.mp3
+    settings:
+      token: xxxxxxxxxx
+      to: telegram_user_id
++     audio:
++       - tests/audio1.mp3
++       - tests/audio2.mp3
 ```
 
 Example configuration with voice message:
 
 ```diff
-pipeline:
-  telegram:
+  - name: send telegram notification
     image: appleboy/drone-telegram
-    token: xxxxxxxxxx
-    to: telegram_user_id
-+   voice:
-+     - tests/voice1.ogg
-+     - tests/voice2.ogg
+    settings:
+      token: xxxxxxxxxx
+      to: telegram_user_id
++     voice:
++       - tests/voice1.ogg
++       - tests/voice2.ogg
 ```
 
 Example configuration with location message:
 
 ```diff
-pipeline:
-  telegram:
+  - name: send telegram notification
     image: appleboy/drone-telegram
-    token: xxxxxxxxxx
-    to: telegram_user_id
-+   location:
-+     - 24.9163213,121.1424972
-+     - 24.9263213,121.1224972
+    settings:
+      token: xxxxxxxxxx
+      to: telegram_user_id
++     location:
++       - 24.9163213,121.1424972
++       - 24.9263213,121.1224972
 ```
 
 Example configuration with venue message:
 
 ```diff
-pipeline:
-  telegram:
+  - name: send telegram notification
     image: appleboy/drone-telegram
-    token: xxxxxxxxxx
-    to: telegram_user_id
-+   venue:
-+     - 24.9163213,121.1424972,title,address
-+     - 24.3163213,121.1824972,title,address
+    settings:
+      token: xxxxxxxxxx
+      to: telegram_user_id
++     venue:
++       - 24.9163213,121.1424972,title,address
++       - 24.3163213,121.1824972,title,address
 ```
 
 Example configuration with video message:
 
 ```diff
-pipeline:
-  telegram:
+  - name: send telegram notification
     image: appleboy/drone-telegram
-    token: xxxxxxxxxx
-    to: telegram_user_id
-+   video:
-+     - tests/video1.mp4
-+     - tests/video2.mp4
+    settings:
+      token: xxxxxxxxxx
+      to: telegram_user_id
++     video:
++       - tests/video1.mp4
++       - tests/video2.mp4
 ```
 
 Example configuration with message format:
 
 ```diff
-pipeline:
-  telegram:
+  - name: send telegram notification
     image: appleboy/drone-telegram
-    token: xxxxxxxxxx
-    to: telegram_user_id
-+   format: markdown
-```
-
-Example configuration for success and failure messages:
-
-```diff
-pipeline:
-  telegram:
-    image: appleboy/drone-telegram
-    token: xxxxxxxxxx
-    to: telegram_user_id
-+   when:
-+     status: [ success, failure ]
+    settings:
+      token: xxxxxxxxxx
+      to: telegram_user_id
++     format: markdown
 ```
 
 Example configuration with a custom message template:
 
 ```diff
-pipeline:
-  telegram:
+  - name: send telegram notification
     image: appleboy/drone-telegram
-    token: xxxxxxxxxx
-    to: telegram_user_id
-+   message: >
-+     {{#success build.status}}
-+       build {{build.number}} succeeded. Good job.
-+     {{else}}
-+       build {{build.number}} failed. Fix me please.
-+     {{/success}}
+    settings:
+      token: xxxxxxxxxx
+      to: telegram_user_id
++     message: >
++       {{#success build.status}}
++         build {{build.number}} succeeded. Good job.
++       {{else}}
++         build {{build.number}} failed. Fix me please.
++       {{/success}}
 ```
 
-# Parameter Reference
+## Parameter Reference
 
 token
 : telegram token from [telegram developer center](https://core.telegram.org/bots/api)
@@ -200,7 +187,7 @@ venue
 format
 : `markdown` or `html` format
 
-# Template Reference
+## Template Reference
 
 repo.owner
 : repository owner
@@ -247,7 +234,7 @@ build.started
 build.finished
 : unix timestamp for build finished
 
-# Template Function Reference
+## Template Function Reference
 
 uppercasefirst
 : converts the first letter of a string to uppercase
@@ -275,4 +262,3 @@ urlencode
 
 since
 : returns a duration string between now and the given timestamp. Example `{{since build.started}}`
-
