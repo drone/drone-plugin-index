@@ -49,13 +49,6 @@ steps:
     event:
     - push
     - tag
-
----
-kind: secret
-
-data:
-  ansible_private_key: ANSIBLE_PRIVATE_KEY
-  ansible_vault_password: ANSIBLE_VAULT_PASSWORD
 ```
 
 
