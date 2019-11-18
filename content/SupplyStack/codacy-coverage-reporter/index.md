@@ -1,5 +1,5 @@
 ---
-date: 2018-06-21T00:00:00+00:00
+date: 2019-11-18T00:00:00+00:00
 title: Codacy Coverage Reporter
 author: SupplyStack
 tags: [ coverage ]
