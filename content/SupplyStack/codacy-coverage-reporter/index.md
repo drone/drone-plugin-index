@@ -5,7 +5,7 @@ author: SupplyStack
 tags: [ coverage ]
 logo: codacy.svg
 repo: supplystack/codacy-coverage-reporter
-image: supplystack/codacy-coverage-reporter:6.0.6
+image: supplystack/codacy-coverage-reporter
 ---
 
 A multi-language Codacy Coverage Reporter based on [https://github.com/codacy/codacy-coverage-reporter](https://github.com/codacy/codacy-coverage-reporter). The supported coverage formats are JaCoCo and Cobertura. Support for PHP, Python, Ruby, Java, JavaScript, and Scala, among others. The plugin expects a project token, language specification and report file location. 
@@ -21,7 +21,7 @@ name: default
 
 steps:
 - name: codacy
-  image: supplystack/codacy-coverage-reporter:6.0.6
+  image: supplystack/codacy-coverage-reporter
   settings:
     codacy_project_token: 
       from_secret: CODACY_PROJECT_TOKEN
