@@ -7,12 +7,12 @@ To generate the documentation you will need to download and install the [hugo](h
 
 Clone the theme:
 
-```
+```bash
 git clone https://github.com/drone/drone-hugo-theme.git themes/drone-hugo-theme
 ```
 
-Generate and serve the documentation at `localhost:1313`:
+Generate and serve the documentation at `http://localhost:1313/`:
 
-```
+```bash
 hugo server -b localhost:1313 -w
 ```
