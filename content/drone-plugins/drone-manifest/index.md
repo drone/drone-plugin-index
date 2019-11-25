@@ -85,6 +85,9 @@ username
 password
 : Password for DockerHub authentication
 
+insecure
+: Enable insecure (not TLS) registry support
+
 platforms
 : List of platforms in format OS/ARCH
 
