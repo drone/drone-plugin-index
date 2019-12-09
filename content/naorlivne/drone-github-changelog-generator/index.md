@@ -29,13 +29,10 @@ steps:
 # Parameter Reference
 
 github_user
-
 : The GitHub user name which hosts the repo, can also use a GitHub organization name
 
 github_project
-
 : The GitHub repo name
 
 output_path
-
 : The changelog file path to be created, defaults to `CHANGELOG.md` in the current working directory (repo root by default).
