@@ -139,6 +139,23 @@ Example configuration for stoping script after first failure:
         - echo "you can't see the steps."
 ```
 
+Example configuration for passphrase which protecting a private key:
+
+```diff
+  - name: ssh commands
+    image: appleboy/drone-ssh
+    settings:
+      host: foo.com
+      username: root
++     key:
++       from_secret: ssh_key
++     passphrase: 1234
+      port: 22
+      script:
+        - mkdir abc/def/efg
+        - echo "you can't see the steps."
+```
+
 ## Secret Reference
 
 ssh_username
@@ -146,6 +163,9 @@ ssh_username
 
 ssh_password
 : password for target host user
+
+ssh_passphrase
+: The purpose of the passphrase is usually to encrypt the private key.
 
 ssh_key
 : plain text of user private key
@@ -155,6 +175,9 @@ proxy_ssh_username
 
 proxy_ssh_password
 : password for user of proxy server
+
+proxy_ssh_passphrase
+: The purpose of the passphrase is usually to encrypt the private key.
 
 proxy_ssh_key
 : plain text of user private key for proxy server
@@ -189,10 +212,10 @@ script_stop
 : stop script after first failure
 
 timeout
-: Timeout is the maximum amount of time for the TCP connection to establish.
+: Timeout is the maximum amount of time for the ssh connection to establish, default is 30 seconds.
 
 command_timeout
-: Command timeout is the maximum amount of time for the execute commands, default is 60 secs.
+: Command timeout is the maximum amount of time for the execute commands, default is 10 minutes.
 
 proxy_host
 : proxy hostname or IP
