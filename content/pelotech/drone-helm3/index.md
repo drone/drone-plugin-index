@@ -2,11 +2,11 @@
 version: '0.8'
 date: 2019-12-30T14:12:00-07:00
 title: Helm3
-author: peloton
+author: pelotech
 tags: [ kubernetes, docker, helm, helm3 ]
 logo: kubernetes.svg
-repo: peloton/drone-helm3
-image: peloton/drone-helm3
+repo: pelotech/drone-helm3
+image: pelotech/drone-helm3
 ---
 
 This plugin provides an interface to Helm 3.
