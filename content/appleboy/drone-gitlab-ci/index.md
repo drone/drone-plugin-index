@@ -1,10 +1,10 @@
 ---
-date: 2019-11-19T00:00:00+00:00
+date: 2019-19-19T00:00:00+00:00
 title: Gitlab-CI
 author: appleboy
 tags: [ infrastructure, trigger, gitlab, gitlab-ci ]
 repo: appleboy/drone-gitlab-ci
-logo: gitlab-ci.svg
+logo: gitlab.svg
 image: appleboy/drone-gitlab-ci
 ---
 

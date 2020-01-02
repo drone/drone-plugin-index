@@ -80,10 +80,13 @@ steps:
 # Parameter Reference
 
 username
-: Username for DockerHub authentication
+: Username for DockerHub authentication (Skip for anonymous access)
 
 password
-: Password for DockerHub authentication
+: Password for DockerHub authentication (Skip for anonymous access)
+
+insecure
+: Enable insecure (not TLS) registry support
 
 platforms
 : List of platforms in format OS/ARCH
