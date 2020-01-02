@@ -87,6 +87,12 @@ force
 reuse_values
 : Reuse the values from a previous release.
 
+keep_history
+: Pass `--keep-history` to `helm uninstall`.
+
+lint_strictly
+: Pass `--strict` to `helm lint`.
+
 skip_tls_verify
 : Do not check for a valid certificate when connecting to the kubernetes api.
 
