@@ -1,5 +1,4 @@
 ---
-version: '0.8'
 date: 2019-12-30T14:12:00-07:00
 title: Helm3
 author: pelotech
