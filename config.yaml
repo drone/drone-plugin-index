@@ -29,6 +29,7 @@ menu:
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: false
 enableMissingTranslationPlaceholders: false
+pluralizeListTitles: false
 
 languages:
   en:
