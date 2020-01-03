@@ -6,7 +6,7 @@ author: josmo
 tags: [ deploy, amazon, aws, elastic beanstalk ]
 logo: amazon_beanstalk.svg
 repo: josmo/drone-elastic-beanstalk
-image: peloton/drone-elastic-beanstalk
+image: pelotech/drone-elastic-beanstalk
 ---
 
 The Elastic Beanstalk plugin can be used to deploy an app to a Beanstalk environment. The following pipeline configuration uses the Beanstalk plugin to deploy an app:
@@ -14,7 +14,7 @@ The Elastic Beanstalk plugin can be used to deploy an app to a Beanstalk environ
 ```yaml
 pipeline:
   beanstalk:
-    image: peloton/drone-elastic-beanstalk
+    image: pelotech/drone-elastic-beanstalk
     access_key: 970d28f4dd477bc184fbd10b376de753
     secret_key: 9c5785d3ece6a9cdefa42eb99b58986f9095ff1c
     region: us-east-1

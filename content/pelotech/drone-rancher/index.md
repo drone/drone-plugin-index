@@ -6,7 +6,7 @@ author: josmo
 tags: [ deploy, rancher, docker ]
 logo: rancher.svg
 repo: josmo/drone-rancher
-image: peloton/drone-rancher
+image: pelotech/drone-rancher
 ---
 
 The Rancher plugin can be used to deploy a Docker image to a Rancher environment. The following pipeline configuration uses the Rancher plugin to deploy a Docker image to a Rancher service:
@@ -14,7 +14,7 @@ The Rancher plugin can be used to deploy a Docker image to a Rancher environment
 ```yaml
 pipeline:
   rancher:
-    image: peloton/drone-rancher
+    image: pelotech/drone-rancher
     url: http://awesomehost:awesomeport
     access_key: superaccesskey
     secret_key: supersecretkey
@@ -27,7 +27,7 @@ Example configuration with not starting the container first and confirming the u
 ```diff
 pipeline:
   rancher:
-    image: peloton/drone-rancher
+    image: pelotech/drone-rancher
     url: http://awesomehost:awesomeport
     access_key: superaccesskey
     secret_key: supersecretkey
@@ -44,7 +44,7 @@ Example configuration with a batch size of 5:
 ```diff
 pipeline:
   rancher:
-    image: peloton/drone-rancher
+    image: pelotech/drone-rancher
     url: http://awesomehost:awesomeport
     access_key: superaccesskey
     secret_key: supersecretkey
