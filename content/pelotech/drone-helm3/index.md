@@ -93,6 +93,12 @@ keep_history
 lint_strictly
 : Pass `--strict` to `helm lint`.
 
+atomic_upgrade
+: Pass `--atomic` to `helm upgrade`.
+
+cleanup_failed_upgrade
+: Pass `--cleanup-on-fail` to `helm upgrade`.
+
 skip_tls_verify
 : Do not check for a valid certificate when connecting to the kubernetes api.
 
