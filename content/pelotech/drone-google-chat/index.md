@@ -6,7 +6,7 @@ author: josmo
 tags: [  notifications, chat  ]
 logo: gtalk.svg
 repo: josmo/drone-google-chat
-image: peloton/drone-google-chat
+image: pelotech/drone-google-chat
 ---
 
 The Google chat plugin posts build status messages to your company google chat. The below pipeline configuration demonstrates simple usage:
@@ -16,7 +16,7 @@ This plugin is currently experimental since the full apis for google chat haven'
 ```yaml
 pipeline:
   notify:
-    image: peloton/drone-google-chat
+    image: pelotech/drone-google-chat
     webook: https://dynamite.sandbox.googleapis.com/v1/rooms/roomid
     key: mykey
     token: mytoken  
@@ -27,7 +27,7 @@ Example configuration with a conversation key to group notifications together in
 ```yaml
 pipeline:
   notify:
-    image: peloton/drone-google-chat
+    image: pelotech/drone-google-chat
     webook: https://dynamite.sandbox.googleapis.com/v1/rooms/roomid
     key: mykey
     token: mytoken  
@@ -39,7 +39,7 @@ Example configuration with token as secret
 ```yaml
 pipeline:
   notify:
-    image: peloton/drone-google-chat
+    image: pelotech/drone-google-chat
     webook: https://dynamite.sandbox.googleapis.com/v1/rooms/roomid
     key: mykey
 +   secrets: [ GOOGLE_CHAT_TOKEN ] 
@@ -50,7 +50,7 @@ Example configuration with a custom message template:
 ```yaml
 pipeline:
   notify:
-    image: peloton/drone-google-chat
+    image: pelotech/drone-google-chat
     webhook: https://dynamite.sandbox.googleapis.com/v1/rooms/roomid
     key: mykey
     token: mytoken 

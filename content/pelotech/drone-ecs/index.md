@@ -6,7 +6,7 @@ author: josmo
 tags: [ deploy, amazon, aws, ecs, docker ]
 logo: amazon_ecs.svg
 repo: josmo/drone-ecs
-image: peloton/drone-ecs
+image: pelotech/drone-ecs
 ---
 
 The ECS plugin can be used to deploy a Docker image to an ECS environment. The following pipeline configuration uses the ECS plugin to deploy a Docker image to an ECS service:
@@ -14,7 +14,7 @@ The ECS plugin can be used to deploy a Docker image to an ECS environment. The f
 ```yaml
 pipeline:
   ecs:
-    image: peloton/drone-ecs
+    image: pelotech/drone-ecs
     access_key: superaccesskey
     secret_key: supersecretkey
     service: service1
