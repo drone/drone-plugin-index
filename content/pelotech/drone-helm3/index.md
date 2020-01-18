@@ -27,14 +27,16 @@ Basic example:
 
 # Parameter Reference
 
-helm_command
+mode
 : Helm command to run; valid options are `upgrade`, `lint`, and `uninstall`. If not provided, can be inferred from the Drone event.
+: This setting was called `helm_command` prior to version 0.11.0. The older name is still supported, but upgrading is recommended.
 
 update_dependencies
 : Run `helm dependency update` before running the main helm command.
 
-helm_repos
+add_repos
 : Run `helm repo add` before running the main helm command.
+: This setting was called `helm_repos` prior to version 0.11.0. The older name is still supported, but upgrading is recommended.
 
 namespace
 : Kubernetes namespace for the un/installation.
@@ -57,17 +59,21 @@ string_values
 values_files
 : Arguments for helm's `--values` flag.
 
-api_server
+kube_api_server
 : Kubernetes api server.
+: This setting was called `api_server` prior to version 0.11.0. The older name is still supported, but upgrading is recommended.
 
-kubernetes_token
+kube_token
 : Token for connecting to the kubernetes api.
+: This setting was called `kubernetes_token` prior to version 0.11.0. The older name is still supported, but upgrading is recommended.
 
-service_account
+kube_service_account
 : Account name for connecting to the kubernetes api.
+: This setting was called `service_account` prior to version 0.11.0. The older name is still supported, but upgrading is recommended.
 
-kubernetes_certificate
+kube_certificate
 : Base64-encoded TLS certificate, for clusters using a self-signed CA certificate
+: This setting was called `kubernetes_certificate` prior to version 0.11.0. The older name is still supported, but upgrading is recommended.
 
 chart_version
 : Specific chart version to install.
@@ -75,14 +81,16 @@ chart_version
 dry_run
 : Prepare the un/installation, but do not perform it.
 
-wait
+wait_for_upgrade
 : Wait until kubernetes resources are in a ready state before marking the installation successful.
+: This setting was called `wait` prior to version 0.11.0. The older name is still supported, but upgrading is recommended.
 
 timeout
 : Timeout for any individual kubernetes operation, formatted as a Golang duration (e.g. "3m20s").
 
-force
+force_upgrade
 : Pass `--force` to `helm upgrade`.
+: This setting was called `force` prior to version 0.11.0. The older name is still supported, but upgrading is recommended.
 
 reuse_values
 : Reuse the values from a previous release.
