@@ -15,7 +15,7 @@ The discord plugin posts build status messages to discord channel. The below pip
 
 ```yaml
 - name: discord notification
-  image: appleboy/drone-discored
+  image: appleboy/drone-discord
   settings:
     webhook_id: xxxxxxxxxx
     webhook_token: xxxxxxxxxx
@@ -25,7 +25,7 @@ Example configuration with TTS (text-to-speech) message:
 
 ```diff
   - name: discord notification
-    image: appleboy/drone-discored
+    image: appleboy/drone-discord
     settings:
       webhook_id: xxxxxxxxxx
       webhook_token: xxxxxxxxxx
@@ -37,7 +37,7 @@ Example configuration with override the default username of the webhook:
 
 ```diff
   - name: discord notification
-    image: appleboy/drone-discored
+    image: appleboy/drone-discord
     settings:
       webhook_id: xxxxxxxxxx
       webhook_token: xxxxxxxxxx
@@ -49,7 +49,7 @@ Example configuration with override the default avatar of the webhook:
 
 ```diff
   - name: discord notification
-    image: appleboy/drone-discored
+    image: appleboy/drone-discord
     settings:
       webhook_id: xxxxxxxxxx
       webhook_token: xxxxxxxxxx
@@ -61,7 +61,7 @@ Example configuration with a custom message template:
 
 ```diff
   - name: discord notification
-    image: appleboy/drone-discored
+    image: appleboy/drone-discord
     settings:
       webhook_id: xxxxxxxxxx
       webhook_token: xxxxxxxxxx
@@ -77,7 +77,7 @@ Example configuration using credentials from secrets:
 
 ```diff
   - name: discord notification
-    image: appleboy/drone-discored
+    image: appleboy/drone-discord
     settings:
 -     webhook_id: xxxxxxxxxx
 -     webhook_token: xxxxxxxxxx
