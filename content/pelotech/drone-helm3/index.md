@@ -38,6 +38,9 @@ add_repos
 : Run `helm repo add` before running the main helm command.
 : This setting was called `helm_repos` prior to version 0.11.0. The older name is still supported, but upgrading is recommended.
 
+repo_ca_file
+: Path to a file containing a TLS certificate, for chart repositories using a self-signed CA certificate. Only applicable when using `add_repos`.
+
 namespace
 : Kubernetes namespace for the un/installation.
 
