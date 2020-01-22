@@ -46,7 +46,7 @@ steps:
 ```
 
 Example configuration with multiple build pipelines:
-```yaml
+```diff
 - name: Run build pipelines
   image: dclocal/drone-azure-pipelines:1.0.0
   settings:
@@ -62,7 +62,7 @@ Example configuration with multiple build pipelines:
 ```
 
 Example configuration with multiple release pipelines and stages:
-```yaml
+```diff
 - name: Create new releases
   image: dclocal/drone-azure-pipelines:1.0.0
   settings:
