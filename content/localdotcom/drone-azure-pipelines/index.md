@@ -4,7 +4,7 @@ date: 2020-01-20T00:00:00+00:00
 title: Azure Pipelines
 author: localdotcom
 tags: [ infrastructure, ops, azure]
-logo: azure-pipelines.svg
+logo: azure_pipelines.svg
 repo: localdotcom/drone-azure-pipelines
 image: dclocal/drone-azure-pipelines:1.0.0
 ---
