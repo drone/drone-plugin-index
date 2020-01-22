@@ -9,9 +9,9 @@ repo: localdotcom/drone-azure-pipelines
 image: dclocal/drone-azure-pipelines:1.0.0
 ---
 
-This plugin allows you to bulk run Azure pipelines. The below sample pipeline configuration demonstrates simple usage:
+This plugin can be used to bulk run Azure pipelines. The below sample pipeline configuration demonstrates simple usage:
 
-```
+```yaml
 kind: pipeline
 name: Bulk run Azure pipelines
 
@@ -46,7 +46,7 @@ steps:
 ```
 
 Example configuration with multiple build pipelines:
-```
+```yaml
 - name: Run build pipelines
   image: dclocal/drone-azure-pipelines:1.0.0
   settings:
@@ -62,7 +62,7 @@ Example configuration with multiple build pipelines:
 ```
 
 Example configuration with multiple release pipelines and stages:
-```
+```yaml
 - name: Create new releases
   image: dclocal/drone-azure-pipelines:1.0.0
   settings:
