@@ -39,7 +39,7 @@ steps:
     files:
       - dist/*
       - bin/binary.exe
-   checksum:
+    checksum:
       - md5
       - sha1
       - sha256
