@@ -38,6 +38,12 @@ add_repos
 : Run `helm repo add` before running the main helm command.
 : This setting was called `helm_repos` prior to version 0.11.0. The older name is still supported, but upgrading is recommended.
 
+repo_certificate
+: Base64 encoded TLS certificate for a chart repository.
+
+repo_ca_certificate
+: Base64 encoded TLS certificate for a chart repository certificate authority.
+
 namespace
 : Kubernetes namespace for the un/installation.
 
