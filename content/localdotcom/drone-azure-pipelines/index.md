@@ -25,7 +25,6 @@ steps:
   settings:
     action: queue_build
     definitions: build_definition_id
-      - build_definition_id
     organization: organization
     project: project
     user: username@domain.com
@@ -44,7 +43,6 @@ steps:
     secret:
       from_secret: az_secret
 ```
-
 Example configuration with multiple build pipelines:
 ```yaml
 - name: Run build pipelines
@@ -60,7 +58,6 @@ Example configuration with multiple build pipelines:
     secret:
       from_secret: az_secret
 ```
-
 Example configuration with multiple release pipelines and stages:
 ```yaml
 - name: Create new releases
@@ -105,12 +102,4 @@ check_build_state (optional)
 : Check the status of associated builds, only available under 'Release' step: true/false
 
 skip (optional)
-: Skip the step execution: true/false 
-
-
-# Hints
-
-- Please use the the secret stores provided by drone, or any external. Do not commit secrets into any public repositories.
-
-- To check the status of associated builds that have been run under the 'Build' step, please define and set parameter as follow: ```check_build_state: true```  
-Otherwise, the 'Release' step will use latest successful builds.
+: Skip the step execution: true/false
