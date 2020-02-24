@@ -17,7 +17,7 @@ name: default
 
 steps:
   - name: send-wechat
-    image: yakumioto/serverchan
+    image: yakumioto/drone-serverchan
     settings:
       key: SCU48558T164ff96a3316d8a22cacea21d66b5caed80baa044
       text: hello world
