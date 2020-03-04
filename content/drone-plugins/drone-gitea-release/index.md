@@ -87,6 +87,8 @@ steps:
 api_key
 : Gitea application token
 
+**NOTE**: This is under `https://<<instance>>/user/settings/applications` the **first** type of access token.  It is **NOT** the same as the `DRONE_GITEA_CLIENT_SECRET` that drone uses (oauth token).
+
 base_url
 : Base URL of the Gitea instance
 
