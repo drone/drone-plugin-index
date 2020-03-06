@@ -1,5 +1,4 @@
 ---
-version: '0.8'
 date: 2020-03-05T00:00:00+00:00
 title: Circle-ci
 author: wesleimp
