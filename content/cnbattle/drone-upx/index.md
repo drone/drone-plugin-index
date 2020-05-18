@@ -1,6 +1,6 @@
 ---
 date: 2016-01-01T00:00:00+00:00
-title: Upx
+title: UPX
 author: cnbattle
 tags: [ "upx" ]
 repo: "cnbattle/drone-upx"
