@@ -4,6 +4,7 @@ title: Fandogh
 author: amirbagh75
 tags: [ paas, fandogh ]
 repo: amirbagh75/fandogh-drone
+logo: fandogh.svg
 image: amirbagh75/fandogh-drone
 ---
 
