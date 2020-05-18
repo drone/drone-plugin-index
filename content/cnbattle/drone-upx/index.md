@@ -4,7 +4,7 @@ title: UPX
 author: cnbattle
 tags: [ "upx" ]
 repo: "cnbattle/drone-upx"
-logo: "drone.svg"
+logo: "upx.svg"
 image: "cnbattle/drone-upx"
 ---
 
