@@ -8,7 +8,7 @@ logo: "drone.svg"
 image: "cnbattle/drone-upx"
 ---
 
-The Drone Upx can be used to packer for eXecutables. The below pipeline configuration demonstrates simple usage:
+The UPX plugin can be used to pack executables. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
 kind: pipeline
@@ -37,10 +37,10 @@ steps:
 # Parameter Reference
 
 level
-: Compression level, 1-9,The bigger the better.
+: Compression level, a value between 1 and 9, the bigger the better.
 
 original_file
-: Original documents to be processed.
+: An original file to be processed.
 
 save_file
-: Processed files
+: Save the path and file name of the compressed file.
