@@ -1,6 +1,6 @@
 ---
 date: 2019-08-27T00:00:00+00:00
-title: Kubernetes
+title: Kubernetes Apply
 author: naorlivne
 tags: [ deploy, kubernetes, docker ]
 logo: kubernetes.svg
