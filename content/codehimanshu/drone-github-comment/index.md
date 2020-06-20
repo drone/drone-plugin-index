@@ -47,7 +47,7 @@ steps:
       from_secret: private_key
   when:
     status: [ failure ]
-	  event: pull_request
+    event: pull_request
 ```
 
 Github App to post comments on your Pull Request : https://github.com/apps/dronegitbot
