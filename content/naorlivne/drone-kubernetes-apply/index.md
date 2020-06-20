@@ -75,10 +75,10 @@ will result in:
 # Parameter Reference
 
 kubernetes_api_host
-: The Kubernetes API server URL (no trailing slash should be used)
+: The Kubernetes API server URL (no trailing slash should be used), alternately mount a kubeconfig into the container `/root/.kube/config`
 
 kubernetes_token
-: The token used to auth against the Kubernetes API
+: The token used to auth against the Kubernetes API, alternately mount a kubeconfig into the container `/root/.kube/config`
 
 kubernetes_yaml_file
 : The Kubernetes deployment configuration file location relative to the root folder of the repo, defaults to `injected_deployment.yaml` in the repo root
