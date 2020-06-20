@@ -31,7 +31,7 @@ steps:
 - name: publish  
   image: plugins/ecr
   settings:
-    create: true
+    create_repository: true
     repo: bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
     tags:
@@ -47,7 +47,7 @@ steps:
 - name: publish  
   image: plugins/ecr
   settings:
-    create: true
+    create_repository: true
     repo: bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
     region: us-east-1
@@ -60,7 +60,7 @@ steps:
 - name: publish  
   image: plugins/ecr
   settings:
-    create: true
+    create_repository: true
     repo: bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
     dockerfile: path/to/Dockerfile
@@ -73,7 +73,7 @@ steps:
 - name: publish  
   image: plugins/ecr
   settings:
-    create: true
+    create_repository: true
     repo: bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
     build_args:
@@ -103,7 +103,7 @@ access_key
 secret_key
 : amazon secret access key
 
-create
+create_repository
 : boolean of whether to create repository if it does not exist, defaults to `false`
 
 region
