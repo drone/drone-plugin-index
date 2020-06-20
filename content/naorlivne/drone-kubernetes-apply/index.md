@@ -8,7 +8,7 @@ repo: naorlivne/drone-kubernetes-apply
 image: naorlivne/drone-kubernetes-apply
 ---
 
-This plugin can be used to deploy applications to a Kubernetes cluster, it will create\update the given Kubernetes deployments/cron jobs/pods/etc as needed.
+This plugin can be used to deploy applications to a Kubernetes cluster, it will create or update the given Kubernetes manifest as needed.
 
 Main difference between this plugin and other Kubernetes Drone plugin is that it uses kubectl under the hood to allow multiple resources to be declared in a single YAML file and supports all resources types provided by Kubernetes. 
 
