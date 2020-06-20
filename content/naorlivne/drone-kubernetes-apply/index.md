@@ -8,9 +8,9 @@ repo: naorlivne/drone-kubernetes-apply
 image: naorlivne/drone-kubernetes-apply
 ---
 
-This plugin can be used to deploy applications to a Kubernetes cluster, it will create\update the given kubernetes deployments/cron jobs/pods/etc as needed.
+This plugin can be used to deploy applications to a Kubernetes cluster, it will create\update the given Kubernetes deployments/cron jobs/pods/etc as needed.
 
-Main difference between this plugin and other kubernetes Drone plugin is that it uses kubectl under the hood to allow multiple resources to be declared in a single YAML file and supports all resources types provided by Kubernetes. 
+Main difference between this plugin and other Kubernetes Drone plugin is that it uses kubectl under the hood to allow multiple resources to be declared in a single YAML file and supports all resources types provided by Kubernetes. 
 
 The below pipeline configuration demonstrates simple usage:
 
@@ -31,7 +31,7 @@ steps:
 # Kubernetes YAML File
 
 {{% alert info %}}
-In addition to the `.drone.yml` file you will need to create a `injected_deployment.yaml` file that contains the kubernetes resources you want to deploy/update.
+In addition to the `.drone.yml` file you will need to create a `injected_deployment.yaml` file that contains the Kubernetes resources you want to deploy/update.
 {{% /alert %}}
 
 # Value substitution
@@ -75,10 +75,10 @@ will result in:
 # Parameter Reference
 
 kubernetes_api_host
-: The kubernetes API server URL (no trailing slash should be used)
+: The Kubernetes API server URL (no trailing slash should be used)
 
 kubernetes_token
-: The token used to auth against the kubernetes API
+: The token used to auth against the Kubernetes API
 
 kubernetes_yaml_file
-: The kubernetes deployment configuration file location relative to the root folder of the repo, defaults to `injected_deployment.yaml` in the repo root
+: The Kubernetes deployment configuration file location relative to the root folder of the repo, defaults to `injected_deployment.yaml` in the repo root
