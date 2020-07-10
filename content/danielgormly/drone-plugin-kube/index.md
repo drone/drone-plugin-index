@@ -8,14 +8,14 @@ logo: kubernetes.svg
 image: danielgormly/drone-plugin-kube
 ---
 
-Updates Kubernetes deployments from templates & configMaps from files. This plugin will either create or update existing resources dependent on their presence. It will wait for deployments before it progresses. Additional
+Updates Kubernetes resources (deployments, ingresses, services, configmap - with binary data). This plugin will either create or update existing resources dependent on their presence. It will wait for deployments before it progresses.
 
 Create or update deployment
 
 ```yaml
 pipeline:
 - name: Deploy app
-  image: danielgormly/drone-plugin-kube:0.0.1
+  image: danielgormly/drone-plugin-kube:0.2.0
   settings:
     template: path/to/deployment.yaml # relative to repo root
     ca: LS0tLS1... # BASE64 encoded string of the K8s CA cert
@@ -29,7 +29,7 @@ Create or update config-map from a single file
 ```diff
 pipeline:
 - name: Deploy app
-  image: danielgormly/drone-plugin-kube:0.0.1
+  image: danielgormly/drone-plugin-kube:0.2.0
   settings:
 -    template: path/to/deployment.yaml
 +    template: path/to/config-map.yaml
@@ -42,20 +42,76 @@ pipeline:
 
 # Parameter Reference
 
-ca
-: Base-64 encoded string of the K8s CA cert
+| Value            | Key                                                                                                                          |
+|------------------|------------------------------------------------------------------------------------------------------------------------------|
+| ca               | Base-64 encoded string of the K8s CA cert                                                                                    |
+| server           | https://10.0.0.20:6443                                                                                                       |
+| namespace        | Namespace to deploy to                                                                                                       |
+| kubernetes_token | Kubernetes service account token (Not base64 encoded)                                                                        |
+| template         | Path to Kubernetes yaml based definition file (Configmap or Deployment). Relative to Git basedir.                            |
+| configmap_file   | Path to file containing data to inject in configmap (They configmap key that contains the data will be the filename)         |
+| *                | Other parameters will be made available for interpolation within yaml templates (upper-case will be converted to lower-case) |
 
-server
-: Full url of Kubernetes API endpoint including protocol & port
+## Template Substitution
 
-kubernetes_token
-: Kubernetes service account token (Not base64 encoded)
+You can substitute values in the deployment template files. But first you have to define the variables.
 
-template
-: Path to Kubernetes yaml based definition file (Configmap or Deployment)
+```yaml {4-5}
+ - name: Deploy K8s - Workload
+    image: danielgormly/drone-plugin-kube:0.0.2
+    settings:
+      build_number: ${DRONE_BUILD_NUMBER}
+      template: deployment.yaml
+      ca:
+        from_secret: k8s_cert
+      server:
+        from_secret: k8s_server
+      token:
+        from_secret: k8s_token
+```
 
-configmap_file
-: path to file containing data to inject in configmap (They configmap key that contains the data will be the filename)
+You can substitute the following values between ```{{ }}``` in your deployment template.  
+Example `deployment.yaml`:
 
-`*`
-: Other parameters will be made available for interpolation within yaml templates (upper-case will be converted to lower-case)
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: wiki
+  labels:
+    app: wiki
+  name: wiki
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wiki
+  template:
+    metadata:
+      labels:
+        app: wiki
+    spec:
+      containers:
+        - image: registry.example.com/wiki:{{ build_number }}
+          imagePullPolicy: Always
+          name: wiki
+```
+
+### Template Reference
+
+| Key           | Value                                                                            |
+|---------------|----------------------------------------------------------------------------------|
+| repo.owner    | repository owner                                                                 |
+| repo.name     | repository name                                                                  |
+| build.status  | build status type enumeration, either `success` or `failure`                     |100  5107  100  5107    0     0  11199      0 --:--:-- --:--:-- --:--:-- 11199
+
+| build.event   | build event type enumeration, one of `push`, `pull_request`, `tag`, `deployment` |
+| build.number  | build number                                                                     |
+| build.commit  | git sha for current commit                                                       |
+| build.branch  | git branch for current commit                                                    |
+| build.tag     | git tag for current commit                                                       |
+| build.ref     | git ref for current commit                                                       |
+| build.author  | git author for current commit                                                    |
+| build.link    | link the the build results in drone                                              |
+| build.created | unix timestamp for build creation                                                |
+| build.started | unix timestamp for build started                                                 |
