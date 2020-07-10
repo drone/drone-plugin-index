@@ -47,7 +47,7 @@ pipeline:
 | ca               | Base-64 encoded string of the K8s CA cert                                                                                    |
 | server           | https://10.0.0.20:6443                                                                                                       |
 | namespace        | Namespace to deploy to                                                                                                       |
-| kubernetes_token | Kubernetes service account token (Not base64 encoded)                                                                        |
+| token            | Kubernetes service account token (Not base64 encoded)                                                                        |
 | template         | Path to Kubernetes yaml based definition file (Configmap or Deployment). Relative to Git basedir.                            |
 | configmap_file   | Path to file containing data to inject in configmap (They configmap key that contains the data will be the filename)         |
 | *                | Other parameters will be made available for interpolation within yaml templates (upper-case will be converted to lower-case) |
