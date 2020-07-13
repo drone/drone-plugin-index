@@ -236,7 +236,7 @@ username
 : authenticates with this username
 
 password
-: authenticates with this password/token
+: authenticates with this password
 
 repo
 : repository name for the image
@@ -247,8 +247,10 @@ tags
 dockerfile
 : dockerfile to be used, defaults to Dockerfile
 
+<!--
 auth
 : auth token for the registry
+-->
 
 dry_run
 : boolean if the docker image should be pushed at the end
