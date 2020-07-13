@@ -247,8 +247,10 @@ tags
 dockerfile
 : dockerfile to be used, defaults to Dockerfile
 
+<!--
 auth
 : auth token for the registry
+-->
 
 dry_run
 : boolean if the docker image should be pushed at the end
@@ -277,8 +279,14 @@ bip=false
 custom_dns
 : set custom dns servers for the container
 
+custom_dns_search
+: docker daemon dns search domains
+
 storage_driver
 : supports `aufs`, `overlay` or `vfs` drivers
+
+storage_path
+: docker daemon storage path
 
 build_args
 : pass custom arguments to docker build
@@ -295,3 +303,41 @@ auto_tag_suffix
 debug, launch_debug
 : launch the docker daemon in verbose debug mode
 
+mtu
+: docker daemon custom mtu setting
+
+ipv6
+: docker daemon IPv6 networking
+
+experimental
+: docker daemon Experimental mode
+
+daemon_off
+: don't start the docker daemon
+
+cache_from
+: images to consider as cache sources
+
+squash
+: squash the layers at build time
+
+pull_image
+: force pull base image at build time
+
+compress
+: compress the build context using gzip
+
+custom_labels
+: additional k=v labels
+
+label_schema
+: label-schema labels
+
+email
+: docker email
+
+no_cache
+: do not use cached intermediate containers
+
+add_host
+: additional host:IP mapping
