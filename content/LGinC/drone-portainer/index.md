@@ -46,10 +46,10 @@ endpointId
 : portainer endpoint id,default 1, localhost is 1 <br> portainer终结点id，默认是1,即第一个，一般为localhost
 
 stackname
-: name of stack <br> 服务栈的名称，会在stacks列表里显示
+: name of stack, show in stack list <br> 服务栈的名称，会在stacks列表里显示
 
 imagename
-: name of pull image, like: mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine <br> 将会进行拉取镜像的镜像名
+: name of pull image, like: mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine <br> 将会进行拉取镜像的镜像名 如:mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine
 
 docker_compose
 : content of docker-compose.yml. ps: portainer just support version: "2" <br> docker-compose.yml 的内容 注意:portainer目前仅支持version: "2" <br>
