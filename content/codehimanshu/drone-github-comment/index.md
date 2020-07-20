@@ -14,7 +14,6 @@ Use this plugin to update build status on Github Pull Request. This is useful wh
 steps:
 - name: update-status-to-github
   image: codehimanshu/gitdrone:1.7
-  pull: true
   settings:
     drone_access_token:
       from_secret: drone_access_token
@@ -34,7 +33,6 @@ Example reference to use for pull request
 steps:
 - name: update-status-to-github
   image: codehimanshu/gitdrone:1.7
-  pull: true
   environment:
     drone_access_token:
       from_secret: drone_access_token
@@ -48,7 +46,7 @@ steps:
     event: pull_request
 ```
 
-Github App to post comments on your Pull Request : https://github.com/apps/dronegitbot
+Github App to post comments on your Pull Request: https://github.com/apps/dronegitbot
 
 # Parameter Reference
 
@@ -58,8 +56,8 @@ drone_access_token
 github_installation_id
 : installation id of github app for drone
 
-github_app_id (38899)
-: your app id for drone on github
+github_app_id
+: your app id for drone on github, defaults to 38899
 
 private_key
 : from github app installation
