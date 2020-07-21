@@ -1,7 +1,7 @@
 ---
 date: 2020-07-16T00:00:00+00:00
 title: Portainer Stack Deploy
-author: LGinC
+author: turinge
 tags: [ deployment]
 logo: portainer.svg
 repo: turinge/drone-portainer
