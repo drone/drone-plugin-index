@@ -2,13 +2,14 @@
 date: 2020-07-16T00:00:00+00:00
 title: Portainer Stack Deploy
 author: LGinC
-tags: [ deploy ]
+tags: [ deployment]
 logo: portainer.svg
 repo: turinge/drone-portainer
 image: turinge/drone-portainer
 ---
 
-The drone plugin can be used to deploy a Docker image to a Drone environment.The below pipeline configuration demonstrates simple usage:
+The drone plugin can be used to deploy a Docker image to a Drone environment. [source](https://github.com/LGinC/drone-portainer) <br>
+The below pipeline configuration demonstrates simple usage:
 
 ```yaml
 steps:
