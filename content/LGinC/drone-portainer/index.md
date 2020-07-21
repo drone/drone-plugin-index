@@ -1,15 +1,14 @@
 ---
 date: 2020-07-16T00:00:00+00:00
 title: Portainer Stack Deploy
-author: turinge
+author: LGinC
 tags: [ deployment]
 logo: portainer.svg
-repo: turinge/drone-portainer
-image: turinge/drone-portainer
+repo: lginc/drone-portainer
+image: lginc/drone-portainer
 ---
 
-The drone plugin can be used to deploy a Docker image to a Drone environment. [source](https://github.com/LGinC/drone-portainer) <br>
-The below pipeline configuration demonstrates simple usage:
+This plugin can be used to deploy a Docker image to Portainer. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
 steps:
@@ -45,6 +44,7 @@ password
 
 endpointId
 : portainer endpoint id,default 1, localhost is 1
+
 stackname
 : name of stack, show in stack list
 
@@ -52,7 +52,7 @@ imagename
 : name of pull image, like: mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine
 
 docker_compose
-: content of docker-compose.yml. ps: portainer just support version: "2"  <br>
+: content of docker-compose, portainer supports version 2 only
 sample like this:<br>
 ```
 docker_compose: |
