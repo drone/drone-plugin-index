@@ -1,5 +1,5 @@
 ---
-date: 2019-09-19T00:00:00+00:00
+date: 2020-08-09T00:00:00+00:00
 title: Newrelic Deployment
 author: CityFurniture
 tags: [ newrelic ]
@@ -16,6 +16,10 @@ The Newrelic deployment plugin reports/logs your deployment to your dashboard to
   settings:
     app_id: YOUR_APP_ID
     api_key: YOUR_API_KEY
+    user: NEWRELIC_USER
+    revision: NEWRELIC_REVISION
+    change_log: NEWRELIC_CHANGELOG
+    description: NEWRELIC_DESCRIPTION
 ```
 
 Currently the plugin collects info from:
@@ -33,3 +37,15 @@ app_id
 
 api_key
 : Newrelic API Key
+
+user
+: (optional) Newrelic User, default: DRONE_COMMIT_AUTHOR, fallback: "Drone CI"
+
+revision
+: (optional) Newrelic Revision default: DRONE_COMMIT_SHA, fallback: "No Text In Revision"
+
+change_log
+: (optional) Newrelic ChangeLog default: DRONE_COMMIT_MESSAGE, fallback: "No Text In Changelog"
+
+description
+: (optional) Newrelic Description default: DRONE_COMMIT_MESSAGE, fallback: "No Text In Description"
