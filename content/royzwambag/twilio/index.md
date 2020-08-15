@@ -23,6 +23,7 @@ steps:
     from_number: +12512205274
     to_number: +12512205274
     body: Your drone build is ready!
+    type: whatsapp
 ```
 
 # Parameter Reference
@@ -41,3 +42,6 @@ to_number
 
 body
 : `Required` The body of the sms
+
+type
+: The type of message, choose between whatsapp and sms (defaults to sms)
