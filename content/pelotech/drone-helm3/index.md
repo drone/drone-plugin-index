@@ -65,12 +65,36 @@ string_values
 values_files
 : Arguments for helm's `--values` flag.
 
+kube_init_skip
+: Whether to skip kubeconfig file creation.
+: If you already have a kubeconfig file (like in a temporary volume shared between steps), you can skip the creation of kubeconfig file.
+: For example:
+
+```yaml
+  - name: create_kubeconfig
+    image: some/plugin
+    volumes:
+    - name: kubeconfig
+      path: /root/.kube
+
+  - name: deploy_production
+    image: pelotech/drone-helm3
+    settings:
+      helm_command: upgrade
+      chart: ./
+      release: my-project
+      kube_init_skip: true
+    volumes:
+    - name: kubeconfig
+      path: /root/.kube
+```
+
 kube_api_server
-: Kubernetes api server.
+: Kubernetes api server. This param is optional if `kube_init_skip` is `true`.
 : This setting was called `api_server` prior to version 0.11.0. The older name is still supported, but upgrading is recommended.
 
 kube_token
-: Token for connecting to the kubernetes api.
+: Token for connecting to the kubernetes api. This param is optional if `kube_init_skip` is `true`.
 : This setting was called `kubernetes_token` prior to version 0.11.0. The older name is still supported, but upgrading is recommended.
 
 kube_service_account
