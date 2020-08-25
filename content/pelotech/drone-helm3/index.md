@@ -65,7 +65,7 @@ string_values
 values_files
 : Arguments for helm's `--values` flag.
 
-kube_init_skip
+skip_kubeconfig
 : Whether to skip kubeconfig file creation.
 : If you already have a kubeconfig file (like in a temporary volume shared between steps), you can skip the creation of kubeconfig file.
 : For example:
@@ -83,26 +83,26 @@ kube_init_skip
       helm_command: upgrade
       chart: ./
       release: my-project
-      kube_init_skip: true
+      skip_kubeconfig: true
     volumes:
     - name: kubeconfig
       path: /root/.kube
 ```
 
 kube_api_server
-: Kubernetes api server. This param is optional if `kube_init_skip` is `true`.
+: Kubernetes api server. This param is ignored if `skip_kubeconfig` is `true`.
 : This setting was called `api_server` prior to version 0.11.0. The older name is still supported, but upgrading is recommended.
 
 kube_token
-: Token for connecting to the kubernetes api. This param is optional if `kube_init_skip` is `true`.
+: Token for connecting to the kubernetes api. This param is ignored if `skip_kubeconfig` is `true`.
 : This setting was called `kubernetes_token` prior to version 0.11.0. The older name is still supported, but upgrading is recommended.
 
 kube_service_account
-: Account name for connecting to the kubernetes api.
+: Account name for connecting to the kubernetes api. This param is ignored if `skip_kubeconfig` is `true`.
 : This setting was called `service_account` prior to version 0.11.0. The older name is still supported, but upgrading is recommended.
 
 kube_certificate
-: Base64-encoded TLS certificate, for clusters using a self-signed CA certificate
+: Base64-encoded TLS certificate, for clusters using a self-signed CA certificate. This param is ignored if `skip_kubeconfig` is `true`.
 : This setting was called `kubernetes_certificate` prior to version 0.11.0. The older name is still supported, but upgrading is recommended.
 
 chart_version
@@ -138,6 +138,6 @@ cleanup_failed_upgrade
 : Pass `--cleanup-on-fail` to `helm upgrade`.
 
 skip_tls_verify
-: Do not check for a valid certificate when connecting to the kubernetes api.
+: Do not check for a valid certificate when connecting to the kubernetes api. This param is ignored if `skip_kubeconfig` is `true`.
 
 See [docs/parameter_reference.md](https://github.com/pelotech/drone-helm3/blob/master/docs/parameter_reference.md) for a more detailed explanation of these parameters.
