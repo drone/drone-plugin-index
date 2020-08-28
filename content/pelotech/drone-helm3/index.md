@@ -68,26 +68,6 @@ values_files
 skip_kubeconfig
 : Whether to skip kubeconfig file creation.
 : If you already have a kubeconfig file (like in a temporary volume shared between steps), you can skip the creation of kubeconfig file.
-: For example:
-
-```yaml
-  - name: create_kubeconfig
-    image: some/plugin
-    volumes:
-    - name: kubeconfig
-      path: /root/.kube
-
-  - name: deploy_production
-    image: pelotech/drone-helm3
-    settings:
-      helm_command: upgrade
-      chart: ./
-      release: my-project
-      skip_kubeconfig: true
-    volumes:
-    - name: kubeconfig
-      path: /root/.kube
-```
 
 kube_api_server
 : Kubernetes api server. This param is ignored if `skip_kubeconfig` is `true`.
