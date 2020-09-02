@@ -8,7 +8,7 @@ repo: knovus/drone-openfaas
 image: knovus/drone-openfaas
 ---
 
-This plugin [knovus/drone-openfaas] can be used to build (generate Dockerfile and stuff) and Deploy functions to the OpenFaaS Gateway, and for the Docker image build & publish step, you can use the plugin for Kaniko [banzaicloud/drone-kaniko] or you favorite plugin.
+This plugin [knovus/drone-openfaas] can be used to build (generate Dockerfile and stuff) and Deploy functions to the OpenFaaS Gateway, and for the Docker image build & publish step, you can use the plugin for Kaniko [riscue/drone-kaniko] or you favorite plugin.
 
 The plugin use a plugin-wrapper on top of faas-cli tool.  Please see OpenFaaS CLI documentation for more info [https://github.com/openfaas/faas-cli].
 
@@ -25,7 +25,7 @@ steps:
   settings:
     yaml: my_function.yml
 - name: build #Example Docker build & publish with Kaniko plugin
-  image: banzaicloud/drone-kaniko
+  image: riscue/drone-kaniko
   settings:
     repo: ${DRONE_REPO_NAME}
     tags: latest
