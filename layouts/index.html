@@ -12,8 +12,8 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css">
 
-		<link href="http://plugins.drone.io/dist/style.min.css" rel="stylesheet">
-		<link href="http://plugins.drone.io/override.css" rel="stylesheet">
+		<link href="{{ .Site.BaseURL }}dist/style.min.css" rel="stylesheet">
+		<link href="{{ .Site.BaseURL }}override.css" rel="stylesheet">
 		
 		{{- if ne .Site.HomeAbsURL "http://localhost:1313/" }}
 		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
