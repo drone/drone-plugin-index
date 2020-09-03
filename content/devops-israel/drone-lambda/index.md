@@ -9,51 +9,22 @@ repo: omerxx/drone-lambda-plugin
 image: omerxx/drone-lambda-plugin
 ---
 
-The plugin utilizes AWS go-sdk to update an existing function's code; build your code, zip it with dependencies and upload it to S3. Then trigger the plugin for deploy.
+The plugin automatically deployes a serverless function to AWS Lambda from a zip file located in an S3 bucket.  _This plugin does not handle creating or uploading the zip file._ 
 
 Example:
 
 ```yaml
-pipeline:
-  deploy-lambda:
-    image: omerxx/drone-lambda-plugin
-    pull: true
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: deploy-lambda
+  image: omerxx/drone-lambda-plugin
+  settings:
     function_name: my-function
     s3_bucket: some-bucket
     file_name: lambda-dir/lambda-project-${DRONE_BUILD_NUMBER}.zip
-```
-
-Example of a complete Lambda project's pipeline:
-
-```yaml
-pipeline:
-  build:
-    image: python:2.7-alpine
-    commands:
-      - apk update && apk add zip
-      - pip install -r requirements.txt -t .
-      - zip -r -9 lambda-project-${DRONE_BUILD_NUMBER}.zip *
-
-  s3-publish:
-    image: plugins/s3
-    acl: private
-    region: us-east-1
-    bucket: some-bucket
-    target: lambda-dir
-    source: lambda-project-${DRONE_BUILD_NUMBER}.zip
-
-  deploy-lambda:
-    image: omerxx/drone-lambda-plugin
-    pull: true
-    function_name: my-function
-    s3_bucket: some-bucket
-    file_name: lambda-dir/revenue-report-${DRONE_BUILD_NUMBER}.zip
-
-  notify-slack-releases:
-    image: plugins/slack
-    channel: product-releases
-    webhook: https://hooks.slack.com/services/ABCD/XYZ
-    username: Drone-CI
 ```
 
 # Secret Reference
