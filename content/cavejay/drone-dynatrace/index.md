@@ -24,7 +24,7 @@ The below pipeline configuration demonstrates simple usage:
         - PROCESS_GROUP=WebServer&&Prod
 ```
 
-Example configuration using param2:
+Tell Dynatrace that the change occured to an entire k8s pod:
 
 ```diff
  - name: Inform Dynatrace of Deployment
@@ -35,21 +35,11 @@ Example configuration using param2:
       dynatrace_api_token:
         from_secret: dttoken
       tagrules:
-        - PROCESS_GROUP=WebServer&&Prod
-```
+        - PROCESS_GROUP=[Kubernetes]app:reviews&&[Kubernetes]app:production
+        - SERVICE=[Kubernetes]app:reviews&&[Kubernetes]app:production
+      customprops:
+        - integrationVersion=v1.2.3
 
-Example configuration using param3:
-
-```diff
- - name: Inform Dynatrace of Deployment
-    image: cavejay/dynatrace-drone-events
-    settings:
-      dynatrace_environment:
-        from_secret: dtenv
-      dynatrace_api_token:
-        from_secret: dttoken
-      tagrules:
-        - PROCESS_GROUP=WebServer&&Prod
 ```
 
 # Secret Reference
@@ -61,7 +51,6 @@ dynatrace_api_token
 : **Required** . An API token generated for the target environment. Must have the `DataExport` scope or the "Access problem and event feed, metrics, topology" switch enabled in the UI
 
 # Parameter Reference
-
 
 tagrules
 : **Required**. Used to tell Dynatrace which entities the event should be tied too.
