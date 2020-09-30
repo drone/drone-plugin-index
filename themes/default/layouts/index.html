@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    {{- partial "head.html" . -}}
+    <body>
+        {{- partial "header" . -}}
+		<main class="body">
+			{{- range .Site.Pages.ByTitle }}
+			{{ if .IsPage }}
+				{{ .URL }}<br/>
+			{{ end }}
+			{{ end }}
+		</main>
+        {{- partial "footer" . }}
+        {{- partial "scripts" . }}
+    </body>
+</html>
