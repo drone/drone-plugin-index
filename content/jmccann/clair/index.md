@@ -46,8 +46,6 @@ Instead of configuring sensitive information in your `.drone.yml` file in
 plain text you can use Drone secrets and substitute the values at runtime using
 string replacement.
 
-Please see the Drone [documentation]({{< secret-link >}}) to learn more about secrets.
-
 ```diff
 pipeline:
   clair:
