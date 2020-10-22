@@ -50,5 +50,6 @@ steps:
 
 yaml
 : Yaml continaing configs.
+
 kubeconfig
 : Needed for out-of-cluster use. If not present plugin will default to in-cluster configuration. You can find kubeconfig under `~/.kube/config`.
