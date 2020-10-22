@@ -35,7 +35,7 @@ Example configuration using out-of-cluster Docker Runner with secret:
 ```yaml
 kind: pipeline
 type: docker
-name: dron8s-in-cluster-example
+name: dron8s-out-of-cluster-example
 
 steps:
 - name: dron8s
