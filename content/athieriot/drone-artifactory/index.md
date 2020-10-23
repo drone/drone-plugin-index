@@ -5,6 +5,7 @@ title: Artifactory
 author: athieriot
 tags: [ publish, artifactory ]
 logo: artifactory.svg
+draft: true
 repo: athieriot/drone-artifactory
 image: athieriot/drone-artifactory
 ---
