@@ -1,13 +1,13 @@
 ---
 date: 2020-22-10T00:00:00+00:00
-title: dron8s 
+title: Dron8s 
 author: bh90210
 tags: [ kubernetes, apply ]
 repo: bh90210/dron8s
 logo: kubernetes.svg
 image: bh90210/dron8s
 ---
-Yet another Kubernetes plugin for Drone using [dynamic](https://pkg.go.dev/k8s.io/client-go@v0.19.2/dynamic) [Server Side Apply](https://kubernetes.io/docs/reference/using-api/api-concepts/#server-side-apply) to achieve `kubectl apply -f` parity for your CI-CD pipelines.
+Yet another Kubernetes plugin for Drone using [dynamic](https://pkg.go.dev/k8s.io/client-go@v0.19.2/dynamic) [Server Side Apply](https://kubernetes.io/docs/reference/using-api/api-concepts/#server-side-apply) to achieve `kubectl apply -f multi-configs.yaml` parity for your CI-CD pipelines.
 
 
 Example configuration using in-cluster Kubernetes Runner:
@@ -49,7 +49,7 @@ steps:
 # Parameter Reference
 
 yaml
-: Yaml continaing configs (required).
+: Yaml containing configs (required).
 
 kubeconfig
 : Needed for out-of-cluster use. If not present plugin will default to in-cluster configuration. You can find kubeconfig under `~/.kube/config`.
