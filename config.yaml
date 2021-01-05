@@ -2,7 +2,7 @@ baseurl: http://plugins.drone.io/
 title: Plugins | Drone
 theme: drone-hugo-theme
 
-copyright: Copyright © 2016 Drone.IO Inc.
+copyright: Copyright © 2021 Drone.IO Inc.
 
 params:
   heading: Plugins

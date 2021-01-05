@@ -13,7 +13,7 @@ The gitea-release plugin is used to publish files and artifacts to Gitea Release
 The following configuration uses the gitea-release plugin to publish binaries to Gitea Release:
 
 ```yaml
-kind: pipeline:
+kind: pipeline
 name: default
 
 steps:
