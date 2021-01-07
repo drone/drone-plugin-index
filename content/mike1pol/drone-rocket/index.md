@@ -28,8 +28,12 @@ steps:
 Example configuration with TTS message:
 
 ```diff
-pipeline:
-  rocket:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: rocket
     image: mike1pol/drone-rocket
     settings:
       url: xxxxxxxxxx
