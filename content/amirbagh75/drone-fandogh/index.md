@@ -48,6 +48,7 @@ Example configuration using custom registry:
     registry: myregistry.com:5000
     manifest_path: ./fandogh.yml
 ```
+
 Example fandogh manifest (with custom registry url):
 
 ```yaml
@@ -65,8 +66,6 @@ spec:
   - name: GO_ENV
     value: "production"
 ```
-
-
 
 More info : [https://github.com/amirbagh75/fandogh-drone](https://github.com/amirbagh75/fandogh-drone)
 
