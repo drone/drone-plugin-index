@@ -15,76 +15,80 @@ The example configuration below will send an email to the build's author and the
 It will use the `username` and `password` to connect to `host` and send emails from `from`.
 ```yaml
 steps:
-- name: notify
-  image: drillster/drone-email
-  settings:
-    host: smtp.some-server.com
-    username: foo
-    password: bar
-    from: drone@your-domain.com
-  when:
-    status: [ changed, failure ]
+  - name: notify
+    image: drillster/drone-email
+    settings:
+      host: smtp.some-server.com
+      username: foo
+     password: bar
+      from: drone@your-domain.com
+    when:
+      status: [ changed, failure ]
 ```
 
 You can have the plugin send mails to a pre-configured list of `recipients` by default:
 
 ```diff
-- name: notify
-  image: drillster/drone-email
-  settings:
-    host: smtp.some-server.com
-    username: foo
-    password: bar
-    from: drone@your-domain.com
-+   recipients: [ the-admin@your-domain.com, octocat@your-domain.com ]
-  when:
-    status: [ changed, failure ]
+steps:
+  - name: notify
+    image: drillster/drone-email
+    settings:
+      host: smtp.some-server.com
+      username: foo
+      password: bar
+      from: drone@your-domain.com
++     recipients: [ the-admin@your-domain.com, octocat@your-domain.com ]
+    when:
+      status: [ changed, failure ]
 ```
 
 If you do not want to send a mail to the build's author (but only to `recipients`), use the `recipients_only` parameter:
 
 ```diff
-- name: notify
-  image: drillster/drone-email
-  settings:
-    host: smtp.some-server.com
-    username: foo
-    password: bar
-    from: drone@your-domain.com
-    recipients: [ the-admin@your-domain.com, octocat@your-domain.com ]
-+   recipients_only: true
-  when:
-    status: [ changed, failure ]
+steps:
+  - name: notify
+    image: drillster/drone-email
+    settings:
+      host: smtp.some-server.com
+      username: foo
+      password: bar
+      from: drone@your-domain.com
+      recipients: [ the-admin@your-domain.com, octocat@your-domain.com ]
++     recipients_only: true
+    when:
+      status: [ changed, failure ]
 ```
 
 You can optionally attach a file to the sent mail(s) by setting the `attachment` parameter to the path of a file. It's possible to use a relative path (relative to the drone working directory). 
 
 ```diff
-- name: notify
-  image: drillster/drone-email
-  settings:
-    host: smtp.some-server.com
-    username: foo
-    password: bar
-    from: drone@your-domain.com
-+   attachment: build-result.xml
-  when:
-    status: [ changed, failure ]
+steps:
+  - name: notify
+    image: drillster/drone-email
+    settings:
+      host: smtp.some-server.com
+      username: foo
+      password: bar
+      from: drone@your-domain.com
++     attachment: build-result.xml
+    when:
+      status: [ changed, failure ]
 ```
 
 Should you want to skip SMTP server certificate verification, use the `skip_verify` parameter:
 
 ```diff
-- name: notify
-  image: drillster/drone-email
-  settings:
-    host: smtp.some-server.com
-+   skip_verify: true
-    username: foo
-    password: bar
-    from: drone@your-domain.com
-  when:
-    status: [ changed, failure ]
+steps:
+  - name: notify
+    image: drillster/drone-email
+    settings:
+      host: smtp.some-server.com
++     skip_verify: true
+      username: foo
+      password: bar
+      from: drone@your-domain.com
+    when:
+      status: [ changed, failure ]
 ```
 
 # Parameter Reference
