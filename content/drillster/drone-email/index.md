@@ -14,81 +14,78 @@ The email plugin can be used to notify people of a build result.
 The example configuration below will send an email to the build's author and the configured `recipients` (the-admin@your-domain.com and octocat@your-domain.com) when a build result changes or when it fails.
 It will use the `username` and `password` to connect to `host` and send emails from `from`.
 ```yaml
-pipeline:
-  notify:
-    image: drillster/drone-email
+steps:
+- name: notify
+  image: drillster/drone-email
+  settings:
     host: smtp.some-server.com
     username: foo
     password: bar
     from: drone@your-domain.com
-    when:
-      status: [ changed, failure ]
+  when:
+    status: [ changed, failure ]
 ```
 
 You can have the plugin send mails to a pre-configured list of `recipients` by default:
 
 ```diff
-pipeline:
-  notify:
-    image: drillster/drone-email
+- name: notify
+  image: drillster/drone-email
+  settings:
     host: smtp.some-server.com
     username: foo
     password: bar
     from: drone@your-domain.com
 +   recipients: [ the-admin@your-domain.com, octocat@your-domain.com ]
-    when:
-      status: [ changed, failure ]
+  when:
+    status: [ changed, failure ]
 ```
 
 If you do not want to send a mail to the build's author (but only to `recipients`), use the `recipients_only` parameter:
 
 ```diff
-pipeline:
-  notify:
-    image: drillster/drone-email
+- name: notify
+  image: drillster/drone-email
+  settings:
     host: smtp.some-server.com
     username: foo
     password: bar
     from: drone@your-domain.com
     recipients: [ the-admin@your-domain.com, octocat@your-domain.com ]
 +   recipients_only: true
-    when:
-      status: [ changed, failure ]
+  when:
+    status: [ changed, failure ]
 ```
 
 You can optionally attach a file to the sent mail(s) by setting the `attachment` parameter to the path of a file. It's possible to use a relative path (relative to the drone working directory). 
 
 ```diff
-pipeline:
-  notify:
-    image: drillster/drone-email
+- name: notify
+  image: drillster/drone-email
+  settings:
     host: smtp.some-server.com
     username: foo
     password: bar
     from: drone@your-domain.com
 +   attachment: build-result.xml
-    when:
-      status: [ changed, failure ]
+  when:
+    status: [ changed, failure ]
 ```
 
 Should you want to skip SMTP server certificate verification, use the `skip_verify` parameter:
 
 ```diff
-pipeline:
-  notify:
-    image: drillster/drone-email
+- name: notify
+  image: drillster/drone-email
+  settings:
     host: smtp.some-server.com
 +   skip_verify: true
     username: foo
     password: bar
     from: drone@your-domain.com
-    when:
-      status: [ changed, failure ]
+  when:
+    status: [ changed, failure ]
 ```
-
-{{% alert warn %}}
-Keep in mind that you should use secrets for sensitive parts of the configuration!
-{{% /alert %}}
 
 # Parameter Reference
 
