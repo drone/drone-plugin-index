@@ -13,9 +13,10 @@ This plugin contains following linters:
 
 * hadolint (Dockerfile)
 * shellcheck (bash scripts)
-* yamllint (yaml)
-* flake8 (python scripts)
-* markdownlint (markdown)
+* yamllint (YAML files)
+* flake8 (Python scripts)
+* markdownlint (Markdown)
+* jsonlint (JSON files)
 
 # Usage examples
 
@@ -45,6 +46,8 @@ steps:
         - README.md
       python_files:
         - test.py
+      json_files:
+        - file.json
 ```
 
 ## Skip checks
@@ -59,6 +62,7 @@ steps:
       skip_dockerfile: true
       skip_markdown: true
       skip_python: true
+      skip_json: true
 ```
 
 ## Exclude files by exclude_regex
@@ -90,6 +94,9 @@ markdown_files
 python_files
 : list of python scripts to check
 
+json_files
+: list of JSON files to check
+
 ## Disable linters
 
 skip_yml
@@ -105,7 +112,10 @@ skip_markdown
 : skip checkimg MD files
 
 skip_python
-: skip checking python scripts
+: skip checking Python scripts
+
+skip_json
+: skip checking JSON files
 
 ## Excluding files
 
@@ -115,11 +125,12 @@ exclude_regex
 
 ## Linters documentations
 
-- [hadolint](https://github.com/hadolint/hadolint)
-- [shellcheck](https://github.com/koalaman/shellcheck)
-- [yamllint](https://yamllint.readthedocs.io/en/stable/)
-- [flake8](http://flake8.pycqa.org/en/latest/user/error-codes.html)
-- [markdownlint](https://github.com/DavidAnson/markdownlint)
+* [hadolint](https://github.com/hadolint/hadolint)
+* [shellcheck](https://github.com/koalaman/shellcheck)
+* [yamllint](https://yamllint.readthedocs.io/en/stable/)
+* [flake8](http://flake8.pycqa.org/en/latest/user/error-codes.html)
+* [markdownlint](https://github.com/DavidAnson/markdownlint)
+* [jsonlint](https://github.com/zaach/jsonlint)
 
 ## Links
 
