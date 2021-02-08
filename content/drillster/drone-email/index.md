@@ -1,5 +1,4 @@
 ---
-version: '0.8'
 author: "drillster"
 date: 2017-01-31T08:00:35+01:00
 image: "drillster/drone-email"
@@ -20,7 +19,7 @@ steps:
     settings:
       host: smtp.some-server.com
       username: foo
-     password: bar
+      password: bar
       from: drone@your-domain.com
     when:
       status: [ changed, failure ]
@@ -114,6 +113,9 @@ skip_verify
 recipients
 : List of recipients to send this mail to (besides the commit author)
 
+recipients_file
+: Filename to load additional recipients from (textfile with one email per line) (besides the commit author)
+
 recipients_only
 : Do not send mails to the commit author, but only to recipients, defaults to `false`
 
@@ -121,10 +123,10 @@ subject
 : The subject line template ([handlebars](http://handlebarsjs.com/expressions.html) template)
 
 body
-: The email body template ([handlebars](http://handlebarsjs.com/expressions.html) template). This can be an inline template, or a URL (`file:///` allowed).
+: The email body template ([handlebars](http://handlebarsjs.com/expressions.html) template). This can be an inline template, or a URL (`file:///` allowed)
 
 attachment
-: An optional file to attach to the sent mail(s). This can be an absolute path or a path relative to the working directory.
+: An optional file to attach to the sent mail(s). This can be an absolute path or a path relative to the working directory
 
 # Template Reference
 
