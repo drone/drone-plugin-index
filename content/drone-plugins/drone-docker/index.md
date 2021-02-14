@@ -189,7 +189,7 @@ Using a `Dockerfile` like:
 
 ```
 FROM golang as builder
-WORKSPACE /go/src/github.com/foo/bar
+WORKDIR /go/src/github.com/foo/bar
 RUN CGO_ENABLED=0 GOOS=linux go build -o demo main.go
 
 FROM scratch as production
