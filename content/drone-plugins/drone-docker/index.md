@@ -247,11 +247,6 @@ tags
 dockerfile
 : dockerfile to be used, defaults to Dockerfile
 
-<!--
-auth
-: auth token for the registry
--->
-
 dry_run
 : boolean if the docker image should be pushed at the end
 
