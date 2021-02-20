@@ -14,7 +14,7 @@ This plugin creates and removes silences in AlertManager.
 
 # Usage examples
 
-An example of use in a build step for "typical" container deployment:
+An example of use in a build step for "typical" container deployment. Adding the silence with required matchers:
 
 ``` yaml
 - name: add silence
@@ -27,9 +27,12 @@ An example of use in a build step for "typical" container deployment:
       duration: 600
       job: '^clientname$'
       instance: '^server-\w+.+'
+```
 
-    <# Deploy steps #>
+Then, after step with deployment, remove the silence:
 
+
+```yaml
   - name: remove silence
     image: osshelp/drone-alertmanager
     settings:
