@@ -87,6 +87,9 @@ forks
 galaxy
 : path to galaxy requirements
 
+galaxy_force
+: force overwriting an existing role or collection: true/false, default: true
+
 inventory
 : specify (multiple) inventory host path(s): 'path1,[path2]'
 
