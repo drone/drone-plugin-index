@@ -11,8 +11,12 @@ image: mike1pol/drone-rocket
 Drone plugin for sending message to Rocket.Chant channel using API.
 
 ```yaml
-pipeline:
-  rocket:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: rocket
     image: mike1pol/drone-rocket
     settings:
       url: xxxxxxxxxx
@@ -24,8 +28,12 @@ pipeline:
 Example configuration with TTS message:
 
 ```diff
-pipeline:
-  rocket:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: rocket
     image: mike1pol/drone-rocket
     settings:
       url: xxxxxxxxxx
@@ -38,8 +46,12 @@ pipeline:
 Example configuration with override the default avatar image:
 
 ```diff
-pipeline:
-  rocket:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: rocket
     image: mike1pol/drone-rocket
     settings:
       url: xxxxxxxxxx
@@ -53,8 +65,12 @@ pipeline:
 Example configuration with a custom message template:
 
 ```diff
-pipeline:
-  rocket:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: rocket
     image: mike1pol/drone-rocket
     settings:
       url: xxxxxxxxxx
@@ -72,8 +88,12 @@ pipeline:
 Example configuration using credentials from secrets:
 
 ```yaml
-pipeline:
-  rocket:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: rocket
     image: mike1pol/drone-rocket
     settings:
       url:

@@ -13,66 +13,69 @@ Use this plugin to publish artifacts from the build to Artifactory.
 The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  artifactory:
+steps:
+  - name: artifactory
     image: athieriot/drone-artifactory
-    url: http://arti.company.com
-    username: admin
-    password: password
-    pom: pom.xml
-    files:
-      - target/*.jar
-      - target/*.war
+    settings:
+      url: http://arti.company.com
+      username: admin
+      password: password
+      pom: pom.xml
+      files:
+        - target/*.jar
+        - target/*.war
 ```
 
 Override the repository to deploy into:
 
 ```diff
-pipeline:
-  artifactory:
+steps:
+  - name: artifactory
     image: athieriot/drone-artifactory
-    url: http://arti.company.com
-    username: admin
-    password: password
-    pom: pom.xml
-+   repo_key: third-party-snapshot
-    files:
-      - target/*.jar
-      - target/*.war
+      url: http://arti.company.com
+      username: admin
+      password: password
+      pom: pom.xml
++     repo_key: third-party-snapshot
+      files:
+        - target/*.jar
+        - target/*.war
 ```
 
 Specify artifact properties manually instead of getting the values from the pom file:
 
 ```diff
-pipeline:
-  artifactory:
+steps:
+  - name: artifactory
     image: athieriot/drone-artifactory
-    url: http://arti.company.com
-    username: admin
-    password: password
--   pom: pom.xml
-+   group_id: com.company 
-+   artifact_id: awesome-lib
-+   version: 1.0-SNAPSHOT
-    files:
-      - target/*.jar
-      - target/*.war
+    settings:
+      url: http://arti.company.com
+      username: admin
+      password: password
+-     pom: pom.xml
++     group_id: com.company 
++     artifact_id: awesome-lib
++     version: 1.0-SNAPSHOT
+      files:
+        - target/*.jar
+        - target/*.war
 ```
 
 Force upload if files already exists:
 
 ```diff
-pipeline:
-  artifactory:
+steps:
+  - name: artifactory
     image: athieriot/drone-artifactory
-    url: http://arti.company.com
-    username: admin
-    password: password
-    pom: pom.xml
-    files:
-      - target/*.jar
-      - target/*.war
-+   force_upload: true      
+    settings:
+      url: http://arti.company.com
+      username: admin
+      password: password
+      pom: pom.xml
+      files:
+        - target/*.jar
+        - target/*.war
++     force_upload: true      
 ```
 
 # Parameter Reference

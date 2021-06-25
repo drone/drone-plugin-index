@@ -118,7 +118,7 @@ steps:
 # Parameter Reference
 
 webhook
-: incoming [webhook url](https://my.slack.com/services/new/incoming-webhook) for posting to a channel
+: incoming [webhook url](https://api.slack.com/messaging/webhooks#getting-started) for posting to a channel
 
 channel
 : messages sent to the above webhook are posted here
