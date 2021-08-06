@@ -12,9 +12,14 @@ image: pelotech/drone-rancher
 The Rancher plugin can be used to deploy a Docker image to a Rancher environment. The following pipeline configuration uses the Rancher plugin to deploy a Docker image to a Rancher service:
 
 ```yaml
-pipeline:
-  rancher:
-    image: pelotech/drone-rancher
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: publish
+  image: pelotech/drone-rancher
+  settings:
     url: http://awesomehost:awesomeport
     access_key: superaccesskey
     secret_key: supersecretkey
@@ -25,32 +30,42 @@ pipeline:
 Example configuration with not starting the container first and confirming the upgrade with a longer timeout:
 
 ```diff
-pipeline:
-  rancher:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: publish
     image: pelotech/drone-rancher
-    url: http://awesomehost:awesomeport
-    access_key: superaccesskey
-    secret_key: supersecretkey
-    service: huh/service1
-    docker_image: huh/hello
-+   start_first: false
-+   confirm: true
-+   timeout: 180
+    settings:
+      url: http://awesomehost:awesomeport
+      access_key: superaccesskey
+      secret_key: supersecretkey
+      service: huh/service1
+      docker_image: huh/hello
++     start_first: false
++     confirm: true
++     timeout: 180
 ```
 
 
 Example configuration with a batch size of 5:
 
 ```diff
-pipeline:
-  rancher:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: publish
     image: pelotech/drone-rancher
-    url: http://awesomehost:awesomeport
-    access_key: superaccesskey
-    secret_key: supersecretkey
-    service: huh/service1
-    docker_image: huh/hello
-+   batch_size: 5
+    settings:
+      url: http://awesomehost:awesomeport
+      access_key: superaccesskey
+      secret_key: supersecretkey
+      service: huh/service1
+      docker_image: huh/hello
++     batch_size: 5
 ```
 
 # Parameter Reference
