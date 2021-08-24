@@ -1,5 +1,4 @@
 ---
-version: '0.8'
 date: 2017-02-28T00:00:00+00:00
 title: Artifactory
 author: athieriot
