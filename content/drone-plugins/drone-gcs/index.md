@@ -52,7 +52,10 @@ steps:
 # Parameter Reference
 
 token
-: credentials to access Google Cloud Storage
+: A [Google service account key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) in JSON format with access to Google Cloud Storage.  Either this parameter or `oauth-token` must be provided.
+
+oauth-token
+: An [OAuth2 access token](https://developers.google.com/identity/protocols/oauth2/service-account) granting access to Google Cloud Storage.  Either this parameter or `token` must be provided.
 
 acl
 : a list of access rules applied to the uploaded files, in a form of entity:role
