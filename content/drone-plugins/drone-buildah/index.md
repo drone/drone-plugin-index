@@ -20,16 +20,16 @@ steps
   settings
   :     repo: docker.io/harness/ci-automation
     registry: docker.io
-    password: username
-    username: password
+    password: <username>
+    username: <password>
     dockerfile: Dockerfile
     tags: buildahoutput
     layers: true
     s3_local_cache_dir: ./test
-    s3_bucket: testaxadinesh-8cxtj-bootstrap
+    s3_bucket: <s3_bucket_name>
     s3_region: us-east-1
-    s3_key: a50d28f4dd477bc184fbd10b376de753
-    s3_secret: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
+    s3_key: <s3_access_key>
+    s3_secret: <s3_secret>
     s3_endpoint: s3.amazonaws.com
   ```
 
