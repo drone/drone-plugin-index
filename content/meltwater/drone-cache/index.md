@@ -2,7 +2,7 @@
 date: 2019-03-19T00:00:00+00:00
 title: Drone Cache
 author: meltwater
-tags: [ cache, amazon, aws, s3, volume ]
+tags: [ cache, amazon, aws, s3, azure, volume ]
 logo: drone_cache.svg
 repo: meltwater/drone-cache
 image: meltwater/drone-cache
@@ -14,7 +14,7 @@ This plugin requires Volume configuration if you enable `filesystem` backend wit
 
 A Drone plugin for caching current workspace files between builds to reduce your build times. `drone-cache` is a small CLI program, written in Go without any external OS dependencies (such as tar, etc).
 
-With `drone-cache`, you can provide your **own cache key templates**, specify **archive format** (tar, tar.gz, etc) and you can use **an S3 bucket or a mounted volume** as storage for your cached files, even better you can implement **your own storage backend** to cover your use case.
+With `drone-cache`, you can provide your **own cache key templates**, specify **archive format** (tar, tar.gz, etc) and you can use **an S3 bucket, Azure Storage or a mounted volume** as storage for your cached files, even better you can implement **your own storage backend** to cover your use case.
 
 **How does it work**
 
@@ -44,21 +44,21 @@ For further information about this syntax please see [official docs](https://gol
 `"{{ .Repo.Name }}-{{ .Commit.Branch }}-{{ checksum "go.mod" }}-yadayadayada"`
 
 `"{{ .Repo.Name }}_{{ checksum "go.mod" }}_{{ checksum "go.sum" }}_{{ arch }}_{{ os }}"`
-
-**Metadata**
+*Metadata*
 
 Following metadata object is available and pre-populated with current build information for you to use in cache key templates.
 
 ```go
 {
   Repo {
-    Avatar  string "repository avatar [$DRONE_REPO_AVATAR]"
-    Branch  string "repository default branch [$DRONE_REPO_BRANCH]"
-    Link    string "repository link [$DRONE_REPO_LINK]"
-    Name    string "repository name [$DRONE_REPO_NAME]"
-    Owner   string "repository owner [$DRONE_REPO_OWNER]"
-    Private bool   "repository is private [$DRONE_REPO_PRIVATE]"
-    Trusted bool   "repository is trusted [$DRONE_REPO_TRUSTED]"
+    Avatar    string "repository avatar [$DRONE_REPO_AVATAR]"
+    Branch    string "repository default branch [$DRONE_REPO_BRANCH]"
+    Link      string "repository link [$DRONE_REPO_LINK]"
+    Name      string "repository name [$DRONE_REPO_NAME]"
+    Owner     string "repository owner [$DRONE_REPO_NAMESPACE]"
+    Namespace string "repository namespace [$DRONE_REPO_NAMESPACE]"
+    Private   bool   "repository is private [$DRONE_REPO_PRIVATE]"
+    Trusted   bool   "repository is trusted [$DRONE_REPO_TRUSTED]"
   }
 
   Build {
@@ -100,7 +100,7 @@ name: default
 
 steps:
   - name: restore-cache
-    image: meltwater/drone-cache:dev
+    image: meltwater/drone-cache
     environment:
       AWS_ACCESS_KEY_ID:
         from_secret: aws_access_key_id
@@ -115,14 +115,14 @@ steps:
         - 'vendor'
 
   - name: build
-    image: golang:1.11-alpine
+    image: golang:1.14.4-alpine3.12
     pull: true
     commands:
       - apk add --update make git
       - make drone-cache
 
   - name: rebuild-cache
-    image: meltwater/drone-cache:dev
+    image: meltwater/drone-cache
     pull: true
     environment:
       AWS_ACCESS_KEY_ID:
@@ -145,7 +145,7 @@ name: default
 
 steps:
   - name: restore-cache-with-filesystem
-    image: meltwater/drone-cache:dev
+    image: meltwater/drone-cache
     pull: true
     settings:
       backend: "filesystem"
@@ -160,14 +160,14 @@ steps:
       path: /tmp/cache
 
   - name: build
-    image: golang:1.11-alpine
+    image: golang:1.14.4-alpine3.12
     pull: true
     commands:
       - apk add --update make git
       - make drone-cache
 
   - name: rebuild-cache-with-filesystem
-    image: meltwater/drone-cache:dev
+    image: meltwater/drone-cache
     pull: true
     settings:
       backend: "filesystem"
@@ -188,7 +188,7 @@ volumes:
 
 **With custom cache key template**
 
-See [cache key templates](/meltwater/drone-cache#using-cache-key-templates) section for further information and to learn about syntax.
+See [cache key templates](#using-cache-key-templates) section for further information and to learn about syntax.
 
 ```yaml
 kind: pipeline
@@ -196,7 +196,7 @@ name: default
 
 steps:
   - name: restore-cache-with-key
-    image: meltwater/drone-cache:dev
+    image: meltwater/drone-cache
     environment:
       AWS_ACCESS_KEY_ID:
         from_secret: aws_access_key_id
@@ -212,14 +212,14 @@ steps:
         - 'vendor'
 
   - name: build
-    image: golang:1.11-alpine
+    image: golang:1.14.4-alpine3.12
     pull: true
     commands:
       - apk add --update make git
       - make drone-cache
 
   - name: rebuild-cache-with-key
-    image: meltwater/drone-cache:dev
+    image: meltwater/drone-cache
     pull: true
     environment:
       AWS_ACCESS_KEY_ID:
@@ -228,6 +228,7 @@ steps:
         from_secret: aws_secret_access_key
     settings:
       rebuild: true
+      override: false
       cache_key: '{{ .Repo.Name }}_{{ checksum "go.mod" }}_{{ checksum "go.sum" }}_{{ arch }}_{{ os }}'
       bucket: drone-cache-bucket
       region: eu-west-1
@@ -243,7 +244,7 @@ name: default
 
 steps:
   - name: restore-cache-with-gzip
-    image: meltwater/drone-cache:dev
+    image: meltwater/drone-cache
     pull: true
     environment:
       AWS_ACCESS_KEY_ID:
@@ -260,14 +261,14 @@ steps:
         - 'vendor'
 
   - name: build
-    image: golang:1.11-alpine
+    image: golang:1.14.4-alpine3.12
     pull: true
     commands:
       - apk add --update make git
       - make drone-cache
 
   - name: rebuild-cache-with-gzip
-    image: meltwater/drone-cache:dev
+    image: meltwater/drone-cache
     pull: true
     environment:
       AWS_ACCESS_KEY_ID:
@@ -292,21 +293,21 @@ name: default
 
 steps:
   - name: restore-cache-debug
-    image: meltwater/drone-cache:dev
+    image: meltwater/drone-cache
     settings:
       pull: true
       restore: true
       debug: true
 
   - name: build
-    image: golang:1.11-alpine
+    image: golang:1.14.4-alpine3.12
     pull: true
     commands:
       - apk add --update make git
       - make drone-cache
 
   - name: restore-cache-debug
-    image: meltwater/drone-cache:dev
+    image: meltwater/drone-cache
     settings:
       pull: true
       rebuild: true
@@ -327,11 +328,14 @@ rebuild
 restore
 : restore the cache directories
 
-cache-key
+cache_key
 : cache key to use for the cache directories
 
-archive-format
+archive_format
 : archive format to use to store the cache directories (`tar`, `gzip`) (default: `tar`)
+
+override
+: override already existing cache files (default: `true`)
 
 debug
 : enable debug
@@ -342,10 +346,10 @@ filesystem-cache-root
 endpoint
 : endpoint for the s3 connection
 
-access-key
+access_key
 : AWS access key
 
-secret-key
+secret_key
 : AWS secret key
 
 bucket
@@ -353,6 +357,15 @@ bucket
 
 region
 : AWS bucket region. (`us-east-1`, `eu-west-1`, ...)
+
+account_name
+: Azure Storage account name
+
+account_key
+: Azure Storage account key
+
+container
+: Azure Storage container
 
 path-style
 : use path style for bucket paths. (true for `minio`, false for `aws`)
@@ -362,3 +375,6 @@ acl
 
 encryption
 : server-side encryption algorithm, defaults to `none`. (`AES256`, `aws:kms`)
+
+skip_symlinks
+: skip symbolic links in archive
