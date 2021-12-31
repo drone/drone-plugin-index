@@ -39,11 +39,11 @@ steps:
     rebuild: true
     mount:
       - node_modules
-    when:
-      event: push
+  when:
+    event: push
 
 - name: flush
-  image: plugins/s3-cache:1
+  image: plugins/s3-cache
   settings:
     pull: true
     endpoint: http://minio.company.com
