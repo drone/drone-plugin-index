@@ -48,7 +48,7 @@ An example of specifying the path to a repo:
 
 ## Parameter Reference
 
-key
+ssh_key
 : private SSH key for the remote machine
 
 remote

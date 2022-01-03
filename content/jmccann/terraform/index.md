@@ -12,10 +12,15 @@ image: jmccann/drone-terraform
 The Terraform plugin applies the infrastructure configuration contained within the repository. The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  terraform:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: terraform
     image: jmccann/drone-terraform:1
-    plan: false
+    settings:
+      plan: false
 ```
 
 Example configuration passing `vars` to terraform commands:
@@ -34,12 +39,17 @@ Example configuration passing secrets to terraform via `vars`.  The following
 example will call `terraform apply -var my_secret=${TERRAFORM_SECRET}`:
 
 ```diff
-pipeline:
-  terraform:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: terraform
     image: jmccann/drone-terraform:1
-    plan: false
-+   secrets:
-+     my_secret: TERRAFORM_SECRET
+    settings:
+      plan: false
++     secrets:
++       my_secret: TERRAFORM_SECRET
 ```
 
 You may be passing sensitive vars to your terraform commands.  If you do not want
@@ -48,26 +58,36 @@ The output from the commands themselves will still display, it just won't show
 what command is actually being ran.
 
 ```diff
-pipeline:
-  terraform:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: terraform
     image: jmccann/drone-terraform:1
-    plan: false
-+   sensitive: true
+    settings:
+      plan: false
++     sensitive: true
 ```
 
 Example configuration with state tracked via remote:
 
 ```diff
-pipeline:
-  terraform:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: terraform
     image: jmccann/drone-terraform:1
-    plan: false
-+   remote:
-+     backend: S3
-+     config:
-+       bucket: my-terraform-config-bucket
-+       key: tf-states/my-project
-+       region: us-east-1
+    settings:
+      plan: false
++     remote:
++       backend: S3
++       config:
++         bucket: my-terraform-config-bucket
++         key: tf-states/my-project
++         region: us-east-1
 ```
 
 You may want to run terraform against internal resources, like an internal
@@ -76,15 +96,20 @@ CA Certificate.  You can inject your CA Certificate into the plugin by using
 `ca_certs` key as described above.  Below is an example.
 
 ```diff
-pipeline:
-  terraform:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: terraform
     image: jmccann/drone-terraform:1
-    plan: false
-+   ca_cert: |
-+     -----BEGIN CERTIFICATE-----
-+     asdfsadf
-+     asdfsadf
-+     -----END CERTIFICATE-------
+    settings:
+      plan: false
++     ca_cert: |
++       -----BEGIN CERTIFICATE-----
++       asdfsadf
++       asdfsadf
++       -----END CERTIFICATE-------
 ```
 
 You may want to assume another role before running the terraform commands.
@@ -94,11 +119,16 @@ be assumed and exported to environment variables.
 See [the discussion](https://github.com/hashicorp/terraform/issues/1275) in the Terraform issues.
 
 ```diff
-pipeline:
-  terraform:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: terraform
     image: jmccann/drone-terraform:1
-    plan: false
-+   role_arn_to_assume: arn:aws:iam::account-of-role-to-assume:role/name-of-role
+    settings:
+      plan: false
++     role_arn_to_assume: arn:aws:iam::account-of-role-to-assume:role/name-of-role
 ```
 
 You may want to change directories before applying the terraform commands.
@@ -106,11 +136,16 @@ This parameter is useful if you have multiple environments in different folders
 and you want to use different drone configurations to apply different environments.
 
 ```diff
-pipeline:
-  terraform:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: terraform
     image: jmccann/drone-terraform:1
-    plan: false
-+   root_dir: some/path/here
+    settings:
+      plan: false
++     root_dir: some/path/here
 ```
 
 You may want to only target a specific list of resources within your terraform
@@ -118,24 +153,34 @@ code. To achieve this you can specify the `targets` parameter. If left undefined
 all resources will be planned/applied against as the default behavior.
 
 ```diff
-pipeline:
-  terraform:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: terraform
     image: jmccann/drone-terraform:1
-    plan: false
-+   targets:
-+     - aws_security_group.generic_sg
-+     - aws_security_group.app_sg
+    settings:
+      plan: false
++     targets:
++       - aws_security_group.generic_sg
++       - aws_security_group.app_sg
 ```
 
 You may want to limit the number of concurrent operations as Terraform walks its graph.
 If you want to change Terraform's default parallelism (currently equal to 10) then set the `parallelism` parameter.
 
 ```diff
-pipeline:
-  terraform:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: terraform
     image: jmccann/drone-terraform:1
-    plan: false
-+   parallelism: 2
+    settings:
+      plan: false
++     parallelism: 2
 ```
 
 # Parameter Reference

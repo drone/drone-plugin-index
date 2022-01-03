@@ -17,7 +17,7 @@ name: default
 
 steps:
 - name: check ansible syntax
-  image: plugins/ansible:1
+  image: plugins/ansible:3
   environment:
     additional_var:
       from_secret: additional_var
@@ -32,7 +32,7 @@ steps:
     - pull_request
 
 - name: apply ansible playbook
-  image: plugins/ansible:1
+  image: plugins/ansible:3
   environment:
     additional_var:
       from_secret: additional_var
@@ -86,6 +86,9 @@ forks
 
 galaxy
 : path to galaxy requirements
+
+galaxy_force
+: force overwriting an existing role or collection: true/false, default: true
 
 inventory
 : specify (multiple) inventory host path(s): 'path1,[path2]'

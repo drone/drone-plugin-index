@@ -31,6 +31,7 @@ steps:
 - name: publish  
   image: plugins/ecr
   settings:
+    create_repository: true
     repo: bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
     tags:
@@ -46,6 +47,7 @@ steps:
 - name: publish  
   image: plugins/ecr
   settings:
+    create_repository: true
     repo: bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
     region: us-east-1
@@ -58,6 +60,7 @@ steps:
 - name: publish  
   image: plugins/ecr
   settings:
+    create_repository: true
     repo: bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
     dockerfile: path/to/Dockerfile
@@ -70,6 +73,7 @@ steps:
 - name: publish  
   image: plugins/ecr
   settings:
+    create_repository: true
     repo: bar
     registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
     build_args:
@@ -98,6 +102,9 @@ access_key
 
 secret_key
 : amazon secret access key
+
+create_repository
+: boolean of whether to create repository if it does not exist, defaults to `false`
 
 region
 : amazon region, defaults to `us-east-1`
@@ -143,3 +150,6 @@ storage_driver
 
 build_args
 : custom arguments passed to docker build
+
+scan_on_push
+: boolean of whether to enable automatic ECR images vulnerabilities scanning for repository if it was created with create_repository=`true`, defaults to `false`
