@@ -98,7 +98,7 @@ file_exists
 
 checksum
 : checksum takes hash methods to include in your Gitea release for the files specified.
-Supported hash methods include: md5, sha1, sha256, sha512, adler32, and crc32.
+Supported hash methods include: md5, sha1, sha256, sha512, blake2b, blake2s, adler32, and crc32.
 
 draft
 : create a draft release if set to true
