@@ -110,7 +110,8 @@ click on my account in the top right -> Scroll down to the Access tokens section
 
 + docker_compose
 : optional, content of docker-compose.yml.  it will be filled by original stack when stack exist.
-sample like this:<br>
+sample like this:
+
 ```
 docker_compose: |
   version: "3"
