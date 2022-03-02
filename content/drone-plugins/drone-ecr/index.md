@@ -150,3 +150,6 @@ storage_driver
 
 build_args
 : custom arguments passed to docker build
+
+scan_on_push
+: boolean of whether to enable automatic ECR images vulnerabilities scanning for repository if it was created with create_repository=`true`, defaults to `false`

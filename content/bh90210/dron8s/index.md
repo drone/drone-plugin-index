@@ -9,6 +9,7 @@ image: bh90210/dron8s
 ---
 Yet another Kubernetes plugin for Drone using [dynamic](https://pkg.go.dev/k8s.io/client-go@v0.19.2/dynamic) [Server Side Apply](https://kubernetes.io/docs/reference/using-api/api-concepts/#server-side-apply) to achieve `kubectl apply -f multi-configs.yaml` parity for your CI-CD pipelines.
 
+For extented documentation please check the [github repository](https://github.com/bh90210/dron8s).
 
 Example configuration using in-cluster Kubernetes Runner:
 ```yaml
@@ -18,7 +19,7 @@ name: dron8s-in-cluster-example
 
 steps:
 - name: dron8s
-  image: bh90210/dron8s:latest
+  image: ghcr.io/bh90210/dron8s:latest
   settings:
     yaml: ./config.yaml
 ```
@@ -39,11 +40,35 @@ name: dron8s-out-of-cluster-example
 
 steps:
 - name: dron8s
-  image: bh90210/dron8s:latest
+  image: ghcr.io/bh90210/dron8s:latest
   settings:
     yaml: ./config.yaml
     kubeconfig:
         from_secret: kubeconfig
+```
+
+Example configuration using in-cluster Kubernetes Runner with variables:
+```yaml
+kind: pipeline
+type: kubernetes
+name: dron8s-in-cluster-example
+
+steps:
+- name: dron8s
+  image: ghcr.io/bh90210/dron8s:latest
+  settings:
+    yaml: ./config.yaml
+    # variables. Must be lowercase, Usage: {{.service_name}}
+    service_name: myservice
+```
+And in your Kuebernetes config:
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.service_name}}
+spec:
+...
 ```
 
 # Parameter Reference
