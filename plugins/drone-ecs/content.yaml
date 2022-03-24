@@ -1,0 +1,12 @@
+title: AWS ECS
+author: josmo
+tags:
+  - deploy
+  - amazon
+  - aws
+  - ecs
+  - docker
+logo: amazon_ecs.svg
+repo: https://github.com/josmo/drone-ecs
+image: https://hub.docker.com/r/pelotech/drone-ecs
+description: The ECS plugin can be used to deploy a Docker image to an ECS environment.

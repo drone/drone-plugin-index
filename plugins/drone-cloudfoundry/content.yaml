@@ -1,0 +1,12 @@
+title: Cloud Foundry
+author: cheslip
+tags:
+  - deploy
+  - publish
+  - cloud foundry
+logo: cloudfoundry.svg
+repo: https://github.com/Comcast/drone-cloudfoundry
+image: https://hub.docker.com/r/cheslip/drone-cloudfoundry
+description: >-
+  The Cloud Foundry plugin can be used to deploy files and/or services to Cloud
+  Foundry.

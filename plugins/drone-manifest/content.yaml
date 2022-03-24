@@ -1,0 +1,11 @@
+title: Manifest
+author: drone-plugins
+tags:
+  - docker
+  - manifest
+  - architecture
+  - tag
+logo: docker.svg
+repo: https://github.com/drone-plugins/drone-manifest
+image: https://hub.docker.com/r/plugins/manifest
+description: This plugin can push manifests for multi-arch Docker images.

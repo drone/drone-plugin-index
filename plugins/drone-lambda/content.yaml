@@ -1,0 +1,14 @@
+title: AWS Lambda
+author: devops-israel
+tags:
+  - deploy
+  - amazon
+  - aws
+  - lambda
+logo: amazon_lambda.svg
+repo: https://github.com/omerxx/drone-lambda-plugin
+image: https://hub.docker.com/r/omerxx/drone-lambda-plugin
+description: >-
+  The plugin automatically deployes a serverless function to AWS Lambda from a
+  zip file located in an S3 bucket.  _This plugin does not handle creating or
+  uploading the zip file._ 

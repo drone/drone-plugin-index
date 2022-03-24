@@ -1,0 +1,15 @@
+title: Drone Cache
+author: meltwater
+tags:
+  - cache
+  - amazon
+  - aws
+  - s3
+  - volume
+logo: drone_cache.svg
+repo: https://github.com/meltwater/drone-cache
+image: https://hub.docker.com/r/meltwater/drone-cache
+description: >-
+  A Drone plugin for caching current workspace files between builds to reduce
+  your build times. `drone-cache` is a small CLI program, written in Go without
+  any external OS dependencies (such as tar, etc).

@@ -1,0 +1,10 @@
+title: Git Push
+author: appleboy
+tags:
+  - deploy
+  - publish
+  - git-push
+logo: git.svg
+repo: https://github.com/appleboy/drone-git-push
+image: https://hub.docker.com/r/appleboy/drone-git-push
+description: Use this plugin for deploying an application via `git push`. You will need to

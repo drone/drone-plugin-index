@@ -1,0 +1,10 @@
+title: InstantAccess(即时达)
+author: erguotou520
+tags:
+  - notifications
+  - InstantAccess
+  - 即时达
+logo: instant_access.svg
+repo: https://github.com/erguotou520/drone-instant-access
+image: https://hub.docker.com/r/erguotou/drone-instant-access
+description: The InstantAccess plugin posts build status messages to your account.

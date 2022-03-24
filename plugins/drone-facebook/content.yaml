@@ -1,0 +1,9 @@
+title: Facebook
+author: appleboy
+tags:
+  - notifications
+  - chat
+logo: facebook.svg
+repo: https://github.com/appleboy/drone-facebook
+image: https://hub.docker.com/r/appleboy/drone-facebook
+description: The Facebook plugin posts build status messages to your account.

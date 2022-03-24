@@ -1,0 +1,8 @@
+title: UPX
+author: cnbattle
+tags:
+  - upx
+logo: upx.svg
+repo: https://github.com/cnbattle/drone-upx
+image: https://hub.docker.com/r/cnbattle/drone-upx
+description: The UPX plugin can be used to pack executables.

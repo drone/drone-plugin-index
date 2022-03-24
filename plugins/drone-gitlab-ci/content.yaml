@@ -1,0 +1,11 @@
+title: Gitlab-CI
+author: appleboy
+tags:
+  - infrastructure
+  - trigger
+  - gitlab
+  - gitlab-ci
+logo: gitlab.svg
+repo: https://github.com/appleboy/drone-gitlab-ci
+image: https://hub.docker.com/r/appleboy/drone-gitlab-ci
+description: The Gitlab-ci plugin allows you to trigger Gitlab-ci job automatically.

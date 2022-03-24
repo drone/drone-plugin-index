@@ -1,0 +1,9 @@
+title: Email
+author: drillster
+tags:
+  - notifications
+  - email
+logo: email.svg
+repo: https://github.com/drillster/drone-email
+image: https://hub.docker.com/r/drillster/drone-email
+description: The email plugin can be used to notify people of a build result.

@@ -1,0 +1,9 @@
+title: Gitter
+author: drone-plugins
+tags:
+  - notifications
+  - chat
+logo: gitter.svg
+repo: https://github.com/drone-plugins/drone-gitter
+image: https://hub.docker.com/r/plugins/gitter
+description: The Gitter plugin posts build events to your Gitter room's activity feed.

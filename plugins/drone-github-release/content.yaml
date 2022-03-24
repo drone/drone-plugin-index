@@ -1,0 +1,11 @@
+title: Github Release
+author: drone-plugins
+tags:
+  - publish
+  - github
+logo: github.svg
+repo: https://github.com/drone-plugins/drone-github-release
+image: https://hub.docker.com/r/plugins/github-release
+description: >-
+  The github-release plugin is used to publish files and artifacts to GitHub
+  Release.

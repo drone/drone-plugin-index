@@ -1,0 +1,11 @@
+title: Coveralls
+author: lizheming
+tags:
+  - coverage
+  - test
+  - reporting
+  - coveralls
+logo: coveralls.svg
+repo: https://github.com/lizheming/drone-coveralls
+image: https://hub.docker.com/r/lizheming/drone-coveralls
+description: This plugin can upload coverage reports to [Coveralls](https://coveralls.io).

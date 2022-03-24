@@ -1,0 +1,10 @@
+title: Codacy
+author: drone-plugins
+tags:
+  - coverage
+logo: codacy.svg
+repo: https://github.com/drone-plugins/drone-codacy
+image: https://hub.docker.com/r/plugins/codacy
+description: >-
+  This plugin can upload coverage reports to [Codacy](https://www.codacy.com/),
+  currently it's limited to Golang coverage reports.

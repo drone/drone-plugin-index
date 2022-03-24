@@ -1,0 +1,12 @@
+title: Anynines
+author: drone-plugins
+tags:
+  - deploy
+  - anynines
+  - paas
+logo: anynines.svg
+repo: https://github.com/drone-plugins/drone-anynines
+image: https://hub.docker.com/r/plugins/anynines
+description: >-
+  This plugin deploys your application on the
+  [Anynines](https://www.anynines.com/) platform.

@@ -1,0 +1,12 @@
+title: rsync
+author: drillster
+tags:
+  - publish
+  - ssh
+  - rsync
+logo: rsync.svg
+repo: https://github.com/drillster/drone-rsync
+image: https://hub.docker.com/r/drillster/drone-rsync
+description: >-
+  The rsync plugin can be used to transfer files to remote machines, and run a
+  user-defined script afterwards.

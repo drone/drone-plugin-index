@@ -1,0 +1,11 @@
+title: Backblaze B2
+author: techknowlogick
+tags:
+  - publish
+  - backblaze
+  - b2
+  - storage
+logo: backblaze-b2-logo.svg
+repo: https://github.com/techknowlogick/drone-b2
+image: https://hub.docker.com/r/techknowlogick/drone-b2
+description: The B2 plugin uploads files and build artifacts to your B2 bucket.

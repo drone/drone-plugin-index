@@ -1,0 +1,16 @@
+title: AWS ECS Deploy
+author: devops-israel
+tags:
+  - deploy
+  - amazon
+  - aws
+  - ecs
+  - docker
+logo: amazon_ecs.svg
+repo: https://github.com/joshdvir/drone-ecs-deploy
+image: https://hub.docker.com/r/joshdvir/drone-ecs-deploy
+description: >-
+  This plugin allows updating an ECS service. The plugin is a wrapper for
+  [ecs-deploy](https://github.com/silinternational/ecs-deploy/), this bash works
+  by taking the current task definition of a service and just changing the image
+  so that all the configuration stays the same.

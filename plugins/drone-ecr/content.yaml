@@ -1,0 +1,14 @@
+title: AWS ECR
+author: drone-plugins
+tags:
+  - publish
+  - amazon
+  - aws
+  - ecr
+  - docker
+logo: amazon_ecr.svg
+repo: https://github.com/drone-plugins/drone-ecr
+image: https://hub.docker.com/r/plugins/ecr
+description: >-
+  The ECR plugin can be used to build and publish images to the Amazon ECR
+  registry.

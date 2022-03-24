@@ -1,0 +1,9 @@
+title: ServerChan(Server酱)
+author: yakumioto
+tags:
+  - serverchan
+  - Server酱
+logo: serverchan.svg
+repo: https://github.com/yakumioto/drone-serverchan
+image: https://hub.docker.com/r/yakumioto/drone-serverchan
+description: The ServerChan plugin posts build status messages to your account.

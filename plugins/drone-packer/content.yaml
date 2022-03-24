@@ -1,0 +1,11 @@
+title: Packer
+author: appleboy
+tags:
+  - packer
+  - hashicorp
+logo: packer.svg
+repo: https://github.com/appleboy/drone-packer
+image: https://hub.docker.com/r/appleboy/drone-packer
+description: >-
+  This plugin can build automated machine images with
+  [Packer](https://www.packer.io/).

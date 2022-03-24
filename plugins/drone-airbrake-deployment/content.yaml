@@ -1,0 +1,10 @@
+title: airbrake-deployment
+author: dhoeric
+tags:
+  - airbrake
+  - deployment
+repo: https://github.com/dhoeric/drone-airbrake-deployment
+image: https://hub.docker.com/r/dhoeric/drone-airbrake-deployment
+description: >-
+  Use the airbrake-deployment plugin to [notify Airbrake a deployment in certain
+  environment](https://airbrake.io/docs/features/deploy-tracking/).

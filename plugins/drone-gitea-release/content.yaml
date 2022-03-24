@@ -1,0 +1,11 @@
+title: Gitea Release
+author: drone-plugins
+tags:
+  - publish
+  - gitea
+logo: gitea.svg
+repo: https://github.com/drone-plugins/drone-gitea-release
+image: https://hub.docker.com/r/plugins/gitea-release
+description: >-
+  The gitea-release plugin is used to publish files and artifacts to Gitea
+  Release.

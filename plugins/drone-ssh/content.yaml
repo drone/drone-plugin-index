@@ -1,0 +1,10 @@
+title: SSH
+author: appleboy
+tags:
+  - deploy
+  - publish
+  - ssh
+logo: term.svg
+repo: https://github.com/appleboy/drone-ssh
+image: https://hub.docker.com/r/appleboy/drone-ssh
+description: Use the SSH plugin to execute commands on a remote server.

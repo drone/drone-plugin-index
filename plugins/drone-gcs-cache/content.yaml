@@ -1,0 +1,12 @@
+title: Google Cloud Storage Cache
+author: hvalle
+tags:
+  - cache
+  - gcs
+  - google
+logo: google_gcs.svg
+repo: https://github.com/hvalle/drone-gcs-cache
+image: https://hub.docker.com/r/homerovalle/drone-gcs-cache
+description: >-
+  The GCS cache plugin can be used to preserve files and directories between
+  builds.

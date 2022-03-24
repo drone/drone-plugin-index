@@ -1,0 +1,14 @@
+title: AWS S3
+author: drone-plugins
+tags:
+  - publish
+  - amazon
+  - aws
+  - s3
+  - storage
+logo: amazon_s3.svg
+repo: https://github.com/drone-plugins/drone-s3
+image: https://hub.docker.com/r/plugins/s3
+description: >-
+  The S3 plugin uploads files and build artifacts to your S3 bucket, or
+  S3-compatible bucket such as Minio.

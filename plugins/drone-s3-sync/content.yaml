@@ -1,0 +1,13 @@
+title: AWS S3 Sync
+author: drone-plugins
+tags:
+  - publish
+  - amazon
+  - aws
+  - s3
+  - storage
+  - sync
+logo: amazon_s3.svg
+repo: https://github.com/drone-plugins/drone-s3-sync
+image: https://hub.docker.com/r/plugins/s3-sync
+description: The S3 sync synchronizes files and build artifacts to your S3 bucket.

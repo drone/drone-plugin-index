@@ -1,0 +1,10 @@
+title: Wechat
+author: lizheming
+tags:
+  - notifications
+  - chat
+  - wechat
+logo: wechat.svg
+repo: https://github.com/lizheming/drone-wechat
+image: https://hub.docker.com/r/lizheming/drone-wechat
+description: The Wechat plugin posts build status messages to your account.

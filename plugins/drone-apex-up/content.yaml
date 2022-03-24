@@ -1,0 +1,13 @@
+title: Apex Up
+author: appleboy
+tags:
+  - aws
+  - deployment
+  - up
+  - lambda
+logo: apex-up.svg
+repo: https://github.com/appleboy/drone-apex-up
+image: https://hub.docker.com/r/appleboy/drone-apex-up
+description: >-
+  This plugin can deploy infinitely scalable serverless apps, apis, and sites in
+  seconds to AWS using [apex/up](https://github.com/apex/up) tool.

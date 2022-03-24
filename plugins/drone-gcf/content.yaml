@@ -1,0 +1,11 @@
+title: Google Cloud Functions
+author: oliver006
+tags:
+  - publish
+  - google
+  - gcp
+  - gcf
+logo: google_gcf.svg
+repo: https://github.com/oliver006/drone-gcf
+image: https://hub.docker.com/r/oliver006/drone-gcf
+description: The GCF plugin can be used to deploy, list, and delete Google Cloud Functions.

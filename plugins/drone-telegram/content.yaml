@@ -1,0 +1,9 @@
+title: Telegram
+author: appleboy
+tags:
+  - notifications
+  - chat
+logo: telegram.svg
+repo: https://github.com/appleboy/drone-telegram
+image: https://hub.docker.com/r/appleboy/drone-telegram
+description: The Telegram plugin posts build status messages to your account.

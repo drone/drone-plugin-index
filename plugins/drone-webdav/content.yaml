@@ -1,0 +1,11 @@
+title: WebDAV
+author: vividboarder
+tags:
+  - deploy
+  - publish
+logo: term.svg
+repo: https://github.com/vividboarder/drone-webdav
+image: https://hub.docker.com/r/vividboarder/drone-webdav
+description: >-
+  The WebDAV plugin will allow pushing build artifacts to any WebDAV server,
+  including Nextcloud or ownCloud.

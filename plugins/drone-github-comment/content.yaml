@@ -1,0 +1,15 @@
+title: Github Comment
+author: codehimanshu
+tags:
+  - infrastructure
+  - github
+  - drone
+  - comment
+  - buildstatus
+logo: github.svg
+repo: https://github.com/gradeup/drone-github-comment
+image: https://hub.docker.com/r/codehimanshu/gitdrone
+description: >-
+  Use this plugin to update build status on Github Pull Request. This is useful
+  when the complete team does not want to open drone dashboard for each build
+  message.

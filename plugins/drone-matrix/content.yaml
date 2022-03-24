@@ -1,0 +1,12 @@
+title: Matrix
+author: drone-plugins
+tags:
+  - notifications
+  - chat
+  - matrix
+logo: matrix.svg
+repo: https://github.com/drone-plugins/drone-matrix
+image: https://hub.docker.com/r/plugins/matrix
+description: >-
+  This plugin can be used to send build success or failure messages to a Matrix
+  room.

@@ -1,0 +1,9 @@
+title: Crowdin
+author: JonasFranzDEV
+tags:
+  - publish
+  - translation
+logo: crowdin.svg
+repo: https://github.com/JonasFranzDEV/drone-crowdin
+image: https://hub.docker.com/r/jonasfranz/crowdin
+description: The Crowdin plugin allows you to submit translation files to Crowdin.

@@ -1,0 +1,13 @@
+title: AWS S3 Cache
+author: drone-plugins
+tags:
+  - cache
+  - amazon
+  - aws
+  - s3
+logo: amazon_s3.svg
+repo: https://github.com/drone-plugins/drone-s3-cache
+image: https://hub.docker.com/r/plugins/s3-cache
+description: >-
+  The S3 cache plugin can be used to preserve files and directories between
+  builds.

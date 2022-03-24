@@ -1,0 +1,10 @@
+title: NPM Auth
+author: robertstettner
+tags:
+  - authentication
+  - npm
+  - node
+logo: npm2.svg
+repo: https://github.com/robertstettner/drone-npm-auth
+image: https://hub.docker.com/r/robertstettner/drone-npm-auth
+description: ''

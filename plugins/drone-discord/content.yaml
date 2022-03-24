@@ -1,0 +1,9 @@
+title: Discord
+author: appleboy
+tags:
+  - notifications
+  - chat
+logo: discord.svg
+repo: https://github.com/appleboy/drone-discord
+image: https://hub.docker.com/r/appleboy/drone-discord
+description: The discord plugin posts build status messages to discord channel.

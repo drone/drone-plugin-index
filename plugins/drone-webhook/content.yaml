@@ -1,0 +1,12 @@
+title: Webhook
+author: drone-plugins
+tags:
+  - notifications
+  - trigger
+  - webhook
+logo: webhook.svg
+repo: https://github.com/drone-plugins/drone-webhook
+image: https://hub.docker.com/r/plugins/webhook
+description: >-
+  Use the Webhook plugin to notify services via Webhook when a build completes.
+  You will need to supply Drone with outgoing Webhook URLs.

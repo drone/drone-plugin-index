@@ -1,0 +1,13 @@
+title: Github Search Downstream
+author: gboddin
+tags:
+  - infrastructure
+  - trigger
+  - drone
+  - github
+logo: github.svg
+repo: https://github.com/gboddin/drone-github-search-downstream
+image: https://hub.docker.com/r/gboo/github-search-downstream
+description: >-
+  Use this plugin to trigger builds for a list of downstream repositories
+  fetched

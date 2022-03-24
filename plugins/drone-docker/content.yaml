@@ -1,0 +1,213 @@
+title: Docker
+author: drone-plugins
+tags:
+  - publish
+  - docker
+logo: docker.svg
+repo: https://github.com/drone-plugins/drone-docker
+image: https://hub.docker.com/r/plugins/docker/
+license: None
+readme: https://github.com/drone-plugins/drone-docker/blob/master/README.md
+description: |
+  The Docker plugin can be used to build and publish images to the Docker
+  registry.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: docker  
+    image: plugins/docker
+    settings:
+      username: kevinbacon
+      password: pa55word
+      repo: foo/bar
+      tags: latest
+properties:
+  registry:
+    type: string
+    defaultValue: ''
+    description: authenticates to this registry
+    secret: false
+  username:
+    type: string
+    defaultValue: ''
+    description: authenticates with this username
+    secret: false
+  password:
+    type: string
+    defaultValue: ''
+    description: authenticates with this password
+    secret: true
+  repo:
+    type: string
+    defaultValue: ''
+    description: repository name for the image
+    secret: false
+  tags:
+    type: string
+    defaultValue: ''
+    description: repository tag for the image
+    secret: false
+  dockerfile:
+    type: string
+    defaultValue: 'Dockerfile'
+    description: dockerfile to be used
+    secret: false
+  dry_run:
+    type: string
+    defaultValue: ''
+    description: boolean if the docker image should be pushed at the end
+    secret: false
+  purge:
+    type: boolean
+    defaultValue: false
+    description: boolean if cleanup of the docker image should be done at the end
+    secret: false
+  context:
+    type: string
+    defaultValue: ''
+    description: the context path to use, defaults to root of the git repo
+    secret: false
+  target:
+    type: string
+    defaultValue: ''
+    description: the build target to use, must be defined in the docker file
+    secret: false
+  force_tag:
+    type: boolean
+    defaultValue: false
+    description: replace existing matched image tags
+    secret: false
+  insecure:
+    type: boolean
+    defaultValue: false
+    description: enable insecure communication to this registry
+    secret: false
+  mirror:
+    type: string
+    defaultValue: ''
+    description: >-
+      use a mirror registry instead of pulling images directly from the central
+      Hub
+    secret: false
+  bip:
+    type: boolean
+    defaultValue: false
+    description: use for pass bridge ip
+    secret: false
+  custom_dns:
+    type: string
+    defaultValue: ''
+    description: set custom dns servers for the container
+    secret: false
+  custom_dns_search:
+    type: string
+    defaultValue: ''
+    description: docker daemon dns search domains
+    secret: false
+  storage_driver:
+    type: string
+    defaultValue: ''
+    description: supports `aufs`, `overlay` or `vfs` drivers
+    secret: false
+  storage_path:
+    type: string
+    defaultValue: ''
+    description: docker daemon storage path
+    secret: false
+  build_args:
+    type: string
+    defaultValue: ''
+    description: pass custom arguments to docker build
+    secret: false
+  build_args_from_env:
+    type: string
+    defaultValue: ''
+    description: pass the envvars as custom arguments to docker build
+    secret: false
+  auto_tag:
+    type: boolean
+    defaultValue: false
+    description: generate tag names automatically based on git branch and git tag
+    secret: false
+  auto_tag_suffix:
+    type: string
+    defaultValue: ''
+    description: generate tag names with this suffix
+    secret: false
+  debug:
+    type: boolean
+    defaultValue: false
+    description: launch the docker daemon in verbose debug mode
+    secret: false
+  launch_debug:
+    type: boolean
+    defaultValue: false
+    description: launch the docker daemon in verbose debug mode
+    secret: false
+  mtu:
+    type: string
+    defaultValue: ''
+    description: docker daemon custom mtu setting
+    secret: false
+  ipv6:
+    type: string
+    defaultValue: ''
+    description: docker daemon IPv6 networking
+    secret: false
+  experimental:
+    type: boolean
+    defaultValue: false
+    description: docker daemon Experimental mode
+    secret: false
+  daemon_off:
+    type: boolean
+    defaultValue: false
+    description: don't start the docker daemon
+    secret: false
+  cache_from:
+    type: string
+    defaultValue: ''
+    description: images to consider as cache sources
+    secret: false
+  squash:
+    type: boolean
+    defaultValue: false
+    description: squash the layers at build time
+    secret: false
+  pull_image:
+    type: boolean
+    defaultValue: false
+    description: force pull base image at build time
+    secret: false
+  compress:
+    type: boolean
+    defaultValue: false
+    description: compress the build context using gzip
+    secret: false
+  custom_labels:
+    type: string
+    defaultValue: ''
+    description: additional k=v labels
+    secret: false
+  label_schema:
+    type: string
+    defaultValue: ''
+    description: label-schema labels
+    secret: false
+  email:
+    type: string
+    defaultValue: ''
+    description: docker email
+    secret: false
+  no_cache:
+    type: string
+    defaultValue: ''
+    description: do not use cached intermediate containers
+    secret: false
+  add_host:
+    type: string
+    defaultValue: ''
+    description: additional host:IP mapping
+    secret: false

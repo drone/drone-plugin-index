@@ -1,0 +1,17 @@
+title: Rancher Stack v1
+author: wayneconnolly
+tags:
+  - deploy
+  - rancher
+  - stack
+  - v1
+  - docker
+logo: rancher.svg
+repo: https://github.com/wayneconnolly/drone-rancher-stack-v1
+image: https://hub.docker.com/r/dubc/drone-rancher-stack-v1
+description: >-
+  A drone.io Rancher Stack plugin to deploy/update an entire Rancher stack (not
+  just a single service) to [Rancher
+  v1.6](https://rancher.com/docs/rancher/v1.6/en/). See [Docker
+  Hub](https://hub.docker.com/r/dubc/drone-rancher-stack-v1/) for more
+  information.

@@ -1,0 +1,14 @@
+title: Download
+author: drone-plugins
+tags:
+  - download
+  - tarball
+  - archive
+  - retrieve
+logo: download.svg
+repo: https://github.com/drone-plugins/drone-download
+image: https://hub.docker.com/r/plugins/download
+description: >-
+  Use the Download plugin to download archives required for your builds, it also
+  integrates a secure way to inject basic authentication credentials and
+  checking by md5 or sha256 checksums.

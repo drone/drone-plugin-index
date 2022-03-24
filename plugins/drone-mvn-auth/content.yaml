@@ -1,0 +1,10 @@
+title: Maven Auth
+author: robertstettner
+tags:
+  - authentication
+  - maven
+  - mvn
+logo: maven.svg
+repo: https://github.com/robertstettner/drone-mvn-auth
+image: https://hub.docker.com/r/robertstettner/drone-mvn-auth
+description: ''

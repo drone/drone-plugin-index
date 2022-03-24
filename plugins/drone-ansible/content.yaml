@@ -1,0 +1,11 @@
+title: Ansible
+author: drone-plugins
+tags:
+  - infrastructure
+  - ops
+  - ansbile
+  - deploy
+logo: ansible.svg
+repo: https://github.com/drone-plugins/drone-ansible
+image: https://hub.docker.com/r/plugins/ansible
+description: The Ansible plugin can be used to run ansible plays.

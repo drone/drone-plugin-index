@@ -1,0 +1,12 @@
+title: GitHub Pages
+author: drone-plugins
+tags:
+  - publish
+  - github
+  - gh-pages
+logo: github.svg
+repo: https://github.com/drone-plugins/drone-gh-pages
+image: https://hub.docker.com/r/plugins/gh-pages
+description: >-
+  The GitHub Pages plugin is used to publish static websites to GitHub. The
+  following configuration uses the gh-pages plugin to publish a website.

@@ -1,0 +1,11 @@
+title: Fandogh
+author: amirbagh75
+tags:
+  - paas
+  - fandogh
+logo: fandogh.svg
+repo: https://github.com/amirbagh75/fandogh-drone
+image: https://hub.docker.com/r/amirbagh75/fandogh-drone
+description: >-
+  This plugin can help you to easy delivery your new docker images to [fandogh
+  PaaS](https://www.fandogh.cloud/).

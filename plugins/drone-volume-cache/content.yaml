@@ -1,0 +1,10 @@
+title: Volume Cache
+author: drillster
+tags:
+  - cache
+logo: volume_cache.svg
+repo: https://github.com/drillster/drone-volume-cache
+image: https://hub.docker.com/r/drillster/drone-volume-cache
+description: >-
+  The volume cache plugin can be used to preserve files and directories between
+  builds.

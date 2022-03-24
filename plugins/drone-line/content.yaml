@@ -1,0 +1,9 @@
+title: Line
+author: appleboy
+tags:
+  - notifications
+  - chat
+logo: line.svg
+repo: https://github.com/appleboy/drone-line
+image: https://hub.docker.com/r/appleboy/drone-line
+description: The Line plugin posts build status messages to your channel.

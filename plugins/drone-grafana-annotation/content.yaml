@@ -1,0 +1,12 @@
+title: Grafana Annotation
+author: fdeschenes
+tags:
+  - deploy
+  - reporting
+  - grafana
+logo: grafana.svg
+repo: https://github.com/fdeschenes/drone-grafana-annotation
+image: https://hub.docker.com/r/fdeschenes/drone-grafana-annotation
+description: >-
+  The Grafana Annotation plugin can be used to create an annotation in
+  [Grafana](https://grafana.com).

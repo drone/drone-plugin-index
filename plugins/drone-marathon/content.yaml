@@ -1,0 +1,11 @@
+title: Marathon
+author: dellintosh
+tags:
+  - deploy
+  - marathon
+logo: marathon.svg
+repo: https://github.com/expansioncap/drone-marathon
+image: https://hub.docker.com/r/e20co/drone-marathon
+description: >-
+  This plugin can be used to deploy applications to a
+  [Marathon](https://mesosphere.github.io/marathon/) server.

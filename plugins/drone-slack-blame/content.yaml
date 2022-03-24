@@ -1,0 +1,13 @@
+title: Slack Blame
+author: drone-plugins
+tags:
+  - notifications
+  - chat
+logo: slack.svg
+repo: https://github.com/drone-plugins/drone-slack-blame
+image: https://hub.docker.com/r/plugins/slack-blame
+description: >-
+  Use the Slack Blame plugin to send a message to a Slack channel or through
+  direct message when a build completes. You will need to supply Drone with an
+  access token to the Slack API. You can create a new access token at
+  [https://api.slack.com/web](https://api.slack.com/web).

@@ -1,0 +1,9 @@
+title: DingTalk
+author: lddsb
+tags:
+  - notifications
+  - chat
+logo: dingtalk.svg
+repo: https://github.com/lddsb/drone-dingtalk-message
+image: https://hub.docker.com/r/lddsb/drone-dingtalk-message
+description: The DingTalk can be used to send a message by DingTalk group robot.

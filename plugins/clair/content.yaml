@@ -1,0 +1,11 @@
+title: Clair
+author: jmccann
+tags:
+  - docker
+  - security
+logo: clair.svg
+repo: https://github.com/jmccann/drone-clair
+image: https://hub.docker.com/r/jmccann/drone-clair
+description: >-
+  The Clair plugin submits your docker image to your
+  [Clair](https://github.com/coreos/clair)

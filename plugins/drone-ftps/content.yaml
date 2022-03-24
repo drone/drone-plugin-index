@@ -1,0 +1,11 @@
+title: FTP(S)
+author: christophschlosser
+tags:
+  - publish
+  - ftp
+  - ftps
+  - ssh
+logo: ftps.svg
+repo: https://github.com/christophschlosser/drone-ftps
+image: https://hub.docker.com/r/cschlosser/drone-ftps
+description: The FTPS plugin can be used to publish artifacts over FTP(S).

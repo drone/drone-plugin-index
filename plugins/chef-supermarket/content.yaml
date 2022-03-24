@@ -1,0 +1,11 @@
+title: Chef Supermarket
+author: jmccann
+tags:
+  - publish
+  - chef
+logo: chef_supermarket.svg
+repo: https://github.com/jmccann/drone-chef-supermarket
+image: https://hub.docker.com/r/jmccann/drone-chef-supermarket
+description: >-
+  The Chef Supermarket plugin can publish cookbooks to Supermarket (internal or
+  public).

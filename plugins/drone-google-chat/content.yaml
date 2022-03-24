@@ -1,0 +1,11 @@
+title: Google Chat
+author: josmo
+tags:
+  - notifications
+  - chat
+logo: gtalk.svg
+repo: https://github.com/josmo/drone-google-chat
+image: https://hub.docker.com/r/pelotech/drone-google-chat
+description: >-
+  The Google chat plugin posts build status messages to your company google
+  chat.

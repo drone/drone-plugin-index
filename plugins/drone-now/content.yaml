@@ -1,0 +1,9 @@
+title: Now
+author: lucaperret
+tags:
+  - deploy
+  - now
+logo: now.svg
+repo: https://github.com/lucaperret/drone-now
+image: https://hub.docker.com/r/lucap/drone-now
+description: The Now plugin deploy your build to [now.sh](https://zeit.co/now).

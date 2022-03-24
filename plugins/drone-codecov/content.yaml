@@ -1,0 +1,12 @@
+title: Codecov
+author: robertstettner
+tags:
+  - publish
+  - codecov
+  - test
+  - coverage
+  - reporting
+logo: codecov.svg
+repo: https://github.com/robertstettner/drone-codecov
+image: https://hub.docker.com/r/robertstettner/drone-codecov
+description: This plugin allows for pushing test coverage results to Codecov.

@@ -1,0 +1,10 @@
+title: CircleCI
+author: wesleimp
+tags:
+  - infrastructure
+  - trigger
+  - circleci
+logo: circleci.svg
+repo: https://github.com/wesleimp/drone-circleci
+image: https://hub.docker.com/r/wesleimp/drone-circleci
+description: The CircleCI plugin allows you to trigger builds automatically.

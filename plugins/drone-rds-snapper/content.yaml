@@ -1,0 +1,14 @@
+title: AWS RDS Snapper
+author: tuannvm
+tags:
+  - amazon
+  - aws
+  - rds
+  - snapshot
+logo: amazon_rds.svg
+repo: >-
+  https://github.com/https://github.com/honestbee/devops-tools/tree/master/rds-snapper
+image: https://hub.docker.com/r/quay.io/honestbee/rds-snapper
+description: >-
+  The rds-snapper plugin cleans up specific RDS instance's snapshots, keeps
+  specified number of copies and creates new snapshots.

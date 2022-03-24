@@ -1,0 +1,9 @@
+title: Artifactory
+author: athieriot
+tags:
+  - publish
+  - artifactory
+logo: artifactory.svg
+repo: https://github.com/athieriot/drone-artifactory
+image: https://hub.docker.com/r/athieriot/drone-artifactory
+description: Use this plugin to publish artifacts from the build to Artifactory.

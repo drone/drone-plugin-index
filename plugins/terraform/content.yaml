@@ -1,0 +1,12 @@
+title: Terraform
+author: jmccann
+tags:
+  - infrastructure
+  - build tool
+  - terraform
+logo: terraform.svg
+repo: https://github.com/jmccann/drone-terraform
+image: https://hub.docker.com/r/jmccann/drone-terraform
+description: >-
+  The Terraform plugin applies the infrastructure configuration contained within
+  the repository.

@@ -1,0 +1,12 @@
+title: Rancher
+author: josmo
+tags:
+  - deploy
+  - rancher
+  - docker
+logo: rancher.svg
+repo: https://github.com/josmo/drone-rancher
+image: https://hub.docker.com/r/pelotech/drone-rancher
+description: >-
+  The Rancher plugin can be used to deploy a Docker image to a Rancher
+  environment.

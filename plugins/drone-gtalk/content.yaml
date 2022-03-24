@@ -1,0 +1,9 @@
+title: GTalk
+author: appleboy
+tags:
+  - notifications
+  - chat
+logo: gtalk.svg
+repo: https://github.com/appleboy/drone-gtalk
+image: https://hub.docker.com/r/appleboy/drone-gtalk
+description: The GTalk plugin posts build status messages to your google account.

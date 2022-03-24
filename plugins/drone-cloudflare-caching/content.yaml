@@ -1,0 +1,15 @@
+title: Cloudflare Caching
+author: JetRails
+tags:
+  - cloudflare
+  - cache
+logo: cloudflare.svg
+repo: https://github.com/jetrails/drone-cloudflare-caching
+image: https://hub.docker.com/r/jetrails/drone-cloudflare-caching
+description: >-
+  Our Drone plugin enables the ability for your pipeline to interface with
+  Cloudflare's API to purge cache. This plugin is written in Go and it uses the
+  [cloudflare-go](https://github.com/cloudflare/cloudflare-go) package to
+  communicate with Cloudflare's API. For information on Cloudflare's API please
+  refer to their
+  [documentation](https://api.cloudflare.com/#zone-purge-all-files) page.

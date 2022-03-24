@@ -1,0 +1,15 @@
+title: OpenFaaS
+author: knovus
+tags:
+  - publish
+  - openfaas
+  - serverless
+  - functions
+logo: openfaas.svg
+repo: https://github.com/knovus/drone-openfaas
+image: https://hub.docker.com/r/knovus/drone-openfaas
+description: >-
+  This plugin [knovus/drone-openfaas] can be used to build (generate Dockerfile
+  and stuff) and Deploy functions to the OpenFaaS Gateway, and for the Docker
+  image build & publish step, you can use the plugin for Kaniko
+  [banzaicloud/drone-kaniko] or you favorite plugin.

@@ -1,0 +1,11 @@
+title: Metronome
+author: naorlivne
+tags:
+  - deploy
+  - metronome
+logo: metronome.svg
+repo: https://github.com/naorlivne/drone-metronome
+image: https://hub.docker.com/r/naorlivne/drone-metronome
+description: >-
+  This plugin can be used to deploy applications to a Metronome server, it will
+  create\update the given Metronome tasks as needed.

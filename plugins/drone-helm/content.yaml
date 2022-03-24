@@ -1,0 +1,10 @@
+title: Helm
+author: ipedrazas
+tags:
+  - kubernetes
+  - docker
+  - helm
+logo: kubernetes.svg
+repo: https://github.com/ipedrazas/drone-helm
+image: https://hub.docker.com/r/ipedrazas/drone-helm
+description: This plugin allows you to run Kubernetes Helm as part of your pipeline.

@@ -1,0 +1,13 @@
+title: Github-changelog-generator
+author: naorlivne
+tags:
+  - changelog
+  - github
+  - github-changelog-generator
+logo: github.svg
+repo: https://github.com/naorlivne/drone-github-changelog-generator
+image: https://hub.docker.com/r/naorlivne/drone-github-changelog-generator
+description: >-
+  This plugin can be used to create a changelog file based on GitHub tags, it
+  will not auto-push it into the repo but rather create a changelog file for you
+  to upload into your desired location via other Drone plugins.

@@ -1,0 +1,15 @@
+title: Captains Log
+author: Target
+tags:
+  - notifications
+  - chat
+  - slack
+  - logs
+  - build
+  - release notes
+  - releases
+  - notes
+logo: captains_log.svg
+repo: https://github.com/target/captains-log
+image: https://hub.docker.com/r/target/captains-log
+description: A Drone plugin that helps organize release information in Slack

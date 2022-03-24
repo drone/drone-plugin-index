@@ -1,0 +1,9 @@
+title: Mercurial
+author: drone-plugins
+tags:
+  - clone
+  - hg
+logo: mercurial.svg
+repo: https://github.com/drone-plugins/drone-hg
+image: https://hub.docker.com/r/plugins/hg
+description: The mercurial plugin is used to clone a mercurial repository.

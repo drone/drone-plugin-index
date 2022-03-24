@@ -1,0 +1,9 @@
+title: Kaniko
+author: banzaicloud
+tags:
+  - publish
+  - docker
+logo: kaniko.svg
+repo: https://github.com/banzaicloud/drone-kaniko
+image: https://hub.docker.com/r/banzaicloud/drone-kaniko
+description: This plugin can be used to build and publish images to the Docker registry,

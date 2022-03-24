@@ -1,0 +1,13 @@
+title: Kubernetes
+author: danielgormly
+tags:
+  - kubernetes
+  - deployment
+  - configmap
+logo: kubernetes.svg
+repo: https://github.com/danielgormly/drone-plugin-kube
+image: https://hub.docker.com/r/danielgormly/drone-plugin-kube
+description: >-
+  Updates Kubernetes deployments from templates & configMaps from files. This
+  plugin will either create or update existing resources dependent on their
+  presence. It will wait for deployments before it progresses.

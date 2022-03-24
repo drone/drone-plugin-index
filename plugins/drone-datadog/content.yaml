@@ -1,0 +1,11 @@
+title: Datadog
+author: masci
+tags:
+  - monitoring
+  - datadog
+logo: datadog.svg
+repo: https://github.com/masci/drone-datadog
+image: https://hub.docker.com/r/masci/drone-datadog
+description: >-
+  The plugin can be used to send events and metrics to Datadog from a drone
+  pipeline.

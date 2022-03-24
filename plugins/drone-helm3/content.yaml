@@ -1,0 +1,11 @@
+title: Helm3
+author: pelotech
+tags:
+  - kubernetes
+  - docker
+  - helm
+  - helm3
+logo: kubernetes.svg
+repo: https://github.com/pelotech/drone-helm3
+image: https://hub.docker.com/r/pelotech/drone-helm3
+description: This plugin provides an interface to Helm 3.

@@ -1,0 +1,14 @@
+title: Google Cloud Storage
+author: wyattjoh
+tags:
+  - publish
+  - google
+  - gcp
+  - gcs
+  - storage
+logo: google_gcs.svg
+repo: https://github.com/wyattjoh/drone-gcs
+image: https://hub.docker.com/r/wyattjoh/drone-gcs
+description: >-
+  The Google Cloud Storage plugin uploads files and build artifacts to your
+  Google Cloud Storage bucket.

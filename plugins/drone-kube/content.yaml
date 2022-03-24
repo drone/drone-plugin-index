@@ -1,0 +1,10 @@
+title: Drone Kube
+author: vallard
+tags:
+  - deploy
+  - kubernetes
+  - docker
+logo: kubernetes.svg
+repo: https://github.com/vallard/drone-kube
+image: https://hub.docker.com/r/vallard/drone-kube
+description: Drone kubernetes plugin.

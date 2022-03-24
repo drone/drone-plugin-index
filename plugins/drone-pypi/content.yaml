@@ -1,0 +1,12 @@
+title: PyPI
+author: drone-plugins
+tags:
+  - publish
+  - python
+  - pypi
+logo: pypi.svg
+repo: https://github.com/drone-plugins/drone-pypi
+image: https://hub.docker.com/r/plugins/pypi
+description: >-
+  This plugin allows you to publish Python pypi packages as part of your
+  pipeline.

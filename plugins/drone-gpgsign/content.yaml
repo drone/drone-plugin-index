@@ -1,0 +1,12 @@
+title: GPG Sign
+author: drone-plugins
+tags:
+  - artifact
+  - gpg
+  - sign
+logo: gnupg.svg
+repo: https://github.com/drone-plugins/drone-gpgsign
+image: https://hub.docker.com/r/plugins/gpgsign
+description: >-
+  This plugin can sign your artifacts and build results with
+  [GnuPG](https://www.gnupg.org/).

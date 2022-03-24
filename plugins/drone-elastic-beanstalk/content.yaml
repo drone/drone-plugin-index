@@ -1,0 +1,13 @@
+title: AWS Elastic Beanstalk
+author: josmo
+tags:
+  - deploy
+  - amazon
+  - aws
+  - elastic beanstalk
+logo: amazon_beanstalk.svg
+repo: https://github.com/josmo/drone-elastic-beanstalk
+image: https://hub.docker.com/r/pelotech/drone-elastic-beanstalk
+description: >-
+  The Elastic Beanstalk plugin can be used to deploy an app to a Beanstalk
+  environment.

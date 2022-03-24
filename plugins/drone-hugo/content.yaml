@@ -1,0 +1,13 @@
+title: Hugo
+author: cbrgm
+tags:
+  - tool
+  - hugo
+  - generation
+  - static
+logo: gohugo.svg
+repo: https://github.com/drone-plugins/drone-hugo
+image: https://hub.docker.com/r/plugins/hugo
+description: >-
+  The Hugo plugin automatically generates static web page files, which can be
+  published afterwards!

@@ -1,0 +1,12 @@
+title: Kubernetes Deployments
+author: mactynow
+tags:
+  - deploy
+  - kubernetes
+  - docker
+logo: kubernetes.svg
+repo: https://github.com/honestbee/drone-kubernetes
+image: https://hub.docker.com/r/quay.io/honestbee/drone-kubernetes
+description: >-
+  The Kubernetes plugin can be used to upgrade a Kubernetes deployment with a
+  newer version of an image.

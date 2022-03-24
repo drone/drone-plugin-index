@@ -1,0 +1,9 @@
+title: Rocket.Chat
+author: mike1pol
+tags:
+  - notifications
+  - chat
+logo: rocket.chat.svg
+repo: https://github.com/mike1pol/drone-rocket
+image: https://hub.docker.com/r/mike1pol/drone-rocket
+description: Drone plugin for sending message to Rocket.Chant channel using API.

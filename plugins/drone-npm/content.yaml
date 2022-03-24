@@ -1,0 +1,12 @@
+title: NPM
+author: donny-dont
+tags:
+  - publish
+  - npm
+  - node
+logo: npm.svg
+repo: https://github.com/drone-plugins/drone-npm
+image: https://hub.docker.com/r/plugins/npm
+description: >-
+  The NPM plugin can be used to publish libraries to public or private
+  registries.

@@ -1,0 +1,9 @@
+title: Netlify
+author: lucaperret
+tags:
+  - deploy
+  - netlify
+logo: netlify.svg
+repo: https://github.com/lucaperret/drone-netlify
+image: https://hub.docker.com/r/lucap/drone-netlify
+description: The netlify plugin deploy your build to [netlify.com](https://netlify.com).
