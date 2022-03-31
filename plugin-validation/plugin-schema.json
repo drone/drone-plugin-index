@@ -82,7 +82,7 @@
             },
             "defaultValue": {
               "description": "Property default value",
-              "type": ["number", "string", "boolean"]
+              "type": ["number", "string", "boolean", "array"]
             },
             "description": {
               "description": "Property description",
@@ -91,10 +91,14 @@
             "secret": {
               "description": "Property is secret",
               "type": "boolean"
+            },
+            "required": {
+              "description": "Property is required",
+              "type": "boolean"
             }
           },
           "additionalProperties": false,
-          "required": ["type", "defaultValue", "description", "secret"]
+          "required": ["type", "defaultValue", "description", "secret", "required"]
         }
       },
       "additionalProperties": false

@@ -6,6 +6,51 @@ tags:
 logo: clair.svg
 repo: https://github.com/jmccann/drone-clair
 image: https://hub.docker.com/r/jmccann/drone-clair
+license: Apache License 2.0
+readme: https://github.com/jmccann/drone-clair/blob/master/README.md
 description: >-
   The Clair plugin submits your docker image to your
-  [Clair](https://github.com/coreos/clair)
+  Clair server to scan your docker image for security vulnerabilities.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: clair
+    image: jmccann/drone-clair:1
+    settings:
+      url: http://clair.company.com
+      username: johndoe
+      password: mysecret
+      scan_image: python:2.7
+properties:
+  url:
+    type: string
+    defaultValue: ''
+    description: Clair server URL
+    secret: false
+    required: false
+  username:
+    type: string
+    defaultValue: ''
+    description: Docker Registry username to download the `scan_image` from
+    secret: false
+    required: false
+  password:
+    type: string
+    defaultValue: ''
+    description: Docker Registry password to download the `scan_image` from
+    secret: true
+    required: false
+  scan_image:
+    type: string
+    defaultValue: ''
+    description: The docker image to scan.  Supports Docker Hub or private repos.
+    secret: false
+    required: false
+ca_cert:
+    type: string
+    defaultValue: ''
+    description: The CA Cert to verify https with
+    secret: false
+    required: false

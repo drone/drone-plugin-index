@@ -29,7 +29,7 @@ export const getStaticProps = ({ params: { id } }) => {
 
 //return html list of properties
 const getPropertiesMarkup = (properties) => {
-  const listEntries = Object.entries(properties).map(([key, {defaultValue, description, secret, type}]) => {
+  const listEntries = Object.entries(properties).map(([key, {defaultValue, description, secret, type, required}]) => {
     return (
       <li className={utilStyles.propertyList} key={key}>
         <h4 className={utilStyles.propertyTitle}>{key}</h4>
@@ -37,6 +37,7 @@ const getPropertiesMarkup = (properties) => {
         {type !== undefined && <p className={utilStyles.propertyValue}>type = {type}</p>}
         {defaultValue !== undefined && <p className={utilStyles.propertyValue}>default = {defaultValue || 'none'}</p>}
         {secret !== undefined && <p className={utilStyles.propertyValue}>secret = {secret.toString()}</p>}
+        {required !== undefined && <p className={utilStyles.propertyValue}>required = {required.toString()}</p>}
       </li>
     );
   });
@@ -62,7 +63,6 @@ const Plugin = ({
     properties,
     example,
   },
-  id,
 }) => {
   // enables syntax highlighting
   useEffect(() => {
