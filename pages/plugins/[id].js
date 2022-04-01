@@ -62,6 +62,7 @@ const Plugin = ({
     logo,
     properties,
     example,
+    cieExample
   },
 }) => {
   // enables syntax highlighting
@@ -114,9 +115,17 @@ const Plugin = ({
         )}
         {example && (
           <>
-            <h3>Example</h3>
+            <h3>Drone example</h3>
             <pre className="language-yaml">
               <code>{example}</code>
+            </pre>
+          </>
+        )}
+        {cieExample && (
+          <>
+            <h3>CIE example</h3>
+            <pre className="language-yaml">
+              <code>{cieExample}</code>
             </pre>
           </>
         )}
