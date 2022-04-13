@@ -72,5 +72,9 @@ output.forEach(({ path, valid, pluginErrors, exampleErrors }) => {
 });
 
 if(!scriptPass) {
+  console.log("\x1b[31m", `PLUGIN VALIDATION FAIL`);
   process.exit(1);
+} else {
+  console.log("\x1b[32m", `PLUGIN VALIDATION SUCCESS`);
+  process.exit(0);
 }

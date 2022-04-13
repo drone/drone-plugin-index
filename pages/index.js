@@ -3,8 +3,9 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import Layout, { siteTitle } from "../components/layout";
-import utilStyles from "../styles/utils.module.css";
+import styles from "../styles/Home.module.css";
 import { getSortedPluginsData } from "../lib/plugins";
+import Card from "../components/card";
 
 export const getStaticProps = async () => {
   const allPluginsData = getSortedPluginsData();
@@ -15,65 +16,66 @@ export const getStaticProps = async () => {
   };
 };
 
-const search = (searchTerm, allPluginsData) => {
-  return allPluginsData.filter((pluginData) => {
-    // join tags into a single string instead of looping through each
-    return (
-      pluginData.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      pluginData.tags.join().toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  });
-};
+const tags = [
+  "Deploy",
+  "Publish",
+  "AWS",
+  "Cloudformation",
+  "Lambda",
+  "ECR",
+  "ECS",
+  "Amazon",
+  "S3",
+  "Storage",
+  "Sync",
+  "Infrastructure",
+  "OPS",
+  "Ansible",
+  "Cloud Foundry",
+];
 
 const Home = ({ allPluginsData }) => {
   const [searchResults, setSearchResults] = useState(allPluginsData);
 
   return (
-    <Layout home>
+    <Layout home setSearchResults={setSearchResults} allPluginsData={allPluginsData}>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.searchSection}>
-        <input
-          type="text"
-          placeholder="Search here..."
-          onChange={(e) => {
-            setSearchResults(search(e.target.value, allPluginsData));
-          }}
-          className={utilStyles.searchInput}
-        />
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <ul className={utilStyles.list}>
-          {searchResults.map(({ id, title, author, tags, logo }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/plugins/${id}`} className={utilStyles.pluginTitle}>
-                <a>{title}</a>
-              </Link>
-              <small className={utilStyles.pluginAuthor}>by {author}</small>
-              {tags?.length && (
-                <div className={utilStyles.pillContainer}>
-                  {tags?.map((tag) => (
-                    <div key={tag} className={utilStyles.pill}>
-                      {tag}
-                    </div>
-                  ))}
-                </div>
-              )}
-              {logo && (
-                <section className={utilStyles.logo}>
-                  <Image
-                    src={`/logos/${logo}`}
-                    alt={`${logo}`}
-                    height="64px"
-                    width="64px"
-                  />
-                </section>
-              )}
-            </li>
-          ))}
-        </ul>
-      </section>
+      <div className={styles.container}>
+        <div className={styles.tagContainer}>
+          <h4>Tags</h4>
+          <div className={styles.pillContainer}>
+            {tags?.map((tag) => (
+              <div key={tag} className={styles.pill}>
+                {tag}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className={styles.mainContainer}>
+          {/* TODO implement sort */}
+          <div className={styles.sort}>
+            <div className={styles.sortImage}>
+              <Image
+                src="/icons/sort.svg"
+                alt="sort icon"
+                height="21px"
+                width="21px"
+              />
+            </div>
+            <select className={styles.select}>
+              <option value="name">Name</option>
+              <option value="installs">Installs</option>
+            </select>
+          </div>
+          <div className={styles.cards}>
+            {searchResults.map((result) => (
+              <Card pluginData={result} />
+            ))}
+          </div>
+        </div>
+      </div>
     </Layout>
   );
 };

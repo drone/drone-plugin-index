@@ -2,11 +2,25 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Layout.module.css";
-import utilStyles from "../styles/utils.module.css";
 
 export const siteTitle = "Drone Plugins";
 
-const Layout = ({ children, home = false }) => {
+const search = (searchTerm, allPluginsData) => {
+  return allPluginsData.filter((pluginData) => {
+    return (
+      pluginData.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    // Just search in the title for now
+    // join tags into a single string instead of looping through each
+    // return (
+    //   pluginData.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    //   pluginData.tags.join().toLowerCase().includes(searchTerm.toLowerCase())
+    // );
+  });
+};
+
+const Layout = ({ children, home = false, setSearchResults, allPluginsData }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -24,7 +38,7 @@ const Layout = ({ children, home = false }) => {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
+      {/* <header className={styles.homeHeader}>
         {home ? (
           <h1 className={utilStyles.heading2Xl}>{siteTitle}</h1>
         ) : (
@@ -34,15 +48,87 @@ const Layout = ({ children, home = false }) => {
             </Link>
           </h2>
         )}
-      </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
+      </header> */}
+      {home ? (
+        <header className={styles.homeHeader}>
+          <nav className={styles.navBar}>
+            <Link href="/">
+              <a className={styles.logo}>
+                <Image
+                  src={`/logo.svg`}
+                  alt={`Harness logo`}
+                  height="25px"
+                  width="115px"
+                  className={styles.logo}
+                />
+              </a>
+            </Link>
+            <Link href="/">
+              <a className={styles.linkButton}>Plugins</a>
+            </Link>
+            <Link href="/">
+              <a className={styles.linkButton}>Documentation</a>
+            </Link>
+            <Link href="/">
+              <a className={styles.linkButton}>Support</a>
+            </Link>
+          </nav>
+          <div className={styles.search}>
+            <h1 className={styles.title}>Plugins Marketplace</h1>
+            <h4 className={styles.subTitle}>
+              Browse our registry of community plugins to customize your
+              continuous integration pipeline.
+            </h4>
+            {/* TODO: need to implement search logic */}
+            <input
+              type="text"
+              placeholder="Search for the plugins that you want..."
+              onChange={(e) => {
+                setSearchResults(search(e.target.value, allPluginsData));
+              }}
+              className={styles.searchInput}
+            ></input>
+          </div>
+          <div className={styles.image}>
+            <Image
+              src="/pipeline.svg"
+              alt="Harness pipeline"
+              layout="fill"
+            ></Image>
+          </div>
+        </header>
+      ) : (
+        <nav className={styles.pluginHeader}>
+            <Link href="/">
+              <a className={styles.logo}>
+                <Image
+                  src={`/logo.svg`}
+                  alt={`Harness logo`}
+                  height="25px"
+                  width="115px"
+                  className={styles.logo}
+                />
+              </a>
+            </Link>
+            {/* TODO: need to implement search logic */}
+            <input
+              type="text"
+              placeholder="Search for the plugins that you want..."
+              onChange={() => {}}
+              className={styles.searchInput}
+            ></input>
+            <Link href="/">
+              <a className={styles.linkButton}>Plugins</a>
+            </Link>
+            <Link href="/">
+              <a className={styles.linkButton}>Documentation</a>
+            </Link>
+            <Link href="/">
+              <a className={styles.linkButton}>Support</a>
+            </Link>
+          </nav>
       )}
+      <main>{children}</main>
     </div>
   );
 };

@@ -48,9 +48,3 @@ properties:
     description: The docker image to scan.  Supports Docker Hub or private repos.
     secret: false
     required: false
-ca_cert:
-    type: string
-    defaultValue: ''
-    description: The CA Cert to verify https with
-    secret: false
-    required: false
