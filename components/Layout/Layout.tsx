@@ -1,15 +1,15 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles/Layout.module.css";
+import { Dispatch, SetStateAction } from "react";
+import { PluginData } from "types";
+import styles from "./Layout.module.scss";
 
 export const siteTitle = "Drone Plugins";
 
-const search = (searchTerm, allPluginsData) => {
+const search = (searchTerm: string, allPluginsData: PluginData[]) => {
   return allPluginsData.filter((pluginData) => {
-    return (
-      pluginData.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    return pluginData.title.toLowerCase().includes(searchTerm.toLowerCase());
 
     // Just search in the title for now
     // join tags into a single string instead of looping through each
@@ -20,7 +20,19 @@ const search = (searchTerm, allPluginsData) => {
   });
 };
 
-const Layout = ({ children, home = false, setSearchResults, allPluginsData }) => {
+type LayoutProps = {
+  children: React.ReactNode;
+  home?: boolean;
+  setSearchResults?: Dispatch<SetStateAction<PluginData[]>>;
+  allPluginsData?: PluginData[];
+};
+
+const Layout = ({
+  children,
+  home = false,
+  setSearchResults,
+  allPluginsData,
+}: LayoutProps) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -99,34 +111,34 @@ const Layout = ({ children, home = false, setSearchResults, allPluginsData }) =>
         </header>
       ) : (
         <nav className={styles.pluginHeader}>
-            <Link href="/">
-              <a className={styles.logo}>
-                <Image
-                  src={`/logo.svg`}
-                  alt={`Harness logo`}
-                  height="25px"
-                  width="115px"
-                  className={styles.logo}
-                />
-              </a>
-            </Link>
-            {/* TODO: need to implement search logic */}
-            <input
-              type="text"
-              placeholder="Search for the plugins that you want..."
-              onChange={() => {}}
-              className={styles.searchInput}
-            ></input>
-            <Link href="/">
-              <a className={styles.linkButton}>Plugins</a>
-            </Link>
-            <Link href="/">
-              <a className={styles.linkButton}>Documentation</a>
-            </Link>
-            <Link href="/">
-              <a className={styles.linkButton}>Support</a>
-            </Link>
-          </nav>
+          <Link href="/">
+            <a className={styles.logo}>
+              <Image
+                src={`/logo.svg`}
+                alt={`Harness logo`}
+                height="25px"
+                width="115px"
+                className={styles.logo}
+              />
+            </a>
+          </Link>
+          {/* TODO: need to implement search logic */}
+          <input
+            type="text"
+            placeholder="Search for the plugins that you want..."
+            // onChange={() => {}}
+            className={styles.searchInput}
+          ></input>
+          <Link href="/">
+            <a className={styles.linkButton}>Plugins</a>
+          </Link>
+          <Link href="/">
+            <a className={styles.linkButton}>Documentation</a>
+          </Link>
+          <Link href="/">
+            <a className={styles.linkButton}>Support</a>
+          </Link>
+        </nav>
       )}
       <main>{children}</main>
     </div>

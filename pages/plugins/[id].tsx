@@ -1,16 +1,18 @@
 import { useEffect } from "react";
-import prism from "prismjs";
+import { highlightAll } from "prismjs";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import Layout from "../../components/layout";
-import styles from "../../styles/Plugin.module.css";
-import { getAllPluginIds, getPluginData } from "../../lib/plugins";
+import Layout from "components/Layout";
+import styles from "styles/Plugin.module.css";
+import { getAllPluginIds, getPluginData } from "lib/plugins";
+import { PluginData, Property } from "types";
 
 import "prismjs/components/prism-yaml";
 import "prismjs/themes/prism-okaidia.css";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-export const getStaticPaths = () => {
+export const getStaticPaths: GetStaticPaths = () => {
   const paths = getAllPluginIds();
   return {
     paths,
@@ -18,7 +20,7 @@ export const getStaticPaths = () => {
   };
 };
 
-export const getStaticProps = ({ params: { id } }) => {
+export const getStaticProps: GetStaticProps = ({ params: { id } }) => {
   const pluginData = getPluginData(id);
   return {
     props: {
@@ -29,39 +31,36 @@ export const getStaticProps = ({ params: { id } }) => {
 };
 
 //return html list of properties
-const getPropertiesMarkup = (properties) => {
+const getPropertiesMarkup = (properties: Property[]) => {
   const listEntries = Object.entries(properties).map(
-    ([key, { defaultValue, description, secret, type, required }]) => {
-
-      return (
-        <li className={styles.propertyListItem} key={key}>
-          <div className={styles.propertyTags}>
-            <h4 className={styles.propertyTitle}>{key}</h4>
-            {type !== undefined && (
-              <span className={styles.propertyType}>{type}</span>
-            )}
-            {required !== undefined && required ? (
-              <span className={styles.propertyRequired}>required</span>
-            ) : (
-              <span className={styles.propertyOptional}>optional</span>
-            )}
-          </div>
-          {description !== undefined && (
-            <p className={styles.propertyDescription}>{description}</p>
+    ([key, { description, secret, type, required }]) => (
+      <li className={styles.propertyListItem} key={key}>
+        <div className={styles.propertyTags}>
+          <h4 className={styles.propertyTitle}>{key}</h4>
+          {type !== undefined && (
+            <span className={styles.propertyType}>{type}</span>
           )}
-          {secret && (
-            <Link href="https://docs.drone.io/secret/">
-              <a className={styles.propertySecret}>Secret recommended</a>
-            </Link>
+          {required !== undefined && required ? (
+            <span className={styles.propertyRequired}>required</span>
+          ) : (
+            <span className={styles.propertyOptional}>optional</span>
           )}
-          {/* {defaultValue !== undefined && (
+        </div>
+        {description !== undefined && (
+          <p className={styles.propertyDescription}>{description}</p>
+        )}
+        {secret && (
+          <Link href="https://docs.drone.io/secret/">
+            <a className={styles.propertySecret}>Secret recommended</a>
+          </Link>
+        )}
+        {/* {defaultValue !== undefined && (
             <p className={styles.propertyValue}>
               default = {defaultValue || "none"}
             </p>
           )} */}
-        </li>
-      );
-    }
+      </li>
+    )
   );
 
   return (
@@ -72,13 +71,16 @@ const getPropertiesMarkup = (properties) => {
   );
 };
 
-const Plugin = ({
+type PluginProps = {
+  pluginData: PluginData;
+};
+
+const Plugin: NextPage<PluginProps> = ({
   pluginData: {
     title,
     author,
     repo,
     image,
-    license,
     readme,
     description,
     logo,
@@ -89,7 +91,7 @@ const Plugin = ({
 }) => {
   // enables syntax highlighting
   useEffect(() => {
-    prism.highlightAll();
+    highlightAll();
   }, []);
 
   return (
@@ -99,10 +101,10 @@ const Plugin = ({
       </Head>
       <article className={styles.container}>
         <div className={styles.breadCrumbs}>
-        <Link href="/">
-              <a>Drone plugins</a>
-            </Link>
-            <span>{` > ${title}`}</span>
+          <Link href="/">
+            <a>Drone plugins</a>
+          </Link>
+          <span>{` > ${title}`}</span>
         </div>
         <section className={styles.section}>
           <div className={styles.mainContent}>

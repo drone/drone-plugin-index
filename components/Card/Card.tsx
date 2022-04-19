@@ -1,10 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
-import styles from "../styles/Card.module.css";
+import styles from "./Card.module.scss";
+import { PluginData } from "../../types";
 
-const Card = ({ pluginData }) => {
+type CardProps = {
+  pluginData: PluginData;
+};
+
+const Card = ({ pluginData }: CardProps) => {
   const { id, title, tags, logo } = pluginData;
-  console.log(pluginData);
+
   return (
     <div className={styles.container}>
       <div className={styles.pluginTitle}>
