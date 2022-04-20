@@ -4,7 +4,6 @@ import styles from "../styles/Card.module.css";
 
 const Card = ({ pluginData }) => {
   const { id, title, tags, logo } = pluginData;
-  console.log(pluginData);
   return (
     <div className={styles.container}>
       <div className={styles.pluginTitle}>
@@ -32,7 +31,7 @@ const Card = ({ pluginData }) => {
         </div>
       )}
       {/* TODO: HARDCODED - needs to be fixed */}
-      <div className={styles.infoContainer}>
+      {/* <div className={styles.infoContainer}>
         <div className={styles.downloads}>
           <Image
             src="/icons/download.svg"
@@ -51,7 +50,7 @@ const Card = ({ pluginData }) => {
           />{" "}
           verified
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

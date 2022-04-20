@@ -1,14 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import prism from "prismjs";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import Layout from "../../components/layout";
+import { useRouter } from "next/router";
 import styles from "../../styles/Plugin.module.css";
+import layoutStyles from "../../styles/Layout.module.css";
 import { getAllPluginIds, getPluginData } from "../../lib/plugins";
 
 import "prismjs/components/prism-yaml";
 import "prismjs/themes/prism-okaidia.css";
+
+const DRONE = "drone";
+const HARNESS = "harness";
 
 export const getStaticPaths = () => {
   const paths = getAllPluginIds();
@@ -31,8 +35,7 @@ export const getStaticProps = ({ params: { id } }) => {
 //return html list of properties
 const getPropertiesMarkup = (properties) => {
   const listEntries = Object.entries(properties).map(
-    ([key, { defaultValue, description, secret, type, required }]) => {
-
+    ([key, { description, secret, type, required }]) => {
       return (
         <li className={styles.propertyListItem} key={key}>
           <div className={styles.propertyTags}>
@@ -78,7 +81,6 @@ const Plugin = ({
     author,
     repo,
     image,
-    license,
     readme,
     description,
     logo,
@@ -87,22 +89,61 @@ const Plugin = ({
     cieExample,
   },
 }) => {
+  const router = useRouter();
+  const [exampleType, setExampleType] = useState(DRONE);
+
   // enables syntax highlighting
   useEffect(() => {
     prism.highlightAll();
-  }, []);
+  }, [exampleType]);
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>{title}</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content={title} />
+        <meta name="og:title" content={title} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
+      <nav className={layoutStyles.pluginHeader}>
+        <Link href="/">
+          <a className={layoutStyles.logo}>
+            <Image
+              src={`/logo.svg`}
+              alt={`Harness logo`}
+              height="25px"
+              width="115px"
+            />
+          </a>
+        </Link>
+        <input
+          type="text"
+          placeholder="Search for the plugins that you want..."
+          onKeyUp={(e) => {
+            e.preventDefault();
+            if (e.key === "Enter") {
+              router.push(`/?search=${e.target.value}`);
+            }
+          }}
+          className={layoutStyles.searchInput}
+        ></input>
+        <Link href="/">
+          <a className={layoutStyles.linkButton}>Plugins</a>
+        </Link>
+        <Link href="/">
+          <a className={layoutStyles.linkButton}>Documentation</a>
+        </Link>
+        <Link href="/">
+          <a className={layoutStyles.linkButton}>Support</a>
+        </Link>
+      </nav>
       <article className={styles.container}>
         <div className={styles.breadCrumbs}>
-        <Link href="/">
-              <a>Drone plugins</a>
-            </Link>
-            <span>{` > ${title}`}</span>
+          <Link href="/">
+            <a>Drone plugins</a>
+          </Link>
+          <span>{` > ${title}`}</span>
         </div>
         <section className={styles.section}>
           <div className={styles.mainContent}>
@@ -144,22 +185,49 @@ const Plugin = ({
         {example && (
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Example</h2>
-            <pre className="language-yaml">
-              <code>{example}</code>
-            </pre>
-          </section>
-        )}
-        {cieExample && (
-          <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Example</h2>
-            <pre className="language-yaml">
-              <code>{cieExample}</code>
-            </pre>
+            <div className={styles.exampleToggleContainer}>
+              <div className={styles.exampleToggle}>
+                <button
+                  className={
+                    exampleType === DRONE
+                      ? styles.exampleToggleButtonActive
+                      : styles.exampleToggleButtonInactive
+                  }
+                  onClick={() => {
+                    setExampleType(DRONE);
+                  }}
+                >
+                  Drone
+                </button>
+                <button
+                  className={
+                    exampleType === HARNESS
+                      ? styles.exampleToggleButtonActive
+                      : styles.exampleToggleButtonInactive
+                  }
+                  onClick={() => {
+                    setExampleType(HARNESS);
+                  }}
+                >
+                  Harness
+                </button>
+              </div>
+            </div>
+            {exampleType === DRONE && (
+              <pre className="language-yaml">
+                <code>{example}</code>
+              </pre>
+            )}
+            {exampleType === HARNESS && (
+              <pre className="language-yaml">
+                <code>{cieExample}</code>
+              </pre>
+            )}
           </section>
         )}
         {properties && getPropertiesMarkup(properties)}
       </article>
-    </Layout>
+    </>
   );
 };
 
