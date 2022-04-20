@@ -35,7 +35,7 @@ export const getStaticProps = ({ params: { id } }) => {
 //return html list of properties
 const getPropertiesMarkup = (properties) => {
   const listEntries = Object.entries(properties).map(
-    ([key, { description, secret, type, required }]) => {
+    ([key, { description, secret, type, required, defaultValue }]) => {
       return (
         <li className={styles.propertyListItem} key={key}>
           <div className={styles.propertyTags}>
@@ -57,11 +57,11 @@ const getPropertiesMarkup = (properties) => {
               <a className={styles.propertySecret}>Secret recommended</a>
             </Link>
           )}
-          {/* {defaultValue !== undefined && (
-            <p className={styles.propertyValue}>
-              default = {defaultValue || "none"}
+          {defaultValue !== undefined && (
+            <p className={styles.propertyDefault}>
+              Default: {defaultValue.toString() || "none"}
             </p>
-          )} */}
+          )}
         </li>
       );
     }

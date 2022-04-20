@@ -8,4 +8,231 @@ tags:
 logo: ansible.svg
 repo: https://github.com/drone-plugins/drone-ansible
 image: https://hub.docker.com/r/plugins/ansible
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-ansible/blob/master/README.md
 description: The Ansible plugin can be used to run ansible plays.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: check ansible syntax
+    image: plugins/ansible:3
+    environment:
+      additional_var:
+        from_secret: additional_var
+      another_var: foo
+    settings:
+      playbook: ansible/playbook.yml
+      galaxy: ansible/requirements.yml
+      inventory: ansible/inventory
+      syntax_check: true
+    when:
+      event:
+      - pull_request
+properties:
+  become:
+    type: boolean
+    defaultValue: false
+    description: run operations with become
+    secret: false
+    required: false
+  become_method:
+    type: string
+    defaultValue: ''
+    description: privilege escalation method to use
+    secret: false
+    required: false
+  become_user:
+    type: string
+    defaultValue: ''
+    description: run operations as this user
+    secret: false
+    required: false
+  check:
+    type: boolean
+    defaultValue: false
+    description: run a check, do not apply any changes
+    secret: false
+    required: false
+  connection:
+    type: string
+    defaultValue: ''
+    description: connection type to use
+    secret: false
+    required: false
+  diff:
+    type: boolean
+    defaultValue: false
+    description: show the differences, may print secrets
+    secret: false
+    required: false
+  extra_vars:
+    type: string
+    defaultValue: ''
+    description: set additional variables as key=value e.g. 'key1=value1,[key2=value2]'
+    secret: false
+    required: false
+  flush_cache:
+    type: boolean
+    defaultValue: false
+    description: clear the fact cache for every host in inventory
+    secret: false
+    required: false
+  force_handlers:
+    type: boolean
+    defaultValue: false
+    description: run handlers even if a task fails
+    secret: false
+    required: false
+  forks:
+    type: number
+    defaultValue: 5
+    description: specify number of parallel processes to use
+    secret: false
+    required: false
+  galaxy:
+    type: string
+    defaultValue: ''
+    description: path to galaxy requirements
+    secret: false
+    required: false
+  galaxy_force:
+    type: boolean
+    defaultValue: true
+    description: force overwriting an existing role or collection
+    secret: false
+    required: false
+  inventory:
+    type: string
+    defaultValue: ''
+    description: specify (multiple) inventory host path(s) e.g. 'path1,[path2]'
+    secret: false
+    required: false
+  limit:
+    type: string
+    defaultValue: ''
+    description: further limit selected hosts to an additional pattern
+    secret: false
+    required: false
+  list_hosts:
+    type: boolean
+    defaultValue: false
+    description: outputs a list of matching hosts
+    secret: false
+    required: false
+  list_tags:
+    type: boolean
+    defaultValue: false
+    description: list all available tags
+    secret: false
+    required: false
+
+  list_tasks:
+    type: boolean
+    defaultValue: false
+    description: list all tasks that would be executed
+    secret: false
+    required: false
+  module_path:
+    type: string
+    defaultValue: ''
+    description: prepend paths to module library e.g. 'path1,[path2]'
+    secret: false
+    required: false
+  playbook:
+    type: string
+    defaultValue: ''
+    description: list of playbooks to apply e.g. 'playbook1,[playbook2]'
+    secret: false
+    required: false
+  private_key:
+    type: string
+    defaultValue: ''
+    description: use this key to authenticate the ssh connection
+    secret: true
+    required: false
+  requirements:
+    type: string
+    defaultValue: ''
+    description: path to python requirements
+    secret: false
+    required: false
+  scp_extra_args:
+    type: string
+    defaultValue: ''
+    description: specify extra arguments to pass to scp only
+    secret: false
+    required: false
+  sftp_extra_args:
+    type: string
+    defaultValue: ''
+    description: specify extra arguments to pass to sftp only
+    secret: false
+    required: false
+  ssh_common_args:
+    type: string
+    defaultValue: ''
+    description: specify common arguments to pass to sftp/scp/ssh
+    secret: false
+    required: false
+  ssh_extra_args:
+    type: string
+    defaultValue: ''
+    description: specify extra arguments to pass to ssh only
+    secret: false
+    required: false
+  skip_tags:
+    type: array
+    defaultValue: ''
+    description: only run plays and tasks whose tags do not match
+    secret: false
+    required: false
+  start_at_task:
+    type: string
+    defaultValue: ''
+    description: start the playbook at the task matching this name
+    secret: false
+    required: false
+  syntax_check:
+    type: boolean
+    defaultValue: false
+    description: perform a syntax check on the playbook
+    secret: false
+    required: false
+  tags:
+    type: array
+    defaultValue: ''
+    description: only run plays and tasks tagged with these values
+    secret: false
+    required: false
+  timeout:
+    type: number
+    defaultValue: 0
+    description: override the connection timeout in seconds
+    secret: false
+    required: false
+  user:
+    type: string
+    defaultValue: ''
+    description: connect as this user
+    secret: false
+    required: false
+  vault_id:
+    type: string
+    defaultValue: ''
+    description: the vault identity to use
+    secret: false
+    required: false
+  vault_password:
+    type: string
+    defaultValue: ''
+    description: the vault password to use
+    secret: true
+    required: false
+  verbose:
+    type: number
+    defaultValue: 0
+    description: level of verbosity, 0 up to 4
+    secret: false
+    required: false

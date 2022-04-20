@@ -78,7 +78,13 @@
           "properties": {
             "type": {
               "description": "Property type",
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "string",
+                "number",
+                "array",
+                "boolean"
+              ]
             },
             "defaultValue": {
               "description": "Property default value",

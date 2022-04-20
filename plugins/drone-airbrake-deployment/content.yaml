@@ -5,6 +5,32 @@ tags:
   - deployment
 repo: https://github.com/dhoeric/drone-airbrake-deployment
 image: https://hub.docker.com/r/dhoeric/drone-airbrake-deployment
-description: >-
-  Use the airbrake-deployment plugin to [notify Airbrake a deployment in certain
-  environment](https://airbrake.io/docs/features/deploy-tracking/).
+license: Apache License 2.0
+readme: https://github.com/dhoeric/drone-airbrake-deployment/blob/master/README.md
+description: Use the airbrake-deployment plugin to notify Airbrake of deployment in a certain environment.
+example: |
+  kind: pipeline
+  type: docker
+  name: notify_airbrake
+
+  steps:
+  - name: airbrake
+    image: dhoeric/drone-airbrake-deployment:latest
+    settings:
+      airbrake_environment: staging
+      secrets:
+      - airbrake_project_id
+      - airbrake_project_key
+properties:
+  airbrake_environment:
+    type: string
+    defaultValue: ''
+    description: environment have been deployed in the drone build
+    secret: false
+    required: true
+  secrets:
+    type: array
+    defaultValue: ''
+    description: airbrake_project_id = project ID of airbrake project, airbrake_project_key = project API key of airbrake project
+    secret: true
+    required: true
