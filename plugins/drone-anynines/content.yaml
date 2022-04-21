@@ -7,6 +7,48 @@ tags:
 logo: anynines.svg
 repo: https://github.com/drone-plugins/drone-anynines
 image: https://hub.docker.com/r/plugins/anynines
-description: >-
-  This plugin deploys your application on the
-  [Anynines](https://www.anynines.com/) platform.
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-anynines/blob/master/README.md
+description: This plugin deploys your application on the Anynines platform.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: anynines
+    image: plugins/anynines
+    settings:
+      username: octocat@github.com
+      password: password
+      organization: octocat_github_com
+properties:
+  username:
+    type: string
+    defaultValue: ''
+    description: Username for Anynines auth.
+    secret: false
+    required: true
+  password:
+    type: string
+    defaultValue: ''
+    description: Password for Anynines auth.
+    secret: true
+    required: true
+  organization:
+    type: string
+    defaultValue: ''
+    description: Organization on Anynines.
+    secret: false
+    required: true
+  space:
+    type: string
+    defaultValue: ''
+    description: Space within Anynines organization.
+    secret: false
+    required: false
+  skip_cleanup:
+    type: boolean
+    defaultValue: false
+    description: Skip cleanup of workspace.
+    secret: false
+    required: false

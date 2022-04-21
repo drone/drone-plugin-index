@@ -31,6 +31,6 @@ properties:
   secrets:
     type: array
     defaultValue: ''
-    description: airbrake_project_id = project ID of airbrake project, airbrake_project_key = project API key of airbrake project
+    description: project ID of airbrake project & project API key of airbrake project
     secret: true
     required: true

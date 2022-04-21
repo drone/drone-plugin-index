@@ -18,18 +18,11 @@ example: |
   steps:
   - name: check ansible syntax
     image: plugins/ansible:3
-    environment:
-      additional_var:
-        from_secret: additional_var
-      another_var: foo
     settings:
       playbook: ansible/playbook.yml
       galaxy: ansible/requirements.yml
       inventory: ansible/inventory
       syntax_check: true
-    when:
-      event:
-      - pull_request
 properties:
   become:
     type: boolean
