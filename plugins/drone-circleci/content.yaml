@@ -7,4 +7,43 @@ tags:
 logo: circleci.svg
 repo: https://github.com/wesleimp/drone-circleci
 image: https://hub.docker.com/r/wesleimp/drone-circleci
+license: Apache License 2.0
+readme: https://github.com/wesleimp/drone-circleci/blob/master/README.md
 description: The CircleCI plugin allows you to trigger builds automatically.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: trigger circle-ci builds
+    image: wesleimp/drone-circleci
+    settings:
+      token: xxxxxxxxxx
+      user: octocat
+      repo: hello-world
+      branch: master
+properties:
+  token:
+    type: string
+    defaultValue: ''
+    description: CircleCI user token.
+    secret: true
+    required: false
+  user:
+    type: string
+    defaultValue: ''
+    description: CircleCI user.
+    secret: true
+    required: false
+  repo:
+    type: string
+    defaultValue: ''
+    description: CircleCI repo.
+    secret: false
+    required: false
+  branch:
+    type: string
+    defaultValue: default
+    description: CircleCI branch.
+    secret: false
+    required: false

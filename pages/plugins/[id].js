@@ -77,6 +77,7 @@ const getPropertiesMarkup = (properties) => {
 
 const Plugin = ({
   pluginData: {
+    id,
     title,
     author,
     repo,
@@ -166,17 +167,21 @@ const Plugin = ({
                 source
               </a>
               {readme && (
-                <>
-                  <a href={readme} rel="noopener noreferrer">
-                    readme
-                  </a>
-                </>
+                <a href={readme} rel="noopener noreferrer">
+                  readme
+                </a>
               )}
               {image && (
                 <a href={image} rel="noopener noreferrer">
                   image
                 </a>
               )}
+              {/* TODO need to update branch name from v2 */}
+              <a
+                href={`https://github.com/drone/drone-plugin-index/blob/v2/plugins/${id}/original.md`}
+              >
+                Original doc
+              </a>
             </div>
           </div>
           <hr className={styles.line} />
