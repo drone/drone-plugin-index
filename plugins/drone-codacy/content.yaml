@@ -5,6 +5,29 @@ tags:
 logo: codacy.svg
 repo: https://github.com/drone-plugins/drone-codacy
 image: https://hub.docker.com/r/plugins/codacy
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-codacy/blob/master/README.md
 description: >-
-  This plugin can upload coverage reports to [Codacy](https://www.codacy.com/),
-  currently it's limited to Golang coverage reports.
+  This plugin can upload coverage reports to Codacy, currently it's limited to Golang coverage reports.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: codacy
+    image: plugins/codacy
+    settings:
+      token: your-codacy-token
+properties:
+  token:
+    type: string
+    defaultValue: ''
+    description: Codacy authentication token.
+    secret: true
+    required: true
+  pattern:
+    type: string
+    defaultValue: '**/*.out'
+    description: Coverage search pattern.
+    secret: false
+    required: false
