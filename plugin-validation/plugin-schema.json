@@ -83,7 +83,8 @@
                 "string",
                 "number",
                 "array",
-                "boolean"
+                "boolean",
+                "object"
               ]
             },
             "defaultValue": {

@@ -8,6 +8,77 @@ tags:
 logo: amazon_cloudformation.svg
 repo: https://github.com/robertstettner/drone-cloudformation
 image: https://hub.docker.com/r/robertstettner/drone-cloudformation
+license: MIT License
+readme: https://github.com/robertstettner/drone-cloudformation/blob/master/README.md
 description: >-
   The CloudFormation plugin can be used to create/update or delete stacks, and
   to validate templates.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: deploy
+    image: robertstettner/drone-cloudformation
+    settings:
+      stackname: my-awesome-stack
+      template: templates/stack.yml
+      params:
+        Version: 123
+        Environment: staging
+properties:
+  mode:
+    type: string
+    defaultValue: createOrUpdate
+    description: Mode to run the plugin, options are createOrUpdate, create, delete, validate.
+    secret: false
+    required: false
+  stackname:
+    type: string
+    defaultValue: ''
+    description: the name of the CloudFormation stack. Required for all but validate mode.
+    secret: false
+    required: false
+  template:
+    type: string
+    defaultValue: ''
+    description: the path to the CloudFormation template. Required for all but delete mode.
+    secret: false
+    required: false
+  params:
+    type: object
+    defaultValue: ''
+    description: object of parameters to feed into the template. Not needed for validate and delete modes.
+    secret: false
+    required: false
+  region:
+    type: string
+    defaultValue: eu-west-1
+    description: the AWS region to deploy to.
+    secret: false
+    required: false
+  access_key:
+    type: string
+    defaultValue: ''
+    description: the AWS access key.
+    secret: true
+    required: false
+  secret_key:
+    type: string
+    defaultValue: ''
+    description: the AWS secret key.
+    secret: true
+    required: false
+  batch:
+    type: array
+    defaultValue: ''
+    description: an array of configurations.
+    secret: false
+    required: false
+  parallel:
+    type: boolean
+    defaultValue: false
+    description: whether to run the batch in parallel.
+    secret: false
+    required: false
+

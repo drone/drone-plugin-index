@@ -7,6 +7,206 @@ tags:
 logo: cloudfoundry.svg
 repo: https://github.com/Comcast/drone-cloudfoundry
 image: https://hub.docker.com/r/cheslip/drone-cloudfoundry
+license: Apache License 2.0
+readme: https://github.com/Comcast/drone-cloudfoundry/blob/master/README.md
 description: >-
   The Cloud Foundry plugin can be used to deploy files and/or services to Cloud
   Foundry.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: deploy
+    image: cheslip/drone-cloudfoundry
+    settings:
+      api: api.run.pivotal.io
+      org: pivotal
+      space: production
+properties:
+  CF_API:
+    type: string
+    defaultValue: ''
+    description: Target API.
+    secret: true
+    required: false
+  CF_USER:
+    type: string
+    defaultValue: ''
+    description: CF username.
+    secret: true
+    required: false
+  CF_PASSWORD:
+    type: string
+    defaultValue: ''
+    description: CF password.
+    secret: true
+    required: false
+  CF_ORG:
+    type: string
+    defaultValue: ''
+    description: target CF org.
+    secret: true
+    required: false
+  CF_SPACE:
+    type: string
+    defaultValue: ''
+    description: target CF space.
+    secret: true
+    required: false
+  api:
+    type: string
+    defaultValue: ''
+    description: Target API.
+    secret: false
+    required: false
+  org:
+    type: string
+    defaultValue: ''
+    description: Target org.
+    secret: false
+    required: false
+  space:
+    type: string
+    defaultValue: ''
+    description: Target space.
+    secret: false
+    required: false
+  user:
+    type: string
+    defaultValue: ''
+    description: Auth username.
+    secret: false
+    required: false
+  password:
+    type: string
+    defaultValue: ''
+    description: Auth password.
+    secret: true
+    required: false
+  name:
+    type: string
+    defaultValue: ''
+    description: Override application name.
+    secret: false
+    required: false
+  buildpack:
+    type: string
+    defaultValue: ''
+    description: Custom buildpack.
+    secret: false
+    required: false
+  command:
+    type: string
+    defaultValue: ''
+    description: Startup command.
+    secret: false
+    required: false
+  domain:
+    type: string
+    defaultValue: ''
+    description: Domain.
+    secret: false
+    required: false
+  manifest:
+    type: string
+    defaultValue: ''
+    description: Path to manifest.
+    secret: false
+    required: false
+  docker_image:
+    type: string
+    defaultValue: ''
+    description: Image name.
+    secret: false
+    required: false
+  instances:
+    type: number
+    defaultValue: ''
+    description: Number of instances.
+    secret: false
+    required: false
+  disk:
+    type: string
+    defaultValue: ''
+    description: Disk limit e.g. 256M.
+    secret: false
+    required: false
+  memory:
+    type: string
+    defaultValue: ''
+    description: Memory limit e.g. 256M.
+    secret: false
+    required: false
+  hostname:
+    type: string
+    defaultValue: ''
+    description: Hostname.
+    secret: false
+    required: false
+  path:
+    type: string
+    defaultValue: ''
+    description: App path.
+    secret: false
+    required: false
+  stack:
+    type: string
+    defaultValue: ''
+    description: Stack to use.
+    secret: false
+    required: false
+  timeout:
+    type: number
+    defaultValue: ''
+    description: App start timeout.
+    secret: false
+    required: false
+  health_check_type:
+    type: string
+    defaultValue: ''
+    description: Application health check type e.g. port.
+    secret: false
+    required: false
+  route_path:
+    type: string
+    defaultValue: ''
+    description: Route path.
+    secret: false
+    required: false
+  no_hostname:
+    type: boolean
+    defaultValue: false
+    description: Map the route domain to this app.
+    secret: false
+    required: false
+  no_manifest:
+    type: boolean
+    defaultValue: false
+    description: Ignore manifest file.
+    secret: false
+    required: false
+  no_route:
+    type: boolean
+    defaultValue: false
+    description: Do not map a route to this app and remove routes from previous pushes of this app.
+    secret: false
+    required: false
+  no_start:
+    type: boolean
+    defaultValue: false
+    description: Do not start an app after pushing.
+    secret: false
+    required: false
+  random_route:
+    type: boolean
+    defaultValue: false
+    description: Generate a random route for this app.
+    secret: false
+    required: false
+  skip_ssl:
+    type: boolean
+    defaultValue: false
+    description: Skip verification of the API endpoint. Not recommended!
+    secret: false
+    required: false

@@ -10,11 +10,7 @@ license: MIT License
 readme: https://github.com/jetrails/drone-cloudflare-caching/blob/master/README.md
 description: >-
   Our Drone plugin enables the ability for your pipeline to interface with
-  Cloudflare's API to purge cache. This plugin is written in Go and it uses the
-  [cloudflare-go](https://github.com/cloudflare/cloudflare-go) package to
-  communicate with Cloudflare's API. For information on Cloudflare's API please
-  refer to their
-  [documentation](https://api.cloudflare.com/#zone-purge-all-files) page.
+  Cloudflare's API to purge cache.
 example: |
   kind: pipeline
   name: default
