@@ -8,6 +8,91 @@ tags:
 logo: amazon_beanstalk.svg
 repo: https://github.com/josmo/drone-elastic-beanstalk
 image: https://hub.docker.com/r/pelotech/drone-elastic-beanstalk
+license: Apache License 2.0
+readme: https://github.com/josmo/drone-elastic-beanstalk/blob/master/README.md
 description: >-
   The Elastic Beanstalk plugin can be used to deploy an app to a Beanstalk
   environment.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: beanstalk
+    image: pelotech/drone-elastic-beanstalk
+    settings:
+      access_key: 970d28f4dd477bc184fbd10b376de753
+      secret_key: 9c5785d3ece6a9cdefa42eb99b58986f9095ff1c
+      region: us-east-1
+      version_label: v1
+      description: Deployed with DroneCI
+      auto_create: true
+      bucket_name: my-bucket-name
+      bucket_key: 970d28f4dd477bc184fbd10b376de753
+properties:
+  access_key:
+    type: string
+    defaultValue: ''
+    description: AWS access key.
+    secret: true
+    required: false
+  secret_key:
+    type: string
+    defaultValue: ''
+    description: AWS secret key.
+    secret: true
+    required: false
+  region:
+    type: string
+    defaultValue: ''
+    description: AWS region.
+    secret: false
+    required: false
+  version_label:
+    type: string
+    defaultValue: ''
+    description: label to identify this version.
+    secret: false
+    required: false
+  description:
+    type: string
+    defaultValue: ''
+    description: A description about the deployment.
+    secret: false
+    required: false
+  auto_create:
+    type: boolean
+    defaultValue: false
+    description: Automatically create the application.
+    secret: false
+    required: false
+  process:
+    type: boolean
+    defaultValue: false
+    description: Preprocess and validate the manifest.
+    secret: false
+    required: false
+  bucket_name:
+    type: string
+    defaultValue: ''
+    description: Bucket for S3 source bundle.
+    secret: false
+    required: false
+  bucket_key:
+    type: string
+    defaultValue: ''
+    description: Key for S3 source bundle.
+    secret: false
+    required: false
+  environment_update:
+    type: boolean
+    defaultValue: false
+    description: Flag whether to update ElasticBeansTalk environment with the new version.
+    secret: false
+    required: false
+  environment_name:
+    type: string
+    defaultValue: ''
+    description: Environment Name, if environment_update true.
+    secret: false
+    required: false

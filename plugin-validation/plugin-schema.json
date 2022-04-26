@@ -89,7 +89,7 @@
             },
             "defaultValue": {
               "description": "Property default value",
-              "type": ["number", "string", "boolean", "array"]
+              "type": ["number", "string", "boolean", "array", "object"]
             },
             "description": {
               "description": "Property description",

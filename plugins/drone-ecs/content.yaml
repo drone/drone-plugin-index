@@ -9,4 +9,87 @@ tags:
 logo: amazon_ecs.svg
 repo: https://github.com/josmo/drone-ecs
 image: https://hub.docker.com/r/pelotech/drone-ecs
+license: Apache License 2.0
+readme: https://github.com/josmo/drone-ecs/blob/main/README.md
 description: The ECS plugin can be used to deploy a Docker image to an ECS environment.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: ecs
+    image: pelotech/drone-ecs
+    settings:
+      access_key: superaccesskey
+      secret_key: supersecretkey
+      service: service1
+      region: us-west-2
+      family: my-ecs-task
+      image_name: namespace/repo
+      image_tag: latest
+      environment_variables:
+        - DATABASE_URI=database uri
+      port_mappings:
+        - 80 9000
+      memory: 128
+properties:
+  access_key:
+    type: string
+    defaultValue: ''
+    description: AWS access key.
+    secret: true
+    required: false
+  secret_key:
+    type: string
+    defaultValue: ''
+    description: AWS secret key.
+    secret: true
+    required: false
+  service:
+    type: string
+    defaultValue: ''
+    description: ecs service on that environment to upgrade.
+    secret: false
+    required: false
+  region:
+    type: string
+    defaultValue: ''
+    description: AWS region.
+    secret: false
+    required: false
+  family:
+    type: string
+    defaultValue: ''
+    description: ECS task.
+    secret: false
+    required: false
+  image_name:
+    type: string
+    defaultValue: ''
+    description: docker image to use.
+    secret: false
+    required: false
+  image_tag:
+    type: string
+    defaultValue: ''
+    description: docker image tag to use.
+    secret: false
+    required: false
+  environment_variables:
+    type: array
+    defaultValue: []
+    description: list of environment variables to pass to ecs.
+    secret: false
+    required: false
+  port_mappings:
+    type: array
+    defaultValue: []
+    description: list of port mappings to pass to ecs.
+    secret: false
+    required: false
+  memory:
+    type: number
+    defaultValue: ''
+    description: memory to assign to the service.
+    secret: false
+    required: false
