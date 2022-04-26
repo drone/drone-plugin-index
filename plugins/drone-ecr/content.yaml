@@ -9,6 +9,135 @@ tags:
 logo: amazon_ecr.svg
 repo: https://github.com/drone-plugins/drone-ecr
 image: https://hub.docker.com/r/plugins/ecr
+license: None
+readme: https://github.com/drone-plugins/drone-ecr/blob/master/README.md
 description: >-
   The ECR plugin can be used to build and publish images to the Amazon ECR
   registry.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: publish  
+    image: plugins/ecr
+    settings:
+      access_key: a50d28f4dd477bc184fbd10b376de753
+      secret_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
+      repo: bar
+      registry: <account_id>.dkr.ecr.us-east-1.amazonaws.com
+properties:
+  access_key:
+    type: string
+    defaultValue: ''
+    description: AWS access key.
+    secret: true
+    required: true
+  secret_key:
+    type: string
+    defaultValue: ''
+    description: AWS secret key.
+    secret: true
+    required: true
+  create_repository:
+    type: boolean
+    defaultValue: false
+    description: Create repository if it does not exist.
+    secret: false
+    required: false
+  region:
+    type: string
+    defaultValue: us-east-1
+    description: AWS region.
+    secret: false
+    required: false
+  repo:
+    type: string
+    defaultValue: ''
+    description: repository name for the image.
+    secret: false
+    required: true
+  lifecycle_policy:
+    type: string
+    defaultValue: ''
+    description: filename of ecr lifecycle json policy.
+    secret: false
+    required: false
+  repository_policy:
+    type: string
+    defaultValue: ''
+    description: filename of ecr repository json policy.
+    secret: false
+    required: false
+  tags:
+    type: array
+    defaultValue: latest
+    description: repository tag for the image, defaults to latest.
+    secret: false
+    required: false
+  dockerfile:
+    type: string
+    defaultValue: Dockerfile
+    description: filename of dockerfile.
+    secret: false
+    required: false
+  auth:
+    type: string
+    defaultValue: ''
+    description: auth token for the registry.
+    secret: true
+    required: false
+  context:
+    type: string
+    defaultValue: rot of the git repo
+    description: context directory for the dockerfile.
+    secret: false
+    required: false
+  force_tag:
+    type: boolean
+    defaultValue: false
+    description: replace existing matched image tags.
+    secret: false
+    required: false
+  insecure:
+    type: boolean
+    defaultValue: false
+    description: enable insecure communication to this registry.
+    secret: false
+    required: false
+  mirror:
+    type: string
+    defaultValue: ''
+    description: use a mirror registry instead of pulling images directly from the central Hub.
+    secret: false
+    required: false
+  bip:
+    type: boolean
+    defaultValue: false
+    description: use for pass bridge ip.
+    secret: false
+    required: false
+  custom_dns:
+    type: string
+    defaultValue: ''
+    description: set custom dns servers for the container.
+    secret: false
+    required: false
+  storage_driver:
+    type: string
+    defaultValue: ''
+    description: supports aufs, overlay or vfs drivers.
+    secret: false
+    required: false
+  build_args:
+    type: array
+    defaultValue: []
+    description: custom arguments passed to docker build.
+    secret: false
+    required: false
+  scan_on_push:
+    type: boolean
+    defaultValue: false
+    description: boolean of whether to enable automatic ECR images vulnerabilities scanning for repository if it was created with create_repository=true.
+    secret: false
+    required: false

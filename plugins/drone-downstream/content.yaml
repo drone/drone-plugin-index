@@ -7,4 +7,75 @@ tags:
 logo: drone.svg
 repo: https://github.com/drone-plugins/drone-downstream
 image: https://hub.docker.com/r/plugins/downstream
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-downstream/blob/master/README.md
 description: Use this plugin to trigger builds for a list of downstream repositories. This
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: trigger  
+    image: plugins/downstream
+    settings:
+      server: https://drone.example.com
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+      fork: true
+      repositories:
+        - octocat/Hello-World
+        - octocat/Spoon-Knife
+properties:
+  token:
+    type: string
+    defaultValue: ''
+    description: drone server auth token.
+    secret: true
+    required: true
+  server:
+    type: string
+    defaultValue: ''
+    description: drone server url.
+    secret: false
+    required: true
+  repositories:
+    type: array
+    defaultValue: []
+    description: trigger builds for the repository list, you can mention branch using @.
+    secret: false
+    required: true
+  fork:
+    type: boolean
+    defaultValue: false
+    description: trigger new build numbers if true, else rebuild.
+    secret: false
+    required: false
+  wait:
+    type: boolean
+    defaultValue: false
+    description: wait for any currently running builds to finish if true, else fails.
+    secret: false
+    required: false
+  timeout:
+    type: number
+    defaultValue: 60
+    description: how long to wait on any currently running builds.
+    secret: false
+    required: false
+  params:
+    type: array
+    defaultValue: []
+    description: supports params in KEY=value format as well as loading of params from godotenv files.
+    secret: false
+    required: false
+  deploy:
+    type: string
+    defaultValue: ''
+    description: Trigger a deployment (promote build), value is the environment/target for the new build.
+    secret: false
+    required: false
+  last_successful:
+    type: boolean
+    defaultValue: false
+    description: Trigger the last successful build for the branch specified in repositories.
+    secret: false
+    required: false
