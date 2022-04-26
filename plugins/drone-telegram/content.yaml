@@ -6,4 +6,93 @@ tags:
 logo: telegram.svg
 repo: https://github.com/appleboy/drone-telegram
 image: https://hub.docker.com/r/appleboy/drone-telegram
+license: Apache License 2.0
+readme: https://github.com/appleboy/drone-telegram/blob/master/README.md
 description: The Telegram plugin posts build status messages to your account.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: send telegram notification
+    image: appleboy/drone-telegram
+    settings:
+      token: xxxxxxxxxx
+      to: telegram_user_id
+      message_file: message_file.tpl
+      template_vars:
+        env: testing
+        app: MyApp
+properties:
+  token:
+    type: string
+    defaultValue: ''
+    description: telegram token from telegram developer center
+    secret: true
+    required: true
+  to:
+    type: string
+    defaultValue: ''
+    description: telegram user id (can be requested from the @userinfobot inside Telegram)
+    secret: false
+    required: true
+  message:
+    type: string
+    defaultValue: ''
+    description: overwrite the default message template
+    secret: false
+    required: false
+  photo:
+    type: string
+    defaultValue: ''
+    description: local file path
+    secret: false
+    required: false
+  document:
+    type: string
+    defaultValue: ''
+    description: local file path
+    secret: false
+    required: false
+  sticker:
+    type: string
+    defaultValue: ''
+    description: local file path
+    secret: false
+    required: false
+  audio:
+    type: string
+    defaultValue: ''
+    description: local file path
+    secret: false
+    required: false
+  voice:
+    type: string
+    defaultValue: ''
+    description: local file path
+    secret: false
+    required: false
+  location:
+    type: string
+    defaultValue: ''
+    description: local file path
+    secret: false
+    required: false
+  video:
+    type: string
+    defaultValue: ''
+    description: local file path
+    secret: false
+    required: false
+  venue:
+    type: string
+    defaultValue: ''
+    description: local file path
+    secret: false
+    required: false 
+  format:
+    type: string
+    defaultValue: ''
+    description: markdown or html format
+    secret: false
+    required: false

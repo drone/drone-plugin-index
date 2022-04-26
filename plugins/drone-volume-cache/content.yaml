@@ -5,6 +5,55 @@ tags:
 logo: volume_cache.svg
 repo: https://github.com/drillster/drone-volume-cache
 image: https://hub.docker.com/r/drillster/drone-volume-cache
+license: MIT License
+readme: https://github.com/Drillster/drone-volume-cache/blob/master/README.md
 description: >-
   The volume cache plugin can be used to preserve files and directories between
   builds.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: restore-cache
+    image: drillster/drone-volume-cache
+    volumes:
+      - name: cache
+        path: /cache
+    settings:
+      restore: true
+      mount:
+        - ./node_modules
+  - name: rebuild-cache
+    image: drillster/drone-volume-cache
+    volumes:
+      - name: cache
+        path: /cache
+    settings:
+      rebuild: true
+      mount:
+        - ./node_modules
+
+  volumes:
+    - name: cache
+      host:
+        path: /tmp/cache
+properties:
+  restore:
+    type: boolean
+    defaultValue: false
+    description: Restore cache from previous build.
+    secret: false
+    required: false
+  rebuild:
+    type: boolean
+    defaultValue: false
+    description: Rebuild cache.
+    secret: false
+    required: false
+  mount:
+    type: array
+    defaultValue: []
+    description: list of folders or files to cache
+    secret: false
+    required: false

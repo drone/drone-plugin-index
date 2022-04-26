@@ -5,4 +5,35 @@ tags:
 logo: upx.svg
 repo: https://github.com/cnbattle/drone-upx
 image: https://hub.docker.com/r/cnbattle/drone-upx
+license: None
+readme: https://github.com/cnbattle/drone-upx/blob/master/README.md
 description: The UPX plugin can be used to pack executables.
+example: |
+  kind: pipeline
+  name: default
+  steps:
+  - name: upx
+    image: cnbattle/drone-upx
+    settings:
+      level: 9 //default 5
+      save_file: ./executable_upx_file
+      original_file: ./executable_original_file
+properties:
+  level:
+    type: string
+    defaultValue: 5
+    description: Compression level, a value between 1 and 9, the bigger the better.
+    secret: false
+    required: false
+  save_file:
+    type: string
+    defaultValue: ''
+    description: The path to the file to save the upx file.
+    secret: false
+    required: false
+  original_file:
+    type: string
+    defaultValue: ''
+    description: The path to the file to save the original file.
+    secret: false
+    required: false
