@@ -6,6 +6,53 @@ tags:
 logo: fandogh.svg
 repo: https://github.com/amirbagh75/fandogh-drone
 image: https://hub.docker.com/r/amirbagh75/fandogh-drone
+license: None
+readme: https://github.com/ohmydevops/fandogh-drone/blob/master/README.md
 description: >-
-  This plugin can help you to easy delivery your new docker images to [fandogh
-  PaaS](https://www.fandogh.cloud/).
+  This plugin can help you to easy delivery your new docker images to fandogh PaaS.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: fandogh
+    image: amirbagh75/fandogh-drone:latest
+    settings:
+      username: 
+        from_secret: fandoghuser
+      password: 
+        from_secret: fandoghpass
+      version: ${DRONE_COMMIT}
+      registry: "myregistry.com:5000" ## optional
+      manifest_path: ./fandogh.yml
+properties:
+  username:
+    type: string
+    defaultValue: ''
+    description: Fandogh username.
+    secret: true
+    required: false
+  password:
+    type: string
+    defaultValue: ''
+    description: Fandogh password.
+    secret: true
+    required: false
+  version:
+    type: string
+    defaultValue: ''
+    description: version id.
+    secret: false
+    required: false
+  registry:
+    type: string
+    defaultValue: ''
+    description: registry url.
+    secret: false
+    required: false
+  manifest_path:
+    type: string
+    defaultValue: ''
+    description: manifest path.
+    secret: false
+    required: false

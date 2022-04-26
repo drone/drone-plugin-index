@@ -22,13 +22,12 @@ example: |
   steps:
     - name: restore-cache
       image: meltwater/drone-cache:dev
-      environment:
-        AWS_ACCESS_KEY_ID:
-          from_secret: aws_access_key_id
-        AWS_SECRET_ACCESS_KEY:
-          from_secret: aws_secret_access_key
       pull: true
       settings:
+        access-key:
+          from_secret: aws_access_key_id
+        secret-key:
+          from_secret: aws_secret_access_key
         restore: true
         bucket: drone-cache-bucket
         region: eu-west-1
@@ -45,12 +44,11 @@ example: |
     - name: rebuild-cache
       image: meltwater/drone-cache:dev
       pull: true
-      environment:
-        AWS_ACCESS_KEY_ID:
-          from_secret: aws_access_key_id
-        AWS_SECRET_ACCESS_KEY:
-          from_secret: aws_secret_access_key
       settings:
+        access-key:
+          from_secret: aws_access_key_id
+        secret-key:
+          from_secret: aws_secret_access_key
         rebuild: true
         bucket: drone-cache-bucket
         region: eu-west-1

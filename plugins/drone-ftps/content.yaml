@@ -8,4 +8,77 @@ tags:
 logo: ftps.svg
 repo: https://github.com/christophschlosser/drone-ftps
 image: https://hub.docker.com/r/cschlosser/drone-ftps
+license: Apache License 2.0
+readme: https://github.com/cschlosser/drone-ftps/blob/master/README.md
 description: The FTPS plugin can be used to publish artifacts over FTP(S).
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: deploy
+    image: cschlosser/drone-ftps
+    settings:
+      hostname: example.com:21
+      secrets: [ ftp_username, ftp_password ]
+properties:
+  secrets:
+    type: array
+    defaultValue: []
+    description: FTP_PASSWORD and FTP_USERNAME.
+    secret: true
+    required: false
+  hostname:
+    type: string
+    defaultValue: ''
+    description: FTP host including port.
+    secret: false
+    required: false
+  clean_dir:
+    type: boolean
+    defaultValue: false
+    description: Clean the directory before uploading.
+    secret: false
+    required: false
+  chmod:
+    type: boolean
+    defaultValue: true
+    description: if set to true chmod would be executed after file transferred, otherwise no chmod.
+    secret: false
+    required: false
+  verify:
+    type: boolean
+    defaultValue: true
+    description: if set to true the SSL certificate validation is enforced, otherwise no validation.
+    secret: false
+    required: false
+  secure:
+    type: boolean
+    defaultValue: true
+    description: if set to true FTPS is enforced, otherwise plain FTP is used.
+    secret: false
+    required: false
+  dest_dir:
+    type: string
+    defaultValue: /
+    description: where to put the files on the remote server.
+    secret: false
+    required: false
+  src_dir:
+    type: string
+    defaultValue: ./
+    description: which local directory should be used for the upload.
+    secret: false
+    required: false
+  exclude:
+    type: string
+    defaultValue: ''
+    description: egrep like pattern matching to exclude files from uploading.
+    secret: false
+    required: false
+  include:
+    type: string
+    defaultValue: ''
+    description: egrep like pattern matching to include files for uploading.
+    secret: false
+    required: false
