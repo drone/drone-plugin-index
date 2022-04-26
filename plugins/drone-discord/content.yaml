@@ -6,4 +6,53 @@ tags:
 logo: discord.svg
 repo: https://github.com/appleboy/drone-discord
 image: https://hub.docker.com/r/appleboy/drone-discord
+license: MIT License
+readme: https://github.com/appleboy/drone-discord/blob/master/README.md
 description: The discord plugin posts build status messages to discord channel.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: discord notification
+    image: appleboy/drone-discord
+    settings:
+      webhook_id: xxxxxxxxxx
+      webhook_token: xxxxxxxxxx
+properties:
+  webhook_id:
+    type: string
+    defaultValue: ''
+    description: discord webhook id.
+    secret: true
+    required: true
+  webhook_token:
+    type: string
+    defaultValue: ''
+    description: discord webhook token.
+    secret: true
+    required: true
+  avatar_url:
+    type: string
+    defaultValue: ''
+    description: override the default avatar of the webhook.
+    secret: false
+    required: false
+  username:
+    type: string
+    defaultValue: ''
+    description: override the default username of the webhook.
+    secret: false
+    required: false
+  tts:
+    type: boolean
+    defaultValue: false
+    description: enable text-to-speech.
+    secret: false
+    required: false
+  message:
+    type: string
+    defaultValue: ''
+    description: the message contents (up to 2000 characters).
+    secret: false
+    required: false

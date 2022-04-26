@@ -6,4 +6,47 @@ tags:
 logo: dingtalk.svg
 repo: https://github.com/lddsb/drone-dingtalk-message
 image: https://hub.docker.com/r/lddsb/drone-dingtalk-message
+license: MIT License
+readme: https://github.com/lddsb/drone-dingtalk-message/blob/master/README.md
 description: The DingTalk can be used to send a message by DingTalk group robot.
+example: |
+  kind: pipeline
+  name: default
+  
+  steps:
+  - name: dingtalk
+    image: lddsb/drone-dingtalk-message
+    settings:
+      token: your-dingtalk-robot-access-token
+      type: markdown
+properties:
+  token:
+    type: string
+    defaultValue: ''
+    description: you can get the access token when you add a bot in a group.
+    secret: true
+    required: true
+  type:
+    type: string
+    defaultValue: ''
+    description: dingtalk message type, markdown is the best type now.
+    secret: false
+    required: true
+  message_color:
+    type: boolean
+    defaultValue: false
+    description: color the title and content for easier identification.
+    secret: false
+    required: false
+  message_pic:
+    type: boolean
+    defaultValue: false
+    description: insert a picture into a message to make the content richer.
+    secret: false
+    required: false
+  sha_link:
+    type: boolean
+    defaultValue: false
+    description: sha as a link to click to the source code page.
+    secret: false
+    required: false

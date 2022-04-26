@@ -36,7 +36,7 @@ properties:
     secret: true
     required: true
   files:
-    type: map
+    type: object
     defaultValue: ''
     description: Map of translatable files with the Crowdin file name as key and the real filepath as value. The plugin will not upload any files if this list is empty.
     secret: false
