@@ -8,4 +8,58 @@ tags:
 logo: google_gcf.svg
 repo: https://github.com/oliver006/drone-gcf
 image: https://hub.docker.com/r/oliver006/drone-gcf
+license: None
+readme: https://github.com/oliver006/drone-gcf/blob/master/README.md
 description: The GCF plugin can be used to deploy, list, and delete Google Cloud Functions.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: deploy-cloud-functions
+    image: oliver006/drone-gcf
+    settings:
+      action: deploy
+      project: myproject
+      runtime: go111
+      functions:
+        - TransferFileToGCS:
+          - trigger: http
+            memory: 2048MB
+        - HandleEvents:
+          - trigger: topic
+            trigger_resource: "projects/myproject/topics/mytopic"
+            memory: 512MB
+            runtime: python37
+            source: ./python/src/functions/
+properties:
+  token:
+    type: string
+    defaultValue: ''
+    description:  json credentials of the service account to access Google Cloud Functions.
+    secret: true
+    required: false
+  action:
+    type: string
+    defaultValue: ''
+    description:  can be either deploy, delete, or list.
+    secret: false
+    required: false
+  project:
+    type: string
+    defaultValue: the project of the service account
+    description:  name of the GCP project.
+    secret: false
+    required: false
+  runtime:
+    type: string
+    defaultValue: ''
+    description: runtime of the functions to be deployed. Can be specified once or one a per function basis.
+    secret: false
+    required: false
+  functions:
+    type: array
+    defaultValue: []
+    description: list of functions to be deployed, each needs to at least provide a trigger but can also set memory, runtime, and source.
+    secret: false
+    required: false
