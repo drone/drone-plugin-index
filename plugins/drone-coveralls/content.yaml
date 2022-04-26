@@ -8,4 +8,37 @@ tags:
 logo: coveralls.svg
 repo: https://github.com/lizheming/drone-coveralls
 image: https://hub.docker.com/r/lizheming/drone-coveralls
-description: This plugin can upload coverage reports to [Coveralls](https://coveralls.io).
+license: MIT License
+readme: https://github.com/lizheming/drone-coveralls/blob/master/README.md
+description: This plugin can upload coverage reports to Coveralls.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: coveralls
+    image: lizheming/drone-coveralls
+    settings:
+      token:
+        from_secret: coveralls_token
+      files:
+      - ./lcov.info
+properties:
+  files:
+    type: array
+    defaultValue: ''
+    description: List of files to upload.
+    secret: false
+    required: true
+  token:
+    type: string
+    defaultValue: ''
+    description: if you have not set environment COVERALLS_REPO_TOKEN, you should set the private repository token.
+    secret: true
+    required: false
+  debug:
+    type: boolean
+    defaultValue: false
+    description: if you want to debug, set it to true.
+    secret: false
+    required: false
