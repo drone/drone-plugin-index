@@ -6,7 +6,82 @@ tags:
   - webhook
 logo: webhook.svg
 repo: https://github.com/drone-plugins/drone-webhook
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-webhook/blob/master/README.md
 image: https://hub.docker.com/r/plugins/webhook
 description: >-
   Use the Webhook plugin to notify services via Webhook when a build completes.
   You will need to supply Drone with outgoing Webhook URLs.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: send
+    image: plugins/webhook
+    settings:
+      username: myusername
+      password: mypassword
+      urls: https://your.webhook/...
+      content_type: application/json
+      template: |
+        {
+          "owner": "{{ repo.owner }}",
+          "repo": "{{ repo.name }}",
+          "status": "{{ build.status }}",
+        }
+properties:
+  urls:
+    type: string
+    defaultValue: ''
+    description: The URLs to send the webhook to.
+    secret: false
+    required: true
+  username:
+    type: string
+    defaultValue: ''
+    description: The username to use for basic auth.
+    secret: false
+    required: false
+  password:
+    type: string
+    defaultValue: ''
+    description: The password to use for basic auth.
+    secret: true
+    required: false
+  method:
+    type: string
+    defaultValue: POST
+    description: The HTTP method to use for the request.
+    secret: false
+    required: false
+  content_type:
+    type: string
+    defaultValue: 'application/json'
+    description: The content type of the webhook.
+    secret: false
+    required: false
+  template:
+    type: string
+    defaultValue: ''
+    description: Custom template for webhook
+    secret: false
+    required: false
+  headers:
+    type: array
+    defaultValue: ''
+    description: Map of custom headers
+    secret: false
+    required: false
+  skip_verify:
+    type: boolean
+    defaultValue: false
+    description: Skip SSL verification.
+    secret: false
+    required: false
+  debug:
+    type: boolean
+    defaultValue: false
+    description: Enable debug information.
+    secret: false
+    required: false

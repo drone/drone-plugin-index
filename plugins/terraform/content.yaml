@@ -7,6 +7,76 @@ tags:
 logo: terraform.svg
 repo: https://github.com/jmccann/drone-terraform
 image: https://hub.docker.com/r/jmccann/drone-terraform
+license: Apache License 2.0
+readme: https://github.com/jmccann/drone-terraform/blob/master/README.md
 description: >-
   The Terraform plugin applies the infrastructure configuration contained within
   the repository.
+example: |
+  kind: pipeline
+  type: docker
+  name: default
+
+  steps:
+    - name: terraform
+      image: jmccann/drone-terraform:1
+      settings:
+        plan: false
+      targets:
+        - aws_security_group.generic_sg
+        - aws_security_group.app_sg
+properties:
+  plan:
+    type: boolean
+    defaultValue: false
+    description: Whether to run a plan before applying the configuration.
+    secret: false
+    required: false
+  remote:
+    type: array
+    defaultValue: ''
+    description: contains the configuration for the Terraform remote state tracking.
+    secret: false
+    required: false
+  vars:
+    type: array
+    defaultValue: ''
+    description: The backend to use for the remote.
+    secret: false
+    required: false
+  secrets:
+    type: array
+    defaultValue: ''
+    description: variables to pass to the Terraform `plan` and `apply` commands. Each value is passed as a `-var <key>=<ENVVAR>` option.  The `ENVVAR` is read as the key/pair value.
+    secret: true
+    required: false
+  ca_cert:
+    type: string
+    defaultValue: ''
+    description: ca cert to add to your environment to allow terraform to use internal/private resources
+    secret: true
+    required: false
+  sensitive:
+    type: boolean
+    defaultValue: false
+    description: Whether or not to suppress terraform commands to stdout.
+    secret: true
+    required: false
+  role_arn_to_assume:
+    type: string
+    defaultValue: ''
+    description: A role to assume before running the terraform commands.
+    secret: true
+    required: false
+  root_dir:
+    type: string
+    defaultValue: ''
+    description: The root directory where the terraform files live. When unset, the top level directory will be assumed.
+    secret: true
+    required: false
+  parallelism:
+    type: string
+    defaultValue: ''
+    description: The number of concurrent operations as Terraform walks its graph.
+    secret: true
+    required: false
