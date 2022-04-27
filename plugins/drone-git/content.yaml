@@ -6,6 +6,54 @@ tags:
 logo: git.svg
 repo: https://github.com/drone-plugins/drone-git
 image: https://hub.docker.com/r/plugins/git
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-git/blob/master/README.md
 description: >-
   The git plugin is used to clone a git repository. Note that Drone uses the git
   plugin by default for all repositories, without any configuration required.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: clone
+    image: plugins/git
+    settings:
+      depth: 50
+properties:
+  depth:
+    type: number
+    defaultValue: ''
+    description: creates a shallow clone with truncated history.
+    secret: false
+    required: false
+  recursive:
+    type: boolean
+    defaultValue: false
+    description: clones submodules recursively.
+    secret: false
+    required: false
+  skip_verify:
+    type: boolean
+    defaultValue: false
+    description: skips the SSL verification.
+    secret: false
+    required: false
+  tags:
+    type: boolean
+    defaultValue: false
+    description: fetches tags when set to true.
+    secret: false
+    required: false
+  submodule_overrides:
+    type: object
+    defaultValue: ''
+    description: override submodule urls.
+    secret: false
+    required: false
+  submodule_update_remote:
+    type: boolean
+    defaultValue: false
+    description: pass the --remote flag to git submodule update.
+    secret: false
+    required: false
