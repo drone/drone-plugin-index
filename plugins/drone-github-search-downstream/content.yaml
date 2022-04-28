@@ -8,6 +8,62 @@ tags:
 logo: github.svg
 repo: https://github.com/gboddin/drone-github-search-downstream
 image: https://hub.docker.com/r/gboo/github-search-downstream
+license: Apache License 2.0
+readme: https://github.com/gboddin/drone-github-search-downstream/blob/master/README.md
 description: >-
-  Use this plugin to trigger builds for a list of downstream repositories
-  fetched
+  Use this plugin to trigger builds for a list of downstream repositories fetched from a Github repository search.
+  This is useful when updates to a repository have downstream impacts that should also be tested, and those repository are searchable on Github.
+example:
+  kind: pipeline
+  type: docker
+
+  steps:
+  - name: trigger
+    image: gboo/github-search-downstream:latest
+    settings:
+      github_query: "org:drone-plugins topic:drone-plugin"
+      drone_server: https://drone.example.com
+      drone_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+properties:
+  github_query:
+    type: string
+    defaultValue: ''
+    description: Query to search Github for downstream repositories
+    secret: false
+    required: true
+  drone_server:
+    type: string
+    defaultValue: ''
+    description: Drone server url
+    secret: false
+    required: true
+  drone_token:
+    type: string
+    defaultValue: ''
+    description: Drone server token
+    secret: true
+    required: true
+  github_token:
+    type: string
+    defaultValue: ''
+    description: Github token
+    secret: true
+    required: true
+  ignore_missing:
+    type: boolean
+    defaultValue: false
+    description: continue triggering if build is not found
+    secret: false
+    required: false
+  wait:
+    type: boolean
+    defaultValue: false
+    description: wait for any currently running builds to finish if true, else fails
+    secret: false
+    required: false
+  timeout:
+    type: number
+    defaultValue: 60
+    description: how long to wait on any currently running builds.
+    secret: false
+    required: false

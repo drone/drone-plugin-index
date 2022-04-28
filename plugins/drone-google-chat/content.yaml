@@ -6,6 +6,49 @@ tags:
 logo: gtalk.svg
 repo: https://github.com/josmo/drone-google-chat
 image: https://hub.docker.com/r/pelotech/drone-google-chat
+license: None
+readme: https://github.com/josmo/drone-google-chat/blob/master/README.md
 description: >-
   The Google chat plugin posts build status messages to your company google
   chat.
+example:
+  kind: pipeline
+  type: docker
+  steps:
+  - name: notify
+    image: pelotech/drone-google-chat
+    settings:
+      webook: https://dynamite.sandbox.googleapis.com/v1/rooms/roomid
+      key: mykey
+      token: mytoken 
+properties:
+  webhook:
+    type: string
+    defaultValue: ''
+    description: incomming webhook in the Bots section of google chat.
+    secret: false
+    required: true
+  key:
+    type: string
+    defaultValue: ''
+    description: key for the webook.
+    secret: true
+    required: true
+  token:
+    type: string
+    defaultValue: ''
+    description: token for the webook.
+    secret: true
+    required: true
+  conversation_key:
+    type: string
+    defaultValue: ''
+    description: arbitrary key to group messages together.
+    secret: false
+    required: true
+  template:
+    type: string
+    defaultValue: ''
+    description: overwrite the default message template.
+    secret: false
+    required: false

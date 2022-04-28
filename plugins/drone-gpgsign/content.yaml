@@ -7,6 +7,58 @@ tags:
 logo: gnupg.svg
 repo: https://github.com/drone-plugins/drone-gpgsign
 image: https://hub.docker.com/r/plugins/gpgsign
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-gpgsign/blob/master/README.md
 description: >-
   This plugin can sign your artifacts and build results with
   [GnuPG](https://www.gnupg.org/).
+example:
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: sign  
+    image: plugins/gpgsign
+    settings:
+      key: your-base64-encoded-private-key
+      passphrase: p455w0rd
+      files:
+        - dist/*
+properties:
+  key:
+    type: string
+    defaultValue: ''
+    description: Private GnuPG key, optionally base64 encoded.
+    secret: true
+    required: true
+  passphrase:
+    type: string
+    defaultValue: ''
+    description: passphrase for the private key.
+    secret: true
+    required: true
+  files:
+    type: array
+    defaultValue: []
+    description: List of globs to match files.
+    secret: false
+    required: true
+  detach_sign:
+    type: boolean
+    defaultValue: false
+    description: Generate a detach-sign signature.
+    secret: false
+    required: false
+  clear_sign:
+    type: boolean
+    defaultValue: false
+    description: Generate a clear-sign signature.
+    secret: false
+    required: false
+  excludes:
+    type: array
+    defaultValue: []
+    description: List of globs to exclude files.
+    secret: false
+    required: false
+
