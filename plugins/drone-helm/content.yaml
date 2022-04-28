@@ -7,4 +7,82 @@ tags:
 logo: kubernetes.svg
 repo: https://github.com/ipedrazas/drone-helm
 image: https://hub.docker.com/r/ipedrazas/drone-helm
+license: MIT License
+readme: https://github.com/ipedrazas/drone-helm/blob/master/README.md
 description: This plugin allows you to run Kubernetes Helm as part of your pipeline.
+example: |
+  kind: pipeline
+  name: default
+  steps:
+  - name: helm_deploy
+    image: fpedrazas/drone-helm
+    settings:
+      skip_tls_verify: true
+      chart: ./charts/my-chart
+      release: ${DRONE_BRANCH}
+      values: secret.password=${SECRET_PASSWORD},image.tag=${TAG}
+      prefix: STAGING
+      namespace: development
+properties:
+  namespace:
+    type: string
+    defaultValue: default
+    description: namespace where you want to install your chart. If you don't specify this parameter
+    secret: false
+    required: false
+  chart:
+    type: string
+    defaultValue: ''
+    description: The chart to install
+    secret: false
+    required: true
+  release:
+    type: string
+    defaultValue: If you don't specify the release, helm will generate a random name and you will not be able to upgrade that release.
+    description: name used in the helm command to specify the release
+    secret: false
+    required: true
+  values:
+    type: string
+    defaultValue: ''
+    description: values injected in helm command. These are the values you want to overwrite.
+    secret: false
+    required: false
+  prefix:
+    type: string
+    defaultValue: ''
+    description: defines the prefix of all the secrets used in the plugin. If prefix is DEV and your secret should be named DEV_PASSWORD and the values would be ${PASSWORD}. If prefix is PROD the secret should be defined as PROD_PASSWORD. This allows you to define different secrets for different.
+    secret: false
+    required: false
+  tiller_ns:
+    type: string
+    defaultValue: kube-system
+    description: namespace where tiller will be installed.
+    secret: false
+    required: false
+  debug:
+    type: boolean
+    defaultValue: false
+    description: very verbose output. it will display all the ENVVARS passed to the container. Very handy when debugging secrets.
+    secret: false
+    required: false
+  skip_tls_verify:
+    type: boolean
+    defaultValue: false
+    description: if you create your own SSL certificates, youi will need this flag to be true to avoid having connectivity issues.
+    secret: false
+    required: false
+  api_server:
+    type: string
+    defaultValue: ''
+    description: kubernetes api server.
+    secret: true
+    required: false
+  kubernetes_token:
+    type: string
+    defaultValue: ''
+    description: kubernetes token.
+    secret: true
+    required: false
+  
+

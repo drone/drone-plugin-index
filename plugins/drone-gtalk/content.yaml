@@ -6,4 +6,50 @@ tags:
 logo: gtalk.svg
 repo: https://github.com/appleboy/drone-gtalk
 image: https://hub.docker.com/r/appleboy/drone-gtalk
+license: MIT License
+readme: https://github.com/appleboy/drone-gtalk/blob/master/README.md
 description: The GTalk plugin posts build status messages to your google account.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: gtalk
+    image: appleboy/drone-gtalk
+    settings:
+      google_host: talk.google.com:443
+      google_username: xxxxxxxxxx
+      google_password: xxxxxxxxxx
+      to: google_user_email_account
+properties:
+  google_host:
+    type: string
+    defaultValue: talk.google.com:443
+    description: The Google Talk server hostname
+    secret: false
+    required: true
+  google_username:
+    type: string
+    defaultValue: ''
+    description: Google user account
+    secret: true
+    required: true
+  google_password:
+    type: string
+    defaultValue: ''
+    description: Google user account password
+    secret: true
+    required: true
+  to:
+    type: string
+    defaultValue: ''
+    description: Google user account
+    secret: false
+    required: true
+  message:
+    type: string
+    defaultValue: ''
+    description: overwrite the default message
+    secret: false
+    required: true
+

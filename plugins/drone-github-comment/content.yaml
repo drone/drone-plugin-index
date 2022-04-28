@@ -9,7 +9,7 @@ tags:
 logo: github.svg
 repo: https://github.com/gradeup/drone-github-comment
 image: https://hub.docker.com/r/codehimanshu/gitdrone
-license: none
+license: None
 readme: https://github.com/gradeup/drone-github-comment/blob/master/README.md
 description: >-
   Use this plugin to update build status on Github Pull Request. This is useful
@@ -55,4 +55,3 @@ properties:
     description: from github app installation
     secret: false
     required: true
-`

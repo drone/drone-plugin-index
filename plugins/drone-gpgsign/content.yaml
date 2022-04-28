@@ -12,7 +12,7 @@ readme: https://github.com/drone-plugins/drone-gpgsign/blob/master/README.md
 description: >-
   This plugin can sign your artifacts and build results with
   [GnuPG](https://www.gnupg.org/).
-example:
+example: |
   kind: pipeline
   name: default
 

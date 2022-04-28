@@ -11,9 +11,9 @@ image: https://hub.docker.com/r/appleboy/drone-gitlab-ci
 license: MIT License
 readme: https://github.com/appleboy/drone-gitlab-ci/blob/master/README.md
 description: The Gitlab-ci plugin allows you to trigger Gitlab-ci job automatically.
-example:
+example: |
   kind: pipeline
-  type: docker
+  name: default
 
   steps:
   - name: trigger gitlab job

@@ -11,9 +11,10 @@ readme: https://github.com/josmo/drone-google-chat/blob/master/README.md
 description: >-
   The Google chat plugin posts build status messages to your company google
   chat.
-example:
+example: |
   kind: pipeline
-  type: docker
+  name: default
+
   steps:
   - name: notify
     image: pelotech/drone-google-chat

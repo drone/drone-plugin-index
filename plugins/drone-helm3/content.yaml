@@ -8,4 +8,184 @@ tags:
 logo: kubernetes.svg
 repo: https://github.com/pelotech/drone-helm3
 image: https://hub.docker.com/r/pelotech/drone-helm3
+license: Apache License 2.0
+readme: https://github.com/pelotech/drone-helm3/blob/master/README.md
 description: This plugin provides an interface to Helm 3.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: deploy_production
+    image: pelotech/drone-helm3
+    settings:
+      helm_command: upgrade
+      chart: ./
+      release: my-project
+      api_server:
+        from_secret: prod_api_server
+      kubernetes_token:
+        from_secret: prod_kubernetes_token
+properties:
+  mode:
+    type: string
+    defaultValue: ''
+    description: Helm command to run; valid options are upgrade, lint, and uninstall. If not provided, can be inferred from the Drone event.
+    secret: false
+    required: false
+  update_dependencies:
+    type: boolean
+    defaultValue: false
+    description: Run helm dependency update before running the main helm command.
+    secret: false
+    required: false
+  add_repos:
+    type: array
+    defaultValue: boolean
+    description: Run helm repo add before running the main helm command.
+    secret: false
+    required: false
+  repo_certificate:
+    type: string
+    defaultValue: ''
+    description: Base64 encoded TLS certificate for a chart repository.
+    secret: true
+    required: false
+  repo_ca_certificate:
+    type: string
+    defaultValue: ''
+    description: Base64 encoded TLS certificate for a chart repository certificate authority.
+    secret: true
+    required: false
+  namespace:
+    type: string
+    defaultValue: ''
+    description: Kubernetes namespace for the un/installation.
+    secret: false
+    required: false
+  debug:
+    type: boolean
+    defaultValue: false
+    description: Produce debug output from the plugin and helm itself. Note that this option may expose secrets in the log output.
+    secret: false
+    required: false
+  chart:
+    type: string
+    defaultValue: ''
+    description: Helm chart to install or lint.
+    secret: false
+    required: false
+  release:
+    type: string
+    defaultValue: ''
+    description: Release name to un/install.
+    secret: false
+    required: false
+  values:
+    type: string
+    defaultValue: ''
+    description:  Arguments for helm's --set flag.
+    secret: false
+    required: false
+  string_values:
+    type: string
+    defaultValue: ''
+    description:  Arguments for helm's --set-string flag.
+    secret: false
+    required: false
+  values_files:
+    type: string
+    defaultValue: ''
+    description:  Arguments for helm's --values flag.
+    secret: false
+    required: false
+  kube_api_server:
+    type: string
+    defaultValue: ''
+    description: Kubernetes api server.
+    secret: false
+    required: false
+  kube_token:
+    type: string
+    defaultValue: ''
+    description: Kubernetes api token.
+    secret: true
+    required: false
+  kube_service_account:
+    type: string
+    defaultValue: ''
+    description: Account name for connecting to the kubernetes api.
+    secret: false
+    required: false
+  kube_certificate:
+    type: string
+    defaultValue: ''
+    description: Base64-encoded TLS certificate, for clusters using a self-signed CA certificate.
+    secret: true
+    required: false
+  chart_version:
+    type: string
+    defaultValue: ''
+    description: Version of the chart to install.
+    secret: false
+    required: false
+  dry_run:
+    type: boolean
+    defaultValue: false
+    description: Prepare the un/installation, but do not perform it.
+    secret: false
+    required: false
+  wait_for_upgrade:
+    type: boolean
+    defaultValue: false
+    description: Wait until kubernetes resources are in a ready state before marking the installation successful.
+    secret: false
+    required: false
+  timeout:
+    type: string
+    defaultValue: ''
+    description: Timeout for any individual kubernetes operation, formatted as a Golang duration (e.g. "3m20s").
+    secret: false
+    required: false
+  force_upgrade:
+    type: boolean
+    defaultValue: false
+    description: Pass --force to helm upgrade.
+    secret: false
+    required: false 
+  reuse_values:
+    type: boolean
+    defaultValue: false
+    description: Reuse the values from a previous release.
+    secret: false
+    required: false
+  keep_history:
+    type: boolean
+    defaultValue: false
+    description: Pass --keep-history to helm uninstall.
+    secret: false
+    required: false
+  lint_strictly:
+    type: boolean
+    defaultValue: false
+    description: Pass --strict to helm lint.
+    secret: false
+    required: false
+  atomic_upgrade:
+    type: boolean
+    defaultValue: false
+    description: Pass --atomic to helm upgrade.
+    secret: false
+    required: false
+  cleanup_failed_upgrade:
+    type: boolean
+    defaultValue: false
+    description: Pass --cleanup-on-fail to helm upgrade.
+    secret: false
+    required: false
+  skip_tls_verify:
+    type: boolean
+    defaultValue: false
+    description: Do not check for a valid certificate when connecting to the kubernetes api.
+    secret: false
+    required: false

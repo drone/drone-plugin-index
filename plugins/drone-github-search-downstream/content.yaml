@@ -13,9 +13,9 @@ readme: https://github.com/gboddin/drone-github-search-downstream/blob/master/RE
 description: >-
   Use this plugin to trigger builds for a list of downstream repositories fetched from a Github repository search.
   This is useful when updates to a repository have downstream impacts that should also be tested, and those repository are searchable on Github.
-example:
+example: |
   kind: pipeline
-  type: docker
+  name: default
 
   steps:
   - name: trigger
