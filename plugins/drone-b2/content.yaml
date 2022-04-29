@@ -25,12 +25,6 @@ example: |
       source: public/**/*
       target: /target/location
 properties:
-  secrets:
-    type: array
-    defaultValue: ''
-    description: backblaze account ID & backblaze secret key.
-    secret: true
-    required: false
   account:
     type: string
     defaultValue: ''

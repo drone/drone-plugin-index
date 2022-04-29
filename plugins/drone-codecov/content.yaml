@@ -22,12 +22,6 @@ example: |
     settings:
       token: your-codacy-token
 properties:
-  secrets:
-    type: array
-    defaultValue: ''
-    description: codecov_token - authenticates with this token
-    secret: true
-    required: false
   token:
     type: string
     defaultValue: ''

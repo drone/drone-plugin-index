@@ -7,4 +7,34 @@ tags:
 logo: kubernetes.svg
 repo: https://github.com/vallard/drone-kube
 image: https://hub.docker.com/r/vallard/drone-kube
+license: None
+readme: https://github.com/vallard/drone-kube/blob/master/README.md
 description: Drone kubernetes plugin.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: deploy
+    image: vallard/drone-kube
+    settings:
+      template: deployment.yaml
+properties:
+  template:
+    type: string
+    defaultValue: ''
+    description: The template to use
+    secret: false
+    required: true
+  namespace:
+    type: string
+    defaultValue: ''
+    description: The namespace to deploy the template in
+    secret: false
+    required: true
+  server:
+    type: string
+    defaultValue: ''
+    description: The kubernetes server to deploy the template in
+    secret: false
+    required: true
