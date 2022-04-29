@@ -8,7 +8,58 @@ tags:
 logo: amazon_lambda.svg
 repo: https://github.com/omerxx/drone-lambda-plugin
 image: https://hub.docker.com/r/omerxx/drone-lambda-plugin
+license: MIT License
+readme: https://github.com/omerxx/drone-lambda-plugin/blob/master/README.md
 description: >-
   The plugin automatically deployes a serverless function to AWS Lambda from a
-  zip file located in an S3 bucket.  _This plugin does not handle creating or
-  uploading the zip file._ 
+  zip file located in an S3 bucket. This plugin does not handle creating or
+  uploading the zip file.
+example: |
+  kind: pipeline
+  type: docker
+  name: default
+
+  steps:
+  - name: deploy-lambda
+    image: omerxx/drone-lambda-plugin
+    settings:
+      function_name: my-function
+      s3_bucket: some-bucket
+      file_name: lambda-dir/lambda-project-${DRONE_BUILD_NUMBER}.zip
+properties:
+  aws_access_key_id:
+    type: string
+    defaultValue: ''
+    description: The AWS access key ID
+    secret: true
+    required: false
+  aws_secret_access_key:
+    type: string
+    defaultValue: ''
+    description: AWS secret key. Access and secret key variables override credentials stored in config files.
+    secret: true
+    required: false
+  aws_default_region:
+    type: string
+    defaultValue: ''
+    description: AWS region. This variable overrides the default region of the in-use profile, if set.
+    secret: false
+    required: false
+  function_name:
+    type: string
+    defaultValue: ''
+    description: Name of the lambda function as set in AWS.
+    secret: false
+    required: true
+  s3_bucket:
+    type: string
+    defaultValue: ''
+    description: Name of the S3 bucket in which the zip package for deployment is stored.
+    secret: false
+    required: true
+  file_name:
+    type: string
+    defaultValue: ''
+    description: Name of the file in S3. Can be prefixed like my-directory/my-zip-package.zip.
+    secret: false
+    required: true
