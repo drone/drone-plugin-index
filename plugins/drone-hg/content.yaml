@@ -6,4 +6,16 @@ tags:
 logo: mercurial.svg
 repo: https://github.com/drone-plugins/drone-hg
 image: https://hub.docker.com/r/plugins/hg
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-hg/blob/master/README.md
 description: The mercurial plugin is used to clone a mercurial repository.
+example: |
+  kind: pipeline
+  name: default
+
+  clone:
+    disable: true
+
+  steps:
+  - name: checkout
+    image: plugins/hg

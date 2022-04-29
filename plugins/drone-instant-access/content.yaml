@@ -7,4 +7,36 @@ tags:
 logo: instant_access.svg
 repo: https://github.com/erguotou520/drone-instant-access
 image: https://hub.docker.com/r/erguotou/drone-instant-access
+license: MIT License
+readme: https://github.com/erguotou520/drone-instant-access/blob/master/README.md
 description: The InstantAccess plugin posts build status messages to your account.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: send-wechat
+    image: erguotou/drone-instant-access
+    settings:
+      channel: d255d62caef24a3bb66c3465dad70407
+      head: hello world
+      body: Send by InstantAccess
+properties:
+  channel:
+    type: string
+    defaultValue: ''
+    description: The InstantAccess(即时达) channel key, get key by http://push.ijingniu.cn/push/channel/
+    secret: false
+    required: true
+  head:
+    type: string
+    defaultValue: ''
+    description: Notification title
+    secret: false
+    required: true
+  body:
+    type: string
+    defaultValue: ''
+    description: Notification body, supports markdown
+    secret: false
+    required: true
