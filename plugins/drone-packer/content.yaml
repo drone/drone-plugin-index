@@ -6,6 +6,90 @@ tags:
 logo: packer.svg
 repo: https://github.com/appleboy/drone-packer
 image: https://hub.docker.com/r/appleboy/drone-packer
+license: MIT License
+readme: https://github.com/appleboy/drone-packer/blob/master/README.md
 description: >-
-  This plugin can build automated machine images with
-  [Packer](https://www.packer.io/).
+  This plugin can build automated machine images with Packer.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: packer
+    image: appleboy/drone-packer
+    settings:
+      template: aws.json
+      actions: build
+properties:
+  actions:
+    type: array
+    defaultValue: ''
+    description: a list of actions to have packer perform.
+    secret: false
+    required: false
+  vars:
+    type: object
+    defaultValue: ''
+    description: a map of variables to pass to the Packer build commands. Each value is passed as a <key>=<value> option.
+    secret: false
+    required: false
+  var_files:
+    type: array
+    defaultValue: ''
+    description: a list of var files to use. Each value is passed as -var-file=.
+    secret: false
+    required: false
+  except:
+    type: array
+    defaultValue: ''
+    description: validate or build all builds other than these.
+    secret: false
+    required: false
+  only:
+    type: array
+    defaultValue: ''
+    description: validate or build only the specified builds.
+    secret: false
+    required: false
+  template:
+    type: string
+    defaultValue: ''
+    description: A json file will execute multiple builds in parallel as defined in the template.
+    secret: false
+    required: false
+  syntax_only:
+    type: boolean
+    defaultValue: false
+    description: Only check syntax. Do not verify config of the template.
+    secret: false
+    required: false
+  color:
+    type: boolean
+    defaultValue: false
+    description: Disable color output.
+    secret: false
+    required: false
+  debug:
+    type: boolean
+    defaultValue: false
+    description: Debug mode enabled for builds.
+    secret: false
+    required: false
+  parallel:
+    type: boolean
+    defaultValue: false
+    description: Disable parallelization.
+    secret: false
+    required: false
+  force:
+    type: boolean
+    defaultValue: false
+    description: Force a build to continue if artifacts exist, deletes existing artifacts.
+    secret: false
+    required: false
+  readable:
+    type: boolean
+    defaultValue: false
+    description: Machine-readable output.
+    secret: false
+    required: false
