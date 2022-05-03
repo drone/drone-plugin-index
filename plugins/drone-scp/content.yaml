@@ -7,4 +7,153 @@ tags:
 logo: term.svg
 repo: https://github.com/appleboy/drone-scp
 image: https://hub.docker.com/r/appleboy/drone-scp
+readme: https://github.com/appleboy/drone-scp/blob/master/README.md
+license: Apache License 2.0
 description: The SCP plugin copy files and artifacts to target host machine via SSH.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: scp files
+  image: appleboy/drone-scp
+  settings:
+    host: example.com
+    username: foo
+    password: bar
+    port: 22
+    target: /var/www/deploy/${DRONE_REPO_OWNER}/${DRONE_REPO_NAME}
+    source: release.tar.gz
+properties:
+  host:
+    type: string
+    defaultValue: ''
+    description: Target host machine.
+    secret: false
+    required: true
+  port:
+    type: number
+    defaultValue: 22
+    description: Target host machine port.
+    secret: false
+    required: false
+  username:
+    type: string
+    defaultValue: ''
+    description: Target host machine username.
+    secret: false
+    required: true
+  password:
+    type: string
+    defaultValue: ''
+    description: Target host machine password.
+    secret: true
+    required: true
+  key:
+    type: string
+    defaultValue: ''
+    description: Target host machine private key.
+    secret: true
+    required: false
+  passphrase:
+    type: string
+    defaultValue: ''
+    description: Target host machine private key passphrase.
+    secret: true
+    required: false
+  target:
+    type: string
+    defaultValue: ''
+    description: Target host machine path.
+    secret: false
+    required: true
+  source:
+    type: string
+    defaultValue: ''
+    description: Source file path.
+    secret: false
+    required: true
+  rm:
+    type: boolean
+    defaultValue: false
+    description: Remove source file after copy.
+    secret: false
+    required: false
+  timeout:
+    type: number
+    defaultValue: 30
+    description: Timeout in seconds.
+    secret: false
+    required: false
+  command_timeout:
+    type: number
+    defaultValue: 10
+    description: Timeout in minutes.
+    secret: false
+    required: false
+  strip_components:
+    type: number
+    defaultValue: 0
+    description: Strip components from the target path.
+    secret: false
+    required: false
+  tar_tmp_path:
+    type: string
+    defaultValue: ''
+    description: Temporary path for tar.
+    secret: false
+    required: false
+  tar_exec:
+    type: string
+    defaultValue: ''
+    description: Tar command.
+    secret: false
+    required: false
+  overwrite:
+    type: boolean
+    defaultValue: false
+    description: Overwrite target file if exists.
+    secret: false
+    required: false
+  proxy_host:
+    type: string
+    defaultValue: ''
+    description: Proxy host.
+    secret: false
+    required: false
+  proxy_port:
+    type: number
+    defaultValue: 0
+    description: Proxy port.
+    secret: false
+    required: false
+  proxy_username:
+    type: string
+    defaultValue: ''
+    description: Proxy username.
+    secret: false
+    required: false
+  proxy_password:
+    type: string
+    defaultValue: ''
+    description: Proxy password.
+    secret: true
+    required: false
+  proxy_key:
+    type: string
+    defaultValue: ''
+    description: Proxy private key.
+    secret: true  
+    required: false
+  proxy_key_path:
+    type: string
+    defaultValue: ''
+    description: Proxy private key path.
+    secret: false
+    required: false
+  proxy_key_passphrase:
+    type: string
+    defaultValue: ''
+    description: Proxy private key passphrase.
+    secret: true
+    required: false
