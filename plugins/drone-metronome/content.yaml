@@ -6,6 +6,31 @@ tags:
 logo: metronome.svg
 repo: https://github.com/naorlivne/drone-metronome
 image: https://hub.docker.com/r/naorlivne/drone-metronome
+license: GNU Lesser General Public License v3.0
+readme: https://github.com/naorlivne/drone-metronome/blob/master/README.md
 description: >-
   This plugin can be used to deploy applications to a Metronome server, it will
   create\update the given Metronome tasks as needed.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: metronome_deploy
+    image: naorlivne/drone-metronome
+    settings:
+      metronome_host: http://metronome.mesos:9000
+      metronome_job_file: metronome.json
+properties:
+  metronome_host:
+    type: string
+    defaultValue: http://metronome.mesos:9000
+    description: The Metronome server URL (no trailing slash should be used).
+    secret: false
+    required: false
+  metronome_job_file:
+    type: string
+    defaultValue: metronome.json
+    description: The Metronome configuration file location relative to the root folder of the repo.
+    secret: false
+    required: true

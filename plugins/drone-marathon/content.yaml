@@ -6,6 +6,41 @@ tags:
 logo: marathon.svg
 repo: https://github.com/expansioncap/drone-marathon
 image: https://hub.docker.com/r/e20co/drone-marathon
+license: Apache License 2.0
+readme: https://github.com/expansioncap/drone-marathon/blob/master/README.rst
 description: >-
-  This plugin can be used to deploy applications to a
-  [Marathon](https://mesosphere.github.io/marathon/) server.
+  This plugin can be used to deploy applications to a Marathon server.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: marathon
+    image: e20co/drone-marathon
+    settings:
+      server: http://marathon.mesos:8080
+properties:
+  server:
+    type: string
+    defaultValue: http://marathon.mesos:8080
+    description: Marathon server URL.
+    secret: false
+    required: false
+  marathonfile:
+    type: string
+    defaultValue: marathon.json
+    description: The Marathon configuration file.
+    secret: false
+    required: false
+  trigger_restart:
+    type: boolean
+    defaultValue: false
+    description: Force a restart of the application.
+    secret: false
+    required: false
+  values:
+    type: object
+    defaultValue: ''
+    description: Map of values to replace in the marathonfile.
+    secret: false
+    required: false

@@ -7,6 +7,63 @@ tags:
 logo: matrix.svg
 repo: https://github.com/drone-plugins/drone-matrix
 image: https://hub.docker.com/r/plugins/matrix
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-matrix/blob/master/README.md
 description: >-
   This plugin can be used to send build success or failure messages to a Matrix
   room.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: notify
+    image: plugins/matrix
+    settings:
+      homeserver: https://matrix.org
+      roomid: abcdefghijklmnopqrstuvwxyz:matrix.org
+      username: octocat
+      password: p455w0rd
+properties:
+  homeserver:
+    type: string
+    defaultValue: https://matrix.org
+    description: The Matrix homeserver URL.
+    secret: false
+    required: false
+  roomid:
+    type: string
+    defaultValue: ''
+    description: Room ID to send messages (not alias, but ID, and you can skip the !).
+    secret: false
+    required: true
+  username:
+    type: string
+    defaultValue: ''
+    description: Username on homeserver.
+    secret: false
+    required: true
+  password:
+    type: string
+    defaultValue: ''
+    description: Password on homeserver (use with username).
+    secret: true
+    required: true
+  userid:
+    type: string
+    defaultValue: ''
+    description: Matrix user ID (@user:homeserver.tld).
+    secret: false
+    required: false
+  accesstoken:
+    type: string
+    defaultValue: ''
+    description: Matrix access token (use with userid).
+    secret: true
+    required: false
+  template:
+    type: string
+    defaultValue: ''
+    description: Template to use for message.
+    secret: false
+    required: false
