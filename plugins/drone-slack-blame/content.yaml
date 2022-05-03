@@ -6,8 +6,95 @@ tags:
 logo: slack.svg
 repo: https://github.com/drone-plugins/drone-slack-blame
 image: https://hub.docker.com/r/plugins/slack-blame
+readme: https://github.com/drone-plugins/drone-slack-blame/blob/master/README.md
+license: Apache License 2.0
 description: >-
   Use the Slack Blame plugin to send a message to a Slack channel or through
   direct message when a build completes. You will need to supply Drone with an
   access token to the Slack API. You can create a new access token at
   [https://api.slack.com/web](https://api.slack.com/web).
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: notify
+  image: plugins/slack-blame
+  settings:
+    token: your-secret-token
+    channel: dev
+    success_template: |
+      The build is fixed! Thanks @{{slack.name}}
+    success_image_attachments:
+      - "http://i.imgur.com/TP4PIxc.jpg"
+    failure_template: |
+      The build is broken! Blame {{slack.name}}
+    failure_image_attachments:
+      - "http://cdn.meme.am/instances/51000361.jpg"
+properties:
+  token:
+    type: string
+    defaultValue: ''
+    description: Slack access token.
+    secret: true
+    required: true
+  channel:
+    type: string
+    defaultValue: ''
+    description: Slack channel.
+    secret: false
+    required: true
+  mapping:
+    type: array
+    defaultValue: ''
+    description: Mapping of authors to Slack users.
+    secret: false
+    required: true
+  success_username:
+    type: string
+    defaultValue: ''
+    description: Username for successful builds.
+    secret: false
+    required: true
+  success_icon:
+    type: string
+    defaultValue: ''
+    description: Icon for successful builds.
+    secret: false
+    required: true
+  success_template:
+    type: string
+    defaultValue: ''
+    description: Template for successful builds.
+    secret: false
+    required: true
+  success_image_attachments:
+    type: array
+    defaultValue: ''
+    description: List of image attachments for successful builds.
+    secret: false
+    required: true
+  failure_username:
+    type: string
+    defaultValue: ''
+    description: Username for failed builds.
+    secret: false
+    required: true
+  failure_icon:
+    type: string
+    defaultValue: ''
+    description: Icon for failed builds.
+    secret: false
+    required: true
+  failure_template:
+    type: string
+    defaultValue: ''
+    description: Template for failed builds.
+    secret: false
+    required: true
+  failure_image_attachments:
+    type: array
+    defaultValue: ''
+    description: List of image attachments for failed builds.
+    secret: false
+    required: true
