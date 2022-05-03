@@ -7,4 +7,60 @@ tags:
 logo: maven.svg
 repo: https://github.com/robertstettner/drone-mvn-auth
 image: https://hub.docker.com/r/robertstettner/drone-mvn-auth
-description: ''
+license: MIT License
+readme: https://github.com/robertstettner/drone-mvn-auth/blob/master/README.md
+description: The Maven Auth plugin can be used for generating the settings.xml with server authentication for a Maven repository. Please note that dependencies are saved in the .m2 directory.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: auth
+    image: robertstettner/drone-mvn-auth
+    settings:
+      servers:
+      - id: release
+        username: admin
+        password: R31e4sE
+      - id: snapshot
+        username: snap
+        password: crackle123
+      profiles:
+        - id: my-profile
+          repositories:
+            - id: myRepo
+              name: Repository for my libraries
+              url: http://maven.my.com
+              layout: default
+          plugin_repositories:
+            - id: myRepo
+              name: Repository for my libraries
+              url: http://maven.my.com
+              layout: default
+      active_profiles:
+        - my-profile
+properties:
+  servers:
+    type: array
+    defaultValue: []
+    description: The list of servers
+    secret: false
+    required: false
+  profiles:
+    type: array
+    defaultValue: []
+    description: The list of profiles
+    secret: false
+    required: false
+  active_profiles:
+    type: array
+    defaultValue: []
+    description: The list of active profiles
+    secret: false
+    required: false
+  debug:
+    type: boolean
+    defaultValue: false
+    description: Enable debug mode
+    secret: false
+    required: false

@@ -6,4 +6,53 @@ tags:
 logo: netlify.svg
 repo: https://github.com/lucaperret/drone-netlify
 image: https://hub.docker.com/r/lucap/drone-netlify
-description: The netlify plugin deploy your build to [netlify.com](https://netlify.com).
+license: MIT License
+readme: https://github.com/lucaperret/drone-netlify/blob/master/README.md
+description: The netlify plugin deploy your build to netlify.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: netlify
+    image: lucap/drone-netlify
+    settings:
+      token: xxxxx
+      site_id: xxxxxxx-xxxx-xxx-xxxxxxxx
+properties:
+  token:
+    type: string
+    defaultValue: ''
+    description: The netlify token
+    secret: true
+    required: true
+  site_id:
+    type: string
+    defaultValue: ''
+    description: Set the Site ID (or API ID in your Site settings dashboard).
+    secret: false
+    required: true
+  site_name:
+    type: string
+    defaultValue: ''
+    description: Set the Netlify subdomain.
+    secret: false
+    required: false
+  domain:
+    type: string
+    defaultValue: ''
+    description: Set your custom domain.
+    secret: false
+    required: false
+  enviroment:
+    type: string
+    defaultValue: ''
+    description: Set the Netlify environment.
+    secret: false
+    required: false
+  path:
+    type: string
+    defaultValue: ''
+    description: Path to a folder or zip file to deploy.
+    secret: false
+    required: false

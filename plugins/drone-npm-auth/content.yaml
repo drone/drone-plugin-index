@@ -7,4 +7,53 @@ tags:
 logo: npm2.svg
 repo: https://github.com/robertstettner/drone-npm-auth
 image: https://hub.docker.com/r/robertstettner/drone-npm-auth
-description: ''
+license: MIT License
+readme: https://github.com/robertstettner/drone-npm-auth/blob/master/README.md
+description: This plugin is used to generate an .npmrc file locally to authenticate against any public/private NPM repository.
+example: |
+  kind: pipeline
+  name: default
+  steps:
+  - name: npm-auth
+    image: robertstettner/drone-npm-auth
+    settings:
+      username: joebloggs
+      password: mypass
+      email: jb@me.com
+properties:
+  username:
+    type: string
+    defaultValue: ''
+    description: The NPM username
+    secret: false
+    required: true
+  password:
+    type: string
+    defaultValue: ''
+    description: The NPM password
+    secret: true
+    required: true
+  email:
+    type: string
+    defaultValue: ''
+    description: The NPM email
+    secret: false
+    required: true
+  registry:
+    type: string
+    defaultValue: https://registry.npmjs.org
+    description: The NPM registry
+    secret: false
+    required: false
+  scope:
+    type: string
+    defaultValue: ''
+    description: The NPM scope
+    secret: false
+    required: false
+  path:
+    type: string
+    defaultValue: ./
+    description: Output path of the generated .npmrc file.
+    secret: false
+    required: false
