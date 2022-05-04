@@ -9,9 +9,53 @@ tags:
 logo: rancher.svg
 repo: https://github.com/wayneconnolly/drone-rancher-stack-v1
 image: https://hub.docker.com/r/dubc/drone-rancher-stack-v1
+license: None
+readme: https://github.com/wayneconnolly/drone-rancher-stack-v1/blob/master/README.md
 description: >-
   A drone.io Rancher Stack plugin to deploy/update an entire Rancher stack (not
-  just a single service) to [Rancher
-  v1.6](https://rancher.com/docs/rancher/v1.6/en/). See [Docker
-  Hub](https://hub.docker.com/r/dubc/drone-rancher-stack-v1/) for more
-  information.
+  just a single service) to Rancher v1.6. See Docker Hub for more information.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: rancher-v1-staging-upgrade
+    image: dubc/drone-rancher-stack-v1
+    settings:
+      url: rancher.domain.com
+      stack: app-staging        
+      accesskey: RANCHER_ACCESS_KEY
+      secretkey: RANCHER_SECRET_KEY
+      pull: true
+properties:
+  url:
+    type: string
+    defaultValue: ''
+    description: The url where your rancher resides. E.g rancher.domain.com
+    required: true
+    secret: false
+  stack:
+    type: string
+    defaultValue: ''
+    description: This stack must already exist in your rancher environment. E.g app-staging.
+    required: true
+    secret: false
+  accesskey: 
+    type: string
+    defaultValue: ''
+    description: The access key for your rancher environment.
+    required: true
+    secret: true
+  secretkey:
+    type: string
+    defaultValue: ''
+    description: The secret key for your rancher environment.
+    required: true
+    secret: true
+  pull:
+    type: boolean
+    defaultValue: true
+    description: Makes sure you get the latest plugin version.
+    required: false
+    secret: false
+

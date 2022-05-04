@@ -7,6 +7,55 @@ tags:
 logo: pypi.svg
 repo: https://github.com/drone-plugins/drone-pypi
 image: https://hub.docker.com/r/plugins/pypi
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-pypi/blob/master/README.md
 description: >-
   This plugin allows you to publish Python pypi packages as part of your
   pipeline.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: pypi_publish
+    image: plugins/pypi
+    settings:
+      username: john
+      password: secret
+properties:
+  username:
+    type: string
+    defaultValue: ''
+    description: Username to be used for the pypi publish.
+    secret: false
+    required: true
+  password:
+    type: string
+    defaultValue: ''
+    description: Password to be used for the pypi publish.
+    secret: true
+    required: true
+  repository:
+    type: string
+    defaultValue: https://upload.pypi.org/legacy/
+    description: The URL of the repository to be published to.
+    secret: false
+    required: false
+  distributions:
+    type: string
+    defaultValue: only sdist
+    description: List of distribution types to publish.
+    secret: false
+    required: false
+  setupfile:
+    type: string
+    defaultValue: setup.py
+    description: The relative path from the workspace root to the setup.py file to be used.
+    secret: false
+    required: false
+  skip_build:
+    type: boolean
+    defaultValue: false
+    description: Skip the build and only upload pre-build files from dist/*.
+    secret: false
+    required: false

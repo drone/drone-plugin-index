@@ -7,6 +7,83 @@ tags:
 logo: rancher.svg
 repo: https://github.com/josmo/drone-rancher
 image: https://hub.docker.com/r/pelotech/drone-rancher
+license: None
+readme: https://github.com/josmo/drone-rancher/blob/master/README.md
 description: >-
   The Rancher plugin can be used to deploy a Docker image to a Rancher
   environment.
+example: |
+  kind: pipeline
+  type: docker
+  name: default
+
+  steps:
+  - name: publish
+    image: pelotech/drone-rancher
+    settings:
+      url: http://awesomehost:awesomeport
+      access_key: superaccesskey
+      secret_key: supersecretkey
+      service: huh/service1
+      docker_image: huh/hello
+properties:
+  url:
+    type: string
+    defaultValue: ''
+    description: the url of the rancher server
+    secret: false
+    required: true
+  access_key:
+    type: string
+    defaultValue: ''
+    description: the access key for the rancher environment
+    secret: true
+    required: true
+  secret_key:
+    type: string
+    defaultValue: ''
+    description: the secret key for the rancher environment
+    secret: true
+    required: true
+  service:
+    type: string
+    defaultValue: ''
+    description: rancher service on that environment to upgrade
+    secret: false
+    required: true
+  start_first:
+    type: boolean
+    defaultValue: true
+    description: start new container before stopping old one.
+    secret: false
+    required: false 
+  confirm:
+    type: boolean
+    defaultValue: false
+    description: auto confirm the service upgrade if successful.
+    secret: false
+    required: false
+  timeout:
+    type: number
+    defaultValue: 30
+    description: the maximum wait time in seconds for the service to upgrade.
+    secret: false
+    required: false
+  docker_image:
+    type: string
+    defaultValue: ''
+    description: docker image to use to upgrade the environment
+    secret: false
+    required: true
+  interval_millis:
+    type: number
+    defaultValue: ''
+    description: interval in milliseconds between upgrades of the containers
+    secret: false
+    required: false
+  batch_size:
+    type: number
+    defaultValue: ''
+    description: number of containers to upgrade in one batch
+    secret: false
+    required: false

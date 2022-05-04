@@ -6,9 +6,67 @@ tags:
   - rds
   - snapshot
 logo: amazon_rds.svg
-repo: >-
-  https://github.com/https://github.com/honestbee/devops-tools/tree/master/rds-snapper
+repo: https://github.com/honestbee/devops-tools/tree/master/rds-snapper
 image: https://hub.docker.com/r/quay.io/honestbee/rds-snapper
+license: None
+readme: https://github.com/honestbee/devops-tools/blob/master/rds-snapper/README.md
 description: >-
   The rds-snapper plugin cleans up specific RDS instance's snapshots, keeps
   specified number of copies and creates new snapshots.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: rds-snapper
+    image: quay.io/honestbee/rds-snapper
+    settings:
+      aws_access_key: AWS_ACCESS_KEY_ID
+      aws_secret_key: AWS_SECRET_ACCESS_KEY
+      action: "create"
+      dbname: "<db-name>"
+      suffix: "<snapshot-name-suffix>"
+      keep: <numbers-to-keep>
+properties:
+  action:
+    type: string
+    defaultValue: ""
+    description: choose which features to execute (clear|create|export)
+    required: true
+    secret: false
+  aws_access_key:
+    type: string
+    defaultValue: ""
+    description: AWS access key
+    required: true
+    secret: true
+  aws_secret_key:
+    type: string
+    defaultValue: ""
+    description: AWS secret key
+    required: true
+    secret: true
+  aws_region:
+    type: string
+    defaultValue: ""
+    description: bucket region (us-east-1, eu-west-1, etc)
+    required: true
+    secret: false
+  keep:
+    type: number
+    defaultValue: 5
+    description: number of snapshots to keep
+    required: false
+    secret: false
+  dbname:
+    type: string
+    defaultValue: ""
+    description: rds instance's name
+    required: false
+    secret: false
+  suffix:
+    type: string
+    defaultValue: randomly generated
+    description: snapshot's name suffix.
+    required: false
+    secret: false
