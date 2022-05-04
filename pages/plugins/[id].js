@@ -178,7 +178,7 @@ const Plugin = ({
               )}
               {/* TODO need to update branch name from v2 */}
               <a
-                href={`https://github.com/drone/drone-plugin-index/blob/v2/plugins/${id}/original.md`}
+                href={`https://github.com/drone/drone-plugin-index/blob/master/plugins/${id}/original.md`}
               >
                 Original doc
               </a>
