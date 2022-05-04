@@ -9,6 +9,94 @@ tags:
 logo: amazon_s3.svg
 repo: https://github.com/drone-plugins/drone-s3
 image: https://hub.docker.com/r/plugins/s3
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-s3/blob/master/README.md
 description: >-
   The S3 plugin uploads files and build artifacts to your S3 bucket, or
   S3-compatible bucket such as Minio.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: upload
+    image: plugins/s3
+    settings:
+      bucket: my-bucket-name
+      access_key: a50d28f4dd477bc184fbd10b376de753
+      secret_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
+      source: public/**/*
+      target: /target/location
+properties:
+  endpoint:
+    type: string
+    defaultValue: ''
+    description: custom endpoint URL (optional, to use a S3 compatible non-Amazon service)
+    required: false
+    secret: false
+  access_key:
+    type: string
+    defaultValue: ''
+    description: amazon key
+    required: false
+    secret: false
+  secret_key:
+    type: string
+    defaultValue: ''
+    description: amazon secret
+    required: false
+    secret: true
+  bucket:
+    type: string
+    defaultValue: ''
+    description: bucket name
+    required: true
+    secret: false
+  region:
+    type: string
+    defaultValue: ''
+    description: bucket region (us-east-1, eu-west-1, etc)
+    required: false
+    secret: false
+  acl:
+    type: string
+    defaultValue: ''
+    description: bucket acl (public-read, private, etc)
+    required: false
+    secret: false
+  source:
+    type: string
+    defaultValue: ''
+    description: source location of the files, using a glob matching pattern. Location must be within the drone workspace.
+    required: true
+    secret: false
+  target:
+    type: string
+    defaultValue: ''
+    description: target location of files in the bucket.
+    required: true
+    secret: false
+  encryption:
+    type: string
+    defaultValue: ''
+    description: if provided, use server-side encryption
+    required: false
+    secret: false
+  strip_prefix:
+    type: string
+    defaultValue: ''
+    description: strip the prefix from source path
+    required: false
+    secret: false
+  exclude:
+    type: string
+    defaultValue: ''
+    description: glob exclusion patterns
+    required: false
+    secret: false
+  path_style:
+    type: boolean
+    defaultValue: false
+    description: whether path style URLs should be used (true for minio)
+    required: false
+    secret: false

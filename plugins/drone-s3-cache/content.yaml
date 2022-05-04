@@ -8,6 +8,112 @@ tags:
 logo: amazon_s3.svg
 repo: https://github.com/drone-plugins/drone-s3-cache
 image: https://hub.docker.com/r/plugins/s3-cache
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-s3-cache/blob/master/README.md
 description: >-
   The S3 cache plugin can be used to preserve files and directories between
   builds.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: restore
+    image: plugins/s3-cache
+    settings:
+      pull: true
+      endpoint: http://minio.company.com
+      access_key: myaccesskey
+      secret_key: supersecretKey
+      restore: true
+properties:
+  endpoint:
+    type: string
+    defaultValue: ''
+    description: custom endpoint URL (optional, to use a S3 compatible non-Amazon service)
+    required: false
+    secret: false
+  access_key:
+    type: string
+    defaultValue: ''
+    description: amazon access key
+    required: false
+    secret: false
+  secret_key:
+    type: string
+    defaultValue: ''
+    description: amazon secret key
+    required: false
+    secret: true
+  restore:
+    type: boolean
+    defaultValue: false
+    description: mode to restore the build environment from cache
+    required: false
+    secret: false
+  rebuild:
+    type: boolean
+    defaultValue: false
+    description: mode to rebuild the cache from the build environment and specified mounts
+    required: false
+    secret: false
+  flush:
+    type: boolean
+    defaultValue: false
+    description: mode to flush the cache of old cache items (please be sure to set this so we don't waste storage)
+    required: false
+    secret: false
+  flush_age:
+    type: number
+    defaultValue: 30
+    description: flush cache files older then x days
+    required: false
+    secret: false
+  mount:
+    type: array
+    defaultValue: []
+    description: list of files/directories to cache
+    required: false
+    secret: false
+  debug:
+    type: boolean
+    defaultValue: false
+    description: enable debug logging
+    required: false
+    secret: false
+  filename:
+    type: string
+    defaultValue: ''
+    description:  filename for the cache
+    required: false
+    secret: false
+  root:
+    type: string
+    defaultValue: /
+    description: root path prefix for all cache default paths (path, fallback_path, and flush_path).
+    required: false
+    secret: false
+  path:
+    type: string
+    defaultValue: "[root]/<owner>/<repo>/<branch>/"
+    description: path to store the cache file
+    required: false
+    secret: false
+  fallback_path:
+    type: string
+    defaultValue: "[root]/<owner>/<repo>/<branch>/"
+    description:  fallback path for the cache file
+    required: false
+    secret: false
+  flush_path:
+    type: string
+    defaultValue: "[root]/<owner>/<repo>/"
+    description:  path to search for flushable cache files.
+    required: false
+    secret: false
+  workdir:
+    type: string
+    defaultValue: ""
+    description: path where to restore the cache files to.
+    required: false
+    secret: false
