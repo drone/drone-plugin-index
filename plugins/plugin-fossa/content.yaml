@@ -1,0 +1,35 @@
+title: fossa
+author: rancherlabs
+tags:
+  - Analysis
+  - report
+  - fossa
+repo: https://github.com/rancherlabs/drone-plugin-fossa
+image: https://hub.docker.com/r/rancher/drone-fossa
+license: Apache License 2.0
+readme: https://github.com/rancherlabs/drone-plugin-fossa/blob/main/README.md
+description: >-
+  By default, this plugin will run the analyze command per the generic CI documentation for FOSSA.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: fossa  
+    image: rancher/drone-fossa:latest
+    settings:
+      api_key:
+        from_secret: FOSSA_API_KEY
+properties:
+  api_key:
+    type: string
+    defaultValue: ''
+    description: FOSSA API key.
+    secret: true
+    required: true
+  debug:
+    type: boolean
+    defaultValue: false
+    description: Enable debug mode.
+    secret: false
+    required: false

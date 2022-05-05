@@ -1,0 +1,54 @@
+title: Grafana Annotation
+author: fdeschenes
+tags:
+  - deploy
+  - reporting
+  - grafana
+logo: grafana.svg
+repo: https://github.com/fdeschenes/drone-grafana-annotation
+image: https://hub.docker.com/r/fdeschenes/drone-grafana-annotation
+license: None
+readme: https://github.com/fdeschenes/drone-grafana-annotation/blob/master/README.md
+description: >-
+  The Grafana Annotation plugin can be used to create an annotation in
+  [Grafana](https://grafana.com).
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: annotate
+    image: fdeschenes/drone-grafana-annotation
+    settings:
+      api_key: xxxxx
+      image: fdeschenes/drone-grafana-annotation
+      tags:
+        - deploy
+        - production
+      text: "Deployed"
+      url: https://grafana.example.com
+properties:
+  api_key:
+    type: string
+    defaultValue: ''
+    description: The Grafana API key
+    secret: true
+    required: true
+  tags:
+    type: array
+    defaultValue: []
+    description: The tags to add to the annotation
+    secret: false
+    required: false
+  text:
+    type: string
+    defaultValue: ''
+    description: Description
+    secret: false
+    required: true
+  url:
+    type: string
+    defaultValue: ''
+    description: The Grafana URL
+    secret: false
+    required: true

@@ -1,0 +1,81 @@
+title: Now
+author: lucaperret
+tags:
+  - deploy
+  - now
+logo: now.svg
+repo: https://github.com/lucaperret/drone-now
+image: https://hub.docker.com/r/lucap/drone-now
+license: MIT License
+readme: https://github.com/lucaperret/drone-now/blob/master/README.md
+description: The Now plugin deploy your build to now.sh.
+example: |
+  kind: pipeline
+  name: default
+  steps:
+  - name: now
+    image: lucap/drone-now
+    settings:
+      deploy_name: deployment-name
+      now_token: keep-this-secret
+properties:
+  deploy_name:
+    type: string
+    defaultValue: working directory
+    description: The deployment name
+    secret: false
+    required: false
+  now_token:
+    type: string
+    defaultValue: ''
+    description: The now.sh token
+    secret: true
+    required: true
+  directory:
+    type: string
+    defaultValue: ''
+    description: The directory to deploy
+    secret: false
+    required: false
+  team: 
+    type: string
+    defaultValue: ''
+    description: Set the team scope
+    secret: false
+    required: false
+  type:
+    type: string
+    defaultValue: ''
+    description: Deployment type (docker, npm, static).
+    secret: false
+    required: false
+  alias:
+    type: string
+    defaultValue: ''
+    description: Target now.sh subdomain or domain
+    secret: false
+    required: false
+  cleanup:
+    type: boolean
+    defaultValue: false
+    description: Equivalent to now rm --safe --yes $alias
+    secret: false
+    required: false
+  rules_domain:
+    type: string
+    defaultValue: ''
+    description: Your domain
+    secret: false
+    required: false
+  rules_file:
+    type: string
+    defaultValue: ''
+    description:  File that contain set of rules
+    secret: false
+    required: false
+  scale:
+    type: string
+    defaultValue: ''
+    description: Min and Max scaling values
+    secret: false
+    required: false

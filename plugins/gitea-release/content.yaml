@@ -1,0 +1,85 @@
+title: Gitea Release
+author: drone-plugins
+tags:
+  - publish
+  - gitea
+logo: gitea.svg
+repo: https://github.com/drone-plugins/drone-gitea-release
+image: https://hub.docker.com/r/plugins/gitea-release
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-gitea-release/blob/master/README.md
+description: >-
+  The gitea-release plugin is used to publish files and artifacts to Gitea
+  Release.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: gitea_release
+    image: plugins/gitea-release
+    settings:
+      api_key: xxxxxxxx
+      base_url: https://your.gitea.tld
+      files: dist/*
+properties:
+  api_key:
+    type: string
+    defaultValue: ''
+    description: Gitea API key
+    secret: false
+    required: true
+  base_url:
+    type: string
+    defaultValue: ''
+    description: Gitea base URL
+    secret: false
+    required: true
+  files:
+    type: array
+    defaultValue: ''
+    description: files to upload to Gitea Release, globs are allowed.
+    secret: false
+    required: true
+  file_exists:
+    type: string
+    defaultValue: overwrite
+    description:  what to do if an file asset already exists, supported values - overwrite, skip and fail.
+    secret: false
+    required: false
+  checksum:
+    type: string
+    defaultValue: ''
+    description: checksum takes hash methods to include in your Gitea release for the files specified. Supported hash methods include - md5, sha1, sha256, sha512, adler32, and crc32.
+    secret: false
+    required: false
+  draft:
+    type: boolean
+    defaultValue: false
+    description: draft release
+    secret: false
+    required: false
+  prerelease:
+    type: boolean
+    defaultValue: false
+    description: prerelease release
+    secret: false
+    required: false
+  note:
+    type: string
+    defaultValue: ''
+    description:  file or string with notes for the release
+    secret: false
+    required: false
+  title:
+    type: string
+    defaultValue: ''
+    description: file or string for the title shown in the gitea release
+    secret: false
+    required: false
+  insecure:
+    type: boolean
+    defaultValue: false
+    description: visit base_url via insecure https protocol
+    secret: false
+    required: false

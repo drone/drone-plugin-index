@@ -1,0 +1,133 @@
+title: SSH
+author: appleboy
+tags:
+  - deploy
+  - publish
+  - ssh
+logo: term.svg
+repo: https://github.com/appleboy/drone-ssh
+image: https://hub.docker.com/r/appleboy/drone-ssh
+license: MIT License
+readme: https://github.com/appleboy/drone-ssh/blob/master/README.md
+description: Use the SSH plugin to execute commands on a remote server.
+example: | 
+  kind: pipeline
+  name: default
+  
+  steps:
+  - name: ssh
+    image: appleboy/drone-ssh
+    settings:
+      host:
+        - example1.com
+        - example2.com
+      username: ubuntu
+      password:
+        from_secret: ssh_password
+      port: 22
+      command_timeout: 2m
+      script:
+        - echo "Hello World"
+properties:
+  host:
+    type: string
+    defaultValue: ''
+    description: Hostname or IP address of the server.
+    secret: false
+    required: true
+  port:
+    type: string
+    defaultValue: 22
+    description: Port of the server.
+    secret: false
+    required: false
+  username:
+    type: string
+    defaultValue: ''
+    description: account for target host user.
+    secret: false
+    required: false
+  password:
+    type: string
+    defaultValue: ''
+    description: Password to login to the server.
+    secret: true
+    required: false
+  key:
+    type: string
+    defaultValue: ''
+    description: plain text of user private key
+    secret: true
+    required: false
+  key_path:
+    type: string
+    defaultValue: ''
+    description: Path to the private key to login to the server.
+    secret: false
+    required: false
+  envs:
+    type: array
+    defaultValue: []
+    description: custom secrets which are made available in the script section.
+    secret: false
+    required: false
+  script:
+    type: string
+    defaultValue: ''
+    description: Command to execute on the server.
+    secret: false
+    required: false
+  script_stop:
+    type: boolean
+    defaultValue: false
+    description: stop script after first failure.
+    secret: false
+    required: false
+  timeout:
+    type: string
+    defaultValue: 30s
+    description: Timeout is the maximum amount of time for the ssh connection to establish.
+    secret: false
+    required: false
+  command_timeout:
+    type: string
+    defaultValue: 10m
+    description: Command timeout is the maximum amount of time for the execute commands
+    secret: false
+    required: false
+  proxy_host:
+    type: string
+    defaultValue: ''
+    description: Proxy hostname or IP address.
+    secret: false
+    required: false
+  proxy_port:
+    type: string
+    defaultValue: ''
+    description: Proxy port.
+    secret: false
+    required: false
+  proxy_username:
+    type: string
+    defaultValue: ''
+    description: Proxy username.
+    secret: false
+    required: false
+  proxy_password:
+    type: string
+    defaultValue: ''
+    description: Proxy password.
+    secret: true
+    required: false
+  proxy_key:
+    type: string
+    defaultValue: ''
+    description: lain text of proxy private key.
+    secret: true
+    required: false
+  proxy_key_path:
+    type: string
+    defaultValue: ''
+    description: Path to the private key to login to the proxy.
+    secret: false
+    required: false

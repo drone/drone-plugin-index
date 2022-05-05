@@ -1,0 +1,71 @@
+title: Google Cloud Storage
+author: wyattjoh
+tags:
+  - publish
+  - google
+  - gcp
+  - gcs
+  - storage
+logo: google_gcs.svg
+repo: https://github.com/wyattjoh/drone-gcs
+image: https://hub.docker.com/r/wyattjoh/drone-gcs
+license: Apache License 2.0
+readme: https://github.com/wyattjoh/drone-gcs/blob/master/README.md
+description: >-
+  The Google Cloud Storage plugin uploads files and build artifacts to your Google Cloud Storage bucket.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: pipeline  
+    image: wyattjoh/drone-gcs
+    settings:
+      acl: public
+      bucket: "my-bucket-name"
+      source: public/**/*
+      strip_prefix: public/
+      target: /target/location
+properties:
+  bucket:
+    type: string
+    defaultValue: ""
+    description: bucket name
+    required: true
+    secret: true
+  acl:
+    type: string
+    defaultValue: ""
+    description: access to files that are uploaded (private, public)
+    required: false
+    secret: false
+  source:
+    type: string
+    defaultValue: ""
+    description: source location of the files, using a glob matching pattern
+    required: true
+    secret: false
+  target:
+    type: string
+    defaultValue: ""
+    description: target location of files in the bucket
+    required: true
+    secret: false
+  compress:
+    type: boolean
+    defaultValue: false
+    description: gzip files before they are uploaded and add a Content-Encoding gzip
+    required: false
+    secret: false
+  strip_prefix:
+    type: boolean
+    defaultValue: false
+    description: strip the prefix from source path
+    required: false
+    secret: false
+  exclude:
+    type: string
+    defaultValue: ""
+    description: glob exclusion patterns
+    required: false
+    secret: false

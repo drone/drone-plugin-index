@@ -1,0 +1,153 @@
+title: Drone Cache
+author: meltwater
+tags:
+  - cache
+  - amazon
+  - aws
+  - s3
+  - volume
+logo: drone_cache.svg
+repo: https://github.com/meltwater/drone-cache
+image: https://hub.docker.com/r/meltwater/drone-cache
+license: Apache License 2.0
+readme: https://github.com/meltwater/drone-cache/blob/master/README.md
+description: >-
+  A Drone plugin for caching current workspace files between builds to reduce
+  your build times. `drone-cache` is a small CLI program, written in Go without
+  any external OS dependencies (such as tar, etc).
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+    - name: restore-cache
+      image: meltwater/drone-cache:dev
+      pull: true
+      settings:
+        access-key:
+          from_secret: aws_access_key_id
+        secret-key:
+          from_secret: aws_secret_access_key
+        restore: true
+        bucket: drone-cache-bucket
+        region: eu-west-1
+        mount:
+          - 'vendor'
+
+    - name: build
+      image: golang:1.11-alpine
+      pull: true
+      commands:
+        - apk add --update make git
+        - make drone-cache
+
+    - name: rebuild-cache
+      image: meltwater/drone-cache:dev
+      pull: true
+      settings:
+        access-key:
+          from_secret: aws_access_key_id
+        secret-key:
+          from_secret: aws_secret_access_key
+        rebuild: true
+        bucket: drone-cache-bucket
+        region: eu-west-1
+        mount:
+          - 'vendor'
+properties:
+  backend:
+    type: string
+    defaultValue: s3
+    description: cache backend to use in plugin (s3, filesystem).
+    secret: false
+    required: false
+  mount:
+    type: array
+    defaultValue: []
+    description: cache directories, an array of folders to cache.
+    secret: false
+    required: false
+  rebuild:
+    type: boolean
+    defaultValue: false
+    description: whether to rebuild the cache directories.
+    secret: false
+    required: false
+  restore:
+    type: boolean
+    defaultValue: false
+    description: whether to restore the cache directories.
+    secret: false
+    required: false
+  cache-key:
+    type: string
+    defaultValue: ''
+    description: cache key to use for the cache directories.
+    secret: false
+    required: false
+  archive-format:
+    type: string
+    defaultValue: tar
+    description: archive format to use for the cache directories (tar, gzip).
+    secret: false
+    required: false
+  debug:
+    type: boolean
+    defaultValue: false
+    description: whether to enable debug mode.
+    secret: false
+    required: false
+  filesystem-cache-route:
+    type: string
+    defaultValue: /tmp/cache
+    description: local filesystem root directory for the filesystem cache.
+    secret: false
+    required: false
+  endpoint:
+    type: string
+    defaultValue: ''
+    description: endpoint for the s3 connection.
+    secret: false
+    required: false
+  access-key:
+    type: string
+    defaultValue: ''
+    description: AWS access key.
+    secret: true
+    required: false
+  secret-key:
+    type: string
+    defaultValue: ''
+    description: AWS secret key.
+    secret: true
+    required: false
+  bucket:
+    type: string
+    defaultValue: ''
+    description: AWS bucket name.
+    secret: false
+    required: false
+  region:
+    type: string
+    defaultValue: ''
+    description: AWS bucket region.
+    secret: false
+    required: false
+  path-style:
+    type: boolean
+    defaultValue: false
+    description: use path style for bucket paths. (true for minio, false for aws).
+    secret: false
+    required: false
+  acl:
+    type: string
+    defaultValue: private
+    description: upload files with acl (private, public-read, ...).
+    secret: false
+    required: false
+  encryption:
+    type: string
+    defaultValue: none
+    description: server-side encryption algorithm (AES256, aws:kms).
+    secret: false
+    required: false

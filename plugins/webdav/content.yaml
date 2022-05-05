@@ -1,0 +1,48 @@
+title: WebDAV
+author: vividboarder
+tags:
+  - deploy
+  - publish
+logo: term.svg
+repo: https://github.com/vividboarder/drone-webdav
+image: https://hub.docker.com/r/vividboarder/drone-webdav
+license: None
+readme: https://github.com/ViViDboarder/drone-webdav/blob/master/Readme.md
+description: The WebDAV plugin will allow pushing build artifacts to any WebDAV server, including Nextcloud or ownCloud.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+    - name: upload_debug
+      image: vividboarder/drone-webdav
+      settings:
+        file: com.vividboarder.otbeta/build/outputs/apk/com.vividboarder.otbeta-debug.apk
+        destination: https://my.nextcloud.com/remote.php/dav/files/vividboarder/Android/Apks/
+        username: admin
+        password: password
+properties:
+  file:
+    type: string
+    defaultValue: ''
+    description: The path to the file to upload.
+    secret: false
+    required: true
+  destination:
+    type: string
+    defaultValue: ''
+    description: The destination URL.
+    secret: false
+    required: true
+  username:
+    type: string
+    defaultValue: ''
+    description: The username to authenticate with.
+    secret: false
+    required: true
+  password:
+    type: string
+    defaultValue: ''
+    description: The password to authenticate with.
+    secret: true
+    required: false
