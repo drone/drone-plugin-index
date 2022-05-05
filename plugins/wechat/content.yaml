@@ -38,69 +38,69 @@ example: |
           build {{build.number}} failed. Fix me please.
         {% endif %}
 properties:
-corpid:
-  type: string
-  defaultValue: ""
-  description: The corpid for authorization
-  required: true
-  secret: true
-corp_secret:
-  type: string
-  defaultValue: ""
-  description: The corp_secret for authorization
-  required: true
-  secret: true
-agent_id:
-  type: string
-  defaultValue: ""
-  description: The agent id to send the message
-  required: true
-  secret: false
-to_party:
-  type: string
-  defaultValue: ""
-  description: The party id to send the message
-  required: false
-  secret: false
-to_user:
-  type: string
-  defaultValue: ""
-  description: The user id to send the message
-  required: false
-  secret: false
-to_tag:
-  type: string
-  defaultValue: ""
-  description: The tag id to send the message
-  required: false
-  secret: false
-safe:
-  type: boolean
-  defaultValue: false
-  description: encrypt message, default is false
-  required: false
-  secret: false
-msg_url:
-  type: string
-  defaultValue: ""
-  description: The link for the text card click
-  required: false
-  secret: false
-btn_text:
-  type: string
-  defaultValue: ""
-  description: The text for the button on the card
-  required: false
-  secret: false
-title:
-  type: string
-  defaultValue: ""
-  description: The title for the card
-  required: false
-  secret: false
-message:
-  type: string
-  defaultValue: ""
-  description: Notification body message, support markdown
-  required: true
-  secret: false
+  corpid:
+    type: string
+    defaultValue: ""
+    description: The corpid for authorization
+    required: true
+    secret: true
+  corp_secret:
+    type: string
+    defaultValue: ""
+    description: The corp_secret for authorization
+    required: true
+    secret: true
+  agent_id:
+    type: string
+    defaultValue: ""
+    description: The agent id to send the message
+    required: true
+    secret: false
+  to_party:
+    type: string
+    defaultValue: ""
+    description: The party id to send the message
+    required: false
+    secret: false
+  to_user:
+    type: string
+    defaultValue: ""
+    description: The user id to send the message
+    required: false
+    secret: false
+  to_tag:
+    type: string
+    defaultValue: ""
+    description: The tag id to send the message
+    required: false
+    secret: false
+  safe:
+    type: boolean
+    defaultValue: false
+    description: encrypt message, default is false
+    required: false
+    secret: false
+  msg_url:
+    type: string
+    defaultValue: ""
+    description: The link for the text card click
+    required: false
+    secret: false
+  btn_text:
+    type: string
+    defaultValue: ""
+    description: The text for the button on the card
+    required: false
+    secret: false
+  title:
+    type: string
+    defaultValue: ""
+    description: The title for the card
+    required: false
+    secret: false
+  message:
+    type: string
+    defaultValue: ""
+    description: Notification body message, support markdown
+    required: true
+    secret: false
