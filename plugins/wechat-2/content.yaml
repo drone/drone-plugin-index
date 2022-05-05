@@ -1,42 +1,30 @@
-title: Wechat
-author: lizheming
+title: Wechat for Work
+author: clem109
 tags:
   - notifications
   - chat
   - wechat
 logo: wechat.svg
-repo: https://github.com/lizheming/drone-wechat
-image: https://hub.docker.com/r/lizheming/drone-wechat
-license: MIT License
-readme: https://github.com/lizheming/drone-wechat/blob/master/README.md
-description: The Wechat plugin posts build status messages to your account.
+repo: https://github.com/clem109/drone-wechat
+image: https://hub.docker.com/r/clem109/drone-wechat
+license: Apache License 2.0
+readme: https://github.com/clem109/drone-wechat/blob/master/README.md
+description: Drone plugin for WeChat for Work to show build notifications.
 example: |
   kind: pipeline
   name: default
 
   steps:
   - name: wechat
-    image: lizheming/drone-wechat
+    image: clem109/drone-wechat
     settings:
-      corpid: 
-        from_secret: wechat_corpid
-      corp_secret:
-        from_secret: wechat_corp_secret
-      agent_id: 
-        from_secret: agent_id
-      to_user: 111
-      to_party: 112
-      to_tag: ${DRONE_REPO_NAME}
-      msg_url: ${DRONE_BUILD_LINK}
-      safe: 1
-      btn_txt: more
+      corpid: corpid
+      corp_secret: secret
+      agent_id: 1234567
       title: ${DRONE_REPO_NAME}
-      message: >
-        {%if success %}
-          build {{build.number}} succeeded. Good job.
-        {% else %}
-          build {{build.number}} failed. Fix me please.
-        {% endif %}
+      description: "Build Number: ${DRONE_BUILD_NUMBER} failed. ${DRONE_COMMIT_AUTHOR} please fix. Check the results here: ${DRONE_BUILD_LINK} "
+      msg_url: ${DRONE_BUILD_LINK}
+      btn_txt: btn
 properties:
 corpid:
   type: string
@@ -74,19 +62,13 @@ to_tag:
   description: The tag id to send the message
   required: false
   secret: false
-safe:
-  type: boolean
-  defaultValue: false
-  description: encrypt message, default is false
-  required: false
-  secret: false
 msg_url:
   type: string
   defaultValue: ""
   description: The link for the text card click
   required: false
   secret: false
-btn_text:
+btntxt:
   type: string
   defaultValue: ""
   description: The text for the button on the card
@@ -95,12 +77,12 @@ btn_text:
 title:
   type: string
   defaultValue: ""
-  description: The title for the card
+  description: Notification title
   required: false
   secret: false
-message:
+description:
   type: string
   defaultValue: ""
-  description: Notification body message, support markdown
+  description: Text description of the card
   required: true
   secret: false

@@ -1,5 +1,5 @@
 title: Google Cloud Storage
-author: wyattjoh
+author: drone-plugins
 tags:
   - publish
   - google
@@ -7,8 +7,74 @@ tags:
   - gcs
   - storage
 logo: google_gcs.svg
-repo: https://github.com/wyattjoh/drone-gcs
-image: https://hub.docker.com/r/wyattjoh/drone-gcs
+repo: https://github.com/drone-plugins/gcs
+image: https://hub.docker.com/r/plugins/drone-gcs
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-gcs/blob/master/README.md
 description: >-
-  The Google Cloud Storage plugin uploads files and build artifacts to your
-  Google Cloud Storage bucket.
+  The GCS plugin can be used to publish files and artifacts to Google Cloud Storage.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: upload  
+    image: plugins/gcs
+    settings:
+      source: dist
+      target: bucket/dir/
+      ignore: bin/*
+      acl: allUsers:READER,user@domain.com:OWNER
+      gzip: js,css,html
+      cache_control: public,max-age=3600
+      metadata: {"x-goog-meta-foo":"bar"}
+      token: your-google-token
+properties:
+  token:
+    type: string
+    defaultValue: ""
+    description: credentials to access Google Cloud Storage
+    required: true
+    secret: true
+  acl:
+    type: array
+    defaultValue: []
+    description: a list of access rules applied to the uploaded files, in a form of entity:role
+    required: false
+    secret: false
+  source:
+    type: string
+    defaultValue: ""
+    description: location of files to upload
+    required: true
+    secret: false
+  ignore:
+    type: string
+    defaultValue: ""
+    description: skip files matching this pattern, relative to source
+    required: false
+    secret: false
+  target:
+    type: string
+    defaultValue: ""
+    description: destination to copy files to, including bucket name
+    required: true
+    secret: false
+  gzip:
+    type: string
+    defaultValue: ""
+    description: files with the specified extensions will be gzipped and uploaded with "gzip" Content-Encoding header e.g. js,css,html
+    required: false
+    secret: false
+  cache_control:
+    type: string
+    defaultValue: ""
+    description: Cache-Control header
+    required: false
+    secret: false
+  metadata:
+    type: string
+    defaultValue: ""
+    description: an arbitrary dictionary with custom metadata applied to all objects
+    required: false
+    secret: false
