@@ -6,7 +6,7 @@ tags:
 logo: deta.svg
 repo: https://github.com/lizheming/drone-deta
 image: https://hub.docker.com/r/lizheming/drone-deta
-license: MIT
+license: MIT License
 readme: https://github.com/lizheming/drone-deta/blob/master/README.md
 description: |
   The Deta plugin deploy your build to deta.sh(https://deta.sh).
