@@ -1,0 +1,56 @@
+title: Gitlab-CI
+author: appleboy
+tags:
+  - infrastructure
+  - trigger
+  - gitlab
+  - gitlab-ci
+logo: gitlab.svg
+repo: https://github.com/appleboy/drone-gitlab-ci
+image: https://hub.docker.com/r/appleboy/drone-gitlab-ci
+license: MIT License
+readme: https://github.com/appleboy/drone-gitlab-ci/blob/master/README.md
+description: The Gitlab-ci plugin allows you to trigger Gitlab-ci job automatically.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: trigger gitlab job
+    image: appleboy/drone-gitlab-ci
+    settings:
+      host: https://gitlab.com
+      token: xxxxxxxxxx
+      ref: master
+      id: gitlab-project-id
+properties:
+  host:
+    type: string
+    defaultValue: ''
+    description: Gitlab server url
+    secret: false
+    required: true
+  token:
+    type: string
+    defaultValue: ''
+    description: Gitlab token
+    secret: true
+    required: true
+  ref:
+    type: string
+    defaultValue: ''
+    description: valid refs are only the branches and tags
+    secret: false
+    required: true
+  id:
+    type: string
+    defaultValue: ''
+    description: Gitlab project id
+    secret: false
+    required: true
+  debug:
+    type: boolean
+    defaultValue: false
+    description: Enable debug mode
+    secret: false
+    required: false

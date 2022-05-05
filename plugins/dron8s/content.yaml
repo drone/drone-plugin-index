@@ -1,0 +1,36 @@
+title: Dron8s
+author: bh90210
+tags:
+  - kubernetes
+  - apply
+logo: kubernetes.svg
+repo: https://github.com/bh90210/dron8s
+image: https://hub.docker.com/r/bh90210/dron8s
+license: The Unlicense
+readme: https://github.com/bh90210/dron8s/blob/main/README.md
+description: Yet another Kubernetes plugin for Drone using dynamic Server Side Apply to achieve `kubectl apply -f multi-configs.yaml` parity for your CI-CD pipelines.
+example: |
+  kind: pipeline
+  type: docker
+  name: dron8s-out-of-cluster-example
+
+  steps:
+  - name: dron8s
+    image: ghcr.io/bh90210/dron8s:latest
+    settings:
+      yaml: ./config.yaml
+      kubeconfig:
+        from_secret: kubeconfig
+properties:
+  yaml:
+    type: string
+    defaultValue: ''
+    description: Yaml containing configs
+    secret: false
+    required: true
+  kubeconfig:
+    type: string
+    defaultValue: ''
+    description: Needed for out-of-cluster use. If not present plugin will default to in-cluster configuration. You can find kubeconfig under ~/.kube/config
+    secret: false
+    required: false

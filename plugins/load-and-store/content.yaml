@@ -1,0 +1,65 @@
+title: Load and store
+author: allgreed
+tags:
+  - publish
+  - docker
+logo: docker.svg
+repo: https://github.com/allgreed/drone-load-and-store
+image: https://hub.docker.com/r/allgreed/drone-load-and-store
+license: MIT License
+readme: https://github.com/allgreed/drone-load-and-store/blob/master/README.md
+description: >-
+  This plugin can be used to load and publish images to the Docker registry. It
+  can come in handy when the default Docker plugin cannot be used. A
+  good example usecase is building Docker images with nix which
+  produces a Docker image archive.
+example: |
+  kind: pipeline
+  name: default
+  steps:
+  - name: push-docker-image
+    image: allgreed/drone-load-and-store
+    settings:
+      archive: docker-image.tar.gz
+      repo: username/repository
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+properties:
+  archive:
+    type: string
+    defaultValue: ''
+    description: location of the docker image archive.
+    secret: false
+    required: true
+  registry:
+    type: string
+    defaultValue: docker.io
+    description: authenticates to this registry.
+    secret: false
+    required: false
+  repo:
+    type: string
+    defaultValue: ''
+    description: repository name for the image.
+    secret: false
+    required: true
+  username:
+    type: string
+    defaultValue: ''
+    description: The username to use for the repository
+    secret: false
+    required: true
+  password:
+    type: string
+    defaultValue: ''
+    description: The password to use for the repository
+    secret: true
+    required: true
+  debug:
+    type: boolean
+    defaultValue: false
+    description: Enable verbose logging
+    secret: false
+    required: false

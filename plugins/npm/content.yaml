@@ -1,0 +1,62 @@
+title: NPM
+author: donny-dont
+tags:
+  - publish
+  - npm
+  - node
+logo: npm.svg
+repo: https://github.com/drone-plugins/drone-npm
+image: https://hub.docker.com/r/plugins/npm
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-npm/blob/master/README.md
+description: >-
+  The NPM plugin can be used to publish libraries to public or private
+  registries.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: npm
+    image: plugins/npm
+    settings:
+      username: bob
+      password: password
+      email: bob@bob.me
+properties:
+  username:
+    type: string
+    defaultValue: ''
+    description: the username for the account to publish with
+    secret: false
+    required: true
+  password:
+    type: string
+    defaultValue: ''
+    description: the password for the account to publish with
+    secret: true
+    required: true
+  token:
+    type: string
+    defaultValue: ''
+    description: the token for the account to publish with
+    secret: true
+    required: false
+  email:
+    type: string
+    defaultValue: ''
+    description: the email for the account to publish with
+    secret: false
+    required: false
+  registry:
+    type: string
+    defaultValue: https://registry.npmjs.org
+    description: the registry to publish to
+    secret: false
+    required: false
+  folder:
+    type: string
+    defaultValue: the workspace directory
+    description: the folder, relative to the workspace, containing the library.
+    secret: false
+    required: false

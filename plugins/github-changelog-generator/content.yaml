@@ -1,0 +1,46 @@
+title: Github-changelog-generator
+author: naorlivne
+tags:
+  - changelog
+  - github
+  - github-changelog-generator
+logo: github.svg
+repo: https://github.com/naorlivne/drone-github-changelog-generator
+image: https://hub.docker.com/r/naorlivne/drone-github-changelog-generator
+license: GNU General Public License v3.0
+readme: https://github.com/naorlivne/drone-github-changelog-generator/blob/master/README.md
+description: >-
+  This plugin can be used to create a changelog file based on GitHub tags, it
+  will not auto-push it into the repo but rather create a changelog file for you
+  to upload into your desired location via other Drone plugins.
+example: |
+  kind: pipeline
+  type: docker
+  name: default
+
+  steps:
+  - name: create_changelog
+    image: naorlivne/drone-github-changelog-generator
+    settings:
+      github_user: naorlivne
+      github_project: drone-github-changelog-generator
+      output_path: CHANGELOG.md
+properties:
+  github_user:
+    type: string
+    defaultValue: ''
+    description: Github username
+    secret: false
+    required: true
+  github_project:
+    type: string
+    defaultValue: ''
+    description: Github project name
+    secret: false
+    required: true
+  output_path:
+    type: string
+    defaultValue: CHANGELOG.md
+    description: The changelog file path to be created in the current working directory (repo root by default)
+    secret: false
+    required: true

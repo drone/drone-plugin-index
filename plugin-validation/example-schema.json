@@ -1,0 +1,39 @@
+{
+  "title": "Plugin example",
+  "description": "Drone plugin example",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "description": "The Drone YAML kind",
+      "type": "string",
+      "enum": ["pipeline", "secret", "signature", "template"]
+    },
+    "name": {
+      "description": "Drone YAML name",
+      "type": "string"
+    },
+    "steps": {
+      "description": "Drone YAML steps",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Step name",
+            "type": "string"
+          },
+          "image": {
+            "description": "Image name",
+            "type": "string"
+          },
+          "settings": {
+            "description": "Plugin settings",
+            "type": "object"
+          }
+        }
+      },
+      "minItems": 1
+    }
+  },
+  "required": ["kind", "name", "steps"]
+}

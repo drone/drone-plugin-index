@@ -1,0 +1,120 @@
+title: Google Cloud Storage Cache
+author: hvalle
+tags:
+  - cache
+  - gcs
+  - google
+logo: google_gcs.svg
+repo: https://github.com/hvalle/drone-gcs-cache
+image: https://hub.docker.com/r/homerovalle/drone-gcs-cache
+license: Apache License 2.0 
+readme: https://github.com/hvalle/drone-gcs-cache/blob/master/README.md
+description: >-
+  The GCS cache plugin can be used to preserve files and directories between
+  builds.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: restore-cache
+    image: homerovalle/drone-gcs-cache
+    pull: true
+    settings:
+      bucket: gcs_bucket
+      json_key: your-service-account-json-key
+      restore: true
+  - name: build
+    image: node
+    commands:
+    - npm install
+  - name: rebuild-cache
+    image: homerovalle/drone-gcs-cache
+    pull: true
+    mount:
+      - node_modules
+    settings:
+      bucket: gcs_bucket
+      json_key: your-service-account-json-key
+      rebuild: true
+  - name: flush-cache
+    image: homerovalle/drone-gcs-cache
+    pull: true
+    settings:
+      bucket: gcs_bucket
+      json_key: your-service-account-json-key
+      flush: true
+      flush_age: 14
+properties:
+  json_key:
+    type: string
+    defaultValue: ''
+    description: service account json key.
+    secret: true
+    required: true
+  restore:
+    type: boolean
+    defaultValue: false
+    description: mode to restore the build environment from cache.
+    secret: false
+    required: false
+  rebuild:
+    type: boolean
+    defaultValue: false
+    description: mode to rebuild the cache from the build environment and specified mounts.
+    secret: false
+    required: false
+  flush:
+    type: boolean
+    defaultValue: false
+    description: mode to flush the cache of old cache items (please be sure to set this so we don't waste storage).
+    secret: false
+    required: false
+  flush_age:
+    type: number
+    defaultValue: 30
+    description: flush cache files older then x days.
+    secret: false
+    required: false
+  mount:
+    type: array
+    defaultValue: []
+    description: list of files/directories to cache.
+    secret: false
+    required: false
+  debug:
+    type: boolean
+    defaultValue: false
+    description: enabling more logging for debugging.
+    secret: false
+    required: false
+  filename:
+    type: string
+    defaultValue: ''
+    description: filename to use for cache.
+    secret: false
+    required: false
+  bucket:
+    type: string
+    defaultValue: ''
+    description: bucket to use to rebuild and restore cache.
+    secret: false
+    required: true
+  path:
+    type: string
+    defaultValue: '[bucket]/<owner>/<repo>/<branch>/'
+    description: path to store the cache file.
+    secret: false
+    required: true
+  fallback_path:
+    type: string
+    defaultValue: '[bucket]/<owner>/<repo>/<branch>/'
+    description: fallback path for the cache file.
+    secret: false
+    required: true
+  flush_path:
+    type: string
+    defaultValue: '[bucket]/<owner>/<repo>/'
+    description: path to search for flushable cache files.
+    secret: false
+    required: true

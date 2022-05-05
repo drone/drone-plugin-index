@@ -1,0 +1,41 @@
+title: ServerChan(Server酱)
+author: yakumioto
+tags:
+  - serverchan
+  - Server酱
+logo: serverchan.svg
+repo: https://github.com/yakumioto/drone-serverchan
+image: https://hub.docker.com/r/yakumioto/drone-serverchan
+license: MIT License
+readme: https://github.com/yakumioto/drone-serverchan/blob/master/README.md
+description: The ServerChan plugin posts build status messages to your account.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+    - name: send-wechat
+      image: yakumioto/serverchan
+      settings:
+        key: SCU48558T164ff96a3316d8a22cacea21d66b5caed80baa044
+        text: hello world
+        desp: Send by ServerChan
+properties:
+  key:
+    type: string
+    defaultValue: ''
+    description: ServerChan key.
+    secret: true
+    required: true
+  text:
+    type: string
+    defaultValue: ''
+    description: Notification title
+    secret: false
+    required: true
+  desp:
+    type: string
+    defaultValue: ''
+    description: Message description.
+    secret: false
+    required: false

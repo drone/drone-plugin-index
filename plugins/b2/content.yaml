@@ -1,0 +1,75 @@
+title: Backblaze B2
+author: techknowlogick
+tags:
+  - publish
+  - backblaze
+  - b2
+  - storage
+logo: backblaze-b2-logo.svg
+repo: https://github.com/techknowlogick/drone-b2
+image: https://hub.docker.com/r/techknowlogick/drone-b2
+license: Apache License 2.0
+readme: https://github.com/techknowlogick/drone-b2/blob/master/README.md
+description: The B2 plugin uploads files and build artifacts to your B2 bucket.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: b2
+    image: techknowlogick/drone-b2
+    settings:
+      bucket: my-bucket-name
+      account: a50d28f4dd477bc184fbd10b376de753
+      key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
+      source: public/**/*
+      target: /target/location
+properties:
+  account:
+    type: string
+    defaultValue: ''
+    description: backblaze account ID.
+    secret: false
+    required: false
+  key:
+    type: string
+    defaultValue: ''
+    description: backblaze secret key.
+    secret: true
+    required: false
+  bucket:
+    type: string
+    defaultValue: ''
+    description: bucket name.
+    secret: false
+    required: false
+  source:
+    type: string
+    defaultValue: ''
+    description: source location of the files, using a glob matching pattern.
+    secret: false
+    required: false
+  target:
+    type: string
+    defaultValue: ''
+    description: target location of files in the bucket.
+    secret: false
+    required: false
+  strip_prefix:
+    type: boolean
+    defaultValue: false
+    description: strip the prefix from source path.
+    secret: false
+    required: false
+  exclude:
+    type: array
+    defaultValue: ''
+    description: glob exclusion patterns.
+    secret: false
+    required: false
+  path_style:
+    type: string
+    defaultValue: ''
+    description: whether path style URLs should be used (true for minio).
+    secret: false
+    required: false

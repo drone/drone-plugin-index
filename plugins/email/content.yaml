@@ -1,0 +1,96 @@
+title: Email
+author: drillster
+tags:
+  - notifications
+  - email
+logo: email.svg
+repo: https://github.com/drillster/drone-email
+image: https://hub.docker.com/r/drillster/drone-email
+license: Apache License 2.0
+readme: https://github.com/Drillster/drone-email/blob/master/README.md
+description: The email plugin can be used to notify people of a build result.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: notify
+    image: drillster/drone-email
+    settings:
+      host: smtp.some-server.com
+      username: foo
+      password: bar
+      from: drone@your-domain.com
+properties:
+  from:
+    type: string
+    defaultValue: ''
+    description: The email address to send the notification from.
+    secret: false
+    required: false
+  host:
+    type: string
+    defaultValue: ''
+    description: SMTP server host.
+    secret: false
+    required: false
+  port:
+    type: number
+    defaultValue: 587
+    description: SMTP server port.
+    secret: false
+    required: false
+  username:
+    type: string
+    defaultValue: ''
+    description: SMTP server username.
+    secret: true
+    required: false
+  password:
+    type: string
+    defaultValue: ''
+    description: SMTP server password.
+    secret: true
+    required: false
+  skip_verify:
+    type: boolean
+    defaultValue: false
+    description: Skip cert verification.
+    secret: false
+    required: false
+  recipients:
+    type: array
+    defaultValue: []
+    description: List of recipients to send this mail to (besides the commit author).
+    secret: false
+    required: false
+  recipients_file:
+    type: string
+    defaultValue: ''
+    description: File containing a list of recipients to send this mail to (besides the commit author).
+    secret: false
+    required: false
+  recipients_only:
+    type: boolean
+    defaultValue: false
+    description:  Do not send mails to the commit author, but only to recipients.
+    secret: false
+    required: false
+  subject:
+    type: string
+    defaultValue: ''
+    description: The subject line template (handlebars template).
+    secret: false
+    required: false
+  body:
+    type: string
+    defaultValue: ''
+    description: The email body template (handlebars template). This can be an inline template, or a URL (file:/// allowed)
+    secret: false
+    required: false
+  attachment:
+    type: string
+    defaultValue: ''
+    description: An optional file to attach to the sent mail(s). This can be an absolute path or a path relative to the working directory.
+    secret: false
+    required: false

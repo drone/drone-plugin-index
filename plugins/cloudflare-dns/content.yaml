@@ -1,0 +1,92 @@
+title: Cloudflare DNS
+author: JetRails
+tags:
+  - cloudflare
+  - dns
+logo: cloudflare.svg
+repo: https://github.com/jetrails/drone-cloudflare-dns
+image: https://hub.docker.com/r/jetrails/drone-cloudflare-dns
+license: MIT License
+readme: https://github.com/jetrails/drone-cloudflare-dns/blob/master/README.md
+description: >-
+  Our Drone plugin enables the ability for your pipeline to interface with
+  Cloudflare's API to create/update/delete DNS records.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  -   name: cloudflare
+      image: jetrails/drone-cloudflare-dns
+      settings:
+          api_token:
+              from_secret: cloudflare_token
+          zone_identifier:
+              from_secret: cloudflare_zone_identifier
+          debug: false
+          action: set
+          record_type: A
+          record_name: test.example.com
+          record_content: 127.0.0.1
+          record_proxied: false
+properties:
+  api_token:
+    type: string
+    defaultValue: ''
+    description: Cloudflare API token.
+    secret: true
+    required: true
+  zone_identifier:
+    type: string
+    defaultValue: ''
+    description: Cloudflare zone id.
+    secret: false
+    required: true
+  action:
+    type: string
+    defaultValue: ''
+    description: What type of action, options are set, unset.
+    secret: false
+    required: false
+  record_type:
+    type: string
+    defaultValue: ''
+    description: Type of DNS record, examples include A, CNAME, NS, etc.
+    secret: false
+    required: true
+  record_name:
+    type: string
+    defaultValue: ''
+    description: Name of DNS record.
+    secret: false
+    required: true
+  record_content:
+    type: string
+    defaultValue: ''
+    description: Value of DNS record.
+    secret: false
+    required: false
+  record_proxied:
+    type: boolean
+    defaultValue: true
+    description: Proxy record through cloudflare.
+    secret: false
+    required: false
+  record_ttl:
+    type: number
+    defaultValue: 1
+    description: Time to live value in seconds for DNS record.
+    secret: false
+    required: false
+  record_priority:
+    type: number
+    defaultValue: 1
+    description: Priority value for DNS record.
+    secret: false
+    required: false
+  debug:
+    type: boolean
+    defaultValue: false
+    description: Display debug data.
+    secret: false
+    required: false

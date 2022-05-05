@@ -1,0 +1,67 @@
+title: Crowdin
+author: JonasFranzDEV
+tags:
+  - publish
+  - translation
+logo: crowdin.svg
+repo: https://github.com/JonasFranzDEV/drone-crowdin
+image: https://hub.docker.com/r/jonasfranz/crowdin
+license: MIT License
+readme: https://github.com/jonasfranz/drone-crowdin/blob/master/README.md
+description: The Crowdin plugin allows you to submit translation files to Crowdin.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: crowdin
+    image: jonasfranz/crowdin
+    settings:
+      project_identifier: example
+      project_key: 1bc29b36f623ba82aaf6724fd3b16718
+      files:
+        example: options/example.ini
+        example2: options/example2.ini
+properties:
+  project_identifier:
+    type: string
+    defaultValue: ''
+    description: Identifier provided by Crowdin.
+    secret: false
+    required: true
+  project_key:
+    type: string
+    defaultValue: ''
+    description: API key provided by Crowdin.
+    secret: true
+    required: true
+  files:
+    type: object
+    defaultValue: ''
+    description: Map of translatable files with the Crowdin file name as key and the real filepath as value. The plugin will not upload any files if this list is empty.
+    secret: false
+    required: true
+  ignore_branch:
+    type: boolean
+    defaultValue: false
+    description: It will send the Drone branch to Crowdin if it is false.
+    secret: false
+    required: false
+  download:
+    type: boolean
+    defaultValue: true
+    description: Downloads translated files from Crowdin if it is true.
+    secret: false
+    required: false
+  export_dir:
+    type: string
+    defaultValue: ''
+    description: Export directory of the translated strings.
+    secret: false
+    required: false
+  languages:
+    type: array
+    defaultValue: all
+    description: Languages which should be downloaded/exported from Crowdin.
+    secret: false
+    required: false
