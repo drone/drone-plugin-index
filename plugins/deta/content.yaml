@@ -1,0 +1,52 @@
+title: Deta
+author: lizheming
+tags:
+  - deploy
+  - deta
+logo: deta.svg
+repo: https://github.com/lizheming/drone-deta
+image: https://hub.docker.com/r/lizheming/drone-deta
+license: MIT License
+readme: https://github.com/lizheming/drone-deta/blob/master/README.md
+description: |
+  The Deta plugin deploy your build to deta.sh(https://deta.sh).
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: deta
+    image: lizheming/drone-deta
+    settings:
+      access_token:
+        from_secret: deta_access_token
+      name: test-name
+      project: default
+
+properties:
+  access_token:
+    type: string
+    defaultValue: ''
+    description: |
+      Deta access token. 
+      How to get Deta access token? https://docs.deta.sh/docs/cli/auth#deta-access-tokens
+    secret: true
+    required: false
+  name:
+    type: string
+    defaultValue: ''
+    description: Deta micro name
+    secret: false
+    required: true
+  project:
+    type: string
+    defaultValue: 'default'
+    description: Deta project name
+    secret: false
+    required: false
+  project_dir:
+    type: string
+    defaultValue: '.'
+    description: irectory of the project
+    secret: false
+    required: false
