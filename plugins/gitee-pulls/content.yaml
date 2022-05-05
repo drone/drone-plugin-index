@@ -8,7 +8,7 @@ tags:
 logo: gitee.svg
 repo: https://github.com/kit101/drone-plugin-gitee-pulls
 image: https://hub.docker.com/r/kit101z/drone-plugin-gitee-pulls
-license: Apache-2.0 license
+license: Apache License 2.0
 readme: https://github.com/kit101/drone-plugin-gitee-pulls/blob/master/README.md
 description: This plugin can automatically update the comments / labels / test in PR to gitee.
 example: |
