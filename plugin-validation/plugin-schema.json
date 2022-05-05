@@ -1,0 +1,117 @@
+{
+  "title": "Plugin",
+  "description": "Drone plugin info",
+  "type": "object",
+  "properties": {
+    "title": {
+      "description": "Plugin title",
+      "type": "string"
+    },
+    "author": {
+      "description": "Plugin author",
+      "type": "string"
+    },
+    "tags": {
+      "description": "Tags for the plugin",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "logo": {
+      "description": "Logo file within the public/logos folder",
+      "type": "string",
+      "pattern": "([\\w-])+\\.svg$"
+    },
+    "repo": {
+      "description": "Plugin repo URL",
+      "type": "string",
+      "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,4}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+    },
+    "image": {
+      "description": "Plugin image URL",
+      "type": "string",
+      "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,4}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+    },
+    "license": {
+      "description": "Plugin license",
+      "type": "string",
+      "enum": [
+        "None",
+        "Apache License 2.0",
+        "GNU General Public License v3.0",
+        "GNU Lesser General Public License v3.0",
+        "MIT License",
+        "BSD 2-Clause 'Simplified' License",
+        "BSD 3-Clause 'New' or 'Revised' License",
+        "Boost Software License 1.0",
+        "Creative Commons Zero v1.0 Universal",
+        "Eclipse Public License 2.0",
+        "GNU Affero General Public License v3.0",
+        "GNU General Public License v2.0",
+        "GNU Lesser General Public License v2.1",
+        "Mozilla Public License 2.0",
+        "The Unlicense"
+      ]
+    },
+    "readme": {
+      "description": "Plugin readme URL",
+      "type": "string",
+      "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,4}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+    },
+    "description": {
+      "description": "Short description of the plugin",
+      "type": "string"
+    },
+    "example": {
+      "description": "Short example of the plugin",
+      "type": "string"
+    },
+    "properties": {
+      "description": "Plugin properties as key value pairs",
+      "type": "object",
+      "minProperties": 1,
+      "patternProperties": {
+        "^[a-zA-Z0-9_-]+$": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "description": "Property type",
+              "type": "string",
+              "enum": [
+                "string",
+                "number",
+                "array",
+                "boolean",
+                "object"
+              ]
+            },
+            "defaultValue": {
+              "description": "Property default value",
+              "type": ["number", "string", "boolean", "array", "object"]
+            },
+            "description": {
+              "description": "Property description",
+              "type": "string"
+            },
+            "secret": {
+              "description": "Property is secret",
+              "type": "boolean"
+            },
+            "required": {
+              "description": "Property is required",
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false,
+          "required": ["type", "defaultValue", "description", "secret", "required"]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "required": ["title", "author", "repo", "description"]
+}

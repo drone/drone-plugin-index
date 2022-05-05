@@ -1,0 +1,51 @@
+title: Cloudflare Caching
+author: JetRails
+tags:
+  - cloudflare
+  - cache
+logo: cloudflare.svg
+repo: https://github.com/jetrails/drone-cloudflare-caching
+image: https://hub.docker.com/r/jetrails/drone-cloudflare-caching
+license: MIT License
+readme: https://github.com/jetrails/drone-cloudflare-caching/blob/master/README.md
+description: >-
+  Our Drone plugin enables the ability for your pipeline to interface with
+  Cloudflare's API to purge cache.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: cloudflare
+    image: jetrails/drone-cloudflare-caching
+    settings:
+      api_token:
+        from_secret: cloudflare_token
+      zone_identifier:
+        from_secret: cloudflare_zone_identifier
+      action: purge_everything
+properties:
+  api_token:
+    type: string
+    defaultValue: ''
+    description: Cloudflare API token.
+    secret: true
+    required: true
+  zone_identifier:
+    type: string
+    defaultValue: ''
+    description: Cloudflare zone id.
+    secret: false
+    required: true
+  action:
+    type: string
+    defaultValue: purge_everything
+    description: What type of cache purge, options are purge_everything, purge_hosts, purge_files, purge_tags.
+    secret: false
+    required: true
+  list:
+    type: array
+    defaultValue: ''
+    description: List of values, could be valid hosts, tags, or files depending on action parameter value.
+    secret: false
+    required: false

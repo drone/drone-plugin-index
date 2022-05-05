@@ -1,0 +1,72 @@
+title: Kubernetes Deployments
+author: mactynow
+tags:
+  - deploy
+  - kubernetes
+  - docker
+logo: kubernetes.svg
+repo: https://github.com/honestbee/drone-kubernetes
+image: https://quay.io/honestbee/drone-kubernetes
+license: GNU General Public License v3.0
+readme: https://github.com/honestbee/drone-kubernetes/blob/master/README.md
+description: >-
+  The Kubernetes plugin can be used to upgrade a Kubernetes deployment with a
+  newer version of an image.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: deploy
+    image: quay.io/honestbee/drone-kubernetes
+    settings:
+      kubernetes_server: https://kubernetes.company.org
+      kubernetes_token: CXHVLJSDKJFS...
+      namespace: app
+      deployment: my-deployment
+      repo: myorg/myrepo
+      container: my-container
+      tag: mytag
+properties:
+  container:
+    type: array
+    defaultValue: ''
+    description: Container name (setup with the name option in the kubernetes manifest).
+    secret: false
+    required: true
+  deployment:
+    type: array
+    defaultValue: ''
+    description: Deployment name.
+    secret: false
+    required: true
+  kubernetes_server:
+    type: string
+    defaultValue: ''
+    description: Kubernetes server URL.
+    secret: false
+    required: true
+  kubernetes_token:
+    type: string
+    defaultValue: ''
+    description: Kubernetes token.
+    secret: true
+    required: true
+  namespace:
+    type: string
+    defaultValue: ''
+    description: Kubernetes namespace.
+    secret: false
+    required: true
+  repo:
+    type: string
+    defaultValue: ''
+    description: Image to update full name (with registry path).
+    secret: false
+    required: true
+  tag:
+    type: string
+    defaultValue: ''
+    description: Image tag to update.
+    secret: false
+    required: true

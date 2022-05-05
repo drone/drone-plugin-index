@@ -1,0 +1,48 @@
+title: Codecov
+author: robertstettner
+tags:
+  - publish
+  - codecov
+  - test
+  - coverage
+  - reporting
+logo: codecov.svg
+repo: https://github.com/robertstettner/drone-codecov
+image: https://hub.docker.com/r/robertstettner/drone-codecov
+license: MIT License
+readme: https://github.com/robertstettner/drone-codecov/blob/master/README.md
+description: This plugin allows for pushing test coverage results to Codecov.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: codecov
+    image: robertstettner/drone-codecov
+    settings:
+      token: your-codacy-token
+properties:
+  token:
+    type: string
+    defaultValue: ''
+    description: Sets the private repository token.
+    secret: true
+    required: true
+  files:
+    type: array
+    defaultValue: ''
+    description: list of target files to upload.
+    secret: false
+    required: false
+  flags:
+    type: array
+    defaultValue: ''
+    description: flag the upload to group coverage metrics.
+    secret: false
+    required: false
+  debug:
+    type: boolean
+    defaultValue: false
+    description: enable debug mode.
+    secret: false
+    required: false

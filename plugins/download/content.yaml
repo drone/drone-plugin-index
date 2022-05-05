@@ -1,0 +1,68 @@
+title: Download
+author: drone-plugins
+tags:
+  - download
+  - tarball
+  - archive
+  - retrieve
+logo: download.svg
+repo: https://github.com/drone-plugins/drone-download
+image: https://hub.docker.com/r/plugins/download
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-download/blob/master/README.md
+description: >-
+  Use the Download plugin to download archives required for your builds, it also
+  integrates a secure way to inject basic authentication credentials and
+  checking by md5 or sha256 checksums.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: download  
+    image: plugins/download
+    settings:
+      source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
+properties:
+  source:
+    type: string
+    defaultValue: ''
+    description: The source URL for the download.
+    secret: false
+    required: true
+  destination:
+    type: string
+    defaultValue: ''
+    description: The destination path for the download.
+    secret: false
+    required: false
+  username:
+    type: string
+    defaultValue: ''
+    description: The username for basic auth.
+    secret: true
+    required: false
+  password: 
+    type: string
+    defaultValue: ''
+    description: The password for basic auth.
+    secret: true
+    required: false
+  skip_verify:
+    type: boolean
+    defaultValue: false
+    description: Skip SSL verification.
+    secret: false
+    required: false
+  md5:
+    type: string
+    defaultValue: ''
+    description: The md5 checksum.
+    secret: false
+    required: false
+  sha256:
+    type: string
+    defaultValue: ''
+    description: The sha256 checksum.
+    secret: false
+    required: false
