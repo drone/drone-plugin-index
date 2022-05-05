@@ -1,0 +1,26 @@
+{
+  "name": "drone-plugin-index",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "validate": "node plugin-validation/validate.js"
+  },
+  "dependencies": {
+    "ajv": "^8.10.0",
+    "js-yaml": "^4.1.0",
+    "next": "^12.1.0",
+    "prismjs": "^1.26.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "eslint": "7.32.0",
+    "eslint-config-next": "12.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "2.5.0"
+  }
+}

@@ -1,0 +1,211 @@
+title: Bluemix Cloud Foundry
+author: jcantosz
+tags:
+  - deploy
+  - publish
+  - bluemix
+  - cloud foundry
+logo: bluemix.svg
+repo: https://github.com/ibmclouddevops/drone-bluemix-cloudfoundry
+image: https://hub.docker.com/r/ibmclouddevops/drone-bluemix-cloudfoundry
+license: Apache License 2.0
+readme: https://github.com/IBMCloudDevOps/drone-bluemix-cloudfoundry/blob/master/README.md
+description: The Bluemix Cloud Foundry plugin can be used to deploy files and/or services to Bluemix.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: deploy
+    image: ibmclouddevops/drone-bluemix-cloudfoundry
+    settings:
+      region: ng
+      org: cloud
+      space: production
+properties:
+  BLUEMIX_API:
+    type: string
+    defaultValue: ''
+    description: target api endpoint (e.g. https://api.example.com).
+    secret: true
+    required: false
+  BLUEMIX_USER:
+    type: string
+    defaultValue: ''
+    description: BLUEMIX username.
+    secret: true
+    required: false
+  BLUEMIX_PASSWORD:
+    type: string
+    defaultValue: ''
+    description: BLUEMIX password.
+    secret: true
+    required: false
+  BLUEMIX_ORG:
+    type: string
+    defaultValue: ''
+    description: target BLUEMIX org.
+    secret: true
+    required: false
+  BLUEMIX_SPACE:
+    type: boolean
+    defaultValue: false
+    description: target BLUEMIX space.
+    secret: true
+    required: false
+  api:
+    type: string
+    defaultValue: ''
+    description: Target API (e.g. api.ng.bluemix.net).
+    secret: false
+    required: false
+  org:
+    type: string
+    defaultValue: ''
+    description: Target Org (e.g. xyz-org).
+    secret: false
+    required: false
+  space: 
+    type: string
+    defaultValue: ''
+    description: Target Space (e.g. development).
+    secret: false
+    required: false
+  user:
+    type: string
+    defaultValue: ''
+    description: Auth username (e.g. john@doe.com).
+    secret: false
+    required: false
+  password: 
+    type: string
+    defaultValue: ''
+    description: Auth password (e.g. mypassword).
+    secret: true
+    required: false
+  name: 
+    type: string
+    defaultValue: ''
+    description: Override application name (e.g. app-canary).
+    secret: false
+    required: false
+  buildpack: 
+    type: string
+    defaultValue: ''
+    description: Custom buildpack (e.g. https://....).
+    secret: false
+    required: false
+  command: 
+    type: string
+    defaultValue: ''
+    description: Startup command (e.g. start-script.sh).
+    secret: false
+    required: false
+  domain: 
+    type: string
+    defaultValue: ''
+    description: Domain (e.g. example.com).
+    secret: false
+    required: false
+  manifest: 
+    type: string
+    defaultValue: ''
+    description: Path to manifest (e.g. test.manifest.yml).
+    secret: false
+    required: false
+  docker_image: 
+    type: string
+    defaultValue: ''
+    description: Image name (e.g. ibmclouddevops/drone-bluemix-cloudfoundry).
+    secret: false
+    required: false
+  instances: 
+    type: number
+    defaultValue: ''
+    description: Number of instances (e.g. 2).
+    secret: false
+    required: false
+  disk: 
+    type: string
+    defaultValue: ''
+    description: Disk limit (e.g. 256M).
+    secret: false
+    required: false
+  memory: 
+    type: string
+    defaultValue: ''
+    description: Memory limit (e.g. 256M).
+    secret: false
+    required: false
+  hostname: 
+    type: string
+    defaultValue: ''
+    description: Hostname (e.g. my-app).
+    secret: false
+    required: false
+  path: 
+    type: string
+    defaultValue: ''
+    description: App path (e.g. build/assets).
+    secret: false
+    required: false
+  stack: 
+    type: string
+    defaultValue: ''
+    description: Stack to use (e.g. cflinuxfs2).
+    secret: false
+    required: false
+  timeout: 
+    type: number
+    defaultValue: ''
+    description: App start timeout (e.g. 60).
+    secret: false
+    required: false
+  health_check_type:
+    type: string
+    defaultValue: ''
+    description: Application health check type (e.g. port).
+    secret: false
+    required: false
+  route_path:
+    type: string
+    defaultValue: ''
+    description: Path for the route (e.g. about).
+    secret: false
+    required: false
+  no_hostname:
+    type: boolean
+    defaultValue: false
+    description: Map the root domain to this app
+    secret: false
+    required: false
+  no_manifest: 
+    type: boolean
+    defaultValue: false
+    description: Ignore manifest file
+    secret: false
+    required: false
+  no_route: 
+    type: boolean
+    defaultValue: false
+    description: Do not map a route to this app and remove routes from previous pushes of this app.
+    secret: false
+    required: false
+  no_start: 
+    type: boolean
+    defaultValue: false
+    description: Do not start an app after pushing.
+    secret: false
+    required: false
+  random_route: 
+    type: boolean
+    defaultValue: false
+    description: Create a random route for this app.
+    secret: false
+    required: false
+  skip_ssl: 
+    type: boolean
+    defaultValue: false
+    description: Skip verification of the API endpoint. Not recommended!.
+    secret: false
+    required: false

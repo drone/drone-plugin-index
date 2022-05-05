@@ -1,0 +1,84 @@
+title: AWS ECS Deploy
+author: devops-israel
+tags:
+  - deploy
+  - amazon
+  - aws
+  - ecs
+  - docker
+logo: amazon_ecs.svg
+repo: https://github.com/joshdvir/drone-ecs-deploy
+image: https://hub.docker.com/r/joshdvir/drone-ecs-deploy
+license: GNU General Public License v3.0
+readme: https://github.com/joshdvir/drone-ecs-deploy/blob/master/README.md
+description: >-
+  This plugin allows updating an ECS service. The plugin is a wrapper for ecs-deploy,
+  this bash works by taking the current task definition of a service and just changing the image
+  so that all the configuration stays the same.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: deploy
+    image: joshdvir/drone-ecs-deploy
+    settings:
+      cluster: my-cluster
+      service: my-service
+      image_name: my-image:latest
+      aws_region: us-east-1
+properties:
+  aws_access_key_id:
+    type: string
+    defaultValue: ''
+    description: AWS access key.
+    secret: true
+    required: false
+  aws_secret_access_key:
+    type: string
+    defaultValue: ''
+    description: AWS secret key.
+    secret: true
+    required: false
+  aws_region:
+    type: string
+    defaultValue: us-east-1
+    description: AWS region.
+    secret: false
+    required: false
+  cluster:
+    type: string
+    defaultValue: ''
+    description: ECS cluster.
+    secret: false
+    required: false
+  service:
+    type: string
+    defaultValue: ''
+    description: Name of service to deploy.
+    secret: false
+    required: false
+  timeout:
+    type: number
+    defaultValue: 300
+    description: Script monitors ECS Service for new task definition to be running.
+    secret: false
+    required: false
+  image_name:
+    type: string
+    defaultValue: ''
+    description: Name of Docker image to run, e.g. repo/image:latest.
+    secret: false
+    required: false
+  max:
+    type: number
+    defaultValue: 200
+    description: The upper limit on the number of running tasks during a deployment.
+    secret: false
+    required: false
+  min:
+    type: number
+    defaultValue: 100
+    description: The lower limit on the number of running tasks during a deployment.
+    secret: false
+    required: false

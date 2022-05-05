@@ -1,0 +1,76 @@
+.container {
+  width: 329px;
+  height: 148px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 25% 75%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "image title"
+    "image pills"
+    "image info";
+  box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.08),
+    0px 0.5px 2px rgba(96, 97, 112, 0.16);
+  border-radius: 5px;
+}
+
+.pluginTitle {
+  grid-area: title;
+  font-size: 15px;
+  padding-top: 21px;
+  font-weight: 600;
+}
+
+.pillContainer {
+  grid-area: pills;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  height: 20px;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  display: flex;
+  justify-content: center;
+  padding: 3px 8px;
+  background-color: #fafbfc;
+  border-radius: 4px;
+  color: #383946;
+  text-transform: uppercase;
+  border: 1px solid #f3f3fa;
+  box-shadow: 0px 0px 2px rgba(40, 41, 61, 0.04);
+  border-radius: 4px;
+}
+
+.logo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  grid-area: image;
+  padding-top: 25px;
+}
+
+.infoContainer {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  grid-area: info;
+}
+
+.downloads {
+  color: #9293ab;
+  display: flex;
+  align-items: center;
+}
+
+.verified {
+  margin: 0 24px 0 auto;
+  color: #0278d5;
+  display: flex;
+  align-items: center;
+}

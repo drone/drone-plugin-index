@@ -1,0 +1,88 @@
+title: Wechat for Work
+author: clem109
+tags:
+  - notifications
+  - chat
+  - wechat
+logo: wechat.svg
+repo: https://github.com/clem109/drone-wechat
+image: https://hub.docker.com/r/clem109/drone-wechat
+license: Apache License 2.0
+readme: https://github.com/clem109/drone-wechat/blob/master/README.md
+description: Drone plugin for WeChat for Work to show build notifications.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: wechat
+    image: clem109/drone-wechat
+    settings:
+      corpid: corpid
+      corp_secret: secret
+      agent_id: 1234567
+      title: ${DRONE_REPO_NAME}
+      description: "Build Number: ${DRONE_BUILD_NUMBER} failed. ${DRONE_COMMIT_AUTHOR} please fix. Check the results here: ${DRONE_BUILD_LINK} "
+      msg_url: ${DRONE_BUILD_LINK}
+      btn_txt: btn
+properties:
+  corpid:
+    type: string
+    defaultValue: ""
+    description: The corpid for authorization
+    required: true
+    secret: true
+  corp_secret:
+    type: string
+    defaultValue: ""
+    description: The corp_secret for authorization
+    required: true
+    secret: true
+  agent_id:
+    type: string
+    defaultValue: ""
+    description: The agent id to send the message
+    required: true
+    secret: false
+  to_party:
+    type: string
+    defaultValue: ""
+    description: The party id to send the message
+    required: false
+    secret: false
+  to_user:
+    type: string
+    defaultValue: ""
+    description: The user id to send the message
+    required: false
+    secret: false
+  to_tag:
+    type: string
+    defaultValue: ""
+    description: The tag id to send the message
+    required: false
+    secret: false
+  msg_url:
+    type: string
+    defaultValue: ""
+    description: The link for the text card click
+    required: false
+    secret: false
+  btntxt:
+    type: string
+    defaultValue: ""
+    description: The text for the button on the card
+    required: false
+    secret: false
+  title:
+    type: string
+    defaultValue: ""
+    description: Notification title
+    required: false
+    secret: false
+  description:
+    type: string
+    defaultValue: ""
+    description: Text description of the card
+    required: true
+    secret: false

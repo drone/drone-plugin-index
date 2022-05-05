@@ -1,0 +1,122 @@
+title: AWS S3 Sync
+author: drone-plugins
+tags:
+  - publish
+  - amazon
+  - aws
+  - s3
+  - storage
+  - sync
+logo: amazon_s3.svg
+repo: https://github.com/drone-plugins/drone-s3-sync
+image: https://hub.docker.com/r/plugins/s3-sync
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-s3-sync/blob/master/README.md
+description: The S3 sync synchronizes files and build artifacts to your S3 bucket.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: sync
+  image: plugins/s3-sync:1
+  settings:
+    access_key: a50d28f4dd477bc184fbd10b376de753
+    secret_key: bc5785d3ece6a9cdefa42eb99b58986f9095ff1c
+    region: us-east-1
+    bucket: my-bucket.s3-website-us-east-1.amazonaws.com
+    source: folder/to/archive
+    target: /target/location
+properties:
+  access_key:
+    type: string
+    defaultValue: ''
+    description: AWS access key.
+    secret: true
+    required: false
+  secret_key:
+    type: string
+    defaultValue: ''
+    description: AWS secret key.
+    secret: true
+    required: false
+  bucket:
+    type: string
+    defaultValue: ''
+    description: S3 bucket name.
+    secret: false
+    required: true
+  region:
+    type: string
+    defaultValue: 'us-east-1'
+    description: S3 region.
+    secret: false
+    required: false
+  source:
+    type: string
+    defaultValue: '.'
+    description: Source folder to archive.
+    secret: false
+    required: false
+  target:
+    type: string
+    defaultValue: '/'
+    description: Target location.
+    secret: false
+    required: false
+  delete:
+    type: boolean
+    defaultValue: false
+    description: Delete files after sync.
+    secret: false
+    required: false
+  acl:
+    type: string
+    defaultValue: ''
+    description: ACL for files.
+    secret: false
+    required: false
+  content_type:
+    type: string
+    defaultValue: ''
+    description: Content type for files.
+    secret: false
+    required: false
+  content_encoding:
+    type: string
+    defaultValue: ''
+    description: Content encoding for files.
+    secret: false
+    required: false
+  cache_control:
+    type: string
+    defaultValue: ''
+    description: Cache control for files.
+    secret: false
+    required: false
+  metadata:
+    type: string
+    defaultValue: ''
+    description: Additional Metadata for files.
+    secret: false
+    required: false
+  redirects:
+    type: string
+    defaultValue: ''
+    description: Redirects to create.
+    secret: false
+    required: false
+  cloudfront_distribution:
+    type: string
+    defaultValue: ''
+    description: Cloudfront distribution ID.
+    secret: false
+    required: false
+  dry_run:
+    type: boolean
+    defaultValue: false
+    description: Dry run.
+    secret: false
+    required: false  
+
+

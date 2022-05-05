@@ -1,0 +1,52 @@
+title: Apex Up
+author: appleboy
+tags:
+  - aws
+  - deployment
+  - up
+  - lambda
+logo: apex-up.svg
+repo: https://github.com/appleboy/drone-apex-up
+image: https://hub.docker.com/r/appleboy/drone-apex-up
+license: MIT License
+readme: https://github.com/appleboy/drone-apex-up/blob/master/README.md
+description: This plugin can deploy infinitely scalable serverless apps, apis, and sites in seconds to AWS using apex/up tool.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: apex-up
+    image: appleboy/drone-apex-up
+    settings:
+      secrets: 
+        - aws_secret_access_key
+        - aws_access_key_id
+      stage: 
+        - staging
+        - production
+properties:
+  secrets:
+    type: array
+    defaultValue: ''
+    description: AWS access key and secret access key.
+    secret: true
+    required: true
+  directory:
+    type: string
+    defaultValue: ''
+    description: Change working directory.
+    secret: false
+    required: false
+  stage:
+    type: array
+    defaultValue: ''
+    description: Target stage names - staging or production.
+    secret: false
+    required: true
+  verbose:
+    type: boolean
+    defaultValue: true
+    description: Enable verbose log output.
+    secret: false
+    required: false

@@ -1,0 +1,69 @@
+title: GitHub Pages
+author: drone-plugins
+tags:
+  - publish
+  - github
+  - gh-pages
+logo: github.svg
+repo: https://github.com/drone-plugins/drone-gh-pages
+image: https://hub.docker.com/r/plugins/gh-pages
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-gh-pages/blob/master/README.md
+description: >-
+  The GitHub Pages plugin is used to publish static websites to GitHub. The
+  following configuration uses the gh-pages plugin to publish a website.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: publish  
+    image: plugins/gh-pages
+    settings:
+      username: octocat
+      password: p455w0rd
+      pages_directory: public/
+properties:
+  username:
+    type: string
+    defaultValue: ''
+    description: GitHub username for pushing changes
+    secret: false
+    required: true
+  password:
+    type: string
+    defaultValue: ''
+    description: GitHub password for pushing changes
+    secret: true
+    required: true
+  ssh_key:
+    type: string
+    defaultValue: ''
+    description: SSH key to use for pushing changes
+    secret: true
+    required: false
+  upstream_name:
+    type: string
+    defaultValue: origin
+    description: GitHub upstream target
+    secret: false
+    required: false
+  target_branch:
+    type: string
+    defaultValue: gh-pages
+    description: GitHub target branch
+    secret: false
+    required: false
+  temporary_base:
+    type: string
+    defaultValue: .tmp
+    description: Temporary directory to pull gh-pages branch
+    secret: false
+    required: false
+  pages_directory:
+    type: string
+    defaultValue: docs
+    description: The directory of content to publish
+    secret: false
+    required: true
+

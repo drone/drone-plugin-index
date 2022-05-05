@@ -1,0 +1,78 @@
+title: Facebook
+author: appleboy
+tags:
+  - notifications
+  - chat
+logo: facebook.svg
+repo: https://github.com/appleboy/drone-facebook
+image: https://hub.docker.com/r/appleboy/drone-facebook
+license: MIT License
+readme: https://github.com/appleboy/drone-facebook/blob/master/README.md
+description: The Facebook plugin posts build status messages to your account.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: notify
+    image: appleboy/drone-facebook
+    settings:
+      fb_page_token: xxxxxxxxxx
+      fb_verify_token: xxxxxxxxxx
+      app_secret: xxxxxxxxxx
+      to: facebook_user_id
+properties:
+  fb_page_token:
+    type: string
+    defaultValue: ''
+    description: Facebook Page Token.
+    secret: true
+    required: false
+  fb_verify_token:
+    type: string
+    defaultValue: ''
+    description: Facebook Verify Token.
+    secret: true
+    required: false
+  app_secret:
+    type: string
+    defaultValue: ''
+    description: Facebook App Secret.
+    secret: true
+    required: false
+  to:
+    type: string
+    defaultValue: ''
+    description: Facebook User ID.
+    secret: true
+    required: false
+  message:
+    type: string
+    defaultValue: ''
+    description: overwrite the default message template.
+    secret: false
+    required: false
+  images:
+    type: array
+    defaultValue: []
+    description: a valid URL to an image message.
+    secret: false
+    required: false
+  videos:
+    type: array
+    defaultValue: []
+    description: a valid URL to a video message.
+    secret: false
+    required: false
+  audios:
+    type: array
+    defaultValue: []
+    description: a valid URL to an audio message.
+    secret: false
+    required: false
+  files:
+    type: array
+    defaultValue: []
+    description: a valid URL to a file message.
+    secret: false
+    required: false

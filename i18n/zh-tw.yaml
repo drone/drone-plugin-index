@@ -1,4 +1,0 @@
-- id: page_meta
-  translation: |
-    这个网页有没有错误？
-    请[让我们知道](https://github.com/drone/drone-plugin-index) 或编辑 [这个页面](https://github.com/drone/drone-plugin-index/blob/master/content/{{.Path}})。
