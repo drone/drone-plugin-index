@@ -16,10 +16,10 @@ example: |
 
   steps:
   - name: fossa  
-  image: rancher/drone-fossa:latest
-  settings:
-    api_key:
-      from_secret: FOSSA_API_KEY
+    image: rancher/drone-fossa:latest
+    settings:
+      api_key:
+        from_secret: FOSSA_API_KEY
 properties:
   api_key:
     type: string
