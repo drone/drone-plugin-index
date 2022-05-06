@@ -3,13 +3,14 @@ author: lizheming
 tags:
   - douban
   - notion
+  - sync
 logo: douban.svg
 repo: https://github.com/lizheming/drone-doumark
 image: https://hub.docker.com/r/lizheming/drone-doumark
 license: MIT License
 readme: https://github.com/lizheming/drone-doumark/blob/master/README.md
 description: |
-  Drone plugin for Douban movie/book/music marked data sync automatically.
+  Drone plugin for Douban(https://douban.com) movie/book/music marked data sync automatically.
 example: |
   kind: pipeline
   type: docker
