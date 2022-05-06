@@ -12,46 +12,17 @@ license: Apache License 2.0
 readme: https://github.com/kit101/drone-plugin-gitee-pulls/blob/master/README.md
 description: This plugin can automatically update the comments / labels / test in PR to gitee.
 example: |
-  ---
   name: default
   kind: pipeline
-  type: docker
-
-  #label has default values
-  #environment:
-  #  PLUGIN_GITEE_RUNNING_LABEL: drone-build/running,E6A23C
-  #  PLUGIN_GITEE_SUCCESS_LABEL: drone-build/success,67C23A
-  #  PLUGIN_GITEE_FAILURE_LABEL: drone-build/failure,DB2828
 
   steps:
   - name: pr-enhance/start
-    pull: always
     image: kit101z/drone-plugin-gitee-pulls
     settings:
-      # should set `is_running: true` in the first step
       is_running: true
       access_token:
         from_secret: GITEE_ACCESS_TOKEN
-    when:
-      event:
-      - pull_request
 
-  - name: env
-    image: alpine
-    commands:
-    - env
-
-  - name: pr-enhance/end
-    image: kit101z/drone-plugin-gitee-pulls
-    settings:
-      access_token:
-        from_secret: GITEE_ACCESS_TOKEN
-    when:
-      event:
-      - pull_request
-      status:
-      - failure
-      - success
 properties:
   debug:
     type: boolean
