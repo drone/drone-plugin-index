@@ -1,3 +1,8 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b423dc68-c658-4452-8a62-04c6397ee9a1/deploy-status)](https://app.netlify.com/sites/drone-plugins/deploys)
+[![Build Status](https://cloud.drone.io/api/badges/drone/drone-plugin-index/status.svg)](https://cloud.drone.io/drone/drone-plugin-index)
+
+The master branch of this repo is currently deployed [here](https://plugins.drone.io). 
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 # Getting Started
@@ -32,7 +37,7 @@ To run the validation script:
 ```bash
 npm run validate
 ```
-Plugin logos can be found here `public/logos`, the file name should referred to in the `content.yaml`
+Plugin logos can be found here `public/logos`, the file name should be referred to in the `content.yaml`
 
 # Learn More
 
