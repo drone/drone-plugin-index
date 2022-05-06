@@ -42,7 +42,7 @@ properties:
     description: |
       Douban data Type, enum value: movie, book, music
     secret: false
-    requried: false
+    required: false
 
   format:
     type: string
