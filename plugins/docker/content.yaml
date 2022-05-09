@@ -54,6 +54,12 @@ properties:
     description: repository tag for the image
     secret: false
     required: false
+ secret:
+    type: string
+    defaultValue: ''
+    description: Use buildkit to pass secrets to the dockerbuild. Eg `id=mysecret,src=secret-file`  
+    secret: false
+    required: false
   dockerfile:
     type: string
     defaultValue: 'Dockerfile'
