@@ -15,6 +15,13 @@
     "search image";
 }
 
+@media (max-width: 680px) {
+  .homeHeader {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .pluginHeader {
   background-color: #07182b;
   color: #ffffff;
@@ -29,8 +36,13 @@
   color: #ffffff;
 }
 
+@media (max-width: 500px) {
+  .pluginHeader {
+    justify-content: center;
+  }
+}
+
 .navBar {
-  width: 100%;
   grid-area: nav;
   display: flex;
   flex-direction: row;
@@ -43,8 +55,20 @@
   color: #ffffff;
 }
 
+@media (max-width: 500px) {
+  .navBar {
+    justify-content: center;
+  }
+}
+
 .logo {
   margin-right: auto;
+}
+
+@media (max-width: 500px) {
+  .logo {
+    display: none;
+  }
 }
 
 .linkButton {
@@ -66,6 +90,18 @@
   grid-area: search;
   padding-left: 105px;
   margin-bottom: 65px;
+}
+
+@media (max-width: 680px) {
+  .search {
+    padding: 0 105px;
+  }
+}
+
+@media (max-width: 500px) {
+  .search {
+    padding: 0 20px;
+  }
 }
 
 .title {
@@ -97,6 +133,30 @@
 }
 
 .searchInput::placeholder {
+  color: #d6dadd;
+}
+
+.pluginSearchInput {
+  height: 50px;
+  width: 100%;
+  max-width: 780px;
+  background-color: #384655;
+  border: 1px solid #384655;
+  border-radius: 8px;
+  color: #d6dadd;
+  padding-left: 13px;
+  font-size: 16px;
+  justify-self: center;
+  margin: 0 auto;
+}
+
+@media (max-width: 680px) {
+  .pluginSearchInput {
+    display: none;
+  }
+}
+
+.pluginSearchInput::placeholder {
   color: #d6dadd;
 }
 

@@ -5,11 +5,24 @@
   padding: 40px 0 10px 0;
 }
 
+@media (max-width: 680px) {
+  .container {
+    grid-template-columns: 100%;
+    grid-template-areas: "main";
+  }
+}
+
 .tagContainer {
   grid-area: tags;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+}
+
+@media (max-width: 680px) {
+  .tagContainer {
+    display: none;
+  }
 }
 
 .tagButtonActive {
@@ -86,4 +99,10 @@
   flex-wrap: wrap;
   row-gap: 18px;
   column-gap: 18px;
+}
+
+@media (max-width: 680px) {
+  .cards {
+    justify-content: center;
+  }
 }
