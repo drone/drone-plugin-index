@@ -127,7 +127,7 @@ const Plugin = ({
               router.push(`/?search=${e.target.value}`);
             }
           }}
-          className={layoutStyles.searchInput}
+          className={layoutStyles.pluginSearchInput}
         ></input>
         <Link href="/">
           <a className={layoutStyles.linkButton}>Plugins</a>

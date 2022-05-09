@@ -37,6 +37,12 @@
   justify-content: flex-start;
 }
 
+@media (max-width: 680px) {
+  .mainContent {
+    flex-direction: column;
+  }
+}
+
 .logo {
   margin-right: 14px;
 }
@@ -74,6 +80,12 @@
   column-gap: 32px;
   font-weight: 500;
   letter-spacing: 0.4px;
+}
+
+@media (max-width: 680px) {
+  .links {
+    margin: 0;
+  }
 }
 
 .line {
