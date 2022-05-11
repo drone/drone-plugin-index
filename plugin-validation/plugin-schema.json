@@ -23,7 +23,7 @@
     "logo": {
       "description": "Logo file within the public/logos folder",
       "type": "string",
-      "pattern": "([\\w-])+\\.svg$"
+      "pattern": "([\\w-])+\\.(svg|png)$"
     },
     "repo": {
       "description": "Plugin repo URL",
