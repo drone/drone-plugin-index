@@ -92,7 +92,7 @@ const Home = ({ allPluginsData }) => {
       <Head>
         <title>Drone Plugins</title>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content="Drone Plugins" />
+        <meta name="description" content="Catalog of Drone plugins" />
         <meta name="og:title" content="Drone Plugins" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>

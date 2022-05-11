@@ -101,10 +101,10 @@ const Plugin = ({
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>Drone Plugins - {title}</title>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content={title} />
-        <meta name="og:title" content={title} />
+        <meta name="description" content={description} />
+        <meta name="og:title" content={`Drone Plugins - ${title}`} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <nav className={layoutStyles.pluginHeader}>
