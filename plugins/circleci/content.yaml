@@ -4,7 +4,7 @@ tags:
   - infrastructure
   - trigger
   - circleci
-logo: circleci.svg
+logo: circleci.png
 repo: https://github.com/wesleimp/drone-circleci
 image: https://hub.docker.com/r/wesleimp/drone-circleci
 license: Apache License 2.0
