@@ -1,0 +1,46 @@
+title: Google Container Registry
+author: drone-plugins
+tags:
+  - publish
+  - docker
+  - google
+  - gcp
+  - gcr
+logo: google_gcr.svg
+repo: https://github.com/drone-plugins/drone-docker
+image: https://hub.docker.com/r/plugins/gcr/
+license: None
+readme: https://github.com/drone-plugins/drone-docker/blob/master/README.md
+description: |
+  The GCR plugin can be used to build and publish images to the Google Container Registry.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: publish  
+    image: plugins/gcr
+    settings:
+      repo: project/foo
+      tags: latest
+      json_key:
+        from_secret: google_credentials
+properties:
+  registry:
+    type: string
+    defaultValue: gcr.io
+    description: authenticates to this registry
+    secret: false
+    required: false
+  repo:
+    type: string
+    defaultValue: ''
+    description: repository name for the image
+    secret: false
+    required: false
+  json_key:
+    type: string
+    defaultValue: ''
+    description: json key - can be inline or base64 encoded
+    secret: true
+    required: true

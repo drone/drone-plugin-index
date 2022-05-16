@@ -7,10 +7,10 @@ tags:
   - ecr
   - docker
 logo: amazon_ecr.svg
-repo: https://github.com/drone-plugins/drone-ecr
+repo: https://github.com/drone-plugins/drone-docker
 image: https://hub.docker.com/r/plugins/ecr
 license: None
-readme: https://github.com/drone-plugins/drone-ecr/blob/master/README.md
+readme: https://github.com/drone-plugins/drone-docker/blob/master/README.md
 description: >-
   The ECR plugin can be used to build and publish images to the Amazon ECR
   registry.
