@@ -179,6 +179,11 @@ module.exports = {
         permanent: true,
       },
       {
+        source: "/drone-plugins/drone-acr",
+        destination: "/plugins/acr",
+        permanent: true,
+      },
+      {
         source: "/drone-plugins/drone-ansible",
         destination: "/plugins/ansible",
         permanent: true,
@@ -241,6 +246,11 @@ module.exports = {
       {
         source: "/drone-plugins/drone-git",
         destination: "/plugins/git",
+        permanent: true,
+      },
+      {
+        source: "/drone-plugins/drone-heroku",
+        destination: "/plugins/heroku",
         permanent: true,
       },
       {
