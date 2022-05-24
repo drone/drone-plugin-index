@@ -142,6 +142,7 @@
   padding: 4px 16px;
   font-size: 10px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .propertyList {

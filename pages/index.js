@@ -75,17 +75,17 @@ const Home = ({ allPluginsData }) => {
   const router = useRouter();
   const [searchResults, setSearchResults] = useState(allPluginsData);
   const [selectedTag, setSelectedTag] = useState(undefined);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    if(router.query.search) {
+    if (router.query.search) {
       setSearchTerm(router.query.search);
     }
   }, [router.query.search]);
 
   useEffect(() => {
     setSearchResults(search(searchTerm, selectedTag, allPluginsData));
-  },[searchTerm, selectedTag, allPluginsData]);
+  }, [searchTerm, selectedTag, allPluginsData]);
 
   return (
     <>
@@ -108,6 +108,9 @@ const Home = ({ allPluginsData }) => {
               />
             </a>
           </Link>
+          <Link href="https://github.com/drone/drone-plugin-index">
+            <a className={layoutStyles.addButton}>Add a plugin</a>
+          </Link>
           <Link href="/">
             <a className={layoutStyles.linkButton}>Plugins</a>
           </Link>
@@ -120,10 +123,10 @@ const Home = ({ allPluginsData }) => {
         </nav>
         <div className={layoutStyles.search}>
           <h1 className={layoutStyles.title}>Plugins Marketplace</h1>
-          <h4 className={layoutStyles.subTitle}>
+          <h2 className={layoutStyles.subTitle}>
             Browse our registry of community plugins to customize your
             continuous integration pipeline.
-          </h4>
+          </h2>
           <input
             type="text"
             placeholder="Search for the plugins that you want..."
