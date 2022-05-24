@@ -129,13 +129,16 @@ const Plugin = ({
           }}
           className={layoutStyles.pluginSearchInput}
         ></input>
+        <Link href="https://github.com/drone/drone-plugin-index">
+          <a className={layoutStyles.addButton}>Add a plugin</a>
+        </Link>
         <Link href="/">
           <a className={layoutStyles.linkButton}>Plugins</a>
         </Link>
-        <Link href="/">
+        <Link href="https://docs.drone.io/">
           <a className={layoutStyles.linkButton}>Documentation</a>
         </Link>
-        <Link href="/">
+        <Link href="https://community.harness.io/c/drone/14">
           <a className={layoutStyles.linkButton}>Support</a>
         </Link>
       </nav>

@@ -1,13 +1,22 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from 'next/router'
 import styles from "../styles/Card.module.css";
 
 const Card = ({ pluginData }) => {
+  const router = useRouter()
   const { id, title, tags, logo } = pluginData;
+  const href = `/plugins/${id}`;
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    router.push(href)
+  }
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={handleClick}>
       <div className={styles.pluginTitle}>
-        <Link href={`/plugins/${id}`}>
+        <Link href={href}>
           <a>{title}</a>
         </Link>
       </div>

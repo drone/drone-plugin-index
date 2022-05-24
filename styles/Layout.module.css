@@ -71,6 +71,20 @@
   }
 }
 
+.addButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 18px;
+  border: none;
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
 .linkButton {
   display: flex;
   flex-direction: row;
