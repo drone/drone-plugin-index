@@ -85,6 +85,12 @@
   cursor: pointer;
 }
 
+@media (max-width: 420px) {
+  .addButton {
+    display: none;
+  }
+}
+
 .linkButton {
   display: flex;
   flex-direction: row;

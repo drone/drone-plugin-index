@@ -105,7 +105,17 @@ const Plugin = ({
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content={description} />
         <meta name="og:title" content={`Drone Plugins - ${title}`} />
+        <meta name="og:description" content={description} />
+        <meta
+          name="og:image"
+          content={`https://github.com/drone/brand/blob/master/logos/vector/drone-logo-back-with-text.svg`}
+        />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:description" content={description} />
+        <meta
+          name="twitter:image"
+          content={`https://github.com/drone/brand/blob/master/logos/vector/drone-logo-back-with-text.svg`}
+        />
       </Head>
       <nav className={layoutStyles.pluginHeader}>
         <Link href="/">
