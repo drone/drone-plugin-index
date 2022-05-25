@@ -100,7 +100,7 @@ const Home = ({ allPluginsData }) => {
           content="https://raw.githubusercontent.com/drone/brand/5087d8deb7924bddeb502551e00f1f9f6468e0ae/logos/vector/drone-logo-back-with-text.svg"
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:description" content={description} />
+        <meta name="twitter:description" content="Catalog of Drone plugins" />
         <meta
           name="twitter:image"
           content="https://raw.githubusercontent.com/drone/brand/5087d8deb7924bddeb502551e00f1f9f6468e0ae/logos/vector/drone-logo-back-with-text.svg"
