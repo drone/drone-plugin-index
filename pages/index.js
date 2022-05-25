@@ -97,13 +97,13 @@ const Home = ({ allPluginsData }) => {
         <meta name="og:description" content="Catalog of Drone plugins" />
         <meta
           name="og:image"
-          content="https://raw.githubusercontent.com/drone/brand/5087d8deb7924bddeb502551e00f1f9f6468e0ae/logos/vector/drone-logo-back-with-text.svg"
+          content="https://raw.githubusercontent.com/drone/brand/5087d8deb7924bddeb502551e00f1f9f6468e0ae/logos/vector/drone-logo-vector-dark.svg"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:description" content="Catalog of Drone plugins" />
         <meta
           name="twitter:image"
-          content="https://raw.githubusercontent.com/drone/brand/5087d8deb7924bddeb502551e00f1f9f6468e0ae/logos/vector/drone-logo-back-with-text.svg"
+          content="https://raw.githubusercontent.com/drone/brand/5087d8deb7924bddeb502551e00f1f9f6468e0ae/logos/vector/drone-logo-vector-dark.svg"
         />
       </Head>
       <header className={layoutStyles.homeHeader}>
