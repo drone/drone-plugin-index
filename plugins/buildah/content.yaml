@@ -1,0 +1,146 @@
+title: Drone Buildah
+author: meltwater
+tags:
+  - buildah
+  - docker
+  - amazon
+logo: buildah.png
+repo: https://github.com/drone-plugins/drone-buildah
+image: https://hub.docker.com/r/plugins/buildah-docker
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-buildah/blob/master/README.md
+description: >-
+  Drone plugin uses Buildah to build and publish Docker images to a container registry. It mimics the Docker plugin.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+    - name: publish  
+      image: plugins/buildah
+      settings:
+        repo: docker.io/harness/ci-automation
+        registry: docker.io
+        password: 
+          from_secret: password
+        username: 
+          from_secret: username
+        dockerfile: Dockerfile
+        tags: buildahoutput
+        layers: true
+        s3_local_cache_dir: ./test
+        s3_bucket: <s3_bucket_name>
+        s3_region: us-east-1
+        s3_key: <s3_access_key>
+        s3_secret: 
+          from_secret: <s3_secret>
+        s3_endpoint: s3.amazonaws.com
+properties:
+  dry-run:
+    type: boolean
+    defaultValue: false
+    description: dry run disables docker push
+    secret: false
+    required: false
+  dockerfile:
+    type: string
+    defaultValue: Dockerfile
+    description: dockerfile to use
+    secret: false
+    required: false
+  context:
+    type: string
+    defaultValue: "."
+    description: build context
+    secret: false
+    required: false
+  tags:
+    type: string
+    defaultValue: list
+    description: tag used to tage built image, default "latest"
+    secret: false
+    required: false
+  tags_auto:
+    type: string
+    defaultValue: ""
+    description: default build tags
+    secret: false
+    required: false
+  tags_suffix:
+    type: string
+    defaultValue: ""
+    description: suffix to append to build tags
+    secret: false
+    required: false
+  args:
+    type: string
+    defaultValue: ""
+    description: additional build args
+    secret: false
+    required: false
+  args-from-env:
+    type: string
+    defaultValue: ""
+    description: additional build args from env
+    secret: false
+    required: false
+  quiet:
+    type: boolean
+    defaultValue: false
+    description: quiet mode
+    secret: false
+    required: false
+  target:
+    type: string
+    defaultValue: ""
+    description: build target
+    secret: false
+    required: false
+  squash:
+    type: boolean
+    defaultValue: false
+    description: squash image layers
+    secret: false
+    required: false
+  pull-image:
+    type: boolean
+    defaultValue: false
+    description: force pull base image at build time
+    secret: false
+    required: false
+  compress:
+    type: boolean
+    defaultValue: false
+    description: compress image layers
+    secret: false
+    required: false
+  repo:
+    type: string
+    defaultValue: ""
+    description: docker repository used to push image
+    secret: false
+    required: false
+  custom-labels:
+    type: array
+    defaultValue: []
+    description: additional k=v labels
+    secret: false
+    required: false
+  label-schema:
+    type: string
+    defaultValue: ""
+    description: label schema to use
+    secret: false
+    required: false
+  auto-label:
+    type: boolean
+    defaultValue: false
+    description: auto label image
+    secret: false
+    required: false
+  link:
+    type: string
+    defaultValue: ""
+    description: link, for example https://example.com/org/repo-name
+    secret: false
+    required: false
