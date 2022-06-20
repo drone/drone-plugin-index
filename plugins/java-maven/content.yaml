@@ -7,7 +7,7 @@ tags:
 logo: apache_maven_logo.svg
 repo: https://github.com/kameshsampath/drone-java-maven-plugin
 image: https://quay.io/repository/kameshsampath/drone-java-maven-plugin
-license: Apache License v2.0
+license: Apache License 2.0
 readme: https://github.com/kameshsampath/drone-java-maven-plugin/blob/master/README.md
 description: >-
   The Java Apache Maven plugin that can be used to build Java applications using Apache Maven build tool.
