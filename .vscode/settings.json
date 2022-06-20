@@ -1,5 +1,5 @@
 {
 	"yaml.schemas": {
-	"../plugin-validation/plugin-schema.json": "content.yaml"
+	"./plugin-validation/plugin-schema.json": "content.yaml"
 	}
 }
