@@ -1,0 +1,82 @@
+title: Google Cloud Run
+author: kameshsampath
+tags:
+  - deploy
+  - cloud
+  - serverless
+  - google
+  - run
+logo: cloud_run.svg
+repo: https://github.com/kameshsampath/drone-gcloud-run
+image: https://quay.io/repository/kameshsampath/drone-gcloud-run
+license: Apache License 2.0
+readme: https://github.com/kameshsampath/drone-gcloud-run/blob/master/README.md
+description: >-
+  Plugin to build and manage Google Cloud Run services.
+example: |
+  kind: pipeline
+  type: docker
+  name: deploy-service
+
+  environment: &buildEnv
+    SERVICE_ACCOUNT_JSON:
+      from_secret: SERVICE_ACCOUNT_JSON
+    GOOGLE_CLOUD_PROJECT:
+      from_secret: GOOGLE_CLOUD_PROJECT
+    GOOGLE_CLOUD_REGION:
+      from_secret: GOOGLE_CLOUD_REGION
+    
+  steps:
+  - name: deploy the service
+    image: quay.io/kameshsampath/drone-gcloud-run
+    settings:
+      service_account_json: ${SERVICE_ACCOUNT_JSON}
+      project: ${GOOGLE_CLOUD_PROJECT}
+      region: ${GOOGLE_CLOUD_REGION}
+      service_name: my-service
+      image: asia.gcr.io/${GOOGLE_CLOUD_PROJECT}/greeter
+    environment: *buildEnv
+
+properties:
+  service_account_json:
+    type: string
+    defaultValue: ''
+    description: The Google Cloud Service Account JSON that has required permissions to create, update and delete Google Cloud Run services .
+    secret: true
+    required: true
+  project:
+    type: string
+    defaultValue: ''
+    description: The Google project where the Google Cloud Run service will be deployed.
+    secret: true
+    required: true
+  region:
+    type: string
+    defaultValue: ''
+    description:  The Google Cloud region e.g asia-south1 where the Google Cloud Run service will be deployed.
+    secret: true
+    required: true
+  service_name:
+    type: string
+    defaultValue: ''
+    description: The name of the Google Cloud Run service.
+    secret: false
+    required: true
+  image:
+    type: string
+    defaultValue: ''
+    description: The container image that will be used for the service.
+    secret: false
+    required: true
+  delete:
+    type: boolean
+    defaultValue: ''
+    description: If the service needs to be deleted.
+    secret: false
+    required: false
+  allow_unauthenticated:
+    type: boolean
+    defaultValue: ''
+    description: Allow public access to the service.
+    secret: false
+    required: false
