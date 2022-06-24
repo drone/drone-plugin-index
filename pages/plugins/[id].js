@@ -88,6 +88,7 @@ const Plugin = ({
     properties,
     example,
     cieExample,
+    showOriginalLink,
   },
 }) => {
   const router = useRouter();
@@ -189,11 +190,13 @@ const Plugin = ({
                   image
                 </a>
               )}
-              <a
-                href={`https://github.com/drone/drone-plugin-index/blob/master/plugins/${id}/original.md`}
-              >
-                Original doc
-              </a>
+              {showOriginalLink && (
+                <a
+                  href={`https://github.com/drone/drone-plugin-index/blob/master/plugins/${id}/original.md`}
+                >
+                  Original doc
+                </a>
+              )}
             </div>
           </div>
           <hr className={styles.line} />
