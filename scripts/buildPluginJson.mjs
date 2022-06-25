@@ -36,8 +36,9 @@ function main() {
         id: pluginName,
         name: doc.title,
         description: doc.description,
-        settings: doc.properties,
         image,
+        tags: doc.tags,
+        settings: doc.properties,
         example: exampleYAML,
         url: doc.repo,
       });
