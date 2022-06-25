@@ -7,15 +7,20 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "validate": "node plugin-validation/validate.js"
+    "validate": "node plugin-validation/validate.js",
+    "gen-plugins-json": "node scripts/buildPluginJson.mjs"
   },
   "dependencies": {
     "ajv": "^8.10.0",
+    "filehound": "^1.17.6",
+    "fs-extra": "^10.1.0",
     "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21",
     "next": "^12.1.0",
     "prismjs": "^1.26.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "yaml": "^2.1.1"
   },
   "devDependencies": {
     "eslint": "7.32.0",
