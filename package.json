@@ -7,10 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "validate": "node plugin-validation/validate.js"
+    "validate": "node plugin-validation/validate.js",
+    "gen-plugins-json": "node scripts/buildPluginJson.mjs"
   },
   "dependencies": {
     "ajv": "^8.10.0",
+    "filehound": "^1.17.6",
     "js-yaml": "^4.1.0",
     "next": "^12.1.0",
     "prismjs": "^1.26.0",

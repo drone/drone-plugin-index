@@ -9,3 +9,7 @@ steps:
       - npm ci
       - npm run lint
       - npm run validate
+  - name: generate Plugins JSON
+    image: node:17-alpine
+    commands:
+      - npm run gen-plugins-json
