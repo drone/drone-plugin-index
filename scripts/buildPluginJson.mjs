@@ -1,4 +1,3 @@
-import YAML from "yaml";
 import fs from "fs";
 import path from "path";
 import filehound from "filehound";
