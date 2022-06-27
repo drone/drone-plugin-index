@@ -1,5 +1,12 @@
-const plugins = require('./plugins.json')
+const plugins = require("./plugins.json");
 
 export default async function handler(req, res) {
-	return res.status(200).json(plugins);
+  switch (req.method) {
+    case "GET":
+      res.status(200).json(plugins);
+      break;
+    default:
+      res.status(405).end();
+      break;
+  }
 }

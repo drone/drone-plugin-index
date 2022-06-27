@@ -1,16 +1,13 @@
-import _ from "lodash";
-
 const plugins = require("./plugins.json");
 
 export default function pluginByTagsHandler(req, res) {
   switch (req.method) {
     case "GET": {
       const { tags } = req.query;
-      const splitTags = tags.split(",")
-      if(splitTags && splitTags.length > 0){
-        const matchedPlugins = _.filter(plugins, (o) =>{
-            const iTags = _.intersection(o.tags,splitTags);
-            return iTags.length > 0;
+      const splitTags = tags.split(",");
+      if (splitTags && splitTags.length > 0) {
+        const matchedPlugins = plugins.filter((p) => {
+          return p.tags.some((pTag) => splitTags.some((sTag) => sTag === pTag));
         });
         if (matchedPlugins) {
           return res.status(200).json(matchedPlugins);
@@ -22,7 +19,7 @@ export default function pluginByTagsHandler(req, res) {
     }
 
     default:
-	  res.status(405).end();
+      res.status(405).end();
       break;
   }
 }

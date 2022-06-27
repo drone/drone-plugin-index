@@ -1,11 +1,10 @@
 import YAML from "yaml";
-import fsex from "fs-extra";
+import fs from "fs";
 import path from "path";
 import filehound from "filehound";
-import _ from "lodash";
+import yaml from "js-yaml";
 
 function main() {
-  console.log("Jai Guru");
   const pluginFiles = filehound
     .create()
     .paths("./plugins")
@@ -13,17 +12,15 @@ function main() {
     .ignoreHiddenFiles()
     .glob(["content.yaml"])
     .findSync();
-  //console.log(pluginFiles)
   const pluginsJSON = [];
   if (pluginFiles && pluginFiles.length > 0) {
     pluginFiles.forEach((pf) => {
       const pluginDirs = path.dirname(pf).split(path.sep);
       const pluginName = pluginDirs[pluginDirs.length - 1];
-      const strYAML = fsex.readFileSync(pf).toString();
-      const doc = YAML.parse(strYAML, "utf-8");
-
+      const strYAML = fs.readFileSync(pf).toString();
+      const doc = yaml.load(strYAML, "utf-8");
       //find the plugin image name
-      let image;
+      let image = doc.image;
       const exampleYAML = doc.example;
       if (exampleYAML) {
         const exampleYamlDoc = YAML.parse(exampleYAML);
@@ -44,7 +41,10 @@ function main() {
       });
     });
   }
-  fsex.writeJsonSync("./pages/api/plugins/plugins.json", pluginsJSON);
+  fs.writeFileSync(
+    "./pages/api/plugins/plugins.json",
+    JSON.stringify(pluginsJSON)
+  );
 }
 
 main();
