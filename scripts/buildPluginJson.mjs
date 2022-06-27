@@ -22,7 +22,7 @@ function main() {
       let image = doc.image;
       const exampleYAML = doc.example;
       if (exampleYAML) {
-        const exampleYamlDoc = YAML.parse(exampleYAML);
+        const exampleYamlDoc = yaml.load(exampleYAML);
         if (exampleYamlDoc) {
           image = exampleYamlDoc.steps[0].image;
         }
