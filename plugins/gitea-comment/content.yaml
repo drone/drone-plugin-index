@@ -1,0 +1,63 @@
+title: Gitea Comment
+author: DefinitelyADev
+tags:
+  - infrastructure
+  - gitea
+  - drone
+  - comment
+  - buildstatus
+logo: gitea.svg
+repo: https://github.com/DefinitelyADev/gitea-comment
+image: https://hub.docker.com/r/tsakidev/giteacomment
+license: None
+readme: https://github.com/DefinitelyADev/gitea-comment/blob/master/README.md
+description: >-
+  Use this plugin to update build status on Gitea Pull Request. This is useful
+  when the complete team does not want to open drone dashboard for each build
+  message.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: post-to-gitea-pr-from-arg
+    image: tsakidev/giteacomment:latest
+    settings:
+      gitea_token:
+        from_secret: gitea_token
+      gitea_base_url: http://gitea.example.com
+      comment: "Hello from Drone"
+    when:
+      status: [ failure ]
+      event: pull_request
+properties:
+  gitea_token:
+    type: string
+    defaultValue: ''
+    description: gitea server auth token
+    secret: true
+    required: true
+  gitea_base_url:
+    type: string
+    defaultValue: ''
+    description: the url of the gitea installation
+    secret: false
+    required: true
+  comment_title:
+    type: string
+    defaultValue: ''
+    description: the title of the comment
+    secret: false
+    required: false
+  comment:
+    type: string
+    defaultValue: ''
+    description: the content of the comment (required if comment_from_file is not used)
+    secret: false
+    required: false
+  comment_from_file:
+    type: string
+    defaultValue: ''
+    description: the file path to read from (required if comment is not used)
+    secret: false
+    required: false
