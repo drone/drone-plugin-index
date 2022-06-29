@@ -99,13 +99,15 @@ const Plugin = ({
     prism.highlightAll();
   }, [exampleType]);
 
+  const headTitle = `Drone Plugins - ${title}`;
+
   return (
     <>
       <Head>
-        <title>Drone Plugins - {title}</title>
+        <title>{headTitle}</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content={description} />
-        <meta name="og:title" content={`Drone Plugins - ${title}`} />
+        <meta name="og:title" content={headTitle} />
         <meta name="og:description" content={description} />
         <meta
           name="og:image"
