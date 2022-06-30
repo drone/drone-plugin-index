@@ -15,11 +15,11 @@ example: |
 
   steps:
   - name: slack
-  image: plugins/slack
-  settings:
-    webhook: https://hooks.slack.com/services/...
-    channel: dev
-    icon_url: https://unsplash.it/256/256/?random
+    image: plugins/slack
+    settings:
+      webhook: https://hooks.slack.com/services/...
+      channel: dev
+      icon_url: https://unsplash.it/256/256/?random
 properties:
   webhook:
     type: string
