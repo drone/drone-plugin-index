@@ -1,0 +1,77 @@
+title: Jira
+author: drone-plugins
+tags:
+  - infrastructure
+  - notification
+logo: jira.svg
+repo: https://github.com/drone/drone-jira
+image: https://hub.docker.com/r/plugins/jira
+license: Apache License 2.0
+readme: https://github.com/drone/drone-jira#readme
+description: A plugin to attach build and deployment details to a Jira issue. For information on how to use the plugin with drone there is a video [here](https://www.youtube.com/watch?v=YIKbLeY1-gI).
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: jira
+    image: plugins/jira
+    settings:
+      client_id:
+        from_secret: jira_client_id
+      client_secret:
+        from_secret: jira_client_secret
+      instance: droneio
+      project: TT
+      environment_name: staging
+      log_level: debug
+      pipeline: bash_plugin
+properties:
+  client_id:
+    type: string
+    defaultValue: ''
+    description: The Jira Oauth2 client ID.
+    secret: true
+    required: true
+  client_secret:
+    type: string
+    defaultValue: ''
+    description: The Jira Oauth2 client secret.
+    secret: true
+    required: true
+  instance:
+    type: string
+    defaultValue: ''
+    description: The Jira instance.
+    secret: false
+    required: true
+  project:
+    type: string
+    defaultValue: ''
+    description: The Jira project.
+    secret: false
+    required: true
+  environment_name:
+    type: string
+    defaultValue: ''
+    description: The Jira environment name.
+    secret: false
+    required: true
+  pipeline:
+    type: string
+    defaultValue: ''
+    description: The pipeline name.
+    secret: false
+    required: true
+  log_level:
+    type: string
+    defaultValue: ''
+    description: debug/info Level defines the plugin log level. Set this to debug to see the response from jira
+    secret: false
+    required: true
+  link:
+    type: string
+    defaultValue: ''
+    description: The link to the Jira deployment.
+    secret: false
+    required: true
