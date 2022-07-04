@@ -1,0 +1,33 @@
+title: Gitleaks
+author: drone-plugins
+tags:
+  - security
+logo: gitleaks.png
+repo: https://github.com/drone/drone-gitleaks
+image: https://hub.docker.com/r/plugins/gitleaks
+license: Apache License 2.0
+readme: https://github.com/drone/drone-gitleaks/blob/master/README.md
+description: A plugin to detect hard-coded secrets and sensitive data in your source code files.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: run gitleaks
+    image: plugins/gitleaks
+    settings:
+      path: .
+properties:
+  config:
+    type: string
+    defaultValue: ''
+    description: The path to the gitleaks config file.
+    secret: false
+    required: false
+  path:
+    type: string
+    defaultValue: '.'
+    description: The path to the directory containing the source code files.
+    secret: false
+    required: false
+ 
