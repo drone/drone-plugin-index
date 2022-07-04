@@ -68,10 +68,10 @@ properties:
     defaultValue: ''
     description: debug/info Level defines the plugin log level. Set this to debug to see the response from jira
     secret: false
-    required: true
+    required: false
   link:
     type: string
     defaultValue: ''
     description: The link to the Jira deployment.
     secret: false
-    required: true
+    required: false
