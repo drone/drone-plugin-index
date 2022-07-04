@@ -24,7 +24,7 @@ example: |
         image: image name
         snyk:
           from_secret: snyk
-        fail_on_issues:
+        fail_on_issues: false
 properties:
   dockerfile:
     type: string
