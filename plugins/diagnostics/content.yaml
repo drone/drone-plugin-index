@@ -1,0 +1,28 @@
+title: diagnostics
+author: drone-plugins
+tags:
+  - diagnostics
+logo: drone.svg
+repo: https://github.com/drone-plugins/drone-diagnostics
+image: https://hub.docker.com/r/plugins/drone-diagnostics
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-diagnostics/blob/main/README.md
+description: A plugin with cli network tools (dig / ping / traceroute) to diagnose issues in a build. It does not accept any properties.
+example: |
+  kind: pipeline
+  name: default
+
+  clone:
+    disable: true
+
+  steps:
+  - name: run plugins/drone-diagnostics plugin
+    image: plugins/drone-diagnostics
+    pull: if-not-exists
+    commands:
+      - env
+      - ping www.github.com -w 5
+      - traceroute -T -p 443 www.github.com
+      - dig www.apple.com
+      - echo "end of test"
+  
