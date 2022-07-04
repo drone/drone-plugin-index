@@ -1,0 +1,59 @@
+title: Snyk
+author: drone-plugins
+tags:
+  - security
+  - docker
+logo: snyk.svg
+repo: https://github.com/drone-plugins/drone-snyk
+image: https://hub.docker.com/r/plugins/drone-snyk
+readme: https://github.com/drone-plugins/drone-slack-blame/blob/master/README.md
+license: Apache License 2.0
+description: >-
+  A plugin to scan container images for vulnerabilities using Snyk.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: scan
+    image: drone-plugins/drone-snyk
+    pull: if-not-exists
+    privileged: true
+    settings:
+        dockerfile: link to dockerfile in repo
+        image: image name
+        snyk:
+          from_secret: snyk
+        fail_on_issues:
+properties:
+  dockerfile:
+    type: string
+    defaultValue: ""
+    description: Path to the Dockerfile to use.
+    secret: false
+    required: false
+  image:
+    type: string
+    defaultValue: ""
+    description: Name of the image to scan.
+    secret: false
+    required: true
+  snyk:
+    type: string
+    defaultValue: ""
+    description: Snyk token.
+    secret: true
+    required: false
+  severity_threshold:
+    type: string
+    defaultValue: ""
+    description: Severity threshold.
+    secret: false
+    required: false
+  fail_on_issues:
+    type: boolean
+    defaultValue: false
+    description: Fail build if issues are found.
+    secret: false
+    required: false
+  
