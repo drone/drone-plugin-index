@@ -60,3 +60,9 @@ properties:
     description: the folder, relative to the workspace, containing the library.
     secret: false
     required: false
+  access:
+    type: string
+    defaultValue: ""
+    description: NPM scoped package access
+    secret: false
+    required: false
