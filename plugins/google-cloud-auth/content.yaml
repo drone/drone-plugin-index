@@ -1,0 +1,55 @@
+title: Google Cloud Auth
+author: kameshsampath
+tags:
+  - deploy
+  - cloud
+  - auth
+  - google
+logo: google-cloud.svg
+repo: https://github.com/kameshsampath/drone-google-cloud-auth
+image: https://quay.io/repository/kameshsampath/drone-gcloud-auth?tab=tags
+license: Apache License 2.0
+readme: https://github.com/kameshsampath/drone-google-cloud-auth/blob/master/README.md
+description: >-
+  Plugin that allows you create and configure the Google Cloud configuration file that could be used with gcloud CLI.
+example: |
+  kind: pipeline
+  type: docker
+  name: default
+
+  steps:
+
+  - name: configure gcloud
+    image: quay.io/kameshsampath/drone-gcloud-auth
+    pull: if-not-exists
+    settings:
+      google_application_credentials:
+        from_secret: service_account_json
+      google_cloud_project:
+        from_secret: google_cloud_project
+    volumes:
+      - name: gcloud-config
+        path: /home/dev/.config/gcloud
+  volumes:
+  - name: gcloud-config
+    temp: {}
+
+properties:
+  google_application_credentials:
+    type: string
+    defaultValue: ""
+    description: The Google Cloud Service Account JSON that will be used to configure your `gcloud` authorizations to be used with gcloud CLI.
+    secret: true
+    required: true
+  google_cloud_project:
+    type: string
+    defaultValue: ""
+    description: The Google project which will be set as default project on when using `glcoud``.
+    secret: true
+    required: true
+  registries:
+    type: string
+    defaultValue: ""
+    description: The list of registries to configure with Google Cloud Docker credential helper.
+    secret: false
+    required: false
