@@ -1,0 +1,47 @@
+title: Capistrano
+author: glaszig
+tags: [ capistrano, deploy, ssh, ruby ]
+logo: capistrano.png
+repo: https://github.com/glaszig/drone-capistrano
+image: https://hub.docker.com/r/glaszig/drone-capistrano
+license: MIT License
+readme: https://github.com/glaszig/drone-capistrano/blob/master/README.md
+description: >-
+  The Capistrano plugin deploys applications via the Capistrano ruby gem.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: deploy production
+    image: glaszig/drone-capistrano:2.7.4
+    settings:
+      tasks: production deploy deploy:restart
+      private_key:
+        from_secret: production_private_key
+      public_key:
+        from_secret: production_public_key
+    environment:
+      BUNDLE_PATH: vendor/bundle
+    when:
+      ref:
+        - refs/tags/production-*
+properties:
+  capistrano_private_key:
+    type: string
+    defaultValue: ''
+    description: Private SSH deploy key
+    secret: true
+    required: true
+  capistrano_public_key:
+    type: string
+    defaultValue: ''
+    description: Public SSH deploy key
+    secret: true
+    required: true
+  tasks:
+    type: string
+    defaultValue: ''
+    description: The Capistrano tasks to run
+    secret: false
+    required: true
