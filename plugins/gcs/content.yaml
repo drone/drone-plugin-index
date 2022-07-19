@@ -7,8 +7,8 @@ tags:
   - gcs
   - storage
 logo: google_gcs.svg
-repo: https://github.com/drone-plugins/gcs
-image: https://hub.docker.com/r/plugins/drone-gcs
+repo: https://github.com/drone-plugins/drone-gcs
+image: https://hub.docker.com/r/plugins/gcs
 license: Apache License 2.0
 readme: https://github.com/drone-plugins/drone-gcs/blob/master/README.md
 description: >-
