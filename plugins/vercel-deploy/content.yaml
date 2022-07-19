@@ -46,10 +46,6 @@ properties:
       The vercel environment to deploy. It could be one of development, preview or production.
     secret: false
     required: true
-    enum:
-      - development
-      - preview
-      - production
   vercel_token:
     type: string
     defaultValue: ""
