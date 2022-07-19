@@ -8,7 +8,7 @@ tags:
   - run
 logo: cloud_run.svg
 repo: https://github.com/kameshsampath/drone-gcloud-run
-image: https://quay.io/repository/kameshsampath/drone-gcloud-run
+image: https://hub.docker.com/repository/docker/kameshsampath/drone-gcloud-run
 license: Apache License 2.0
 readme: https://github.com/kameshsampath/drone-gcloud-run/blob/master/README.md
 description: >-
@@ -28,7 +28,7 @@ example: |
     
   steps:
   - name: deploy the service
-    image: quay.io/kameshsampath/drone-gcloud-run
+    image: docker.io/kameshsampath/drone-gcloud-run:v1.0.1
     settings:
       service_account_json: ${SERVICE_ACCOUNT_JSON}
       project: ${GOOGLE_CLOUD_PROJECT}
@@ -40,43 +40,43 @@ example: |
 properties:
   service_account_json:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The Google Cloud Service Account JSON that has required permissions to create, update and delete Google Cloud Run services .
     secret: true
     required: true
   project:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The Google project where the Google Cloud Run service will be deployed.
     secret: true
     required: true
   region:
     type: string
-    defaultValue: ''
-    description:  The Google Cloud region e.g asia-south1 where the Google Cloud Run service will be deployed.
+    defaultValue: ""
+    description: The Google Cloud region e.g asia-south1 where the Google Cloud Run service will be deployed.
     secret: true
     required: true
   service_name:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The name of the Google Cloud Run service.
     secret: false
     required: true
   image:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The container image that will be used for the service.
     secret: false
     required: true
   delete:
     type: boolean
-    defaultValue: ''
+    defaultValue: ""
     description: If the service needs to be deleted.
     secret: false
     required: false
   allow_unauthenticated:
     type: boolean
-    defaultValue: ''
+    defaultValue: ""
     description: Allow public access to the service.
     secret: false
     required: false
