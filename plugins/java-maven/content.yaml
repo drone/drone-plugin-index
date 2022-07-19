@@ -6,7 +6,7 @@ tags:
   - maven
 logo: apache_maven_logo.svg
 repo: https://github.com/kameshsampath/drone-java-maven-plugin
-image: https://quay.io/repository/kameshsampath/drone-java-maven-plugin
+image: https://hub.docker.com/repository/docker/kameshsampath/drone-java-maven-plugin
 license: Apache License 2.0
 readme: https://github.com/kameshsampath/drone-java-maven-plugin/blob/master/README.md
 description: >-
@@ -17,12 +17,12 @@ example: |
 
   steps:
   - name: build-java-app
-    image: quay.io/kameshsampath/drone-java-maven-plugin
+    image: docker.io/kameshsampath/drone-java-maven-plugin:v1.0.0
     pull: if-not-exists
 properties:
   context_dir:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The context directory within the source repository where "pom.xml" is found to execute the maven goals. Defaults to Drone workspace root.
     secret: false
     required: false
@@ -34,43 +34,43 @@ properties:
     required: false
   maven_modules:
     type: array
-    defaultValue: ''
-    description:  An array of maven modules to be built incase of a multi module maven project.
+    defaultValue: ""
+    description: An array of maven modules to be built incase of a multi module maven project.
     secret: false
     required: false
   maven_mirror_url:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The maven mirror to use for downloading the build dependencies.
     secret: false
     required: false
   server_user:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The username for the maven repository manager server.
     secret: false
     required: false
   server_password:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The password for the maven repository manager server.
     secret: true
     required: false
   proxy_user:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The username for the proxy server.
     secret: true
     required: false
   proxy_password:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The password for the proxy server.
     secret: true
     required: false
   proxy_port:
     type: number
-    defaultValue: ''
+    defaultValue: ""
     description: Port number for the proxy server.
     secret: false
     required: false
@@ -92,4 +92,3 @@ properties:
     description: Protocol for the proxy ie http or https.
     secret: false
     required: false
-

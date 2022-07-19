@@ -7,7 +7,7 @@ tags:
   - google
 logo: google-cloud.svg
 repo: https://github.com/kameshsampath/drone-google-cloud-auth
-image: https://quay.io/repository/kameshsampath/drone-gcloud-auth?tab=tags
+image: https://hub.docker.com/repository/docker/kameshsampath/drone-gcloud-auth
 license: Apache License 2.0
 readme: https://github.com/kameshsampath/drone-google-cloud-auth/blob/master/README.md
 description: >-
@@ -20,7 +20,7 @@ example: |
   steps:
 
   - name: configure gcloud
-    image: quay.io/kameshsampath/drone-gcloud-auth
+    image: docker.io/kameshsampath/drone-gcloud-auth:v1.0.0
     pull: if-not-exists
     settings:
       google_application_credentials:
@@ -44,7 +44,7 @@ properties:
   google_cloud_project:
     type: string
     defaultValue: ""
-    description: The Google project which will be set as default project on when using `glcoud``.
+    description: The Google project which will be set as default project on when using `glcoud`.
     secret: true
     required: true
   registries:
