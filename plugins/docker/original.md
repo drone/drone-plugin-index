@@ -245,7 +245,7 @@ tags
 : repository tag for the image
 
 dockerfile
-: dockerfile to be used, defaults to Dockerfile
+: path to the dockerfile to be used, defaults to Dockerfile
 
 <!--
 auth
