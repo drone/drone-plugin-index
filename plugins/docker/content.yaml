@@ -74,7 +74,7 @@ properties:
     required: false
   purge:
     type: boolean
-    defaultValue: false
+    defaultValue: true
     description: boolean if cleanup of the docker image should be done at the end
     secret: false
     required: false
