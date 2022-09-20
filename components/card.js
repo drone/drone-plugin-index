@@ -1,17 +1,17 @@
 import Link from "next/link";
-import Image from "next/image";
-import { useRouter } from 'next/router'
+import Image from "next/future/image";
+import { useRouter } from "next/router";
 import styles from "../styles/Card.module.css";
 
 const Card = ({ pluginData }) => {
-  const router = useRouter()
+  const router = useRouter();
   const { id, title, tags, logo } = pluginData;
   const href = `/plugins/${id}`;
 
   const handleClick = (e) => {
-    e.preventDefault()
-    router.push(href)
-  }
+    e.preventDefault();
+    router.push(href);
+  };
 
   return (
     <div className={styles.container} onClick={handleClick}>
@@ -34,8 +34,8 @@ const Card = ({ pluginData }) => {
           <Image
             src={`/logos/${logo}`}
             alt={`${logo}`}
-            height="40px"
-            width="40px"
+            height="40"
+            width="40"
           />
         </div>
       )}
@@ -45,8 +45,8 @@ const Card = ({ pluginData }) => {
           <Image
             src="/icons/download.svg"
             alt="download icon"
-            height="16px"
-            width="16px"
+            height="16"
+            width="16"
           />{" "}
           140 installs
         </div>
@@ -54,8 +54,8 @@ const Card = ({ pluginData }) => {
           <Image
             src="/icons/tick.svg"
             alt="download icon"
-            height="12px"
-            width="12px"
+            height="12"
+            width="12"
           />{" "}
           verified
         </div>
