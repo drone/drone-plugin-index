@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import Image from "next/image";
+import Image from "next/future/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import layoutStyles from "../styles/Layout.module.css";
@@ -64,8 +64,8 @@ const TagButton = ({ tag, isSelected, setSelectedTag }) => (
       <Image
         src="/icons/rightArrow.svg"
         alt="right arrow"
-        height="12px"
-        width="12px"
+        height="12"
+        width="12"
       />
     )}
   </button>
@@ -113,8 +113,8 @@ const Home = ({ allPluginsData }) => {
               <Image
                 src="/logo.svg"
                 alt="Harness logo"
-                height="25px"
-                width="115px"
+                height="25"
+                width="115"
               />
             </a>
           </Link>
@@ -151,9 +151,9 @@ const Home = ({ allPluginsData }) => {
           <Image
             src="/pipeline.svg"
             alt="Harness pipeline"
-            layout="fill"
+            fill
             priority={true}
-          ></Image>
+          />
         </div>
       </header>
       <div className={styles.container}>

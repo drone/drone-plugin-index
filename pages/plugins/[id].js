@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import prism from "prismjs";
 import Head from "next/head";
-import Image from "next/image";
+import Image from "next/future/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "../../styles/Plugin.module.css";
@@ -126,8 +126,8 @@ const Plugin = ({
             <Image
               src={`/logo.svg`}
               alt={`Harness logo`}
-              height="25px"
-              width="115px"
+              height="25"
+              width="115"
             />
           </a>
         </Link>
