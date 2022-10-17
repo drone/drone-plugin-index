@@ -5,13 +5,17 @@ tags:
   - cloud
   - auth
   - google
+  - artifact
+  - registry
+  - docker
 logo: google-cloud.svg
 repo: https://github.com/kameshsampath/drone-google-cloud-auth
 image: https://hub.docker.com/repository/docker/kameshsampath/drone-gcloud-auth
 license: Apache License 2.0
 readme: https://github.com/kameshsampath/drone-google-cloud-auth/blob/master/README.md
 description: >-
-  Plugin that allows you create and configure the Google Cloud configuration file that could be used with gcloud CLI.
+  Plugin that allows you create and configure the Google Cloud auth configuration file that could be used with gcloud CLI. The plugin also configures Docker configuration(~/.docker/config.json) to enable push and pull of the container images from Google Artifact Registry. 
+  **IMPORTANT:** The plugin supports only Google Artifact Registry.
 example: |
   kind: pipeline
   type: docker
@@ -20,18 +24,25 @@ example: |
   steps:
 
   - name: configure gcloud
-    image: docker.io/kameshsampath/drone-gcloud-auth:v1.0.0
-    pull: if-not-exists
+    image: docker.io/kameshsampath/drone-gcloud-auth:2.0.0
+    pull: never
     settings:
       google_application_credentials:
-        from_secret: service_account_json
+        from_secret: google_application_credentials
       google_cloud_project:
         from_secret: google_cloud_project
+      registry_locations:
+        - asia-south1
+        - us-central1
     volumes:
       - name: gcloud-config
-        path: /home/dev/.config/gcloud
+        path: /root/.config/gcloud
+      - name: docker-config
+        path: /root/.docker
   volumes:
   - name: gcloud-config
+    temp: {}
+  - name: docker-config
     temp: {}
 
 properties:
@@ -44,12 +55,18 @@ properties:
   google_cloud_project:
     type: string
     defaultValue: ""
-    description: The Google project which will be set as default project on when using `glcoud`.
+    description: The Google project which will be set as default project on when using "glcoud".
     secret: true
     required: true
-  registries:
+  google_cloud_region:
     type: string
     defaultValue: ""
-    description: The list of registries to configure with Google Cloud Docker credential helper.
+    description: The Google region which will be set as default `compute/region` when using `gcloud`. You can find the available regions using the command "gcloud compute regions list". If configured this region will be enabled for Google Artifact Registry.
+    secret: true
+    required: false
+  registry_locations:
+    type: string
+    defaultValue: ""
+    description: The list of Google Artifact Registry locations to configure with Google Cloud Docker credential helper.
     secret: false
     required: false
