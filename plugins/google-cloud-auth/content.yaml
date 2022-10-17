@@ -25,7 +25,7 @@ example: |
 
   - name: configure gcloud
     image: docker.io/kameshsampath/drone-gcloud-auth:2.0.0
-    pull: never
+    pull: if-not-exists
     settings:
       google_application_credentials:
         from_secret: google_application_credentials
