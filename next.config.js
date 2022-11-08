@@ -484,6 +484,11 @@ module.exports = {
         permanent: true,
       },
       {
+        source: "/zc2638/drone-k8s-plugin",
+        destination: "/plugins/k8s",
+        permanent: true,
+      },
+      {
         source: "/vallard/drone-kube",
         destination: "/plugins/kube",
         permanent: true,
