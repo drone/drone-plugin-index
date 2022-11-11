@@ -43,12 +43,6 @@ properties:
     description: trigger builds for the repository list, you can mention branch using @.
     secret: false
     required: true
-  fork:
-    type: boolean
-    defaultValue: false
-    description: trigger new build numbers if true, else rebuild.
-    secret: false
-    required: false
   wait:
     type: boolean
     defaultValue: false
