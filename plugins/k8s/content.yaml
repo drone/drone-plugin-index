@@ -1,0 +1,100 @@
+title: Kubernetes Plugin
+author: zc2638
+tags:
+  - k8s
+  - kubernetes
+  - resources
+  - deploy
+logo: kubernetes.svg
+repo: https://github.com/zc2638/drone-k8s-plugin
+image: https://hub.docker.com/r/zc2638/drone-k8s-plugin
+license: Apache-2.0 license
+readme: https://github.com/zc2638/drone-k8s-plugin/blob/main/README.md
+description: >-
+  Drone CI plugin for creating & updating K8s Resources.  
+  This plugin supports all Kubernetes resources and also supports creating/updating Configmaps from config files.
+example: |
+  kind: pipeline
+  type: docker
+  name: drone-k8s-plugin-test
+  
+  steps:
+    - name: deploy
+      image: zc2638/drone-k8s-plugin
+      pull: if-not-exists
+      settings:
+        k8s_server: https://localhost:6443
+        k8s_token:
+          from_secret: k8s_token
+        k8s_ca_crt:
+          from_secret: k8s_ca_crt
+        k8s_skip_tls: false
+        namespace: default
+        config_files:
+          - default:test-config:testdata/config.yaml
+          - default:test-config:testdata/config.yaml:a.yaml
+        templates:
+          - testdata/deployment.yaml
+          - testdata/service.yaml
+        app_name: ${DRONE_REPO_NAME}
+properties:
+  kubernetes_server:
+    type: string
+    defaultValue: ''
+    description: The same as `k8s_server`. The address and port of the Kubernetes API server.
+    secret: false
+    required: true
+  kubernetes_token:
+    type: string
+    defaultValue: ''
+    description: The same as `k8s_token`. Token from ServiceAccount for authentication to the API server.
+    secret: true
+    required: true
+  kubernetes_ca_crt:
+    type: string
+    defaultValue: ''
+    description: The same as `k8s_ca_crt`. Certificate from ServiceAccount for authentication to the API server.
+    secret: true
+    required: false
+  kubernetes_skip_tls:
+    type: boolean
+    defaultValue: 'false'
+    description: The same as `k8s_skip_tls`. If true, the server's certificate will not be checked for validity. This will make your HTTPS connections insecure.
+    secret: false
+    required: false
+  init_templates:
+    type: array
+    defaultValue: ''
+    description: Path to Kubernetes Resource yaml based definition file (e.g. ConfigMap, Deployment or others), used to initialize some resources.
+    secret: false
+    required: false
+  templates:
+    type: array
+    defaultValue: ''
+    description: Path to Kubernetes Resource yaml based definition file (e.g. ConfigMap, Deployment or others).
+    secret: false
+    required: false
+  config_files:
+    type: array
+    defaultValue: ''
+    description: Config file paths for automatic creation/update of ConfigMap.The syntax is expressed as `namespace:name:file_path:file_name` or `namespace:name:file_path`, when file_name is not specified, it will default to the file name of file_path.
+    secret: false
+    required: false
+  namespace:
+    type: string
+    defaultValue: ''
+    description: Default namespace to use when namespace is not set.
+    secret: false
+    required: false
+  debug:
+    type: boolean
+    defaultValue: 'false'
+    description: Used to enable debug level logging.
+    secret: false
+    required: false
+  Other_parameters:
+    type: string
+    defaultValue: ''
+    description: Other parameters will be made available for interpolation within yaml templates (upper-case will be converted to lower-case).
+    secret: false
+    required: false
