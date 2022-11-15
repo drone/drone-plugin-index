@@ -1,8 +1,8 @@
 ---
 date: 2019-09-27T00:00:00+00:00
-title: Kubernetes
+title: Kubernetes Plugin
 author: zc2638
-tags: [ k8s, kubernetes, resources ]
+tags: [ k8s, kubernetes, resources, deploy ]
 repo: zc2638/drone-k8s-plugin
 logo: kubernetes.svg
 image: zc2638/drone-k8s-plugin
