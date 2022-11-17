@@ -254,3 +254,9 @@ properties:
     description: additional host:IP mapping
     secret: false
     required: false
+  platform:
+    type: string
+    defaultValue: ''
+    description: specify the target platform for the build output, (for example, linux/amd64, linux/arm64, or darwin/amd64).
+    secret: false
+    required: false
