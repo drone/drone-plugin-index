@@ -8,7 +8,7 @@ tags:
 logo: kubernetes.svg
 repo: https://github.com/zc2638/drone-k8s-plugin
 image: https://hub.docker.com/r/zc2638/drone-k8s-plugin
-license: Apache-2.0 license
+license: Apache License 2.0
 readme: https://github.com/zc2638/drone-k8s-plugin/blob/main/README.md
 description: >-
   Drone CI plugin for creating & updating K8s Resources.  
