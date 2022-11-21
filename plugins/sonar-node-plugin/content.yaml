@@ -1,0 +1,87 @@
+title: SonarScanner
+author: kytay
+tags:
+  - Sonar
+  - SonarQube
+  - SonarScanner
+  - Analysis
+  - Report
+  - NodeJS
+logo: sonarqube-icon.svg
+repo: https://github.com/kytay/drone-plugins/tree/master/sonar-node-plugin
+image: https://hub.docker.com/r/kytay/sonar-node-plugin
+license: MIT License
+readme: https://github.com/kytay/drone-plugins/blob/master/sonar-node-plugin/README.md
+description: >-
+  This plugin enable code analysis with different versions of NodeJS (via nvm) and 
+  post the analysis report to your SonarQube server. 
+  SonarQube is an open source code quality management platform.
+example: |
+  kind: pipeline
+  name: default
+  steps:
+  - name: perform code-analysis
+    image: kytay/sonar-node-plugin
+    settings:
+        sonar_host:
+          from_secret: sonar_host
+        sonar_token:
+          from_secret: sonar_token
+        use_node_version: 16.18.1
+properties:
+  sonar_host:
+    type: string
+    defaultValue: ''
+    description: Hostname of the sonar server.
+    secret: false
+    required: true
+  sonar_token:
+    type: string
+    defaultValue: ""
+    description: >-
+      The authentication token with either Execute Analysis permission on the project or Global Execute Analysis permission.
+      sonar_login and sonar_password are ignored, when authentication token is provided.
+    secret: true
+    required: false
+  sonar_login:
+    type: string
+    defaultValue: ""
+    description: >-
+      This is the login of a SonarQube user with either Execute Analysis permission on the project or Global Execute Analysis permission.
+      Using authentication token is encouraged for security reasons. Refer to https://docs.sonarqube.org/latest/user-guide/user-token/
+    secret: true
+    required: false
+  sonar_password:
+    type: string
+    defaultValue: ""
+    description: >-
+      This is the password that goes with your sonar_login username.
+      Using authentication token is encouraged for security reasons. Refer to https://docs.sonarqube.org/latest/user-guide/user-token/
+    secret: true
+    required: false
+  sonar_loglevel:
+    type: string
+    defaultValue: "INFO"
+    description: Control the quantity / level of logs produced during an analysis.
+    secret: false
+    required: false
+  sonar_project_settings:
+    type: string
+    defaultValue: ""
+    description: Specify the path to the project configuration file.
+    secret: false
+    required: false
+  sonar_debug:
+    type: boolean
+    defaultValue: "false"
+    description: Enable debug flag for additional information logging
+    secret: false
+    required: false
+  use_node_version:
+    type: string
+    defaultValue: ""
+    description: >-
+      Specify the node version to use for sonar-scanner, the most recent node LTS version will be selected if this variable is not specified.
+      Example Values: 16, 16.18.1, v16, v16.18.1
+    secret: false
+    required: false
