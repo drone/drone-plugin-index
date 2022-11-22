@@ -5,7 +5,7 @@ tags:
   - docker
 logo: docker.svg
 repo: https://github.com/drone-plugins/drone-docker
-image: https://hub.docker.com/r/plugins/docker/
+image: https://hub.docker.com/r/plugins/docker
 license: None
 readme: https://github.com/drone-plugins/drone-docker/blob/master/README.md
 description: |
@@ -26,49 +26,49 @@ example: |
 properties:
   registry:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: authenticates to this registry
     secret: false
     required: false
   username:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: authenticates with this username
     secret: false
     required: false
   password:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: authenticates with this password
     secret: true
     required: false
   repo:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: repository name for the image
     secret: false
     required: false
   tags:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: repository tag for the image
     secret: false
     required: false
   secret:
     type: string
-    defaultValue: ''
-    description: Use buildkit to pass secrets to the dockerbuild. Eg `id=mysecret,src=secret-file`  
+    defaultValue: ""
+    description: Use buildkit to pass secrets to the dockerbuild. Eg `id=mysecret,src=secret-file`
     secret: false
     required: false
   dockerfile:
     type: string
-    defaultValue: 'Dockerfile'
+    defaultValue: "Dockerfile"
     description: dockerfile to be used
     secret: false
     required: false
   dry_run:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: boolean if the docker image should be pushed at the end
     secret: false
     required: false
@@ -80,13 +80,13 @@ properties:
     required: false
   context:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: the context path to use, defaults to root of the git repo
     secret: false
     required: false
   target:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: the build target to use, must be defined in the docker file
     secret: false
     required: false
@@ -104,7 +104,7 @@ properties:
     required: false
   mirror:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: >-
       use a mirror registry instead of pulling images directly from the central
       Hub
@@ -118,37 +118,37 @@ properties:
     required: false
   custom_dns:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: set custom dns servers for the container
     secret: false
     required: false
   custom_dns_search:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: docker daemon dns search domains
     secret: false
     required: false
   storage_driver:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: supports `aufs`, `overlay` or `vfs` drivers
     secret: false
     required: false
   storage_path:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: docker daemon storage path
     secret: false
     required: false
   build_args:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: pass custom arguments to docker build
     secret: false
     required: false
   build_args_from_env:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: pass the envvars as custom arguments to docker build
     secret: false
     required: false
@@ -160,7 +160,7 @@ properties:
     required: false
   auto_tag_suffix:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: generate tag names with this suffix
     secret: false
     required: false
@@ -178,13 +178,13 @@ properties:
     required: false
   mtu:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: docker daemon custom mtu setting
     secret: false
     required: false
   ipv6:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: docker daemon IPv6 networking
     secret: false
     required: false
@@ -202,7 +202,7 @@ properties:
     required: false
   cache_from:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: images to consider as cache sources
     secret: false
     required: false
@@ -226,37 +226,37 @@ properties:
     required: false
   custom_labels:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: additional k=v labels
     secret: false
     required: false
   label_schema:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: label-schema labels
     secret: false
     required: false
   email:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: docker email
     secret: false
     required: false
   no_cache:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: do not use cached intermediate containers
     secret: false
     required: false
   add_host:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: additional host:IP mapping
     secret: false
     required: false
   platform:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: specify the target platform for the build output, (for example, linux/amd64, linux/arm64, or darwin/amd64).
     secret: false
     required: false

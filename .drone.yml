@@ -4,12 +4,12 @@ type: docker
 
 steps:
   - name: lint & validate
-    image: node:17-alpine
+    image: node:18-alpine
     commands:
       - npm ci
       - npm run lint
       - npm run validate
   - name: generate Plugins JSON
-    image: node:17-alpine
+    image: node:18-alpine
     commands:
       - npm run gen-plugins-json
