@@ -6,7 +6,7 @@ tags:
   - azure
 logo: acr.svg
 repo: https://github.com/drone-plugins/drone-docker
-image: https://hub.docker.com/r/plugins/acr/
+image: https://hub.docker.com/r/plugins/acr
 license: None
 readme: https://github.com/drone-plugins/drone-docker/blob/master/README.md
 description: |
@@ -32,19 +32,19 @@ properties:
     required: false
   service_principal_client_id:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: authenticates with this username
     secret: false
     required: false
   service_principal_client_secret:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: authenticates with this password
     secret: true
     required: false
   repo:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: repository name for the image
     secret: false
     required: false

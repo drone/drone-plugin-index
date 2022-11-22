@@ -8,7 +8,7 @@ tags:
   - gcr
 logo: google_gcr.svg
 repo: https://github.com/drone-plugins/drone-docker
-image: https://hub.docker.com/r/plugins/gcr/
+image: https://hub.docker.com/r/plugins/gcr
 license: None
 readme: https://github.com/drone-plugins/drone-docker/blob/master/README.md
 description: |
@@ -34,13 +34,13 @@ properties:
     required: false
   repo:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: repository name for the image
     secret: false
     required: false
   json_key:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: json key - can be inline or base64 encoded
     secret: true
     required: true
