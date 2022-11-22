@@ -369,6 +369,11 @@ module.exports = {
         permanent: true,
       },
       {
+        source: "/kytay/sonar-node-plugin",
+        destination: "/plugins/sonar-node-plugin",
+        permanent: true,
+      },
+      {
         source: "/lddsb/drone-dingtalk-message",
         destination: "/plugins/dingtalk-message",
         permanent: true,
