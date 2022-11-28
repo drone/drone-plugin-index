@@ -1,13 +1,13 @@
 title: Kaniko
-author: banzaicloud
+author: drone-plugins
 tags:
   - publish
   - docker
 logo: kaniko.svg
-repo: https://github.com/banzaicloud/drone-kaniko
-image: https://hub.docker.com/r/banzaicloud/drone-kaniko
+repo: https://github.com/drone/drone-kaniko
+image: https://hub.docker.com/r/drone/drone-kaniko
 license: Apache License 2.0
-readme: https://github.com/banzaicloud/drone-kaniko/blob/master/README.md
+readme: https://github.com/drone/drone-kaniko/blob/master/README.md
 description: This plugin can be used to build and publish images to the Docker registry, using the Kaniko image builder. Unlike the Docker plugin you are not required you to run your agent in privileged mode.
 example: |
   kind: pipeline
@@ -15,7 +15,7 @@ example: |
 
   steps:
   - name: kaniko
-    image: banzaicloud/drone-kaniko
+    image: plugins/kaniko
     settings:
       username: kevinbacon
       password: pa55word
