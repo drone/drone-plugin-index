@@ -5,7 +5,7 @@ tags:
   - docker
 logo: kaniko.svg
 repo: https://github.com/drone/drone-kaniko
-image: https://hub.docker.com/r/drone/drone-kaniko
+image: https://hub.docker.com/r/plugins/kaniko
 license: Apache License 2.0
 readme: https://github.com/drone/drone-kaniko/blob/master/README.md
 description: This plugin can be used to build and publish images to the Docker registry, using the Kaniko image builder. Unlike the Docker plugin you are not required you to run your agent in privileged mode.
