@@ -1,0 +1,77 @@
+title: Slack
+author: drone-plugins
+tags:
+  - notifications
+  - chat
+logo: slack.svg
+repo: https://github.com/drone-plugins/drone-slack
+image: https://hub.docker.com/r/plugins/slack
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-slack/blob/master/README.md
+description: The Slack plugin posts build status messages to your channel.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: slack
+    image: plugins/slack
+    settings:
+      webhook: https://hooks.slack.com/services/...
+      channel: dev
+      icon_url: https://unsplash.it/256/256/?random
+properties:
+  webhook:
+    type: string
+    defaultValue: false
+    description: incoming webhook url for posting to a channel
+    secret: false
+    required: true
+  channel:
+    type: string
+    defaultValue: false
+    description: messages sent to the above webhook are posted here
+    secret: false
+    required: false
+  recipient:
+    type: string
+    defaultValue: false
+    description: alternatively you can send it to a specific user
+    secret: false
+    required: false
+  username:
+    type: string
+    defaultValue: false
+    description: choose the username this integration will post as
+    secret: false
+    required: false
+  template:
+    type: string
+    defaultValue: false
+    description: overwrite the default message template
+    secret: false
+    required: false
+  image_url:
+    type: string
+    defaultValue: false
+    description: a valid URL to an image file that will be displayed inside a message attachment
+    secret: false
+    required: false
+  icon_url:
+    type: string
+    defaultValue: false
+    description: a valid URL that displays a image to the left of the username
+    secret: false
+    required: false
+  icon_emoji:
+    type: string
+    defaultValue: false
+    description: displays a emoji to the left of the username
+    secret: false
+    required: false
+  link_names:
+    type: string
+    defaultValue: false
+    description: links usernames and channels in the message
+    secret: false
+    required: false

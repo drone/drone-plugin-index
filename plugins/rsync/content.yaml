@@ -1,0 +1,108 @@
+title: rsync
+author: drillster
+tags:
+  - publish
+  - ssh
+  - rsync
+logo: rsync.svg
+repo: https://github.com/drillster/drone-rsync
+image: https://hub.docker.com/r/drillster/drone-rsync
+license: MIT License
+readme: https://github.com/Drillster/drone-rsync/blob/master/README.md
+description: >-
+  The rsync plugin can be used to transfer files to remote machines, and run a
+  user-defined script afterwards.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: deploy
+    image: drillster/drone-rsync
+    settings:
+      hosts: [ "server-prod1", "server-prod2" ]
+      source: ./target
+      target: ~/packages
+      include: [ "app.jar", "app.jar.md5" ]
+      script:
+        - cd ~/packages
+        - md5sum -c app.jar.md5
+properties:
+  hosts:
+    type: array
+    defaultValue: []
+    description: list of hosts (remote machines)
+    required: true
+    secret: false
+  port:
+    type: number
+    defaultValue: 22
+    description: port to connect to on the remote machines
+    required: false
+    secret: false
+  user:
+    type: string
+    defaultValue: root
+    description: user to connect as on the remote machines
+    required: false
+    secret: false
+  key:
+    type: string
+    defaultValue: ""
+    description: private SSH key for the remote machines
+    required: false
+    secret: true
+  source:
+    type: string
+    defaultValue: ./
+    description: source folder to copy from
+    required: false
+    secret: false
+  target:
+    type: string
+    defaultValue: ''
+    description: target folder on remote machines to copy to
+    required: false
+    secret: false
+  include:
+    type: array
+    defaultValue: []
+    description: rsync include filter
+    required: false
+    secret: false
+  exclude:
+    type: array
+    defaultValue: []
+    description: rsync exclude filter
+    required: false
+    secret: false
+  recursive:
+    type: boolean
+    defaultValue: false
+    description: instruct plugin to recursively copy
+    required: false
+    secret: false
+  delete:
+    type: boolean
+    defaultValue: false
+    description: instruct plugin to delete the target folder before copying
+    required: false
+    secret: false
+  args:
+    type: string
+    defaultValue: ""
+    description: instruct plugin to use these additional rsync CLI arguments, e.g. "--blocking-io"
+    required: false
+    secret: false
+  script:
+    type: array
+    defaultValue: []
+    description: list of commands to execute on remote machines over SSH after rsync occurs
+    required: false
+    secret: false
+  prescript:
+    type: array
+    defaultValue: []
+    description: list of commands to execute on remote machines before rsync occurs
+    required: false
+    secret: false

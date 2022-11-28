@@ -1,0 +1,90 @@
+title: Vercel Deploy
+author: kameshsampath
+tags:
+  - deploy
+  - cloud
+  - auth
+  - vercel
+logo: vercel-icon-dark.svg
+repo: https://github.com/kameshsampath/drone-vercel-deploy
+image: https://hub.docker.com/repository/docker/kameshsampath/drone-vercel-deploy
+license: Apache License 2.0
+readme: https://github.com/kameshsampath/drone-vercel-deploy/blob/master/README.md
+description: >-
+  Plugin that allows you deploy a site to Vercel.
+example: |
+  kind: pipeline
+  type: docker
+  name: default
+  platform:
+    os: linux
+    arch: amd64
+  steps:
+    - name: deploy
+      image: docker.io/kameshsampath/drone-vercel-deploy
+      pull: never
+      settings:
+        log_level: debug
+        # valid values are production, development, preview
+        vercel_env: production
+        vercel_token:
+          from_secret: vercel_token
+        vercel_org_id:
+          from_secret: vercel_org_id
+        vercel_project_id:
+          from_secret: vercel_project_id
+        vercel_project_create: true
+        vercel_environment:
+          - NEXT_PUBLIC_FOO=BAR
+          - NEXT_PUBLIC_XMAS=25 Dec
+
+properties:
+  vercel_env:
+    type: string
+    defaultValue: "development"
+    description: |
+      The vercel environment to deploy. It could be one of development, preview or production.
+    secret: false
+    required: true
+  vercel_token:
+    type: string
+    defaultValue: ""
+    description: The Vercel Token to use.
+    secret: true
+    required: true
+  vercel_org_id:
+    type: string
+    defaultValue: ""
+    description: The Vercel organization to which the site project is associated.
+    secret: true
+    required: true
+  vercel_project_id:
+    type: string
+    defaultValue: ""
+    description: The Vercel Project where the site will be deployed. It could be name or id of existing project or the project that will be created.
+    secret: true
+    required: true
+  vercel_project_create:
+    type: boolean
+    defaultValue: true
+    description: Flag to indicate if the project need to be created
+    secret: false
+    required: false
+  vercel_environment_variables:
+    type: object
+    defaultValue: ""
+    description: An array of KEY=VALUE pair of environment variables will be added to site project at vercel_environment scope.
+    secret: false
+    required: false
+  vercel_environment_variable_file:
+    type: string
+    defaultValue: ""
+    description: An environment variable file, with each line being a KEY=VALUE pairs.
+    secret: false
+    required: false
+  log_level:
+    type: string
+    defaultValue: ""
+    description: Log level that will be used while debugging the plugin
+    secret: false
+    required: false

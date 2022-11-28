@@ -1,0 +1,50 @@
+title: Azure container Registry
+author: drone-plugins
+tags:
+  - publish
+  - docker
+  - azure
+logo: acr.svg
+repo: https://github.com/drone-plugins/drone-docker
+image: https://hub.docker.com/r/plugins/acr
+license: None
+readme: https://github.com/drone-plugins/drone-docker/blob/master/README.md
+description: |
+  The ACR plugin can be used to build and publish images to the Azure ECR
+  registry.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: docker  
+    image: plugins/acr
+    settings:
+      service_principal_client_id: kevinbacon
+      service_principal_client_secret: pa55word
+      repo: foo/bar
+properties:
+  registry:
+    type: string
+    defaultValue: azurecr.io
+    description: authenticates to this registry
+    secret: false
+    required: false
+  service_principal_client_id:
+    type: string
+    defaultValue: ""
+    description: authenticates with this username
+    secret: false
+    required: false
+  service_principal_client_secret:
+    type: string
+    defaultValue: ""
+    description: authenticates with this password
+    secret: true
+    required: false
+  repo:
+    type: string
+    defaultValue: ""
+    description: repository name for the image
+    secret: false
+    required: false

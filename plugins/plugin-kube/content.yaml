@@ -1,0 +1,65 @@
+title: Kubernetes
+author: danielgormly
+tags:
+  - kubernetes
+  - deployment
+  - configmap
+logo: kubernetes.svg
+repo: https://github.com/danielgormly/drone-plugin-kube
+image: https://hub.docker.com/r/danielgormly/drone-plugin-kube
+license: None
+readme: https://github.com/danielgormly/drone-plugin-kube/blob/master/README.md
+description: >-
+  Updates Kubernetes deployments from templates & configMaps from files. This
+  plugin will either create or update existing resources dependent on their
+  presence. It will wait for deployments before it progresses.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: Deploy app
+    image: danielgormly/drone-plugin-kube:0.0.1
+    settings:
+      template: path/to/deployment.yaml # relative to repo root
+      ca: LS0tLS1... # BASE64 encoded string of the K8s CA cert
+      server: https://10.0.0.20:6443 # K8s master node address
+      token:
+        from_secret: kubernetes_token # Service account token to a service account that can manage deployments
+properties:
+  ca:
+    type: string
+    defaultValue: ''
+    description: Base-64 encoded string of the K8s CA cert.
+    secret: true
+    required: false
+  server:
+    type: string
+    defaultValue: ''
+    description: Full url of Kubernetes API endpoint including protocol & port.
+    secret: false
+    required: true
+  kubernetes_token:
+    type: string
+    defaultValue: ''
+    description: Kubernetes service account token (Not base64 encoded).
+    secret: true
+    required: true
+  template:
+    type: string
+    defaultValue: ''
+    description: Path to Kubernetes yaml based definition file (Configmap or Deployment).
+    secret: false
+    required: false
+  configmap_file:
+    type: string
+    defaultValue: ''
+    description: path to file containing data to inject in configmap (They configmap key that contains the data will be the filename).
+    secret: false
+    required: false
+  Other_parameters:
+    type: string
+    defaultValue: ''
+    description: Other parameters will be made available for interpolation within yaml templates (upper-case will be converted to lower-case).
+    secret: false
+    required: false

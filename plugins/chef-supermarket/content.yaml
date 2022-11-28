@@ -1,0 +1,45 @@
+title: Chef Supermarket
+author: jmccann
+tags:
+  - publish
+  - chef
+logo: chef_supermarket.svg
+repo: https://github.com/jmccann/drone-chef-supermarket
+image: https://hub.docker.com/r/jmccann/drone-chef-supermarket
+license: Apache License 2.0
+readme: https://github.com/jmccann/drone-chef-supermarket/blob/master/README.md
+description: >-
+  The Chef Supermarket plugin can publish cookbooks to Supermarket (internal or
+  public).
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: chef_supermarket
+    image: jmccann/drone-chef-supermarket:1
+properties:
+  user:
+    type: string
+    defaultValue: ''
+    description: connects as this user
+    secret: false
+    required: false
+  private_key:
+    type: string
+    defaultValue: ''
+    description: private key contents to auth to server with
+    secret: false
+    required: false
+  server:
+    type: string
+    defaultValue: https://supermarket.chef.io
+    description: Supermarket server to connect to
+    secret: false
+    required: false
+  ssl_verify:
+    type: boolean
+    defaultValue: true
+    description: Enable/Disable SSL verify
+    secret: false
+    required: false

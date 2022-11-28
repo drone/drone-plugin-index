@@ -1,0 +1,110 @@
+title: Git Push
+author: appleboy
+tags:
+  - deploy
+  - publish
+  - git-push
+logo: git.svg
+repo: https://github.com/appleboy/drone-git-push
+image: https://hub.docker.com/r/appleboy/drone-git-push
+license: Apache License 2.0
+readme: https://github.com/appleboy/drone-git-push/blob/master/README.md
+description: Use this plugin for deploying an application via `git push`. You will need to supply Drone with a private SSH key or use the same credentials as the cloned repo to being able to push changes.
+example: |
+  kind: pipeline
+  name: default
+  
+  steps:
+  - name: git-push
+    image: appleboy/drone-git-push
+    settings:
+      branch: master
+      remote: git@git.heroku.com:falling-wind-1624.git
+      force: false
+      commit: true
+properties:
+  ssh_key:
+    type: string
+    defaultValue: ''
+    description: Private SSH key for the remote machine.
+    secret: false
+    required: false
+  remote:
+    type: string
+    defaultValue: ''
+    description: target remote repository (if blank, assume exists).
+    secret: false
+    required: true
+  remote_name:
+    type: string
+    defaultValue: deploy
+    description: name of the remote to use locally.
+    secret: false
+    required: false
+  branch:
+    type: string
+    defaultValue: master
+    description: target branch to push to.
+    secret: false
+    required: false
+  local_branch:
+    type: string
+    defaultValue: HEAD
+    description: local branch or ref to push from.
+    secret: false
+    required: false
+  path:
+    type: string
+    defaultValue: current repo
+    description: path to the repository.
+    secret: false
+    required: false
+  force:
+    type: boolean
+    defaultValue: false
+    description: force push using the --force flag.
+    secret: false
+    required: false
+  skip_verify:
+    type: boolean
+    defaultValue: false
+    description: skip verification of HTTPS certs.
+    secret: false
+    required: false
+  commit:
+    type: boolean
+    defaultValue: false
+    description: add and commit the contents of the repo before pushing.
+    secret: false
+    required: false
+  commit_message:
+    type: string
+    defaultValue: '[skip ci] Commit dirty state'
+    description: add a custom message for commit.
+    secret: false
+    required: false
+  empty_commit:
+    type: boolean
+    defaultValue: false
+    description: create an empty commit if there are no changes.
+    secret: false
+    required: false
+  author_name:
+    type: string
+    defaultValue: commiter name
+    description: author name for commit.
+    secret: false
+    required: false
+  author_email:
+    type: string
+    defaultValue: commiter email
+    description: author email for commit.
+    secret: false
+    required: false
+  followtags:
+    type: boolean
+    defaultValue: false
+    description: push with --follow-tags option.
+    secret: false
+    required: false
+  

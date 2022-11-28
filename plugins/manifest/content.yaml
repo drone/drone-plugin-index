@@ -1,0 +1,102 @@
+title: Manifest
+author: drone-plugins
+tags:
+  - docker
+  - manifest
+  - architecture
+  - tag
+logo: docker.svg
+repo: https://github.com/drone-plugins/drone-manifest
+image: https://hub.docker.com/r/plugins/manifest
+license: Apache License 2.0
+readme: https://github.com/drone-plugins/drone-manifest/blob/master/README.md
+description: This plugin can push manifests for multi-arch Docker images.
+example: |
+  kind: pipeline
+  name: default
+  steps:
+  - name: manifest
+    image: plugins/manifest
+    settings:
+      username: kevinbacon
+      password: pa55word
+      target: foo/bar:v1.0.0
+      template: foo/bar:v1.0.0-OS-ARCH
+      platforms:
+        - linux/amd64
+        - linux/arm
+        - linux/arm64
+properties:
+  username:
+    type: string
+    defaultValue: Anonymous access
+    description: Username for DockerHub authentication
+    secret: false
+    required: true
+  password:
+    type: string
+    defaultValue: Anonymous access
+    description: Password for DockerHub authentication
+    secret: true
+    required: true
+  insecure:
+    type: boolean
+    defaultValue: false
+    description: Enable insecure (not TLS) registry support.
+    secret: false
+    required: false
+  target:
+    type: string
+    defaultValue: ''
+    description: Target image for manifest.
+    secret: false
+    required: true
+  template:
+    type: string
+    defaultValue: ''
+    description: Template for manifest sources, OS and ARCH are replaced.
+    secret: false
+    required: true
+  platforms:
+    type: array
+    defaultValue: []
+    description: List of platforms in format OS/ARCH.
+    secret: false
+    required: true
+  spec:
+    type: string
+    defaultValue: ''
+    description: Path to a manifest specification file.
+    secret: false
+    required: true
+  ignore_missing:
+    type: boolean
+    defaultValue: false
+    description: Ignore missing source images.
+    secret: false
+    required: false
+  tag:
+    type: string
+    defaultValue: ''
+    description: Tag, only used with spec.
+    secret: false
+    required: false
+  tags:
+    type: array
+    defaultValue: []
+    description: Tags, only used with manifest.
+    secret: false
+    required: false
+  default_tags:
+    type: boolean
+    defaultValue: false
+    description: Default tags, only used with spec.
+    secret: false
+    required: false
+  auto_tag:
+    type: boolean
+    defaultValue: false
+    description: Auto tags, only used with spec.
+    secret: false
+    required: false
+    

@@ -1,0 +1,87 @@
+title: Artifactory
+author: athieriot
+tags:
+  - publish
+  - artifactory
+logo: artifactory.svg
+repo: https://github.com/athieriot/drone-artifactory
+image: https://hub.docker.com/r/athieriot/drone-artifactory
+license: Apache License 2.0
+readme: https://github.com/athieriot/drone-artifactory/blob/master/README.md
+description: Use this plugin to publish artifacts from the build to Artifactory.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: artifactory
+    image: athieriot/drone-artifactory
+    settings:
+      url: http://arti.company.com
+      username: admin
+      password: password
+      pom: pom.xml
+      files:
+        - target/*.jar
+        - target/*.war
+properties:
+  url:
+    type: string
+    defaultValue: ''
+    description: Artifactory URL (Includes scheme).
+    secret: false
+    required: true
+  username:
+    type: string
+    defaultValue: ''
+    description: Artifactory username.
+    secret: false
+    required: true
+  password:
+    type: string
+    defaultValue: ''
+    description: Artifactory password.
+    secret: true
+    required: true
+  pom:
+    type: string
+    defaultValue: ''
+    description: The path to a pom.xml file were to read project details.
+    secret: false
+    required: false
+  group_id:
+    type: string
+    defaultValue: default to value from Pom file.
+    description: Project group id.
+    secret: false
+    required: false
+  artifact_id:
+    type: string
+    defaultValue: default to value from Pom file.
+    description: Project artifact id.
+    secret: false
+    required: false
+  version:
+    type: string
+    defaultValue: default to value from Pom file.
+    description: Artifact version.
+    secret: false
+    required: false
+  repo_key:
+    type: string
+    defaultValue: libs-snapshot-local if version contains snapshot, libs-release-local otherwise.
+    description: Target repository key.
+    secret: false
+    required: false
+  files:
+    type: array
+    defaultValue: ''
+    description: List of files to deploy.
+    secret: false
+    required: false
+  force_upload:
+    type: boolean
+    defaultValue: false
+    description: Force upload if a file already exists.
+    secret: false
+    required: false

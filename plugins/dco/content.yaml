@@ -1,0 +1,25 @@
+title: DCO
+author: algernon
+tags:
+  - analysis
+  - report
+  - test
+repo: https://git.madhouse-project.org/algernon/drone-plugin-dco
+image: https://hub.docker.com/r/algernon/drone-plugin-dco
+license: GNU General Public License v3.0
+readme: https://git.madhouse-project.org/algernon/drone-plugin-dco/src/branch/master/README.md
+description: The DCO plugin enforces the Developer Certificate of Origin.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: dco
+    image: algernon/drone-plugin-dco
+properties:
+  debug:
+    type: boolean
+    defaultValue: false
+    description: whether to enable debug mode.
+    secret: false
+    required: false

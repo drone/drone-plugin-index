@@ -1,0 +1,86 @@
+title: Gitee Pulls
+author: kit101
+tags:
+  - gitee
+  - pullrequest
+  - buildstatus
+  - teststatus
+logo: gitee.svg
+repo: https://github.com/kit101/drone-plugin-gitee-pulls
+image: https://hub.docker.com/r/kit101z/drone-plugin-gitee-pulls
+license: Apache License 2.0
+readme: https://github.com/kit101/drone-plugin-gitee-pulls/blob/master/README.md
+description: This plugin can automatically update the comments / labels / test in PR to gitee.
+example: |
+  name: default
+  kind: pipeline
+
+  steps:
+  - name: pr-enhance/start
+    image: kit101z/drone-plugin-gitee-pulls
+    settings:
+      is_running: true
+      access_token:
+        from_secret: GITEE_ACCESS_TOKEN
+
+properties:
+  debug:
+    type: boolean
+    defaultValue: false
+    description: enable debug mode
+    secret: false
+    required: false
+  api_server:
+    type: string
+    defaultValue: 'https://gitee.com/api/v5'
+    description: the gitee api server url
+    secret: false
+    required: false
+  access_token:
+    type: string
+    defaultValue: ""
+    description: gitee access token, you can generate personal access token
+    secret: true
+    required: true
+  is_running:
+    type: boolean
+    defaultValue: false
+    description: is the build running
+    secret: false
+    required: false
+  comment_disabled:
+    type: boolean
+    defaultValue: false
+    description: disable automatic updating of the comment with build status
+    secret: false
+    required: false
+  label_disabled:
+    type: boolean
+    defaultValue: false
+    description: disable automatic updating of the label with build status
+    secret: false
+    required: false
+  test_disabled:
+    type: boolean
+    defaultValue: false
+    description: disable automatic updating of the test status
+    secret: false
+    required: false
+  running_label:
+    type: string
+    defaultValue: 'drone-build/running,E6A23C'
+    description: set the name and color of the running label
+    secret: false
+    required: false
+  success_label:
+    type: string
+    defaultValue: 'drone-build/success,67C23A'
+    description: set the name and color of the success label
+    secret: false
+    required: false
+  failure_label:
+    type: string
+    defaultValue: 'drone-build/failure,DB2828'
+    description: set the name and color of the failure label
+    secret: false
+    required: false

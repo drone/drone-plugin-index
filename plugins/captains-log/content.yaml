@@ -1,0 +1,79 @@
+title: Captains Log
+author: Target
+tags:
+  - notifications
+  - chat
+  - slack
+  - logs
+  - build
+  - release notes
+  - releases
+  - notes
+logo: captains_log.svg
+repo: https://github.com/target/captains-log
+image: https://hub.docker.com/r/target/captains-log
+license: Apache License 2.0
+readme: https://github.com/target/captains-log/blob/master/README.md
+description: A Drone plugin that helps organize release information in Slack
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: my-release-log-step
+    image: target/captains-log:1
+    settings:
+      secrets: [ SLACK_TOKEN, SLACK_URL, GITHUB_TOKEN ] 
+      github_owner: target
+      github_repo: captains-log
+      jira_team_domain: myteamnamespace
+properties:
+  secrets:
+    type: string
+    defaultValue: ''
+    description: slack and github secrets
+    secret: false
+    required: false
+  github_owner:
+    type: string
+    defaultValue: ''
+    description: The owner of the GitHub repository
+    secret: false
+    required: true
+  github_repo:
+    type: string
+    defaultValue: ''
+    description: Target repository name
+    secret: false
+    required: true
+  jira_team_domain:
+    type: string
+    defaultValue: ''
+    description: namespace of Jira workspace (e.g. `jira.myteamnamespace.com`)
+    secret: false
+    required: true
+  github_tag_id:
+    type: string
+    defaultValue: ''
+    description: regex to match on specific tags
+    secret: false
+    required: false
+  slack_channel:
+    type: string
+    defaultValue: ''
+    description: when using the API, you should use slack_channel to specify which room you'd like to post to. When using SLACK_URL you should not specify the room (i.e. slack_channel) because the room is already a part of the webhook.
+    secret: false
+    required: false
+  teams:
+    type: array
+    defaultValue: ''
+    description: a list of teams which allows you to organize the output of Captains Log into meaningful chunks.
+    secret: false
+    required: false
+  enterprise_host:
+    type: string
+    defaultValue: ''
+    description: if you use Enterprise Github, this is where you would supply the custom domain.
+    secret: false
+    required: false
+
