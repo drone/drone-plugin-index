@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import prism from "prismjs";
 import Head from "next/head";
-import Image from "next/future/image";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "../../styles/Plugin.module.css";
@@ -53,8 +53,11 @@ const getPropertiesMarkup = (properties) => {
             <p className={styles.propertyDescription}>{description}</p>
           )}
           {secret && (
-            <Link href="https://docs.drone.io/secret/">
-              <a className={styles.propertySecret}>Secret recommended</a>
+            <Link
+              href="https://docs.drone.io/secret/"
+              className={styles.propertySecret}
+            >
+              Secret recommended
             </Link>
           )}
           {defaultValue !== undefined && (
@@ -121,15 +124,13 @@ const Plugin = ({
         />
       </Head>
       <nav className={layoutStyles.pluginHeader}>
-        <Link href="/">
-          <a className={layoutStyles.logo}>
-            <Image
-              src={`/logo.svg`}
-              alt={`Harness logo`}
-              height="25"
-              width="115"
-            />
-          </a>
+        <Link href="/" passHref className={layoutStyles.logo}>
+          <Image
+            src={`/logo.svg`}
+            alt={`Harness logo`}
+            height="25"
+            width="115"
+          />
         </Link>
         <input
           type="text"
@@ -142,24 +143,28 @@ const Plugin = ({
           }}
           className={layoutStyles.pluginSearchInput}
         ></input>
-        <Link href="https://github.com/drone/drone-plugin-index">
-          <a className={layoutStyles.addButton}>Add a plugin</a>
+        <Link
+          href="https://github.com/drone/drone-plugin-index"
+          className={layoutStyles.addButton}
+        >
+          Add a plugin
         </Link>
-        <Link href="/">
-          <a className={layoutStyles.linkButton}>Plugins</a>
+        <Link href="/" className={layoutStyles.linkButton}>
+          Plugins
         </Link>
-        <Link href="https://docs.drone.io/">
-          <a className={layoutStyles.linkButton}>Documentation</a>
+        <Link href="https://docs.drone.io/" className={layoutStyles.linkButton}>
+          Documentation
         </Link>
-        <Link href="https://community.harness.io/c/drone/14">
-          <a className={layoutStyles.linkButton}>Support</a>
+        <Link
+          href="https://community.harness.io/c/drone/14"
+          className={layoutStyles.linkButton}
+        >
+          Support
         </Link>
       </nav>
       <article className={styles.container}>
         <div className={styles.breadCrumbs}>
-          <Link href="/">
-            <a>Drone plugins</a>
-          </Link>
+          <Link href="/">Drone plugins</Link>
           <span>{` > ${title}`}</span>
         </div>
         <section className={styles.section}>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/future/image";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "../styles/Card.module.css";
 
@@ -16,9 +16,7 @@ const Card = ({ pluginData }) => {
   return (
     <div className={styles.container} onClick={handleClick}>
       <div className={styles.pluginTitle}>
-        <Link href={href}>
-          <a>{title}</a>
-        </Link>
+        <Link href={href}>{title}</Link>
       </div>
       {tags?.length && (
         <div className={styles.pillContainer}>
