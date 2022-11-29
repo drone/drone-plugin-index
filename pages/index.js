@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import Image from "next/future/image";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import layoutStyles from "../styles/Layout.module.css";
@@ -108,27 +108,29 @@ const Home = ({ allPluginsData }) => {
       </Head>
       <header className={layoutStyles.homeHeader}>
         <nav className={layoutStyles.navBar}>
-          <Link href="/">
-            <a className={layoutStyles.logo}>
-              <Image
-                src="/logo.svg"
-                alt="Harness logo"
-                height="25"
-                width="115"
-              />
-            </a>
+          <Link href="/" passHref className={layoutStyles.logo}>
+            <Image src="/logo.svg" alt="Harness logo" height="25" width="115" />
           </Link>
-          <Link href="https://github.com/drone/drone-plugin-index">
-            <a className={layoutStyles.addButton}>Add a plugin</a>
+          <Link
+            href="https://github.com/drone/drone-plugin-index"
+            className={layoutStyles.addButton}
+          >
+            Add a plugin
           </Link>
-          <Link href="/">
-            <a className={layoutStyles.linkButton}>Plugins</a>
+          <Link href="/" className={layoutStyles.linkButton}>
+            Plugins
           </Link>
-          <Link href="https://docs.drone.io/">
-            <a className={layoutStyles.linkButton}>Documentation</a>
+          <Link
+            href="https://docs.drone.io/"
+            className={layoutStyles.linkButton}
+          >
+            Documentation
           </Link>
-          <Link href="https://community.harness.io/c/drone/14">
-            <a className={layoutStyles.linkButton}>Support</a>
+          <Link
+            href="https://community.harness.io/c/drone/14"
+            className={layoutStyles.linkButton}
+          >
+            Support
           </Link>
         </nav>
         <div className={layoutStyles.search}>
