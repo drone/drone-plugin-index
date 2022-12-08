@@ -43,58 +43,58 @@ properties:
     defaultValue: ''
     description: Slack channel.
     secret: false
-    required: true
+    required: false
   mapping:
     type: array
     defaultValue: ''
-    description: Mapping of authors to Slack users.
+    description: 'Mapping of authors to Slack users. Supports environment variable interpolation, e.g. {"$DRONE_COMMIT_AUTHOR": "$SLACK_USER"}.'
     secret: false
-    required: true
+    required: false
   success_username:
     type: string
     defaultValue: ''
     description: Username for successful builds.
     secret: false
-    required: true
+    required: false
   success_icon:
     type: string
     defaultValue: ''
     description: Icon for successful builds.
     secret: false
-    required: true
+    required: false
   success_template:
     type: string
     defaultValue: ''
     description: Template for successful builds.
     secret: false
-    required: true
+    required: false
   success_image_attachments:
     type: array
     defaultValue: ''
     description: List of image attachments for successful builds.
     secret: false
-    required: true
+    required: false
   failure_username:
     type: string
     defaultValue: ''
     description: Username for failed builds.
     secret: false
-    required: true
+    required: false
   failure_icon:
     type: string
     defaultValue: ''
     description: Icon for failed builds.
     secret: false
-    required: true
+    required: false
   failure_template:
     type: string
     defaultValue: ''
     description: Template for failed builds.
     secret: false
-    required: true
+    required: false
   failure_image_attachments:
     type: array
     defaultValue: ''
     description: List of image attachments for failed builds.
     secret: false
-    required: true
+    required: false
