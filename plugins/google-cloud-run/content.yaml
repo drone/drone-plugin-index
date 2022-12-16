@@ -28,13 +28,13 @@ example: |
     
   steps:
   - name: deploy the service
-    image: docker.io/kameshsampath/drone-gcloud-run:v1.0.1
+    image: docker.io/kameshsampath/drone-gcloud-run
     settings:
       service_account_json: ${SERVICE_ACCOUNT_JSON}
       project: ${GOOGLE_CLOUD_PROJECT}
       region: ${GOOGLE_CLOUD_REGION}
       service_name: my-service
-      image: asia.gcr.io/${GOOGLE_CLOUD_PROJECT}/greeter
+      image: asia-south1-docker.pkg.dev/${GOOGLE_CLOUD_PROJECT}/greeter
     environment: *buildEnv
 
 properties:
