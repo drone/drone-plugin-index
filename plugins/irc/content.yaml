@@ -1,0 +1,78 @@
+title: IRC
+author: drone-plugins
+tags:
+  - notifications
+logo: irc.svg
+repo: https://github.com/drone-plugins/drone-irc
+image: https://hub.docker.com/r/plugins/irc/
+license: None
+readme: https://github.com/drone-plugins/drone-irc/blob/master/README.md
+description: |
+  The IRC plugin can be used to send notifications to an IRC channel.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: irc
+    image: plugins/irc
+    settings:
+      nick: drone-bot
+      channel: #my-awesome-project 
+      host: irc.example.com 
+      port: 6667
+properties:
+  nick:
+    type: string
+    description: nickname used by bot
+    secret: false
+    required: false
+    defaultValue: drone{random-number}
+  channel:
+    type: string
+    description: channel to post message in
+    secret: false
+    required: false
+    defaultValue: ""
+  recipients:
+    type: string
+    description: recipient
+    secret: false
+    required: false
+    defaultValue: ""
+  host:
+    type: string
+    description: irc server host
+    secret: false
+    required: false
+    defaultValue: ""
+  port:
+    type: string
+    description: port 
+    secret: false
+    required: false
+    defaultValue: 6667
+  password:
+    type: string
+    description: password
+    secret: true
+    required: false
+    defaultValue: ""
+  sasl-password:
+    type: string
+    description: sasl-password
+    secret: true
+    required: false
+    defaultValue: ""
+  enable-tls:
+    type: boolean
+    description: enable tls
+    secret: false
+    required: false
+    defaultValue: false
+  use-sasl:
+    type: boolean
+    description: use use-sasl
+    secret: false
+    required: false
+    defaultValue: false
