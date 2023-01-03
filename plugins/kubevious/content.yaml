@@ -118,6 +118,30 @@ properties:
     description: Ignore non-Kubernetes YAML files
     secret: false
     required: false    
+  skip_rules:
+    type: string
+    defaultValue: ''
+    description: Skip rules by name
+    required: false
+    secret: false
+  only_rules:
+    type: string
+    defaultValue: ''
+    description: Run only specified rules
+    required: false
+    secret: false
+  skip_rule_categories:
+    type: string
+    defaultValue: ''
+    description: Skip rules by category 
+    required: false
+    secret: false
+  only_rule_categories:
+    type: string
+    defaultValue: ''
+    description: Run only specified rules by category
+    required: false
+    secret: false
   detailed_output:
     type: boolean
     defaultValue: false
@@ -130,3 +154,9 @@ properties:
     description: Output in JSON format
     secret: false
     required: false    
+  other_args:
+    type: string
+    defaultValue: ''
+    description: Additional arguments
+    required: false
+    secret: false
