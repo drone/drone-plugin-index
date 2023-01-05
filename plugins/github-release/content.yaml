@@ -21,16 +21,18 @@ example: |
     settings:
       api_key: xxxxxxxx
       files: dist/*
+    when:
+      event: tag
 properties:
   api_key:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: GitHub oauth token with public_repo or repo permission. If you create your token, ensure you select the correct scope. For private repositories you have to select repo while public repositories only requires public_repo.
     secret: false
     required: true
   files:
     type: array
-    defaultValue: ''
+    defaultValue: ""
     description: files to upload to GitHub Release, globs are allowed
     secret: false
     required: true
@@ -42,7 +44,7 @@ properties:
     required: false
   checksum:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: checksum takes hash methods to include in your GitHub release for the files specified. Supported hash methods include - md5, sha1, sha256, sha512, adler32, and crc32.
     secret: false
     required: false
@@ -60,26 +62,26 @@ properties:
     required: false
   note:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: file or string with notes for the release
     secret: false
-    required: false 
+    required: false
   title:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: file or string for the title shown in the gitea release
     secret: false
     required: true
   base_url:
     type: string
-    defaultValue: ''
-    description:  GitHub base URL, only required for GHE
+    defaultValue: ""
+    description: GitHub base URL, only required for GHE
     secret: false
     required: false
   upload_url:
     type: string
-    defaultValue: ''
-    description:  GitHub upload URL, only required for GHE
+    defaultValue: ""
+    description: GitHub upload URL, only required for GHE
     secret: false
     required: false
   overwrite:
