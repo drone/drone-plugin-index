@@ -4,8 +4,8 @@ title: Git
 author: drone-plugins
 tags: [ clone, git ]
 logo: git.svg
-repo: drone-plugins/drone-git
-image: plugins/git
+repo: drone/drone-git
+image: drone/git
 draft: true
 ---
 
