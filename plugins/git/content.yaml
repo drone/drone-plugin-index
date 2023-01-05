@@ -4,8 +4,8 @@ tags:
   - clone
   - git
 logo: git.svg
-repo: https://github.com/drone-plugins/drone-git
-image: https://hub.docker.com/r/plugins/git
+repo: https://github.com/drone/drone-git
+image: https://hub.docker.com/r/drone/git
 license: Apache License 2.0
 readme: https://github.com/drone-plugins/drone-git/blob/master/README.md
 description: >-
@@ -17,7 +17,7 @@ example: |
 
   steps:
   - name: clone
-    image: plugins/git
+    image: drone/git
     settings:
       depth: 50
 properties:
