@@ -1,0 +1,74 @@
+title: JFrog Artifactory
+author: harness
+tags:
+  - publish
+  - artifactory
+logo: artifactory.svg
+repo: https://github.com/harness/drone-artifactory
+image: https://hub.docker.com/r/plugins/artifactory
+license: None
+readme: https://github.com/harness/drone-artifactory/blob/main/README.md
+description: |
+  A plugin to upload files to Jfrog artifactory.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: docker  
+    image: plugins/artifactory
+    settings:
+      username: kevinbacon
+      password: pa55word
+      url: company.com/artifactory
+      source: release.tar.gz
+      target: app/release.tar.gz
+properties:
+  username:
+    type: string
+    defaultValue: ""
+    description: username for authentication with artifactory
+    secret: false
+    required: false
+  password:
+    type: string
+    defaultValue: ""
+    description: password for authentication with artifactory
+    secret: true
+    required: false
+  apikey:
+    type: string
+    defaultValue: ""
+    description: key for authentication with artifactory
+    secret: true
+    required: false
+  url:
+    type: string
+    defaultValue: ""
+    description: location of the artifactory server
+    secret: false
+    required: true
+  source:
+    type: string
+    defaultValue: ""
+    description: file(s) to upload
+    secret: false
+    required: true
+  target:
+    type: string
+    defaultValue: ""
+    description: destination of source files in artifactory
+    secret: false
+    required: true
+  retries:
+    type: int
+    defaultValue: 3
+    description: number of upload retries
+    secret: false
+    required: false
+  flat:
+    type: string
+    defaultValue: "false"
+    description: if true, artifacts are downloaded to the exact target path specified and their hierarchy in the source repository is ignored. if false, artifacts are downloaded to the target path in the file system while maintaining their hierarchy in the source repository
+    secret: false
+    required: false
