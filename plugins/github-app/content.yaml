@@ -7,7 +7,7 @@ tags:
 logo: github.svg
 repo: https://github.com/rssnyder/drone-github-app
 image: https://hub.docker.com/r/rssnyder/drone-github-app
-license: Blue Oak Model License
+license: Blue Oak Model License 1.0.0
 readme: https://github.com/rssnyder/drone-github-app/blob/master/README.md
 description: |
   A plugin to get a jwt or installation token for a github app.
