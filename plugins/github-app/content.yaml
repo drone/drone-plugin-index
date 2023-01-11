@@ -1,0 +1,76 @@
+title: Github App
+author: rssnyder
+tags:
+  - github
+  - api
+  - app
+logo: github.svg
+repo: https://github.com/rssnyder/drone-github-app
+image: https://hub.docker.com/r/rssnyder/drone-github-app
+license: Blue Oak Model License
+readme: https://github.com/rssnyder/drone-github-app/blob/master/README.md
+description: |
+  A plugin to get a jwt or installation token for a github app.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: run rssnyder/drone-github-app plugin
+    image: rssnyder/drone-github-app
+    pull: if-not-exists
+    settings:
+      APP_ID: "264043"
+      INSTALLATION: "31437931"
+      PEM_B64:
+        from_secret: github_app_b64
+      JSON_FILE: output.json
+properties:
+  app_id:
+    type: string
+    defaultValue: ""
+    description: github app id
+    secret: false
+    required: true
+  pem:
+    type: string
+    defaultValue: ""
+    description: rsa private key
+    secret: true
+    required: false
+  pem_file:
+    type: string
+    defaultValue: ""
+    description: local file path of rsa private key
+    secret: true
+    required: false
+  pem_b64:
+    type: string
+    defaultValue: ""
+    description: local file path of base64 encoded rsa private key
+    secret: true
+    required: false
+  installation:
+    type: string
+    defaultValue: ""
+    description: installation id
+    secret: false
+    required: false
+  jwt_file:
+    type: string
+    defaultValue: ""
+    description: output file for jwt
+    secret: false
+    required: false
+  token_file:
+    type: string
+    defaultValue: ""
+    description: output file for token
+    secret: false
+    required: false
+  json_file:
+    type: string
+    defaultValue: ""
+    description: output file for both jwt and token in json
+    secret: false
+    required: false
