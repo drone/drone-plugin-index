@@ -61,14 +61,14 @@ properties:
     secret: false
     required: true
   retries:
-    type: int
+    type: number
     defaultValue: 3
     description: number of upload retries
     secret: false
     required: false
   flat:
-    type: string
-    defaultValue: "false"
+    type: boolean
+    defaultValue: false
     description: if true, artifacts are downloaded to the exact target path specified and their hierarchy in the source repository is ignored. if false, artifacts are downloaded to the target path in the file system while maintaining their hierarchy in the source repository
     secret: false
     required: false
