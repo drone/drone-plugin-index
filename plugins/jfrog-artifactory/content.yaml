@@ -6,7 +6,7 @@ tags:
 logo: artifactory.svg
 repo: https://github.com/harness/drone-artifactory
 image: https://hub.docker.com/r/plugins/artifactory
-license: None
+license: Blue Oak Model License 1.0.0
 readme: https://github.com/harness/drone-artifactory/blob/main/README.md
 description: |
   A plugin to upload files to Jfrog artifactory.
