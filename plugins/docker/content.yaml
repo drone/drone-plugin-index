@@ -263,7 +263,7 @@ properties:
     secret: false
     required: false
   ssh-agent-key:
-    type:
+    type: string
     defaultValue: ""
     secret: true
     required: false
