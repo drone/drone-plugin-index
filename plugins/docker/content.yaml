@@ -24,8 +24,7 @@ example: |
       repo: foo/bar
       tags: latest
       ssh-agent-key:
-        from_secret: private_key
-        
+        from_secret: private_key    
 properties:
   registry:
     type: string
@@ -267,5 +266,6 @@ properties:
     type:
     defaultValue: ""
     secret: true
+    required: false
     description: |
       private key to use for ssh passthrough, see https://docs.docker.com/engine/reference/commandline/buildx_build/#ssh
