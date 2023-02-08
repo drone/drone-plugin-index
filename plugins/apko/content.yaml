@@ -1,0 +1,97 @@
+title: APKO
+author: kameshsampath
+tags:
+  - oci
+  - image
+  - apko
+  - melange
+logo: chainguard.svg
+repo: https://github.com/kameshsampath/apko-drone-plugin
+image: https://hub.docker.com/repository/docker/kameshsampath/apko-drone-plugin
+license: Apache License 2.0
+readme: https://github.com/kameshsampath/apko-drone-plugin/blob/master/README.md
+description: >-
+  Plugin to build OCI images from APK packages without Dockerfile. Learn more about apko at https://github.com/chainguard-dev/apko.
+example: |
+  kind: pipeline
+  type: docker
+  name: default
+
+  steps:
+  - name: build image
+    image: kameshsampath/apko-drone-plugin
+    settings:
+      config_file: image.yaml
+      image_repo: example/hello-world:0.0.1
+      publish: false
+      archs:
+        - amd64
+        - arm64
+
+properties:
+  config_file:
+    type: string
+    defaultValue: ""
+    description: The apko configuration YAML file, a path relative to drone pipeline. https://github.com/chainguard-dev/apko/blob/main/docs/apko_file.md">
+    secret: false
+    required: true
+  image_repo:
+    type: string
+    defaultValue: ""
+    description: The fully qualified image repository where the built OCI image will be pushed. e.g. quay.io/kameshsampath/my-app:1.0.0
+    secret: true
+    required: true
+  publish:
+    type: boolean
+    defaultValue: false
+    description: Whether to publish the image to "image_repo". Defaults to "false" which will just build the image tarball in "$PROJECT_HOME/dist" folder.
+    secret: false
+    required: false
+  insecure:
+    type: boolean
+    defaultValue: false
+    description: Push to insecure registry.
+    secret: false
+    required: false
+  archs:
+    type: array
+    defaultValue: "$(uname -m)"
+    description: 'The "linux" architecture for which the images will be built. Defaults "$(uname -m)". Valid values are: "amd64", "arm64".'
+    secret: false
+    required: false
+  build_output_dir:
+    type: string
+    defaultValue: "dist"
+    description: The output directory relative to `config_file` where the build artifacts will be generated.
+    secret: false
+    required: false
+  image_registry_username:
+    type: string
+    defaultValue: ""
+    description: "The user name that will be used to push the image to `image_repo`. Applicable when the `image_repo` is not GAR, ECR."
+    secret: true
+    required: false
+  image_registry_password:
+    type: string
+    defaultValue: ""
+    description: The user password that will be used to push the image to `image_repo`. Applicable when the `image_repo` is not GAR, ECR.
+    secret: true
+    required: false
+  aws_access_key_id:
+    type: string
+    defaultValue: ""
+    description: The AWS "AWS_ACCESS_KEY_ID" that will be used to authenticate "image_repo". Valid only if "publish is true" and "image_repo" is a ECR repo
+    secret: true
+    required: false
+  aws_secret_access_key:
+    type: string
+    defaultValue: ""
+    description: The AWS "AWS_SECRET_ACCESS_KEY" that will be used to authenticate "image_repo". Valid only if "publish is true" and "image_repo" is a ECR repo
+    secret: true
+    required: false
+  google_application_credentials:
+    type: string
+    defaultValue: ""
+    description: 'The base64 encoded Google application credentials i.e. SA key.json. This parameter is useful only when your "image_repo" is [Google Artifact registry](https://cloud.google.com/artifact-registry/docs). NOTE: Use GNU base64 when encoding key.json e.g using jq tool `cat "$GOOGLE_APPLICATION_CREDENTIALS" | jq -r -c . | gbase64 --wrap=0 | pbcopy`'
+    secret: true
+    required: false
