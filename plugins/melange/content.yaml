@@ -1,0 +1,60 @@
+title: Melange
+author: kameshsampath
+tags:
+  - apk
+  - package
+  - apko
+  - melange
+logo: chainguard.svg
+repo: https://github.com/kameshsampath/melange-drone-plugin
+image: https://hub.docker.com/repository/docker/kameshsampath/melange-drone-plugin
+license: Apache License 2.0
+readme: https://github.com/kameshsampath/melange-drone-plugin/blob/master/README.md
+description: >-
+  Plugin to build apk from source code. Learn more about melange at https://github.com/chainguard-dev/melange.
+example: |
+  kind: pipeline
+  type: docker
+  name: default
+
+  steps:
+  - name: default
+    image: kameshsampath/melange-drone-plugin:latest
+    pull: if-not-exists
+    privileged: true
+    settings:
+      config_file: go-hello-world.yaml
+      archs:
+        - amd64
+        - arm64
+properties:
+  config_file:
+    type: string
+    defaultValue: ""
+    description: The melange configuration YAML file, a path relative to drone pipeline. https://github.com/chainguard-dev/melange/blob/main/docs/BUILD-PROCESS.md#melangeyaml
+    secret: false
+    required: true
+  output_dir:
+    type: string
+    defaultValue: "$DRONE_WORKSPACE/packages"
+    description: The directory where the built packages will be saved
+    secret: false
+    required: false
+  archs:
+    type: array
+    defaultValue: "$(uname -m)"
+    description: "`386`,`amd64`,`arm64`,`arm/v6`,`arm/v7`,`ppc64le`,`riscv64`,`s390x`"
+    secret: false
+    required: false
+  signing_key:
+    type: string
+    defaultValue: "melange.rsa"
+    description: The signing key that will be used to sign the package. If not provided it will be generated and set to `melange.rsa`
+    secret: false
+    required: false
+  env_file:
+    type: string
+    defaultValue: ""
+    description: The environment file that will be preloaded and made available to build environment
+    secret: false
+    required: false
