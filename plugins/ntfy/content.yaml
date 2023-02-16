@@ -1,0 +1,68 @@
+title: Ntfy
+author: parra
+tags:
+  - notifications
+  - REST
+logo: ntfy.svg
+repo: https://git.parravidales.es/parra/drone-ntfy
+image: https://hub.docker.com/r/parrazam/drone-ntfy
+license: Apache License 2.0
+readme: https://git.parravidales.es/parra/drone-ntfy/src/branch/main/README.md
+description: The Ntfy.sh plugin posts build status messages to your selected Ntfy server.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: send ntfy notification
+    image: parrazam/drone-ntfy
+    when:
+        status: [success, failure]
+    settings:
+      url: https://ntfy.example.org
+      topic: events
+      priority: low
+      tags: 
+        - pipeline-status
+        - dev
+      username:
+        from_secret: ntfy_user
+      password:
+        from_secret: ntfy_password
+properties:
+  url:
+    type: string
+    defaultValue: ''
+    description: Ntfy server. If empty, default one will be https://ntfy.sh
+    secret: false
+    required: false
+  topic:
+    type: string
+    defaultValue: ''
+    description: Topic to publish message
+    secret: false
+    required: true
+  priority:
+    type: string
+    defaultValue: 'default'
+    description: Priority of the notification. Values can be [min, low, default, high, max]
+    secret: false
+    required: false
+  tags:
+    type: string
+    defaultValue: ''
+    description: Custom tags of the notification. 
+    secret: false
+    required: false
+  username:
+    type: string
+    defaultValue: ''
+    description: Username with publish permissions
+    secret: false
+    required: false
+  password:
+    type: string
+    defaultValue: ''
+    description: Password for username
+    secret: true
+    required: false
