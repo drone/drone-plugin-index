@@ -1,0 +1,260 @@
+title: TestRail Integration Plugin
+author: railflow
+tags:
+  - publish
+  - testrail
+  - reporting
+  - railflow
+  - test
+  - junit
+  - cucumber
+  - testng
+logo: testrail.svg
+repo: https://railflow.io
+image: https://hub.docker.com/r/railflow/railflow
+readme: https://docs.railflow.io/docs/railflow-for-testrail/cicd-apps/harness
+description: >-
+  TestRail integration plugin by Railflow (https://railflow.io) allows users easily integrate their Harness pipelines with TestRail and automatically create Test Suites, Cases, Test Plans, Test Runs and Test Results, etc.. in TestRail.
+example: |
+  kind: pipeline
+  type: docker
+  name: default
+
+  steps:
+    - name: railflow
+      image: railflow/railflow:latest
+      settings:
+        license_key: XXXXX-XXXXX-XXXXX-XXXXX
+        url: https://testrail
+        username: user@company.com
+        password: s3cret
+        project: My Project
+        test_path: Railflow/Harness
+        format: JUnit
+        report_files:
+          - target/surefire-reports/*.xml
+        search_mode: path
+        upload_mode: 1
+properties:
+  license_key:
+    type: string
+    defaultValue: ''
+    description: Railflow license key. Either license key or license file. It can be obtained from https://railflow.io.
+    secret: true
+    required: true
+  license_file:
+    type: string
+    defaultValue: ''
+    description: License file path or URL. Either license key or license file. It can be obtained from https://railflow.io.
+    secret: false
+    required: true
+  url:
+    type: string
+    defaultValue: ''
+    description: TestRail instance URL.
+    secret: false
+    required: true
+  username:
+    type: string
+    defaultValue: ''
+    description: TestRail username.
+    secret: true
+    required: true
+  password:
+    type: string
+    defaultValue: ''
+    description: TestRail password or API Key.
+    secret: true
+    required: true
+  project:
+    type: string
+    defaultValue: ''
+    description: TestRail project name.
+    secret: false
+    required: true
+  test_path:
+    type: string
+    defaultValue: ''
+    description: TestRail test cases path.
+    secret: false
+    required: true
+  format:
+    type: string
+    defaultValue: ''
+    description: "Report format: JUnit, JUnit-Steps, TestNg, TestNg-Steps, Cucumber, NUnit, NUnit-SpecFlow, Allure, Robot, TRX, xUnit, PyTest-Railflow, Playwright (case insensitive)"
+    secret: false
+    required: true
+  report_files:
+    type: array
+    defaultValue: ''
+    description: The file path(s) to the test report file(s) generated during the build. Ant-style patterns such as `**/surefire-reports/*.xml` can be used.
+    secret: false
+    required: true
+  search_mode:
+    type: string
+    defaultValue: ''
+    description: "Specifies the test case lookup algorithm. Allowed values are `name` and `path`. `name` - search for test case matching the name within the entire test suite. `path` - search for test case matching the name within the specified `test_path`."
+    secret: false
+    required: true
+  proxy:
+    type: string
+    defaultValue: ''
+    description: HTTP or SOCKS proxy configuration.
+    secret: false
+    required: false
+  timeout:
+    type: number
+    defaultValue: ''
+    description: Upload timeout (seconds).
+    secret: false
+    required: false
+  test_run:
+    type: string
+    defaultValue: ''
+    description: TestRail test run name.
+    secret: false
+    required: false
+  test_plan:
+    type: string
+    defaultValue: ''
+    description: TestRail test plan name.
+    secret: false
+    required: false
+  milestone_path:
+    type: string
+    defaultValue: ''
+    description: TestRail milestone path.
+    secret: false
+    required: false
+  case_fields:
+    type: array
+    defaultValue: ''
+    description: TestRail test case custom fields. The format is `[Field label]=[value]` pairs.
+    secret: false
+    required: false
+  result_fields:
+    type: array
+    defaultValue: ''
+    description: TestRail test result custom fields. The format is `[Field label]=[value]` pairs.
+    secret: false
+    required: false
+  assign:
+    type: array
+    defaultValue: ''
+    description: Smart Test Failure Assignment. Comma-separated list of TestRail users (email IDs). Railflow will assign failures based on a round robin algorithm.
+    secret: false
+    required: false
+  assign_file:
+    type: string
+    defaultValue: ''
+    description: Smart Test Failure Assignment. File path containing list of TestRail users (email IDs). Each user email ID should go with the new line.
+    secret: false
+    required: false
+  config_names:
+    type: array
+    defaultValue: ''
+    description: "TestRail test plan configuration options.<br/>Configuration format is: [config_group_name]/[config_name]."
+    secret: false
+    required: false
+  close_run:
+    type: boolean
+    defaultValue: false
+    description: "If Railflow should close the corresponding run after uploading test results."
+    secret: false
+    required: false
+  close_plan:
+    type: boolean
+    defaultValue: false
+    description: "If Railflow should close the corresponding plan after uploading test results."
+    secret: false
+    required: false
+  disable_grouping:
+    type: boolean
+    defaultValue: false
+    description: "If Railflow should ignore report structure and just upload all tests into a folder which is set by test-path parameter."
+    secret: false
+    required: false
+  template_name:
+    type: string
+    defaultValue: ''
+    description: The name of a template to use in TestRail. If it is not set, 'Test Case (Steps)' or the default one will be used.
+    secret: false
+    required: false
+  case_type:
+    type: string
+    defaultValue: ''
+    description: The name of a type for cases.
+    secret: false
+    required: false
+  case_priority:
+    type: string
+    defaultValue: ''
+    description: The name of a priority for cases.
+    secret: false
+    required: false
+  thread_number:
+    type: number
+    defaultValue: 4
+    description: The number of concurrent threads for exporting data. Default is 4.
+    secret: false
+    required: false
+  upload_mode:
+    type: number
+    defaultValue: 0
+    description: "Upload mode. Available values are: 0 - create new test cases and do not overwrite existing ones; 1 - create new cases and overwrite existing ones; 2 - do not create new cases and overwrite existing ones; 3 - do not create new cases and do not overwrite existing ones"
+    secret: false
+    required: false
+  case_search_field:
+    type: string
+    defaultValue: ''
+    description: The name of the case field in TestRail which will be using for searching for existing test cases instead of test case title.
+    secret: false
+    required: false
+  disable_stats:
+    type: boolean
+    defaultValue: false
+    description: If Railflow should disable collecting usage and error logs.
+    secret: false
+    required: false
+  fully_qualified_test_name:
+    type: boolean
+    defaultValue: false
+    description: If Railflow should allow exporting test cases using qualified name as the case name.
+    secret: false
+    required: false
+  untested_status:
+    type: string
+    defaultValue: ''
+    description: The name of the status to use in TestRail for untested/skipped tests.
+    secret: false
+    required: false
+  attachment_max_size:
+    type: string
+    defaultValue: ''
+    description: Maximum size of an attachment. Can be set in Gb, Mb, Kb or b. If the unit is not provided considered as Mb. E.g. 1Gb, 2, 20Kb, 3Mb.
+    secret: false
+    required: false
+  attachment_type_whitelist:
+    type: array
+    defaultValue: ''
+    description: The list of file extensions which are allowed to upload.
+    secret: false
+    required: false
+  attachment_type_blacklist:
+    type: array
+    defaultValue: ''
+    description: The list of file extensions which are not allowed to upload.
+    secret: false
+    required: false
+  no_run:
+    type: boolean
+    defaultValue: false
+    description: Do not create or update Test Run in TestRail.
+    secret: false
+    required: false
+  tags_field_name:
+    type: string
+    defaultValue: ''
+    description: The name of a test case field which will be holding tags from the report file if any. E.g. `Cucumber Tags`
+    secret: false
+    required: false
