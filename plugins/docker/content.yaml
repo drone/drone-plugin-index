@@ -16,15 +16,17 @@ example: |
   name: default
 
   steps:
-  - name: docker  
+  - name: docker
     image: plugins/docker
     settings:
       username: kevinbacon
       password: pa55word
       repo: foo/bar
-      tags: latest
+      tags:
+      - latest
+      - main
       ssh-agent-key:
-        from_secret: private_key    
+        from_secret: private_key
 properties:
   registry:
     type: string
@@ -51,9 +53,9 @@ properties:
     secret: false
     required: false
   tags:
-    type: string
+    type: "array"
     defaultValue: ""
-    description: repository tag for the image
+    description: repository tag(s) for the image
     secret: false
     required: false
   secret:
