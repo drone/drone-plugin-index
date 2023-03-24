@@ -1,0 +1,28 @@
+title: terraform-destroy
+author: drone-plugins
+tags:
+  - infrastructure
+  - harness
+  - terraform
+logo: terraform.svg
+repo: https://github.com/drone-plugins/drone-terraform
+image: https://hub.docker.com/r/plugins/drone-terraform
+license: None
+readme: https://github.com/drone-plugins/drone-terraform
+description: >-
+  This terraform plugin will run the terraform destroy command. In case of an error
+  it will try to push the generated stated to the IAC Server
+example: |
+  version: 1
+  name: default
+  steps:
+    - name: Destroy
+      type: plugins/harness-terraform
+
+properties:
+  operation:
+    type: string
+    defaultValue: 'destroy'
+    description: Command that indicates what action the plugin will perform
+    secret: false
+    required: true

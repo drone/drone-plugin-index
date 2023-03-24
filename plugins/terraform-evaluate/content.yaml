@@ -1,0 +1,31 @@
+title: terraform-evaluate
+author: drone-plugins
+tags:
+  - infrastructure
+  - harness
+  - terraform
+logo: terraform.svg
+repo: https://github.com/drone-plugins/drone-terraform
+image: https://hub.docker.com/r/plugins/drone-terraform
+license: None
+readme: https://github.com/drone-plugins/drone-terraform
+description: >-
+  This terraform plugin bundles a bunch of operations. It will pull the state from the remote backend
+  or the harness db entry attached to the stack. Then it will retrieve the workflow operation and perform 
+  `plan` or `plan -destroy` depending of the workflow. 
+  Once the plan has been created, it will generate a json format of the plan
+  and will send the plan raw and the plan as json format to the IAC server for analysis.
+example: |
+  version: 1
+  name: default
+  steps:
+    - name: Evaluate-Plan
+      type: plugins/harness-terraform
+
+properties:
+  operation:
+    type: string
+    defaultValue: 'evaluate'
+    description: Command that indicates what action the plugin will perform
+    secret: false
+    required: true

@@ -1,0 +1,28 @@
+title: terraform-parse-plan
+author: drone-plugins
+tags:
+  - infrastructure
+  - harness
+  - terraform
+logo: terraform.svg
+repo: https://github.com/drone-plugins/drone-terraform
+image: https://hub.docker.com/r/plugins/drone-terraform
+license: None
+readme: https://github.com/drone-plugins/drone-terraform
+description: >-
+  This terraform plugin will parse an existing plan in the root directory named plan.out
+  to json format and write it in a file called plan.json
+example: |
+  version: 1
+  name: default
+  steps:
+    - name: terraform-parse-plan
+      type: plugins/harness-terraform
+
+properties:
+  operation:
+    type: string
+    defaultValue: 'parse-plan'
+    description: Command that indicates what action the plugin will perform
+    secret: false
+    required: true

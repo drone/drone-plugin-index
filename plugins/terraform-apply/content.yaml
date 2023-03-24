@@ -1,0 +1,28 @@
+title: terraform-apply
+author: drone-plugins
+tags:
+  - infrastructure
+  - harness
+  - terraform
+logo: terraform.svg
+repo: https://github.com/drone-plugins/drone-terraform
+image: https://hub.docker.com/r/plugins/drone-terraform
+license: None
+readme: https://github.com/drone-plugins/drone-terraform
+description: >-
+  This terraform plugin will run the terraform apply command. In case of error during the apply
+  it will try to push the generated state to the IAC Server
+example: |
+  version: 1
+  name: default
+  steps:
+    - name: Apply
+      type: plugins/harness-terraform
+
+properties:
+  operation:
+    type: string
+    defaultValue: 'apply'
+    description: Command that indicates what action the plugin will perform
+    secret: false
+    required: true
