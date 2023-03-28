@@ -16,11 +16,14 @@ description: >-
   Once the state has been created, it will generate a json format of the state
   and will send the state raw and the state as json format to the IAC server for analysis.
 example: |
-  version: 1
+  kind: pipeline
   name: default
+
   steps:
-    - name: evaluate
+    - name: stepName
       type: plugins/harness-terraform
+      settings: 
+        operation: execute
 
 properties:
   operation:

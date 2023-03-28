@@ -12,11 +12,14 @@ readme: https://github.com/drone-plugins/drone-terraform
 description: >-
   This terraform plugin will push the raw plan in the plan.out file to the IAC server
 example: |
-  version: 1
+  kind: pipeline
   name: default
+
   steps:
-    - name: Init
+    - name: stepName
       type: plugins/harness-terraform
+      settings: 
+        operation: push-plan
 
 properties:
   operation:

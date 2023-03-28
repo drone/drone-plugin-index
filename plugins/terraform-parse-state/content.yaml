@@ -13,11 +13,14 @@ description: >-
   This terraform plugin will parse the state file called terraform.tfstate to json 
   format and write its content to a file called terraform.tfstate.json
 example: |
-  version: 1
+  kind: pipeline
   name: default
+
   steps:
-    - name: terraform-parse-state
+    - name: stepName
       type: plugins/harness-terraform
+      settings: 
+        operation: parse-state
 
 properties:
   operation:

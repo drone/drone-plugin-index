@@ -1,4 +1,4 @@
-title: terraform-evaluate
+title: terraform-push-parsed-plan
 author: drone-plugins
 tags:
   - infrastructure
@@ -10,11 +10,8 @@ image: https://hub.docker.com/r/plugins/drone-terraform
 license: None
 readme: https://github.com/drone-plugins/drone-terraform
 description: >-
-  This terraform plugin bundles a bunch of operations. It will pull the state from the remote backend
-  or the harness db entry attached to the stack. Then it will retrieve the workflow operation and perform 
-  `plan` or `plan -destroy` depending of the workflow. 
-  Once the plan has been created, it will generate a json format of the plan
-  and will send the plan raw and the plan as json format to the IAC server for analysis.
+  This terraform plugin will push the parsed plan file called plan.json
+  to the IAC Server
 example: |
   kind: pipeline
   name: default
@@ -23,12 +20,12 @@ example: |
     - name: stepName
       type: plugins/harness-terraform
       settings: 
-        operation: evaluate
+        operation: push-parsed-plan
 
 properties:
   operation:
     type: string
-    defaultValue: 'evaluate'
+    defaultValue: 'push-parsed-plan'
     description: Command that indicates what action the plugin will perform
     secret: false
     required: true

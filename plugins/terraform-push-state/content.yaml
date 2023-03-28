@@ -13,11 +13,14 @@ description: >-
   This terraform plugin will push the raw state from terraform.tfstate to the
   IAC Server
 example: |
-  version: 1
+  kind: pipeline
   name: default
+
   steps:
-    - name: Init
+    - name: stepName
       type: plugins/harness-terraform
+      settings: 
+        operation: push-state
 
 properties:
   operation:

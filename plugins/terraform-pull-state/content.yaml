@@ -13,11 +13,14 @@ description: >-
   This terraform plugin will pull the state from the remote repository and if not possible
   from the IAC Server based on the stack_id
 example: |
-  version: 1
+  kind: pipeline
   name: default
+
   steps:
-    - name: Init
+    - name: stepName
       type: plugins/harness-terraform
+      settings: 
+        operation: pull-state
 
 properties:
   operation:

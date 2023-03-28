@@ -13,11 +13,14 @@ description: >-
   This terraform plugin will push the parsed state file called terraform.tfstate.json
   to the IAC Server
 example: |
-  version: 1
+  kind: pipeline
   name: default
+
   steps:
-    - name: Init
+    - name: stepName
       type: plugins/harness-terraform
+      settings: 
+        operation: push-parsed-state
 
 properties:
   operation:
