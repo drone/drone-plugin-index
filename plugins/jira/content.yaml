@@ -8,13 +8,13 @@ repo: https://github.com/drone/drone-jira
 image: https://hub.docker.com/r/plugins/jira
 license: Apache License 2.0
 readme: https://github.com/drone/drone-jira#readme
-description: A plugin to attach build and deployment details to a Jira issue. For information on how to use the plugin with drone there is a video `https://www.youtube.com/watch?v=YIKbLeY1-gI`.
+description: A plugin to attach build and deployment details to a Jira issue. It can use oauth client id / oauth secret OR use Jira connect key. For further information on how to use the plugin with harness there is a video `https://www.youtube.com/watch?v=YIKbLeY1-gI`.
 example: |
   kind: pipeline
   name: default
 
   steps:
-  - name: jira
+  - name: jira oauth
     image: plugins/jira
     settings:
       client_id:
@@ -26,29 +26,46 @@ example: |
       environment_name: staging
       log_level: debug
       pipeline: bash_plugin
+  # alternatively
+  - name: jira connect application
+    image: plugins/jira
+    settings:
+      connect_key:
+        from_secret: jira_connect_key
+      instance: droneio
+    project: TT
+    environment_name: staging
+    log_level: debug
+    pipeline: bash_plugin
 properties:
   client_id:
     type: string
     defaultValue: ''
-    description: The Jira Oauth2 client ID.
+    description: The Jira Oauth2 client ID. You must also pass the client secret.
     secret: true
     required: true
   client_secret:
     type: string
     defaultValue: ''
-    description: The Jira Oauth2 client secret.
+    description: The Jira Oauth2 client secret. You must also pass the client id.
+    secret: true
+    required: true
+  connect_key:
+    type: string
+    defaultValue: ''
+    description: The Jira Connect key. This is instead of passing oauth information.
     secret: true
     required: true
   instance:
     type: string
     defaultValue: ''
-    description: The Jira instance.
+    description: The Jira instance. The prefix on your atlassian hostname.
     secret: false
     required: true
   project:
     type: string
     defaultValue: ''
-    description: The Jira project.
+    description: The Jira project. eg TEST
     secret: false
     required: true
   environment_name:
