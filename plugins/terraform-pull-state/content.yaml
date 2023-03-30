@@ -1,0 +1,31 @@
+title: terraform-pull-state
+author: drone-plugins
+tags:
+  - infrastructure
+  - harness
+  - terraform
+logo: terraform.svg
+repo: https://github.com/drone-plugins/drone-terraform
+image: https://hub.docker.com/r/plugins/drone-terraform
+license: None
+readme: https://github.com/drone-plugins/drone-terraform
+description: >-
+  This terraform plugin will pull the state from the remote repository and if not possible
+  from the IAC Server based on the stack_id
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+    - name: stepName
+      type: plugins/harness-terraform
+      settings: 
+        operation: pull-state
+
+properties:
+  operation:
+    type: string
+    defaultValue: 'pull-state'
+    description: Command that indicates what action the plugin will perform
+    secret: false
+    required: true

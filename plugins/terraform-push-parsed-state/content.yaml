@@ -1,0 +1,31 @@
+title: terraform-push-parsed-state
+author: drone-plugins
+tags:
+  - infrastructure
+  - harness
+  - terraform
+logo: terraform.svg
+repo: https://github.com/drone-plugins/drone-terraform
+image: https://hub.docker.com/r/plugins/drone-terraform
+license: None
+readme: https://github.com/drone-plugins/drone-terraform
+description: >-
+  This terraform plugin will push the parsed state file called terraform.tfstate.json
+  to the IAC Server
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+    - name: stepName
+      type: plugins/harness-terraform
+      settings: 
+        operation: push-parsed-state
+
+properties:
+  operation:
+    type: string
+    defaultValue: 'push-parsed-state'
+    description: Command that indicates what action the plugin will perform
+    secret: false
+    required: true
