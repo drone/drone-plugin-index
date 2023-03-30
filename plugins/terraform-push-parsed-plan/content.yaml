@@ -1,4 +1,5 @@
 title: terraform-push-parsed-plan
+hide: true
 author: drone-plugins
 tags:
   - infrastructure
@@ -25,7 +26,7 @@ example: |
 properties:
   operation:
     type: string
-    defaultValue: 'push-parsed-plan'
+    defaultValue: "push-parsed-plan"
     description: Command that indicates what action the plugin will perform
     secret: false
     required: true

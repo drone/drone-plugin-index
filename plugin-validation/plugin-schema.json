@@ -70,6 +70,10 @@
       "description": "Short example of the plugin",
       "type": "string"
     },
+    "hide": {
+      "description": "Hide plugin from the index",
+      "type": "boolean"
+    },
     "properties": {
       "description": "Plugin properties as key value pairs",
       "type": "object",
@@ -81,13 +85,7 @@
             "type": {
               "description": "Property type",
               "type": "string",
-              "enum": [
-                "string",
-                "number",
-                "array",
-                "boolean",
-                "object"
-              ]
+              "enum": ["string", "number", "array", "boolean", "object"]
             },
             "defaultValue": {
               "description": "Property default value",
@@ -107,7 +105,13 @@
             }
           },
           "additionalProperties": false,
-          "required": ["type", "defaultValue", "description", "secret", "required"]
+          "required": [
+            "type",
+            "defaultValue",
+            "description",
+            "secret",
+            "required"
+          ]
         }
       },
       "additionalProperties": false

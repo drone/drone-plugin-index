@@ -1,4 +1,5 @@
 title: terraform-evaluate
+hide: true
 author: drone-plugins
 tags:
   - infrastructure
@@ -28,7 +29,7 @@ example: |
 properties:
   operation:
     type: string
-    defaultValue: 'evaluate'
+    defaultValue: "evaluate"
     description: Command that indicates what action the plugin will perform
     secret: false
     required: true

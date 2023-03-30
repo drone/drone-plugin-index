@@ -1,4 +1,5 @@
 title: terraform-initialise
+hide: true
 author: drone-plugins
 tags:
   - infrastructure
@@ -24,7 +25,7 @@ example: |
 properties:
   operation:
     type: string
-    defaultValue: 'initialise'
+    defaultValue: "initialise"
     description: Command that indicates what action the plugin will perform
     secret: false
     required: true
