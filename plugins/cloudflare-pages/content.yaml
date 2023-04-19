@@ -8,7 +8,7 @@ logo: cloudflare.svg
 repo: https://github.com/mahergzam/cloudflare-pages-plugin
 image: https://hub.docker.com/r/mgzamharness/cf-pages-drone-plugin
 license: Apache License 2.0
-readme: https://github.com/mahergzam/cloudflare-pages-plugin/main/README.md
+readme: https://github.com/mahergzam/cloudflare-pages-plugin/blob/main/README.md
 description: >-
   The Cloudflare Pages plugin is used to publish static websites to CloudFlare Pages. The
   following configuration uses the wrangler cli to publish a website.
