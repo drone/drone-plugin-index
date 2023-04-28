@@ -1,0 +1,66 @@
+title: CloudFlare Pages
+author: mgzam-harness
+tags:
+  - publish
+  - cloudflare
+  - clouflare-pages
+logo: cloudflare.svg
+repo: https://github.com/mahergzam/cloudflare-pages-plugin
+image: https://hub.docker.com/r/mgzamharness/cf-pages-drone-plugin
+license: Apache License 2.0
+readme: https://github.com/mahergzam/cloudflare-pages-plugin/blob/main/README.md
+description: >-
+  The Cloudflare Pages plugin is used to publish static websites to CloudFlare Pages. The
+  following configuration uses the wrangler cli to publish a website.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: publish  
+    image: mgzamharness/cf-pages-drone-plugin
+    settings:
+      cloudflare_account_id: account-id
+      cloudflare_api_token: api-token
+      repo_url: https://github.com/mahergzam/cloudflare-pages-demo
+      branch: main
+      path: /public
+      project_name: demo-project
+properties:
+  cloudflare_account_id:
+    type: string
+    defaultValue: ''
+    description: CloudFlare Account ID 
+    secret: true
+    required: true
+  cloudflare_api_token:
+    type: string
+    defaultValue: ''
+    description: CloudFlare API Token for authentication
+    secret: true
+    required: true
+  repo_url:
+    type: string
+    defaultValue: ''
+    description: GitHub repo URL for code to publish
+    secret: false
+    required: true
+  branch:
+    type: string
+    defaultValue: 'main'
+    description: Cloudflare target branch
+    secret: false
+    required: true
+  path:
+    type: string
+    defaultValue: .
+    description: The directory of content to publish
+    secret: false
+    required: true
+  project_name:
+    type: string
+    defaultValue: demo
+    description: The cloudflare project name
+    secret: false
+    required: true
+
