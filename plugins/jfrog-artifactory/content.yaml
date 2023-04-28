@@ -23,6 +23,9 @@ example: |
       url: company.com/artifactory
       source: release.tar.gz
       target: app/release.tar.gz
+      insecure: true
+      pem_file_contents:
+        from_secret: pem_file_contents
 properties:
   username:
     type: string
@@ -70,5 +73,23 @@ properties:
     type: boolean
     defaultValue: false
     description: if true, artifacts are downloaded to the exact target path specified and their hierarchy in the source repository is ignored. if false, artifacts are downloaded to the target path in the file system while maintaining their hierarchy in the source repository
+    secret: false
+    required: false
+  insecure:
+    type: boolean
+    defaultValue: false
+    description: if true, the connection to the source repository is not validated by checking the server certificate. if false, the connection to the source repository is validated by checking the server certificate
+    secret: false
+    required: false
+  pem_file_contents:
+    type: string
+    defaultValue: ""
+    description: pem file contents for authentication with artifactory, cannot be used in conjunction with insecure
+    secret: true
+    required: false
+  pem_file_path:
+    type: string
+    defaultValue: ""
+    description: pem file path for authentication with artifactory, defaults to either "C:/users/ContainerAdministrator/.jfrog/security/certs/cert.pem" or "/root/.jfrog/security/certs/cert.pem"
     secret: false
     required: false
