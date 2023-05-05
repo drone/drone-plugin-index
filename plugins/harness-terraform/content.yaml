@@ -1,0 +1,30 @@
+title: Harness Terraform
+author: Harness
+tags:
+  - infrastructure
+  - harness
+  - terraform
+logo: terraform.svg
+repo: https://github.com/drone-plugins/drone-terraform
+image: https://hub.docker.com/r/plugins/harness_terraform
+license: None
+readme: https://github.com/drone-plugins/drone-terraform/blob/main/README.md
+description: >-
+  Terraform plugin to use in the IACM module in Harness
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+    - name: stepName
+      type: plugins/harness-terraform
+      settings: 
+        command: apply
+
+properties:
+  command:
+    type: string
+    defaultValue: 'init'
+    description: Commands that indicates what action the plugin will perform. Current supported values are init, plan, apply or destroy
+    secret: false
+    required: true
