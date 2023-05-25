@@ -73,7 +73,7 @@ properties:
   dry_run:
     type: string
     defaultValue: ""
-    description: boolean if the docker image should be pushed at the end
+    description: boolean if the docker image should not be pushed at the end
     secret: false
     required: false
   purge:
