@@ -25,10 +25,8 @@ example: |
       tags: 
         - pipeline-status
         - dev
-      username:
-        from_secret: ntfy_user
-      password:
-        from_secret: ntfy_password
+      token:
+        from_secret: ntfy_token
 properties:
   url:
     type: string
@@ -64,5 +62,11 @@ properties:
     type: string
     defaultValue: ''
     description: Password for username
+    secret: true
+    required: false
+  token:
+    type: string
+    defaultValue: ''
+    description: Token to publish/subscribe, instead to use username/password
     secret: true
     required: false
