@@ -1,0 +1,37 @@
+title: Qodana JVM Community Drone Plugin
+author: 2martens
+tags:
+  - Qodana
+  - Analysis
+  - report
+repo: https://github.com/2martens/qodana-jvm-community-drone-plugin
+image: https://hub.docker.com/r/2martens/qodana-jvm-community-drone-plugin
+license: Apache License 2.0
+readme: https://github.com/2martens/qodana-jvm-community-drone-plugin/blob/master/README.md
+description: >-
+  This plugin allows you to run the Qodana JVM Community linter in Drone and publish the results
+  to Qodana Cloud. The Community license is enough.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: code-analysis
+    image: 2martens/qodana-jvm-community-drone-plugin
+    settings:
+      qodana_token: yourSecretTokenFromQodanaCloud
+      args: yourArgumentsToQodanaCommand
+properties:
+  qodana_token:
+    type: string
+    defaultValue: ''
+    description: Qodana token used to publish analysis results to Qodana cloud.
+    secret: true
+    required: true
+  args:
+    type: string
+    defaultValue: ''
+    description: Arguments passed to Qodana command. For example --baseline or --failure-threshold
+    secret: false
+    required: true
+
