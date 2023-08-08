@@ -7,7 +7,7 @@ tags:
 logo: matrix.svg
 repo: https://github.com/SpotlightKid/drone-matrixchat-notify
 image: https://hub.docker.com/r/spotlightkid/drone-matrixchat-notify
-license: MIT
+license: MIT License
 readme: https://github.com/SpotlightKid/drone-matrixchat-notify/blob/master/README.md
 description: >-
   A plugin to send notifications to Matrix chat rooms from CI pipeline steps.
@@ -37,11 +37,13 @@ properties:
     description: "ID of matrix chat room to send messages to (ID, not alias)."
     secret: false
     required: true
+    defaultValue: ""
   userid:
     type: string
     description: "Matrix user ID to send message as (ID, not username)."
     secret: false
     required: true
+    defaultValue: ""
   password:
     type: string
     description: |-
@@ -50,6 +52,7 @@ properties:
       Either a password or an access token is required.
     secret: true
     required: true
+    defaultValue: ""
   accesstoken:
     type: string
     description: |-
@@ -58,8 +61,9 @@ properties:
       Either an access token or a password is required.
     secret: true
     required: true
+    defaultValue: ""
   allowed_attrs:
-    type: string | list | map
+    type: array
     defaultValue: "`DEFAULT_ALLOWED_ATTRS`"
     description: >-
       List or string with comma-separated list of HTML attribute names or dict
@@ -67,7 +71,7 @@ properties:
     secret: false
     required: false
   allowed_tags:
-    type: string | list
+    type: array
     defaultValue: "`DEFAULT_ALLOWED_TAGS`"
     description: |-
       List or set or string with comma-separated list of HTML tag names.
@@ -81,57 +85,61 @@ properties:
     description: "Device ID to send with access token."
     secret: false
     required: false
+    defaultValue: ""
   devicename:
     type: string
     description: "Device name to send with access token."
     secret: false
     required: false
+    defaultValue: ""
   homeserver:
     type: string
-    defaultValue: 'https://matrix.org'
+    defaultValue: "https://matrix.org"
     description: "The Matrix homeserver URL."
     secret: false
     required: false
   jinja:
-    type: string | boolean
+    type: boolean
     description: >-
-     If set to true, `yes`, `y`, `true`, `t`, `on` or `1`, the message template
-     is rendered with the Jinja templating engine.
+      If set to true, `yes`, `y`, `true`, `t`, `on` or `1`, the message template
+      is rendered with the Jinja templating engine.
     secret: false
     required: false
+    defaultValue: ""
   markdown:
-    type: string | boolean
+    type: boolean
     description: >-
       If set to true, `yes`, `y`, `true`, `t`, `on` or `1`, the message
       resulting from template substtution is considered to be in Markdown
       format and will be rendered to HTML.
     secret: false
     required: false
+    defaultValue: ""
   pass_environment:
-    type: string | list
-    defaultValue: 'DRONE_*'
+    type: array
+    defaultValue: "DRONE_*"
     description: |-
-     Comma-separated white-list of environment variable names or name
-     shell-glob patterns.
+      Comma-separated white-list of environment variable names or name
+      shell-glob patterns.
 
-     Only environment variables matching any of the given names or patterns
-     will be available as valid placeholders in the message template.
+      Only environment variables matching any of the given names or patterns
+      will be available as valid placeholders in the message template.
     secret: false
     required: false
   markdown_extensions:
-    type: string | list
-    defaultValue: 'admonition, extra, sane_lists, smarty'
+    type: array
+    defaultValue: "admonition, extra, sane_lists, smarty"
     description: "Comma-separated list of enabled Markdown extensions."
     secret: false
     required: false
   template:
     type: string
-    defaultValue: '${DRONE_BUILD_STATUS}'
+    defaultValue: "${DRONE_BUILD_STATUS}"
     description: |-
-     The message template.
+      The message template.
 
-     Valid placeholders (example: `${DRONE_REPO}`) will be substituted with the
-     values of the matching environment variables (subject to filtering
-     according to the `pass_environment` setting).
+      Valid placeholders (example: `${DRONE_REPO}`) will be substituted with the
+      values of the matching environment variables (subject to filtering
+      according to the `pass_environment` setting).
     secret: false
     required: false
