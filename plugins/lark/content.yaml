@@ -1,0 +1,49 @@
+title: Lark(feishu)
+author: sanmu-ya
+tags:
+  - lark
+  - feishu
+  - Bot
+  - Chat
+logo: lark.png
+repo: https://github.com/sanmu-ya/drone-plugin-lark
+image: https://hub.docker.com/r/sanmuya/drone-plugin-lark
+license: MIT License
+readme: https://github.com/sanmu-ya/drone-plugin-lark/blob/master/README.md
+description: drone Lark - Custom group chat robot message push plugin.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+    - name: lark
+      image: sanmuya/drone-plugin-lark:latest
+      settings:
+        webhook: https://open.feishu.cn/open-apis/bot/v2/hook/f1ac0a3e-4555-420f-99a9-338cf39600f2
+        secret:
+          from_secret: lark-secret
+        message:
+          - ========== drone message ==========
+          - REPO: ${DRONE_REPO}
+          - AUTHOR: ${DRONE_COMMIT_AUTHOR_NAME}
+          - COMMIT_BRANCH: ${DRONE_COMMIT_BRANCH}
+          - COMMIT_MESSAGE: ${DRONE_COMMIT_MESSAGE}
+properties:
+  webhook:
+    type: string
+    defaultValue: ''
+    description: This is the webhook of the lark group chatbot.
+    secret: false
+    required: true
+  secret:
+    type: string
+    defaultValue: ''
+    description: This is a required parameter, please turn on the lark group chat robot signature verification.
+    secret: true
+    required: true
+  message:
+    type: string
+    defaultValue: ''
+    description: This is the text that needs to be sent. You can fill in multiple lines of text as in the example. See the README.md for the effect
+    secret: false
+    required: true
