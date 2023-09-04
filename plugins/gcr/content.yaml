@@ -44,3 +44,8 @@ properties:
     description: json key - can be inline or base64 encoded
     secret: true
     required: true
+  workload_identity:
+    type: boolean
+    defaultValue: false
+    description: flag if key is a workload identity key
+    required: false
