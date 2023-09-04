@@ -48,4 +48,5 @@ properties:
     type: boolean
     defaultValue: false
     description: flag if key is a workload identity key
+    secret: false
     required: false
