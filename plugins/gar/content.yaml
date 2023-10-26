@@ -1,0 +1,52 @@
+title: Google Container Registry
+author: drone-plugins
+tags:
+  - publish
+  - docker
+  - google
+  - gcp
+  - gar
+logo: google_gcr.svg
+repo: https://github.com/drone-plugins/drone-docker
+image: https://hub.docker.com/r/plugins/gar
+license: None
+readme: https://github.com/drone-plugins/drone-docker/blob/master/README.md
+description: |
+  The GAR plugin can be used to build and publish images to the Google Container Artifactory.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: publish  
+    image: plugins/gar
+    settings:
+      repo: project-id/repo/image-name
+      registry: europe-docker.pkg.dev
+      tags: latest
+      json_key:
+        from_secret: google_credentials
+properties:
+  registry:
+    type: string
+    description: authenticates to this registry
+    secret: false
+    required: true
+  repo:
+    type: string
+    defaultValue: ""
+    description: repository name for the image including project ID
+    secret: false
+    required: false
+  json_key:
+    type: string
+    defaultValue: ""
+    description: json key - can be inline or base64 encoded
+    secret: true
+    required: true
+  workload_identity:
+    type: boolean
+    defaultValue: false
+    description: flag if key is a workload identity key
+    secret: false
+    required: false
