@@ -1,6 +1,6 @@
 ---
 date: 2016-01-01T00:00:00+00:00
-title: Google Container Registry
+title: Google Container Artifactory
 author: drone-plugins
 tags: [ publish, google, gcp, gar, docker ]
 logo: google_gcr.svg
