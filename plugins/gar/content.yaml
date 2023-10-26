@@ -1,4 +1,4 @@
-title: Google Container Artifactory
+title: Google Artifact Registry
 author: drone-plugins
 tags:
   - publish
@@ -12,7 +12,7 @@ image: https://hub.docker.com/r/plugins/gar
 license: None
 readme: https://github.com/drone-plugins/drone-docker/blob/master/README.md
 description: |
-  The GAR plugin can be used to build and publish images to the Google Container Artifactory.
+  The GAR plugin can be used to build and publish images to the Google Artifact Registry.
 example: |
   kind: pipeline
   name: default

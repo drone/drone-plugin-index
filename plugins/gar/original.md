@@ -1,6 +1,6 @@
 ---
 date: 2016-01-01T00:00:00+00:00
-title: Google Container Artifactory
+title: Google Artifact Registry
 author: drone-plugins
 tags: [ publish, google, gcp, gar, docker ]
 logo: google_gcr.svg
@@ -12,7 +12,7 @@ image: plugins/gar
 The GAR plugin is an extension around the Docker plugin. Please see the documentation for the [Docker plugin](/drone-plugins/drone-docker/) for other configuration options.
 {{% /alert %}}
 
-The GAR plugin can be used to build and publish images to the Google Container Artifactory. The following pipeline configuration uses the GAR plugin to build and publish Docker images:
+The GAR plugin can be used to build and publish images to the Google Artifact Registry The following pipeline configuration uses the GAR plugin to build and publish Docker images:
 
 ```yaml
 kind: pipeline
