@@ -29,6 +29,7 @@ example: |
 properties:
   registry:
     type: string
+    defaultValue: ""
     description: authenticates to this registry
     secret: false
     required: true
