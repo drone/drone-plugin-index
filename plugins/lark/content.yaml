@@ -1,0 +1,46 @@
+title: Lark (Feishu)
+author: ydq
+tags:
+  - notifications
+  - chat
+logo: lark.svg
+repo: https://github.com/ydq/drone-lark
+image: https://hub.docker.com/r/ydq1234/drone-lark
+license: MIT License
+readme: https://github.com/ydq/drone-lark/blob/main/README.md
+description: The Lark (feishu) can be used to send a message by Lark (feishu) group robot.
+example: |
+  kind: pipeline
+  name: default
+  
+  steps:
+  - name: Send Lark Notify
+    image: ydq1234/drone-lark
+    pull: if-not-exists
+    when:
+      status:
+        - success
+        - failure
+    settings:
+      webhook: https://open.feishu.cn/open-apis/bot/v2/hook/xxxxxxxxxxxx
+      secret: xxxxxxxxxxxx
+      debug: true
+properties:
+  webhook:
+    type: string
+    defaultValue: ''
+    description: you can get the webhook when you add a bot in a group.
+    secret: true
+    required: true
+  secret:
+    type: string
+    defaultValue: ''
+    description: you can get the secret when you add a bot in a group.
+    secret: true
+    required: true
+  debug:
+    type: string
+    defaultValue: ''
+    description: you can set the value to `true` to print request and response info to the drone console.
+    secret: false
+    required: false
