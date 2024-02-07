@@ -1,0 +1,94 @@
+title: Image Migration
+author: harness
+tags:
+  - docker
+  - migration
+  - ecr
+  - gcr
+repo: https://github.com/harness-community/drone-docker-image-migration
+image: https://hub.docker.com/r/plugins/image-migration/
+license: MIT License
+readme: https://github.com/harness-community/drone-docker-image-migration/blob/main/README.md
+description: This plugin allows you to migrate a docker image from one registry to another. Supports AWS ECR, GCR, and Docker Hub.
+example: |
+  kind: pipeline
+  name: default
+  steps:
+  - steps:
+    name: image_migration
+    image: plugins/image-migration
+    settings:
+      source: aws_account_id.dkr.ecr.us-west-2.amazonaws.com/gitness-dev:1.2.3
+      destination: aws_account_id.dkr.ecr.us-west-2.amazonaws.com/gitness-prod:1.2.3
+      username: AWS
+      aws_access_key_id: "012345678901" 
+      aws_secret_access_key: <+secrets.getValue("aws_secret_access_key")>
+      aws_region: us-west-2
+      overwrite: true
+properties:
+  source:
+    type: string
+    defaultValue: none
+    description: the source image to be copied
+    secret: false
+    required: true
+  username:
+    type: string
+    defaultValue: none
+    description: destination registry username
+    secret: false
+    required: true
+  password:
+    type: string
+    defaultValue: none
+    description: destination registry PAT / access token
+    secret: true
+    required: false
+  destination:
+    type: string
+    defaultValue: none
+    description: destination where the image will be copied
+    secret: false
+    required: true
+  source_username:
+    type: string
+    defaultValue: none
+    description: source registry username (if different from destination)
+    secret: false
+    required: false
+  source_password:
+    type: string
+    defaultValue: none
+    description: source registry PAT / access token (if different from destination)
+    secret: true
+    required: false
+  aws_access_key_id:
+    type: string
+    defaultValue: none
+    description: AWS access key ID (if using AWS)
+    secret: true
+    required: false
+  aws_secret_access_key:
+    type: string
+    defaultValue: none
+    description: AWS secret access key (if using AWS)
+    secret: true
+    required: false
+  aws_region:
+    type: string
+    defaultValue: none
+    description: AWS region (if using AWS)
+    secret: false
+    required: false
+  overwrite:
+    type: boolean
+    defaultValue: false
+    description: overwrite the destination image if it already exists
+    secret: false
+    required: false
+  insecure:
+    type: boolean
+    defaultValue: false
+    description: allow insecure image transfer
+    secret: false
+    required: false
