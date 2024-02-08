@@ -1,0 +1,61 @@
+title: GCP OIDC
+author: harness
+tags:
+  - oidc
+  - gcp
+  - gcloud
+repo: https://github.com/harness-community/drone-gcp-oidc
+image: https://hub.docker.com/r/plugins/gcp-oidc/
+license: MIT License
+readme: https://github.com/harness-community/drone-gcp-oidc/blob/main/README.md
+description: This plugin generates and outputs a GCP Access Token using the OIDC flow.
+example: |
+  kind: pipeline
+  name: default
+  steps:
+  - steps:
+    name: gcp_oidc
+    image: plugins/gcp-oidc
+    settings:
+      project_id: 22819301
+      pool_id: d8291ka22
+      service_account_email_id: test-gcp@harness.io
+      provider_id: svr-account1
+      duration: 7200
+properties:
+  project_id:
+    type: string
+    defaultValue: none
+    description: GCP Project ID
+    secret: false
+    required: true
+  pool_id:
+    type: string
+    defaultValue: none
+    description: GCP Workload Identity Pool ID
+    secret: false
+    required: true
+  provider_id:
+    type: string
+    defaultValue: none
+    description: GCP Workload Identity Provider ID
+    secret: false
+    required: true
+  service_account_email_id:
+    type: string
+    defaultValue: none
+    description: GCP Service Account Email ID
+    secret: false
+    required: true
+  oidc_token_id:
+    type: string
+    defaultValue: none
+    description: OIDC Token (can also be set as a stage variable - PLUGIN_OIDC_TOKEN_ID)
+    secret: true
+    required: true
+  duration:
+    type: string
+    defaultValue: 3600
+    description: Duration for which the token is valid (in seconds)
+    secret: false
+    required: false

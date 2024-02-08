@@ -1,0 +1,62 @@
+title: Helm Push
+author: harness
+tags:
+  - docker
+  - helm
+  - publish
+repo: https://github.com/harness-community/drone-helm-chart-container-registry
+image: https://hub.docker.com/r/plugins/helm-push/
+license: MIT License
+readme: https://github.com/harness-community/drone-helm-chart-container-registry/blob/main/README.md
+description: This plugin allows you to package and publish your helm charts to a docker registry.
+example: |
+  kind: pipeline
+  name: default
+  steps:
+  - steps:
+    name: helm_push
+    image: plugins/helm-push
+    settings:
+      registry_url: LOCATION-docker.pkg.dev
+      registry_username: oauth2accesstoken
+      registry_password: <+secrets.getValue("access_token")>
+      chart_path: chart
+      gcloud_project_id: PROJECT_ID
+      registry_namespace: REPO_ID
+properties:
+  registry_url:
+    type: string
+    defaultValue: none
+    description: docker registry where the packaged chart will be published
+    secret: false
+    required: true
+  chart_path:
+    type: string
+    defaultValue: none
+    description: directory containing the helm chart
+    secret: false
+    required: true
+  registry_username:
+    type: string
+    defaultValue: none
+    description: username for the logging in to the registry
+    secret: false
+    required: true
+  registry_password:
+    type: string
+    defaultValue: none
+    description: PAT / access token for authentication
+    secret: true
+    required: true
+  registry_namespace:
+    type: string
+    defaultValue: none
+    description: namespace under which the chart will be published
+    secret: false
+    required: true
+  gcloud_project_id:
+    type: string
+    defaultValue: none
+    description: Google Artifact Repository project ID
+    secret: false
+    required: false
