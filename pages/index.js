@@ -33,6 +33,7 @@ const tags = [
   "OPS",
   "Ansible",
   "Cloud Foundry",
+  "Security"
 ];
 
 const search = (searchTerm, selectedTag, allPluginsData) => {

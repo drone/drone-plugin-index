@@ -1,0 +1,57 @@
+title: Probely
+author: tmendo
+tags:
+  - Security
+  - Probely
+  - Scanner
+  - Security-scanner
+  - Security-automation
+  - Security-tools
+  - Dast
+logo: probely.svg
+repo: https://github.com/Probely/drone-io
+image: https://hub.docker.com/r/probely/drone-io
+readme: https://github.com/Probely/drone-io/blob/main/README.md
+description: >-
+  The plugin provides an easy and efficient integration of Dynamic Application Security Testing (DAST) done with Probely into your drone CI pipelines.
+example: |
+  kind: pipeline
+  type: docker
+  name: default
+
+  steps:
+  - name: probely-scan
+    image: probely/drone-io:latest
+    settings:
+      api_key: API_KEY
+      target_id: TARGET_ID
+      region: eu
+      scan_profile: normal
+properties:
+  api_key:
+    type: string
+    defaultValue: ""
+    description: Probely's API Key
+    secret: true
+    required: true
+  target:
+    type: string
+    defaultValue: ""
+    description: >-
+      Probely's identifier of the target to scan
+    secret: false
+    required: true
+  region:
+    type: string
+    defaultValue: ""
+    description: >-
+      Probely's region where your account is hosted
+    secret: false
+    required: true
+  scan-profile:
+    type: string
+    defaultValue: ""
+    description: >-
+      The scan profile to use in the scan. If not defined, the scan profile will be the one defined in the target settings.
+    secret: false
+    required: false
