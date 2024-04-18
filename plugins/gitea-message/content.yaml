@@ -1,0 +1,63 @@
+title: Gitea Message
+author: Jozott
+tags:
+  - infrastructure
+  - gitea
+  - drone
+  - comment
+  - pr
+  - buildstatus
+logo: gitea.svg
+repo: https://github.com/Jozott00/drone-gitea-message
+image: https://hub.docker.com/r/jozott/drone-gitea-message
+license: None
+readme: https://github.com/Jozott00/drone-gitea-message/blob/main/README.md
+description: >-
+  Drone plugin to send message as comments to Gitea pull requests. 
+  The plugin support sending text as well as some file's content. 
+  By setting the delete_identifier, all older comments with the same 
+  identifier will be deleted before sending the message.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: send test report to pr
+    image: jozott/drone-gitea-message:v0.2.0
+    settings:
+      api_key:
+        from_secret: gitea_token
+      base_url: http://gitea.example.com
+      message_file: build/test/report.md
+      delete_identifier: test-report-delete-id
+properties:
+  api_key:
+    type: string
+    defaultValue: ''
+    description: gitea server api token
+    secret: true
+    required: true
+  base_url:
+    type: string
+    defaultValue: ''
+    description: the url of the gitea installation
+    secret: false
+    required: true
+  message_text:
+    type: string
+    defaultValue: ''
+    description: the content of the message (must be set if message_file is not)
+    secret: false
+    required: false
+  message_file:
+    type: string
+    defaultValue: ''
+    description: the file with content for the message (must be set if message_text is not)
+    secret: false
+    required: false
+  delete_identifier:
+    type: string
+    defaultValue: ''
+    description: the identifier to delete previous messages in the pull request before sending new one
+    secret: false
+    required: false
