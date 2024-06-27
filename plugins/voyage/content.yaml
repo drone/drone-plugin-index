@@ -1,0 +1,84 @@
+title: Drone Voyage
+author: diegoxa
+tags:
+  - deploy
+  - kubernetes
+  - git
+  - argocd
+logo: voyage.svg
+repo: https://github.com/diegoxa/drone-voyage
+image: https://hub.docker.com/r/diegoxa/drone-voyage
+license: Blue Oak Model License 1.0.0
+readme: https://github.com/diegoxa/drone-voyage/blob/master/README.md
+description: >-
+  This Drone CI plugin provides a mechanism for automating image updates in 
+  Kubernetes deployment configuration files stored on GitHub. 
+  It can be used in conjunction with ArgoCD to integrate image management into your continuous
+  integration pipeline.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+    - name: deploy image to staging
+      image: diegoxa/drone-voyage
+      settings:
+        github_repo: git@github.com:account/project-y.git
+        github_ssh_key:
+          from_secret: deployment_ssh_key
+        image: awesome/project-y:v1.22
+        deployment_files: k8s/prod/deployment.yaml,k8s/prod/migration.yaml
+        commit_author: Drone Voyage
+        commit_email: my-email@email.com
+        log_level: debug
+
+properties:
+  github_repo:
+    type: string
+    defaultValue: ""
+    description: Github repository where kubernetes manifest files are located.
+    secret: false
+    required: true
+  github_ssh_key:
+    type: string
+    defaultValue: ""
+    description: Github private key (deploy key) with write access to the project.
+    secret: true
+    required: true
+  image:
+    type: string
+    defaultValue: ""
+    description: The image name and tag that you plan to set in the kubernetes files image attribute.
+      i.e. diegoxa/drone-voyage:v1.1
+    secret: false
+    required: true
+  deployment_files:
+    type: string
+    defaultValue: ""
+    description: File or comma separated files where image attribute should be updated. i.e. (deployment/staging/deployment.yaml,deployment/staging/cronjob.yml)
+    secret: false
+    required: true
+  commit_author:
+    type: string
+    defaultValue: ""
+    description: Name to be displayed as the author of the commit.
+    secret: false
+    required: true
+  commit_email:
+    type: string
+    defaultValue: ""
+    description: Email to be displayed as the author of the commit.
+    secret: false
+    required: true
+  container_name:
+    type: string
+    defaultValue: ""
+    description: If present, image would only be applied to containers matching the name.
+    secret: false
+    required: false
+  log_level:
+    type: string
+    defaultValue: info
+    description: Increases log verbosity, allows options-> info | debug
+    secret: false
+    required: false
