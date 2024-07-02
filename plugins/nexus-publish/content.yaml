@@ -1,0 +1,71 @@
+title: Nexus Publish
+author: harness
+tags:
+  - sonatype_nexus
+  - nexus_publish
+  - upload_artifacts
+  - artifact
+logo: sonatype_nexus.png
+repo: https://github.com/harness-community/drone-nexus-publish
+image: https://hub.docker.com/r/harnesscommunity/drone-nexus-publish/
+license: Apache 2.0 License
+readme: https://github.com/harness-community/drone-nexus-publish/blob/main/README.md
+description: Drone plugin to publish artifacts to Nexus Repository Manager.
+example: |
+  kind: pipeline
+  name: default
+  steps:
+  - steps:
+    name: sam_build
+    image: harnesscommunity/drone-nexus-publish
+    settings:
+      username: deploy-user
+      password: testing-nexus
+      server_url: http://nexus-publish.server
+      filename: ./target/example.jar
+      format: maven2
+      repository: maven-releases
+      attributes: "-CgroupId=org.testing -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin"
+properties:
+  username:
+    type: string
+    defaultValue: none
+    description: A username for accessing Nexus Repository Manager.
+    secret: false
+    required: false
+  password:
+    type: string
+    defaultValue: none
+    description: An expression referencing a secret containing the password for the specified username.
+    secret: true
+    required: false
+  server_url:
+    type: string
+    defaultValue: none
+    description: The URL of your Nexus Repository Manager instance.
+    secret: false
+    required: false
+  filename:
+    type: string
+    defaultValue: none
+    description: The path to the target artifact that you want to upload.
+    secret: false
+    required: false
+  format:
+    type: string
+    defaultValue: none
+    description: The repository format.
+    secret: false
+    required: false
+  repository:
+    type: string
+    defaultValue: none
+    description: The name of the repository where you want to upload the artifact.
+    secret: false
+    required: false
+  attributes:
+    type: string
+    defaultValue: none
+    description: Component and asset attributes providing additional artifact metadata. "-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin"
+    secret: false
+    required: false
