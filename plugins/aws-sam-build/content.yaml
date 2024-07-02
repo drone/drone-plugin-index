@@ -1,0 +1,60 @@
+title: AWS SAM BUILD
+author: harness
+tags:
+  - serverless
+  - aws
+  - sam
+  - sam build
+repo: https://github.com/harness-community/drone-aws-sam/tree/main/aws-sam-build
+image: https://hub.docker.com/r/plugins/aws-sam-build/
+license: Apache 2.0 License
+readme: https://github.com/harness-community/drone-aws-sam/blob/main/aws-sam-build/README.md
+description: This plugin enables building AWS Serverless Application Model (SAM) applications using the sam build command. It supports various options for building, including using a specific Docker image, providing build command options, and authenticating with a private Docker registry.
+example: |
+  kind: pipeline
+  name: default
+  steps:
+  - steps:
+    name: sam_build
+    image: plugins/aws-sam-build
+    settings:
+      template_file_path: template.yaml
+      build_image: public.ecr.aws/sam/build-python3.9:1.112.0-20240313001230
+      build_command_options: "--debug"
+properties:
+  build_image:
+    type: string
+    defaultValue: none
+    description: The Docker image to use for building the SAM application.
+    secret: false
+    required: false
+  template_file_path:
+    type: string
+    defaultValue: template.yaml/template.yml
+    description: The path to the SAM template file.
+    secret: false
+    required: false
+  build_command_options:
+    type: string
+    defaultValue: none
+    description: Additional options for the sam build command.
+    secret: false
+    required: false
+  private_registry_url:
+    type: string
+    defaultValue: none
+    description: The URL of the private Docker registry.
+    secret: false
+    required: false
+  private_registry_username:
+    type: string
+    defaultValue: none
+    description: The username for authenticating with the private Docker registry.
+    secret: false
+    required: false
+  private_registry_password:
+    type: string
+    defaultValue: none
+    description: The password for authenticating with the private Docker registry.
+    secret: false
+    required: false

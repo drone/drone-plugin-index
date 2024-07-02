@@ -1,0 +1,99 @@
+title: AWS SAM DEPLOY
+author: harness
+tags:
+  - serverless
+  - aws
+  - sam
+  - sam deploy
+repo: https://github.com/harness-community/drone-aws-sam/tree/main/aws-sam-deploy
+image: https://hub.docker.com/r/plugins/aws-sam-deploy/
+license: Apache 2.0 License
+readme: https://github.com/harness-community/drone-aws-sam/blob/main/aws-sam-deploy/README.md
+description: This plugin enables the deployment of AWS Serverless Application Model (SAM) applications. It provides various options for authenticating with AWS, including using access keys, session tokens, and assuming roles with or without web identity tokens.
+example: |
+  kind: pipeline
+  name: default
+  steps:
+  - steps:
+    name: sam_build
+    image: plugins/aws-sam-deploy
+    settings:
+      aws_access_key: ACCESS_KEY
+      aws_secret_key: SECRET_KEY
+      aws_region: us-east-1
+      stack_name: aws-sam
+      s3_bucket: sam-plugin
+      template_file_path: template.yaml
+properties:
+  aws_access_key:
+    type: string
+    defaultValue: none
+    description: The AWS access key for authentication.
+    secret: true
+    required: false
+  aws_secret_key:
+    type: string
+    defaultValue: none
+    description: The AWS secret key for authentication.
+    secret: true
+    required: false
+  aws_session_token:
+    type: string
+    defaultValue: none
+    description: The AWS session token for authentication.
+    secret: true
+    required: false
+  aws_sts_external_id:
+    type: string
+    defaultValue: none
+    description: The external ID for assuming a role with STS.
+    secret: false
+    required: false
+  aws_role_arn:
+    type: string
+    defaultValue: none
+    description: The ARN of the AWS role to assume.
+    secret: false
+    required: false
+  aws_region:
+    type: string
+    defaultValue: none
+    description: The AWS region for deployment.
+    secret: false
+    required: false
+  template_file_path:
+    type: string
+    defaultValue: none
+    description: The path to the SAM template file.
+    secret: false
+    required: true
+  stack_name:
+    type: string
+    defaultValue: none
+    description: The name of the AWS CloudFormation stack.
+    secret: false
+    required: true
+  build_command_options:
+    type: string
+    defaultValue: none
+    description: Additional options for the sam build command.
+    secret: false
+    required: false
+  s3_bucket:
+    type: string
+    defaultValue: none
+    description: The S3 bucket for deployment artifacts.
+    secret: false
+    required: true
+  session_name:
+    type: string
+    defaultValue: sam-deploy-plugin
+    description: Session name for AWS.
+    secret: false
+    required: false
+  deploy_command_options:
+    type: string
+    defaultValue: none
+    description: Additional options for the sam deploy command.
+    secret: false
+    required: false
