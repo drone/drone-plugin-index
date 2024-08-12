@@ -1,0 +1,54 @@
+title: PR Sizer
+author: parraletz
+tags:
+  - github
+  - pullrequest
+logo: github.svg
+repo: https://github.com/parraletz/pr-sizer
+image: https://hub.docker.com/r/parraletz/pr-sizer
+license: MIT License
+readme: https://github.com/parraletz/pr-sizer/blob/main/README.md
+description: >-
+  This plugin is used to label the pull request opened acording to the modified, deleted license
+  of the code.
+example: |
+  kind: pipeline
+  type: docker
+  name: default
+
+  steps:
+  - name: label-pr-size
+    image: parraletz/pr-sizer
+    settings:
+      github_token: xxxxxxxx
+      pr_number: 11
+      owner: parraletz
+      repo: pr-sizer
+    when:
+      event: pull_request
+      action: opened
+properties:
+  github_token:
+    type: string
+    defaultValue: ""
+    description: GitHub oauth token with public_repo or repo permission. If you create your token, ensure you select the correct scope. For private repositories you have to select repo while public repositories only requires public_repo.
+    secret: true
+    required: true
+  pr_number:
+    type: string
+    defaultValue: ""
+    description: the pull request number to label
+    secret: false
+    required: true
+  owner:
+    type: string
+    defaultValue: ""
+    description: the owner of the repository where the pull request is located
+    secret: false
+    required: true
+  repo:
+    type: string
+    defaultValue: ""
+    description: the repository where the pull request is located
+    secret: false
+    required: true
