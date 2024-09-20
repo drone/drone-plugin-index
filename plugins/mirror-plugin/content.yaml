@@ -1,0 +1,74 @@
+title: Mirror Repositories
+author: adityakashyap
+tags:
+  - git
+  - hcr
+logo: mirror-plugin.svg    
+repo: https://github.com/adiyaar24/Mirror-Plugin
+image: https://hub.docker.com/r/adityakashyapharness/mirror_plugin/
+license: GNU General Public License v3.0
+readme: https://github.com/adiyaar24/Mirror-Plugin/Readme.md
+description: This plugin helps you mirror external git repository to Harness Code Repository
+example: |
+  kind: pipeline
+  name: default
+  steps:
+  - steps:
+    name: mirror_repo
+    image: plugins/mirror_plugin
+    settings:
+      anonymous: false
+      source_token: pat.token
+      source_url: https://github.com/octocat/Hello-World.git
+      target_token: pat.token.target
+      target_url: https://git.harness.io/accountId/orgId/projectId/repo_name.git
+      reference: refs/head/main          
+properties:
+  anonymous:
+    type: boolean
+    defaultValue: false
+    description: Flag to skip passing source token if the source repo is public
+    secret: false
+    required: false
+  source_token:
+    type: string
+    defaultValue: ""
+    description: Access token for the source repo.
+    secret: true
+    required: false
+  source_url:
+    type: string
+    defaultValue: ""
+    description: The https-format clone URL for the source repo.
+    secret: false
+    required: true
+  target_token:
+    type: string
+    defaultValue: ""
+    description: Access token for the target repo.
+    secret: true
+    required: true
+  target_url:
+    type: string
+    defaultValue: ""
+    description: The https-format clone URL for the target repo.
+    secret: false
+    required: true
+  reference:
+    type: string
+    defaultValue: ""
+    description: The full reference path to sync from source to target, such as 'refs/heads/main' for branches and 'refs/tags/v.1.2.3' for tags
+    secret: false
+    required: true
+  reference_sha_old:
+    type: string
+    defaultValue: ""
+    description: The previous value of the 'reference' on the source repo. For example, on a branch update, the 'referenceShaOld' is the old SHA of the branch before the update. If provided, this value's usage depends on the change on the reference If the reference was deleted and the old SHA is provided, the reference is deleted on the target repo only if has the same value on the target repo. If the old SHA isn't provided, the reference is deleted on the target repo without any further checks. If the reference was updated, the old SHA is used to update the reference by either fast forward or force update if the reference has the same value on the target repo. For example, after force pushing changes to the source repo, fast forward to source isn't possible. Providing the old SHA ensures mirroring overwrites the target only if the reference in the target repo has the same value as the source repo's reference before the force push. If the old SHA isn't provided, only fast forward updates of a reference are possible and force updates fail to sync.
+    secret: false
+    required: false
+  sync_delete:
+    type: boolean
+    defaultValue: false
+    description: Indicates if deletion of a branch or tag reference on the source repo should be synced to the target repo. Set to true to delete branches/tags in the target repo when they are deleted in the source repo. Set to false to block such deletions from being mirrored in the target. Default is false. This applies to branch and tag deletions only. Deleting files is considered a reference update, which is not impacted by this flag.
+    secret: false
+    required: false
