@@ -7,7 +7,7 @@ tags:
   - sam build
 repo: https://github.com/harness-community/drone-aws-sam/tree/main/aws-sam-build
 image: https://hub.docker.com/r/plugins/aws-sam-build/
-license: Apache 2.0 License
+license: Apache License 2.0
 readme: https://github.com/harness-community/drone-aws-sam/blob/main/aws-sam-build/README.md
 description: This plugin enables building AWS Serverless Application Model (SAM) applications using the sam build command. It supports various options for building, including using a specific Docker image, providing build command options, and authenticating with a private Docker registry.
 example: |

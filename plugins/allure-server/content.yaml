@@ -1,0 +1,85 @@
+title: Allure Server
+author: igur007
+tags:
+  - publish
+  - test
+  - reporting
+logo: allure_server.svg
+repo: https://github.com/Igur007/drone-allure-server-plugin
+image: https://hub.docker.com/r/igur007/drone-allure-server-plugin
+license: Apache License 2.0
+readme: https://github.com/Igur007/drone-allure-server-plugin/blob/main/README.md
+description: The Allure Server plugin uploads allure result files to your allure server and generates report.
+example: |
+  kind: pipeline
+  name: allure report
+
+  steps:
+    - name: allure-report
+      image: igur007/drone-allure-server-plugin:latest
+      environment:
+        ALLURE_SERVER_URL: http://10.110.213.220:8080
+      secrets: [DRONE_BUILD_NUMBER, DRONE_BUILD_LINK]
+properties:
+  ALLURE_SERVER_URL:
+    type: string
+    defaultValue: ""
+    description: Full url of your deployed allure-server
+    secret: false
+    required: true
+  ALLURE_SERVER_USERNAME:
+    type: string
+    defaultValue: ""
+    description: Username for basic auth if it's enabled
+    secret: true
+    required: false
+  ALLURE_SERVER_PASSWORD:
+    type: string
+    defaultValue: ""
+    description: Password for basic auth if it's enabled
+    secret: false
+    required: false
+  REPORT_PATH:
+    type: string
+    defaultValue: "main"
+    description:
+      It is used to group test reports. All reports with same path will have common allure history.
+      Also it used as url path to access latest report. You can specify branch name here, or project name.
+    secret: false
+    required: false
+  REPORT_NAME:
+    type: string
+    defaultValue: "Allure"
+    description: Report name
+    secret: false
+    required: false
+  REPORT_URL:
+    type: string
+    defaultValue: ""
+    description: Report URL
+    secret: false
+    required: false
+  EXECUTOR_INFO_NAME:
+    type: string
+    defaultValue: "Drone"
+    description: Executor name
+    secret: false
+    required: false
+  EXECUTOR_INFO_TYPE:
+    type: string
+    defaultValue: "exectype"
+    description: Executor type
+    secret: false
+    required: false
+  EXECUTOR_INFO_URL:
+    type: string
+    defaultValue: ""
+    description: Executor url
+    secret: false
+    required: false
+  DELETE_RESULTS:
+    type: boolean
+    defaultValue: true
+    description: Is used to define if to delete results after report generation.
+    secret: false
+    required: false
