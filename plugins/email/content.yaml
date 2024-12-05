@@ -1,13 +1,13 @@
 title: Email
-author: drillster
+author: Harness
 tags:
   - notifications
   - email
 logo: email.svg
-repo: https://github.com/drillster/drone-email
-image: https://hub.docker.com/r/drillster/drone-email
+repo: https://github.com/harness-community/drone-email/
+image: https://hub.docker.com/r/plugins/email
 license: Apache License 2.0
-readme: https://github.com/Drillster/drone-email/blob/master/README.md
+readme: https://github.com/harness-community/drone-email/blob/master/README.md
 description: The email plugin can be used to notify people of a build result.
 example: |
   kind: pipeline
@@ -15,7 +15,7 @@ example: |
 
   steps:
   - name: notify
-    image: drillster/drone-email
+    image: plugins/email
     settings:
       host: smtp.some-server.com
       username: foo
