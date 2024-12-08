@@ -7,7 +7,7 @@ tags:
   - sam deploy
 repo: https://github.com/harness-community/drone-aws-sam/tree/main/aws-sam-deploy
 image: https://hub.docker.com/r/plugins/aws-sam-deploy/
-license: Apache 2.0 License
+license: Apache License 2.0
 readme: https://github.com/harness-community/drone-aws-sam/blob/main/aws-sam-deploy/README.md
 description: This plugin enables the deployment of AWS Serverless Application Model (SAM) applications. It provides various options for authenticating with AWS, including using access keys, session tokens, and assuming roles with or without web identity tokens.
 example: |
