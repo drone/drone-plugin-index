@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: drone-plugin-index
+spec:
+  type: external-tooling
+  lifecycle: "-"
+  owner: probely-engine
