@@ -26,6 +26,27 @@ example: |
       insecure: true
       pem_file_contents:
         from_secret: pem_file_contents
+    step:
+      type: Plugin
+      name: PluginMvnRun
+      identifier: PluginMvnRun
+      spec:
+        connectorRef: senthil_dockerhub_connector
+        image: plugins/artifactory:latest
+        settings:
+          log_level: 5
+          build_tool: mvn
+          username: <+secrets.getValue("artifactory_regression_user")>
+          password: <+secrets.getValue("artifactory_regression_user_password")>
+          pom: pom.xml
+          goals: clean install
+          build_name: xray_test_12
+          build_number: xray_test_12_3.1
+          url: <+secrets.getValue("artifactory_regression_url")>
+          resolver_id: tmpSrvConfig
+          resolve_release_repo: mvn_repo_resolve_releases_01
+          resolve_snapshot_repo: mvn_repo_resolve_snapshots_01
+          deployer_id: tmpSrvConfig
 properties:
   username:
     type: string
@@ -91,5 +112,83 @@ properties:
     type: string
     defaultValue: ""
     description: pem file path for authentication with artifactory, defaults to either "C:/users/ContainerAdministrator/.jfrog/security/certs/cert.pem" or "/root/.jfrog/security/certs/cert.pem"
+    secret: false
+    required: false
+  log_level:
+    type: number
+    defaultValue: 5
+    description: log_level of the step
+    secret: false
+    required: false
+  build_tool:
+    type: string
+    defaultValue: ""
+    description: build_tool of the step
+    secret: false
+    required: false
+  username2:
+    type: string
+    defaultValue: ""
+    description: username for authentication with artifactory
+    secret: false
+    required: false
+  password2:
+    type: string
+    defaultValue: ""
+    description: password for authentication with artifactory
+    secret: false
+    required: false
+  pom:
+    type: string
+    defaultValue: ""
+    description: pom file
+    secret: false
+    required: false
+  goals:
+    type: string
+    defaultValue: ""
+    description: goals
+    secret: false
+    required: false
+  build_name:
+    type: string
+    defaultValue: ""
+    description: build_name of the step
+    secret: false
+    required: false
+  build_number:
+    type: string
+    defaultValue: ""
+    description: build_number of the step
+    secret: false
+    required: false
+  url2:
+    type: string
+    defaultValue: ""
+    description: url
+    secret: false
+    required: false
+  resolver_id:
+    type: string
+    defaultValue: ""
+    description: Resolver Id
+    secret: false
+    required: false
+  resolve_release_repo:
+    type: string
+    defaultValue: ""
+    description: Resolve Release Step
+    secret: false
+    required: false
+  resolve_snapshot_repo:
+    type: string
+    defaultValue: ""
+    description: Resolve SnapShot Repo
+    secret: false
+    required: false
+  deployer_id:
+    type: string
+    defaultValue: ""
+    description: Deployer Id
     secret: false
     required: false
