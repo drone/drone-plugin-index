@@ -93,141 +93,141 @@ properties:
     description: pem file path for authentication with artifactory, defaults to either "C:/users/ContainerAdministrator/.jfrog/security/certs/cert.pem" or "/root/.jfrog/security/certs/cert.pem"
     secret: false
     required: false
+  access_token:
+    type: string
+    defaultValue: ""
+    description: "Access token for authentication with Artifactory"
+    secret: true
+    required: false
   command:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Command to execute (cleanup, download, publish, promote, scan)"
     secret: false
-    required: false
+    required: true
   build_name:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Name of the build in Artifactory"
     secret: false
-    required: false
+    required: true
   build_number:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Build number in Artifactory"
     secret: false
-    required: false
+    required: true
   module:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Module name used in Artifactory"
     secret: false
     required: false
   project:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Project identifier in Artifactory"
     secret: false
     required: false
   spec_path:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Path to the JSON specification file for downloads"
     secret: false
     required: false
   spec:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Inline JSON specification for download"
     secret: false
     required: false
   build_tool:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Build tool used (mvn, gradle)"
     secret: false
     required: false
   repo_resolve:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Repository used to resolve dependencies"
     secret: false
     required: false
   repo_deploy:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Repository used to deploy artifacts"
     secret: false
     required: false
   tasks:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Tasks executed in the build process (for Gradle)"
     secret: false
     required: false
   threads:
     type: string
-    defaultValue: ""
-    description: number of upload retries
+    defaultValue: "3"
+    description: "Number of threads used in the build process"
     secret: false
     required: false
   project_key:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Project key in Artifactory"
     secret: false
     required: false
   deployer_id:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Deployer ID for publishing artifacts"
     secret: false
     required: false
   pom:
     type: string
-    defaultValue: ""
-    description: number of upload retries
+    defaultValue: "pom.xml"
+    description: "Path to Maven POM file"
     secret: false
     required: false
   goals:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Goals to execute in the Maven build process"
     secret: false
     required: false
   resolver_id:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Resolver ID used for dependency resolution"
     secret: false
     required: false
   resolve_release_repo:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Maven repository for resolving release dependencies"
     secret: false
     required: false
   resolve_snapshot_repo:
     type: string
     defaultValue: ""
-    description: number of upload retries
-    secret: false
-    required: false
-  access_token:
-    type: string
-    defaultValue: ""
-    description: number of upload retries
+    description: "Maven repository for resolving snapshot dependencies"
     secret: false
     required: false
   deploy_release_repo:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Maven repository for deploying release artifacts"
     secret: false
     required: false
   deploy_snapshot_repo:
     type: string
     defaultValue: ""
-    description: number of upload retries
+    description: "Maven repository for deploying snapshot artifacts"
     secret: false
     required: false
   copy:
     type: boolean
-    defaultValue: ""
-    description: number of upload retries
+    defaultValue: false
+    description: "Whether to copy the build artifacts during promotion"
     secret: false
     required: false
