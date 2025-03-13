@@ -102,21 +102,21 @@ properties:
   command:
     type: string
     defaultValue: ""
-    description: "Command to execute (cleanup, download, publish, promote, scan)"
+    description: "Artifactory command to execute (cleanup, download, publish, promote, scan)"
     secret: false
-    required: true
+    required: false
   build_name:
     type: string
     defaultValue: ""
     description: "Name of the build in Artifactory"
     secret: false
-    required: true
+    required: false
   build_number:
     type: string
     defaultValue: ""
     description: "Build number in Artifactory"
     secret: false
-    required: true
+    required: false
   module:
     type: string
     defaultValue: ""
@@ -132,13 +132,13 @@ properties:
   spec_path:
     type: string
     defaultValue: ""
-    description: "Path to the JSON specification file for downloads"
+    description: "Path to the JSON spec file for downloads"
     secret: false
     required: false
   spec:
     type: string
     defaultValue: ""
-    description: "Inline JSON specification for download"
+    description: "Inline JSON spec for download"
     secret: false
     required: false
   build_tool:
@@ -150,13 +150,13 @@ properties:
   repo_resolve:
     type: string
     defaultValue: ""
-    description: "Repository used to resolve dependencies"
+    description: "To resolve gradle dependencies"
     secret: false
     required: false
   repo_deploy:
     type: string
     defaultValue: ""
-    description: "Repository used to deploy artifacts"
+    description: "To deploy gradle artifacts"
     secret: false
     required: false
   tasks:
@@ -166,8 +166,8 @@ properties:
     secret: false
     required: false
   threads:
-    type: string
-    defaultValue: "3"
+    type: number
+    defaultValue: ""
     description: "Number of threads used in the build process"
     secret: false
     required: false
@@ -179,13 +179,13 @@ properties:
     required: false
   deployer_id:
     type: string
-    defaultValue: ""
+    defaultValue: "tmpServerId"
     description: "Deployer ID for publishing artifacts"
     secret: false
     required: false
   pom:
     type: string
-    defaultValue: "pom.xml"
+    defaultValue: ""
     description: "Path to Maven POM file"
     secret: false
     required: false
@@ -197,7 +197,7 @@ properties:
     required: false
   resolver_id:
     type: string
-    defaultValue: ""
+    defaultValue: "tmpServerId"
     description: "Resolver ID used for dependency resolution"
     secret: false
     required: false
@@ -228,6 +228,6 @@ properties:
   copy:
     type: boolean
     defaultValue: false
-    description: "Whether to copy the build artifacts during promotion"
+    description: "When set to true will copy the build artifacts during promotion"
     secret: false
     required: false
