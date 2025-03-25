@@ -15,9 +15,7 @@ example: |
   name: default
 
   steps:
-    identifier: flywayrunner7f66cc
-    name: flywayrunner
-    spec:
+    - name: flywayrunner
       image: plugins/drone-flyway-runner
       settings:
         command_line_args: -X
