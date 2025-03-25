@@ -1,0 +1,74 @@
+title: Flyway
+author: harness
+tags:
+  - publish
+  - flyway
+logo: Flyway_logo.svg
+repo: https://github.com/harness/drone-flyway
+image: https://hub.docker.com/r/plugins/flyway
+license: Blue Oak Model License 1.0.0
+readme: https://github.com/harness/drone-flyway/blob/main/README.md
+description: |
+  A plugin to Drone Flyway runner DB migration support plugin.
+example: |
+  kind: pipeline
+  name: default
+
+  - step:
+    identifier: flywayrunner7f66cc
+    name: flywayrunner
+    spec:
+      image: plugins/drone-flyway-runner
+      settings:
+        command_line_args: -X
+        flyway_command: migrate
+        locations: /opt/hns/harness-plugins/flyway-test-files/migration_files
+        password: <+input>
+        url: jdbc:mysql://43.204.190.241:3306/flyway_test
+        username: <+input>
+    timeout: ""
+    type: Plugin
+
+properties:
+  username:
+    type: string
+    defaultValue: ""
+    description: username for flywayrunner
+    secret: false
+    required: false
+  password:
+    type: string
+    defaultValue: ""
+    description: password for flywayrunner
+    secret: true
+    required: false
+  command_line_args:
+    type: string
+    defaultValue: ""
+    description: Flyway command line args
+    secret: false
+    required: false
+  flyway_command:
+    type: string
+    defaultValue: ""
+    description: Flyway command to execute (migrate and repair)
+    secret: false
+    required: false
+  locations:
+    type: string
+    defaultValue: ""
+    description: location of db-migrations
+    secret: true
+    required: false
+  url:
+    type: string
+    defaultValue: ""
+    description: location of flyway-db
+    secret: false
+    required: true
+  plugin_driver_path:
+    type: string
+    defaultValue: ""
+    description: location of drivers
+    secret: false
+    required: true
