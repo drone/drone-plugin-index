@@ -24,8 +24,6 @@ example: |
         password: <+input>
         url: jdbc:mysql://43.204.190.241:3306/flyway_test
         username: <+input>
-    timeout: ""
-    type: Plugin
 
 properties:
   username:
