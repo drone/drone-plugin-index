@@ -14,7 +14,7 @@ example: |
   kind: pipeline
   name: default
 
-  - step:
+    step:
     identifier: flywayrunner7f66cc
     name: flywayrunner
     spec:
