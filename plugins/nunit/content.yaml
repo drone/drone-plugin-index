@@ -1,0 +1,48 @@
+title: nunit
+author: harness-community
+tags:
+  - testing
+  - quality
+logo: nunit.svg
+repo: https://github.com/harness-community/drone-nunit
+image: https://hub.docker.com/r/plugins/nunit
+license: Apache License 2.0
+readme: https://github.com/harness-community/drone-nunit#readme
+description: A plugin to run NUnit tests and generate JUnit-compatible test reports for use in Drone CI. The plugin allows configuration of test result paths, failure conditions, and log levels for enhanced reporting.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: nunit tests
+    image: plugins/nunit
+    settings: 
+      test_report_path: nunit_test_report_path
+      fail_if_no_results: true
+      failed_tests_fail_build: false
+      log_level: info
+properties:
+  test_report_path:
+    type: string
+    defaultValue: ''
+    description: The pattern to find the NUnit XML files. It supports globs, e.g- TestResults/*.xml
+    secret: false
+    required: true
+  fail_if_no_results:
+    type: boolean
+    defaultValue: false
+    description: If set to true, the build will fail if no test result files are found for the given pattern.
+    secret: false
+    required: false
+  failed_tests_fail_build:
+    type: boolean
+    defaultValue: false
+    description: If set to true, the build will fail if any tests fail.
+    secret: false
+    required: false
+  log_level:
+    type: string
+    defaultValue: 'info'
+    description: Defines the plugin log level (debug/info). Set to debug to see detailed responses from NUnit.
+    secret: false
+    required: false
