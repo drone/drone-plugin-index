@@ -40,55 +40,73 @@ example: |
 properties:
   client_id:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The Jira Oauth2 client ID. You must also pass the client secret.
     secret: true
     required: true
   client_secret:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The Jira Oauth2 client secret. You must also pass the client id.
     secret: true
     required: true
   connect_key:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The Jira Connect key. This is instead of passing oauth information.
     secret: true
     required: true
   instance:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The Jira instance. The prefix on your atlassian hostname.
     secret: false
     required: true
   project:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The Jira project. eg TEST
     secret: false
     required: true
   environment_name:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The Jira environment name.
     secret: false
     required: true
+  environment_id:
+    type: string
+    defaultValue: ""
+    description: The Jira environment id.
+    secret: false
+    required: false
+  environment_type:
+    type: string
+    defaultValue: ""
+    description: The Jira environment type.
+    secret: false
+    required: false
+  issuekeys:
+    type: string
+    defaultValue: ""
+    description: The Jira environment type.
+    secret: false
+    required: false
   pipeline:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The pipeline name.
     secret: false
     required: true
   log_level:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: debug/info Level defines the plugin log level. Set this to debug to see the response from jira
     secret: false
     required: false
   link:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: The link to the Jira deployment.
     secret: false
     required: false
