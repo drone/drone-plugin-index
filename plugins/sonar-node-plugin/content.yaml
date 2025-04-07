@@ -7,6 +7,7 @@ tags:
   - Analysis
   - Report
   - NodeJS
+  - SonarQualityGateway
 logo: sonarqube-icon.svg
 repo: https://github.com/kytay/drone-plugins/tree/master/sonar-node-plugin
 image: https://hub.docker.com/r/kytay/sonar-node-plugin
@@ -31,7 +32,7 @@ example: |
 properties:
   sonar_host:
     type: string
-    defaultValue: ''
+    defaultValue: ""
     description: Hostname of the sonar server.
     secret: false
     required: true
@@ -83,5 +84,17 @@ properties:
     description: >-
       Specify the node version to use for sonar-scanner, the most recent node LTS version will be selected if this variable is not specified.
       Example Values: 16, 16.18.1, v16, v16.18.1
+    secret: false
+    required: false
+  sonar_organization:
+    type: string
+    defaultValue: ""
+    description: SonarQube Organization.
+    secret: true
+    required: false
+  scmDisabled:
+    type: boolean
+    defaultValue: "false"
+    description: SonarQube SCM Disabled.
     secret: false
     required: false
