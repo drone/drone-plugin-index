@@ -1,0 +1,98 @@
+title: pagerduty
+author: harness-community
+tags:
+  - notification
+  - incident
+  - change-event
+logo: pagerduty.svg
+repo: https://github.com/harness-community/drone-pagerduty
+image: https://hub.docker.com/r/plugins/pagerduty
+license: Apache License 2.0
+readme: https://github.com/harness-community/drone-pagerduty#readme
+description: A plugin to send notifications and create incidents or change events in PagerDuty based on job status. This plugin supports triggering incidents or logging system changes with custom details for additional context.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: pagerduty change event
+    image: plugins/pagerduty
+    settings:
+      custom_details: '{"buildNumber":"22","jobName":"test-pager-duty","jobURL":"http://localhost:8080/job/test-pager-duty/22/"}'
+      incident_source: ''
+      incident_summary: Job test-pager-duty completed with status SUCCESS
+      log_level: debug
+      routing_key: a666ad1326f3460892yhfiu8347hufhshj7c1cb
+      create_change_event: "true"
+  - name: pagerduty incident
+    image: plugins/pagerduty
+    settings:
+      dedup_key: E54EC8548HFH99SDKHFA3815EF3632D5F854CF26
+      incident_severity: critical
+      incident_source: test-pager-duty
+      incident_summary: Build Failed for test-pager-duty
+      job_status: FAILED
+      log_level: debug
+      resolve: 'false'
+      routing_key: a666ad1326f3460892yhfiu8347hufhshj7c1cb
+properties:
+  routing_key:
+    type: string
+    defaultValue: ""
+    description: The integration key for PagerDuty to route the event.
+    secret: true
+    required: true
+  incident_summary:
+    type: string
+    defaultValue: ""
+    description: A summary of the incident being triggered.
+    secret: false
+    required: false
+  incident_source:
+    type: string
+    defaultValue: ""
+    description: The source of the incident.
+    secret: false
+    required: false
+  create_change_event:
+    type: boolean
+    defaultValue: false
+    description: Set to true to create a change event.
+    secret: false
+    required: false
+  custom_details:
+    type: string
+    defaultValue: ""
+    description: Provide custom details for the change event.
+    secret: false
+    required: false
+  incident_severity:
+    type: string
+    defaultValue: "critical"
+    description: Severity level specifies the severity of the incident (e.g., 'critical', 'error', 'warning', 'info').
+    secret: false
+    required: false
+  dedup_key:
+    type: string
+    defaultValue: ""
+    description: Deduplication key for identifying and resolving incidents (optional).
+    secret: true
+    required: false
+  resolve:
+    type: boolean
+    defaultValue: false
+    description: Set to true to resolve the incident or false to trigger the incident.
+    secret: false
+    required: false
+  job_status:
+    type: string
+    defaultValue: "SUCCESS"
+    description: The job status condition (SUCCESS | FAILED | RUNNING | ABORTED | EXPIRED).
+    secret: false
+    required: true
+  log_level:
+    type: string
+    defaultValue: "info"
+    description: Defines the plugin log level (debug/info). Set to debug to see detailed responses from PagerDuty.
+    secret: false
+    required: false
