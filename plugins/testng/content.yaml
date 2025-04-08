@@ -1,0 +1,68 @@
+title: testng
+author: harness-community
+tags:
+  - testing
+  - quality
+logo: testng.svg
+repo: https://github.com/harness-community/drone-testng
+image: https://hub.docker.com/r/plugins/testng
+license: Apache License 2.0
+readme: https://github.com/harness-community/drone-testng#readme
+description: A plugin to process TestNG report files and log the test results in the console. It allows for threshold validation and failure conditions based on test outcomes.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+  - name: testng to junit conversion
+    image: plugins/testng
+    settings:
+      report_filename_pattern: "**/target/testng-results.xml"
+      failed_fails: 5
+      failed_skips: 3
+      threshold_mode: absolute
+      failure_on_failed_test_config: true
+      fail_if_no_results: true
+properties:
+  report_filename_pattern:
+    type: string
+    defaultValue: "**/target/testng-results.xml"
+    description: The file name pattern to locate TestNG XML report files. Supports Ant-style patterns.
+    secret: false
+    required: true
+  failed_fails:
+    type: integer
+    defaultValue: 0
+    description: Maximum number of failed tests before the build is marked as FAILURE.
+    secret: false
+    required: false
+  failed_skips:
+    type: integer
+    defaultValue: 0
+    description: Maximum number of skipped tests before the build is marked as FAILURE.
+    secret: false
+    required: false
+  threshold_mode:
+    type: string
+    defaultValue: "absolute"
+    description: Specifies the mode for threshold validation. Valid options- 'absolute' or 'percentage'.
+    secret: false
+    required: false
+  failure_on_failed_test_config:
+    type: boolean
+    defaultValue: false
+    description: If true, the build will fail if any configuration method (e.g., @BeforeSuite, @AfterTest) fails.
+    secret: false
+    required: false
+  fail_if_no_results:
+    type: boolean
+    defaultValue: false
+    description: If set to true, the build will fail if no test result files are found for the given pattern.
+    secret: false
+    required: false
+  log_level:
+    type: string
+    defaultValue: "info"
+    description: Defines the plugin log level (debug/info). Set to debug to see detailed responses from TestNG.
+    secret: false
+    required: false
