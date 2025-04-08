@@ -92,7 +92,7 @@ properties:
     description: SonarQube Organization.
     secret: true
     required: false
-  scmDisabled:
+  scm_disabled:
     type: boolean
     defaultValue: "false"
     description: SonarQube SCM Disabled.
