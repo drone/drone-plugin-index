@@ -4,10 +4,10 @@ tags:
   - publish
   - flyway
 logo: Flyway_logo.svg
-repo: https://github.com/harness/drone-flyway
+repo: https://github.com/harness-community/drone-flyway
 image: https://hub.docker.com/r/plugins/flyway
 license: Blue Oak Model License 1.0.0
-readme: https://github.com/harness/drone-flyway/blob/main/README.md
+readme: https://github.com/harness-community/drone-flyway/blob/main/README.md
 description: |
   A plugin to Drone Flyway runner DB migration support plugin.
 example: |
