@@ -1,0 +1,71 @@
+title: robot-framework
+author: harness-community
+tags:
+  - test
+  - report
+  - robot
+  - automation
+logo: robotframework.svg
+repo: https://github.com/harness-community/drone-robot
+image: https://hub.docker.com/r/plugins/robot
+license: Apache License 2.0
+readme: https://github.com/harness-community/drone-robot#readme
+description: |
+  A plugin to process Robot Framework test reports (output.xml), analyze test results, and set pipeline status based on configurable pass thresholds. Supports options for including skipped tests, filtering by critical-only, and controlling stability behavior. The plugin writes stats to the console and the DRONE_OUTPUT environment variable.
+example: |
+  kind: pipeline
+  name: default
+  steps:
+    - name: robot framework report processing
+      image: plugins/robot
+      settings:
+        report_directory: "./reports"
+        report_file_name_pattern: "output.xml"
+        pass_threshold: 90
+        unstable_threshold: 80
+        count_skipped_tests: true
+        only_critical: false
+        log_level: "info"
+properties:
+  report_directory:
+    type: string
+    defaultValue: "./reports"
+    description: Directory where Robot Framework reports are located.
+    secret: false
+    required: true
+  report_file_name_pattern:
+    type: string
+    defaultValue: "output.xml"
+    description: Pattern or name of the Robot report file (typically output.xml).
+    secret: false
+    required: true
+  pass_threshold:
+    type: int
+    defaultValue: ""
+    description: Pass percentage threshold required for build success.
+    secret: false
+    required: false
+  unstable_threshold:
+    type: int
+    defaultValue: ""
+    description: Pass percentage threshold below which the build is marked unstable.
+    secret: false
+    required: false
+  count_skipped_tests:
+    type: boolean
+    defaultValue: true
+    description: Include skipped tests in the final test statistics.
+    secret: false
+    required: false
+  only_critical:
+    type: boolean
+    defaultValue: false
+    description: Consider only critical tests in statistics.
+    secret: false
+    required: false
+  log_level:
+    type: string
+    defaultValue: "info"
+    description: Log verbosity level (e.g., info, debug).
+    secret: false
+    required: false
