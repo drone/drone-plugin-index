@@ -1,0 +1,189 @@
+title: cucumber
+author: harness-community
+tags:
+  - test
+  - cucumber
+  - report
+  - quality
+logo: cucumber.svg
+repo: https://github.com/harness-community/drone-cucumber
+image: https://hub.docker.com/r/plugins/cucumber
+license: Apache License 2.0
+readme: https://github.com/harness-community/drone-cucumber#readme
+description: This plugin processes Cucumber JSON report files and logs the test results in the console. It supports configurations to control failed, skipped, pending, and undefined steps, and thresholds to determine build failure conditions.
+example: |
+  kind: pipeline
+  name: default
+  steps:
+    - name: cucumber report analysis
+      image: plugins/cucumber
+      settings:
+        file_include_pattern: "**/*.json"
+        file_exclude_pattern: ""
+        failed_as_not_failing_status: false
+        failed_features_number: 5
+        failed_features_percentage: 10.0
+        failed_scenarios_number: 10
+        failed_scenarios_percentage: 20.0
+        failed_steps_number: 20
+        failed_steps_percentage: 30.0
+        json_report_directory: "./reports"
+        merge_features_by_id: true
+        pending_as_not_failing_status: false
+        pending_steps_number: 5
+        pending_steps_percentage: 10.0
+        skip_empty_json_files: true
+        skipped_as_not_failing_status: false
+        skipped_steps_number: 5
+        skipped_steps_percentage: 10.0
+        sorting_method: "NATURAL"
+        stop_build_on_failed_report: true
+        undefined_as_not_failing_status: false
+        undefined_steps_number: 5
+        undefined_steps_percentage: 10.0
+        log_level: info
+properties:
+  file_include_pattern:
+    type: string
+    defaultValue: "**/*.json"
+    description: The file pattern to include Cucumber JSON reports. Ant-style patterns supported.
+    secret: false
+    required: true
+  file_exclude_pattern:
+    type: string
+    defaultValue: ""
+    description: The file pattern to exclude Cucumber JSON reports. Ant-style patterns supported.
+    secret: false
+    required: false
+  failed_as_not_failing_status:
+    type: boolean
+    defaultValue: false
+    description: If true, failed steps won't be considered build failures.
+    secret: false
+    required: false
+  failed_features_number:
+    type: integer
+    defaultValue: 5
+    description: Max number of failed features before marking build as failed.
+    secret: false
+    required: false
+  failed_features_percentage:
+    type: float
+    defaultValue: 10.0
+    description: Max % of failed features before marking build as failed.
+    secret: false
+    required: false
+  failed_scenarios_number:
+    type: integer
+    defaultValue: 10
+    description: Max number of failed scenarios before marking build as failed.
+    secret: false
+    required: false
+  failed_scenarios_percentage:
+    type: float
+    defaultValue: 20.0
+    description: Max % of failed scenarios before marking build as failed.
+    secret: false
+    required: false
+  failed_steps_number:
+    type: integer
+    defaultValue: 20
+    description: Max number of failed steps before marking build as failed.
+    secret: false
+    required: false
+  failed_steps_percentage:
+    type: float
+    defaultValue: 30.0
+    description: Max % of failed steps before marking build as failed.
+    secret: false
+    required: false
+  json_report_directory:
+    type: string
+    defaultValue: "./reports"
+    description: Directory path where JSON reports are located.
+    secret: false
+    required: true
+  merge_features_by_id:
+    type: boolean
+    defaultValue: true
+    description: If true, merges features with same ID into one.
+    secret: false
+    required: false
+  pending_as_not_failing_status:
+    type: boolean
+    defaultValue: false
+    description: If true, pending steps won't be considered build failures.
+    secret: false
+    required: false
+  pending_steps_number:
+    type: integer
+    defaultValue: 5
+    description: Max number of pending steps before marking build as failed.
+    secret: false
+    required: false
+  pending_steps_percentage:
+    type: float
+    defaultValue: 10.0
+    description: Max % of pending steps before marking build as failed.
+    secret: false
+    required: false
+  skip_empty_json_files:
+    type: boolean
+    defaultValue: true
+    description: If true, skips processing empty JSON files.
+    secret: false
+    required: false
+  skipped_as_not_failing_status:
+    type: boolean
+    defaultValue: false
+    description: If true, skipped steps won't be considered build failures.
+    secret: false
+    required: false
+  skipped_steps_number:
+    type: integer
+    defaultValue: 5
+    description: Max number of skipped steps before marking build as failed.
+    secret: false
+    required: false
+  skipped_steps_percentage:
+    type: float
+    defaultValue: 10.0
+    description: Max % of skipped steps before marking build as failed.
+    secret: false
+    required: false
+  sorting_method:
+    type: string
+    defaultValue: "NATURAL"
+    description: Sorting method for features (NATURAL or ALPHABETICAL).
+    secret: false
+    required: false
+  stop_build_on_failed_report:
+    type: boolean
+    defaultValue: true
+    description: Stops the build if report processing fails.
+    secret: false
+    required: false
+  undefined_as_not_failing_status:
+    type: boolean
+    defaultValue: false
+    description: If true, undefined steps won't be considered build failures.
+    secret: false
+    required: false
+  undefined_steps_number:
+    type: integer
+    defaultValue: 5
+    description: Max number of undefined steps before marking build as failed.
+    secret: false
+    required: false
+  undefined_steps_percentage:
+    type: float
+    defaultValue: 10.0
+    description: Max % of undefined steps before marking build as failed.
+    secret: false
+    required: false
+  log_level:
+    type: string
+    defaultValue: "info"
+    description: Plugin log level (debug/info).
+    secret: false
+    required: false
