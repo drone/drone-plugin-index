@@ -1,0 +1,111 @@
+title: Gatling
+author: gatling
+tags:
+  - gatling
+  - load testing
+  - performance testing
+logo: gatling.png
+repo: https://github.com/gatling/enterprise-action
+image: https://hub.docker.com/r/gatlingcorp/enterprise-runner
+license: Apache License 2.0
+readme: https://github.com/gatling/enterprise-action/blob/main/README.md
+description: >-
+  Plugin to run load test using Gatling Enterprise tests from Harness.
+example: |
+  kind: pipeline
+  type: docker
+  name: default
+
+  steps:
+  - name: Run load tests
+    image: gatlingcorp/enterprise-runner
+    settings:
+      SIMULATION_ID: '00000000-0000-0000-0000-000000000000'
+      GATLING_ENTERPRISE_API_TOKEN: 'my-api-token'
+      archs:
+        - amd64
+
+properties:
+  GATLING_ENTERPRISE_API_TOKEN:
+    type: string
+    defaultValue: ""
+    description: The API token used to authenticate with Gatling Enterprise
+    secret: true
+    required: true
+
+  SIMULATION_ID:
+    type: string
+    defaultValue: ""
+    description: The ID of the simulation as configured on Gatling Enterprise
+    secret: false
+    required: true
+
+  EXTRA_SYSTEM_PROPERTIES:
+    type: string
+    defaultValue: "{}"
+    description: Additional Java system properties, will be merged with the simulation’s configured system properties. Must be formatted as a JSON object containing the desired key/value pairs. Values can be strings, numbers or booleans
+    secret: false
+    required: false
+
+  EXTRA_ENVIRONMENT_VARIABLES:
+    type: string
+    defaultValue: "{}"
+    description: Additional environment variables, will be merged with the simulation’s configured environment variables. Must be formatted as a JSON object containing the desired key/value pairs. Values can be strings, numbers or booleans
+    secret: false
+    required: false
+  
+  OVERRIDE_LOAD_GENERATORS:
+    type: string
+    defaultValue: "{}"
+    description: Overrides the simulation’s load generators configuration. Must be formatted as a JSON object. Keys are the load generator IDs, which can be retrieved from the public API (using the /pools route). Weights are optional
+    secret: false
+    required: false
+
+  FAIL_ACTION_ON_RUN_FAILURE:
+    type: boolean
+    defaultValue: true
+    description: If true, the Action will fail if the simulation run ends in an error (including failed assertions). if set to false and the simulation ends in an error, some of the outputs may be missing (e.g. there will be no assertion results if the simulation crashed before the end)
+    secret: false
+    required: false
+
+  WAIT_FOR_RUN_END:
+    type: boolean
+    defaultValue: true
+    description: If true, the runner will wait for the end of te simulation run on Gatling Enterprise before terminating. if set to false, some of the outputs may be missing (there will be no status nor assertion results)
+    secret: false
+    required: false
+
+  OUTPUT_DOT_ENV_FILE_PATH:
+    type: string
+    defaultValue: "gatlingEnterprise.env"
+    description: path to a dotenv file where output values will be written
+    secret: false
+    required: false
+  
+  RUN_SUMMARY_ENABLED:
+    type: boolean
+    defaultValue: true
+    description: Assuming wait_for_run_end is also true, will regularly log a summary of the ongoing run to the console until it finishes
+    secret: false
+    required: false
+  
+  RUN_SUMMARY_INITIAL_REFRESH_INTERVAL:
+    type: number
+    defaultValue: 5
+    description: Initial interval before displaying a new summary of the ongoing run in the console, in seconds. Should be a multiple of 5 (otherwise it will be rounded up). Only used a limited number of times (set by run_summary_initial_refresh_count) before switching to the interval set by run_summary_refresh_interval
+    secret: false
+    required: false
+
+  RUN_SUMMARY_INITIAL_REFRESH_COUNT:
+    type: number
+    defaultValue: 12
+    description: Number of times to use run_summary_initial_refresh_interval as the interval before displaying a new summary of the ongoing run in the console. After that, run_summary_refresh_interval will be used. This allows to avoid spamming the log output once the test run is well underway
+    secret: false
+    required: false
+
+  RUN_SUMMARY_REFRESH_INTERVAL:
+    type: number
+    defaultValue: 60
+    description: Interval before displaying a new summary of the ongoing run in the console, in seconds. Should be a multiple of 5 (otherwise it will be rounded up)
+    secret: false
+    required: false
