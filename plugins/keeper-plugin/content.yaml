@@ -1,4 +1,4 @@
-title: KSM Plugin
+title: Keeper Security Plugin
 author: Keeper Security
 tags:
   - secrets
@@ -9,23 +9,27 @@ logo: keeper.png
 repo: https://github.com/Keeper-Security/harness-integration
 image: https://hub.docker.com/r/keeper/harness-plugin
 readme: https://github.com/Keeper-Security/harness-integration/blob/main/README.md
-license: None
+license: MIT License
 description: |
-  Keeper Secrets Manager integration for Harness CI. Securely retrieves secrets from your Keeper Vault and later pipeline steps can read them. 
+  Keeper Secrets Manager integration for Harness CI. Securely retrieves secrets from your Keeper Vault and later pipeline steps can read them.
   Uses a zero-knowledge model: secrets are fetched directly from Keeper at runtime and never pass through Harness in decrypted form.
+  The Docker image supports multi-platform (e.g. linux/amd64, linux/arm64); set platform on the pipeline or step as needed.
 example: |
   kind: pipeline
   name: default
-
+  # Multi-platform: use linux/amd64, linux/arm64, or linux/arm as needed
+  platform:
+    os: linux
+    arch: amd64
   steps:
   - name: fetch_keeper_secrets
-    image: keeper/harness-plugin
+    image: keeper/harness-plugin:latest
     settings:
+      ksm_config:
+        from_secret: keeper_base64_secret
       secrets: |
         RECORD_UID/field/password > PASSWORD
         RECORD_UID/field/login > USERNAME
-      ksm_config:
-        from_secret: keeper_base64_secret
 properties:
   secrets:
     type: string
@@ -43,12 +47,12 @@ properties:
     type: string
     defaultValue: ''
     description: >-
-      Keeper Secrets Manager authentication. Supported values: one-time access
-      token (US:...), Base64-encoded token, or JSON config. In Harness CI: create
-      a secret first under Project → Project Setup → Secrets (e.g. Text secret
-      keeper_base64_secret or keeper_otat_secret, or File secret keeper_ksm_config_file
-      for JSON). Then in the Plugin step set envVariables.KSM_CONFIG to
-      <+secrets.getValue("your_secret_identifier_name")> using the exact secret
-      name you created.
+      Keeper Secrets Manager authentication (mapped to PLUGIN_KSM_CONFIG). Supported
+      values: one-time access token (US:...), Base64-encoded token, or JSON config.
+      In Harness CI: create a secret under Project → Project Setup → Secrets (e.g.
+      Text secret keeper_base64_secret or keeper_otat_secret, or File secret
+      keeper_ksm_config_file for JSON). Use the settings block with ksm_config
+      (e.g. ksm_config: from_secret: keeper_base64_secret) so the platform passes
+      it as PLUGIN_KSM_CONFIG.
     secret: false
     required: true
