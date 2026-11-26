@@ -1,0 +1,149 @@
+title: Oxlint
+author: adamlui
+tags:
+  - lint
+  - oxlint
+  - javascript
+  - typescript
+  - security
+logo: oxlint.png
+repo: https://codeberg.org/adamlui/drone-oxlint
+image: https://hub.docker.com/r/adamlui/drone-oxlint
+license: MIT
+readme: https://codeberg.org/adamlui/drone-oxlint/#readme
+description: |
+  Drone / Harness plugin for running Oxlint on your repo. Supports changed-file
+  detection on pull requests and colorized output.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+    - name: oxlint
+      image: adamlui/drone-oxlint:v1.6.0
+      settings:
+        deny: correctness no-eval
+        warn: suspicious perf
+        plugins: nextjs jest
+properties:
+  # Oxlint (8)
+  config:
+    type: string
+    defaultValue: ""
+    description: Path to an Oxlint or ESLint <9 config file.
+    secret: false
+    required: false
+  oxlint_args:
+    type: string
+    defaultValue: ""
+    description: Additional raw args passed verbatim to the Oxlint CLI (e.g. `--fix --quiet`).
+    secret: false
+    required: false
+  plugins:
+    type: string
+    defaultValue: ""
+    description: Whitespace-separated list of plugins to enable (e.g. `nextjs import`).
+    secret: false
+    required: false
+  plugins_disable:
+    type: string
+    defaultValue: ""
+    description: Whitespace-separated list of plugins to disable (e.g. `typescript`).
+    secret: false
+    required: false
+  format:
+    type: string
+    defaultValue: "default"
+    description: Lint result output format (e.g. `agent`, `json`).
+    secret: false
+    required: false
+  base_branch:
+    type: string
+    defaultValue: ""
+    description: Base branch that PRs are compared against. Defaults to the PR target branch.
+    secret: false
+    required: false
+  version:
+    type: string
+    defaultValue: "latest"
+    description: Oxlint version to install. Accepts a SemVer pattern.
+    secret: false
+    required: false
+  working_directory:
+    type: string
+    defaultValue: ""
+    description: Directory to run Oxlint from. Defaults to the repo root.
+    secret: false
+    required: false
+
+  # File matching (4)
+  extensions:
+    type: string
+    defaultValue: "cjs,cts,js,jsx,mjs,mts,ts,tsx"
+    description: Comma-separated file extensions to lint on pull requests.
+    secret: false
+    required: false
+  files:
+    type: string
+    defaultValue: ""
+    description: Whitespace-separated list of glob patterns to include.
+    secret: false
+    required: false
+  ignore_patterns:
+    type: string
+    defaultValue: ""
+    description: Whitespace-separated list of glob patterns to exclude (e.g. `dist/** build/**`).
+    secret: false
+    required: false
+  all_files:
+    type: boolean
+    defaultValue: false
+    description: Lint all files, not just changed files on pull requests.
+    secret: false
+    required: false
+
+  # Rules & warnings (5)
+  allow:
+    type: string
+    defaultValue: ""
+    description: Whitespace-separated list of rules or categories to allow.
+    secret: false
+    required: false
+  warn:
+    type: string
+    defaultValue: ""
+    description: Whitespace-separated list of rules or categories to warn.
+    secret: false
+    required: false
+  deny:
+    type: string
+    defaultValue: ""
+    description: Whitespace-separated list of rules or categories to deny.
+    secret: false
+    required: false
+  deny_warnings:
+    type: boolean
+    defaultValue: false
+    description: "Fail if any warnings are emitted (alias for `max_warnings: 0`)."
+    secret: false
+    required: false
+  max_warnings:
+    type: string
+    defaultValue: ""
+    description: Fail if more than this many warnings are emitted.
+    secret: false
+    required: false
+
+  # Plugin (2)
+  debug:
+    type: boolean
+    defaultValue: false
+    description: Enable shell tracing (`set -x`) of the plugin entrypoint.
+    secret: false
+    required: false
+  never_fail:
+    type: boolean
+    defaultValue: false
+    description: Exit 0 regardless of lint errors (so CI step always passes).
+    secret: false
+    required: false
