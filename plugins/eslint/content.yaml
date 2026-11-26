@@ -1,0 +1,164 @@
+title: ESLint
+author: adamlui
+tags:
+  - lint
+  - eslint
+  - javascript
+  - typescript
+  - security
+logo: eslint.svg
+repo: https://codeberg.org/adamlui/drone-eslint
+image: https://hub.docker.com/r/adamlui/drone-eslint
+license: MIT
+readme: https://codeberg.org/adamlui/drone-eslint/#readme
+description: |
+  Drone / Harness plugin for running ESLint on your repo. Supports changed-file
+  detection on pull requests and colorized output.
+example: |
+  kind: pipeline
+  name: default
+
+  steps:
+    - name: eslint
+      image: adamlui/drone-eslint:v1.3.0
+      settings:
+        deny: no-eval
+        warn: no-console
+        extensions: js,jsx,ts,tsx
+        max_warnings: 10
+properties:
+  # ESLint (6)
+  config:
+    type: string
+    defaultValue: ""
+    description: Path to an ESLint config file.
+    secret: false
+    required: false
+  eslint_args:
+    type: string
+    defaultValue: ""
+    description: Additional raw args passed verbatim to the ESLint CLI (e.g. `--fix --quiet`).
+    secret: false
+    required: false
+  format:
+    type: string
+    defaultValue: "stylish"
+    description: "Lint result output format (`html`, `json`, `json-with-metadata`, `stylish`)."
+    secret: false
+    required: false
+  base_branch:
+    type: string
+    defaultValue: ""
+    description: Base branch that PRs are compared against. Defaults to the PR target branch.
+    secret: false
+    required: false
+  version:
+    type: string
+    defaultValue: "latest"
+    description: ESLint version to install. Accepts a SemVer pattern.
+    secret: false
+    required: false
+  working_directory:
+    type: string
+    defaultValue: ""
+    description: Directory to run ESLint from (alias `root_dir`). Defaults to the repo root.
+    secret: false
+    required: false
+
+  # File matching (5)
+  extensions:
+    type: string
+    defaultValue: "cjs,cts,js,jsx,mjs,mts,ts,tsx"
+    description: Comma-separated file extensions to lint.
+    secret: false
+    required: false
+  files:
+    type: string
+    defaultValue: ""
+    description: Whitespace-separated list of glob patterns to include.
+    secret: false
+    required: false
+  ignore_patterns:
+    type: string
+    defaultValue: ""
+    description: Whitespace-separated list of glob patterns to exclude (e.g. `dist/** build/**`).
+    secret: false
+    required: false
+  ignore_file:
+    type: string
+    defaultValue: ""
+    description: Path to an ignore file (e.g. `.eslintignore`).
+    secret: false
+    required: false
+  all_files:
+    type: boolean
+    defaultValue: false
+    description: Lint all files, not just changed files on pull requests.
+    secret: false
+    required: false
+
+  # Rules & warnings (5)
+  allow:
+    type: string
+    defaultValue: ""
+    description: Whitespace-separated list of rules to set to `off`.
+    secret: false
+    required: false
+  warn:
+    type: string
+    defaultValue: ""
+    description: Whitespace-separated list of rules to set to `warn`.
+    secret: false
+    required: false
+  deny:
+    type: string
+    defaultValue: ""
+    description: Whitespace-separated list of rules to set to `error`.
+    secret: false
+    required: false
+  deny_warnings:
+    type: boolean
+    defaultValue: false
+    description: "Fail if any warnings are emitted (alias for `max_warnings: 0`)."
+    secret: false
+    required: false
+  max_warnings:
+    type: string
+    defaultValue: ""
+    description: Fail if more than this many warnings are emitted.
+    secret: false
+    required: false
+
+  # Annotations (3)
+  annotations:
+    type: boolean
+    defaultValue: false
+    description: "Post findings as inline annotations via Reviewdog (requires `reporter` + a forge API token)."
+    secret: false
+    required: false
+  reporter:
+    type: string
+    defaultValue: ""
+    description: "Reviewdog reporter for annotations (e.g. `github-pr-review`, `gitea-pr-review`)."
+    secret: false
+    required: false
+  fail_level:
+    type: string
+    defaultValue: "error"
+    description: "Reviewdog fail level (`error`, `warning`, `info`)."
+    secret: false
+    required: false
+
+  # Plugin (2)
+  debug:
+    type: boolean
+    defaultValue: false
+    description: "Enable shell tracing (`set -x`) of the plugin entrypoint."
+    secret: false
+    required: false
+  never_fail:
+    type: boolean
+    defaultValue: false
+    description: Exit 0 regardless of lint errors (so CI step always passes).
+    secret: false
+    required: false
