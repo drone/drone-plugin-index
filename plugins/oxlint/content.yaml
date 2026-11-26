@@ -12,8 +12,8 @@ image: https://hub.docker.com/r/adamlui/drone-oxlint
 license: MIT
 readme: https://codeberg.org/adamlui/drone-oxlint/#readme
 description: |
-  Drone / Woodpecker plugin for running Oxlint on your repo. Supports changed-file
-  detection on pull requests and colorized, CI-friendly output.
+  Drone / Harness plugin for running Oxlint on your repo. Supports changed-file
+  detection on pull requests and colorized output.
 example: |
   kind: pipeline
   name: default
