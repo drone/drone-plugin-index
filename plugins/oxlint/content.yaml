@@ -6,7 +6,7 @@ tags:
   - javascript
   - typescript
   - security
-logo: oxlint.svg
+logo: oxlint.png
 repo: https://codeberg.org/adamlui/drone-oxlint
 image: https://hub.docker.com/r/adamlui/drone-oxlint
 license: MIT
